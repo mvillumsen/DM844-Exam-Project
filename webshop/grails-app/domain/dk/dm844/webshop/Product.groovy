@@ -5,9 +5,12 @@ class Product {
     int id
     String name
     int price
-    Category category
     String description
     int stock
+    Date dateCreated
+    Date lastUpdated
+    static belongsTo = [category : Category]
+    static hasMany = [orderEntries : OrderEntry]
 
     static constraints = {
         id unique: true, blank: false

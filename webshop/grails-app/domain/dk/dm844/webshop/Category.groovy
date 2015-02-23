@@ -14,4 +14,5 @@ class Category {
         name blank: false
         description nullable: true
     }
+
 }

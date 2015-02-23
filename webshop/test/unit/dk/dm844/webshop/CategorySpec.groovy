@@ -10,11 +10,19 @@ import spock.lang.Specification
 class CategorySpec extends Specification {
 
     def setup() {
+        mockForConstraintsTests(Category)
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
+    void "CategoryValidation"() {
+        expect:
+        category.validate() == result
+
+        where:
+        category                            || result
+        new Category()                      || false
+        new Category(id: 1, name: "test")   || true
     }
 }

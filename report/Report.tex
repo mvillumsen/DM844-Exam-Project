@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,top=2.1cm,bottom=2.1cm,left=2.4cm,right=2.4cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%H\usepackage[english]{babel}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{fancyvrb}
+
+\usepackage{verbatim}
+\usepackage{tikz}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{comment} 
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png}
+
+\definecolor{dkgreen}{rgb}{0,0.45,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.30,0,0.30}
+
+% Default settings for code listings
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  basicstyle={\small\ttfamily},
+  %numbers=left,
+  numberstyle=\footnotesize,
+  keywordstyle=\color{dkgreen}\bfseries,
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  frame=none,
+  breaklines=true,
+  breakatwhitespace=false
+  tabsize=1
+}
+
+%%%%%
+\definecolor{codebgcolor}{HTML}{EDEDED}
+\newenvironment{code}
+{\begin{center}
+    \begin{tikzpicture}
+      \node [fill=codebgcolor,rounded corners=5pt]
+      \bgroup
+      \begin{tabular}{l}}
+      {\end{tabular}
+      \egroup;
+    \end{tikzpicture}
+  \end{center}
+}
+%%%%%
+
+\title{Web development with Groovy and Grails\\ Awesome Webshop \\\rule{10cm}{0.5mm}}
+\author{Martin Villumsen \\ Anders Storm \\Martin Andersen \\\rule{5.5cm}{0.5mm}\\}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Business idea}
+\section{Domain model and constraints}
+\section{Git pushing and branching strategy}
+\section{Coding style}
+\section{Continous integration}
+\section{Server setup}
+
+
+\end{document}
+

@@ -3,3 +3,9 @@
 *.pdf
 *.synctex.gz
 *.toc
+webshop/.idea/
+webshop/.project
+webshop/.class
+webshop/target/
+webshop/webshop-grailsPlugins.iml
+webshop/webshop.iml

@@ -1,0 +1,11 @@
+- Products
+    Review and comments (only available for registered users)
+    Related products / Other customers also bought (depending on previous orders)
+
+- Warehouse
+    Stock status
+    When to buy products (depended on current stock)
+
+- Customer registration
+
+

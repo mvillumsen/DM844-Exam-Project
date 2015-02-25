@@ -11,8 +11,7 @@ class CategoryControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = "TestCategory"
     }
 
     void "Test the index action returns the correct model"() {
@@ -50,7 +49,6 @@ class CategoryControllerSpec extends Specification {
             response.reset()
             populateValidParams(params)
             category = new Category(params)
-
             controller.save(category)
 
         then:"A redirect is issued to the show action"

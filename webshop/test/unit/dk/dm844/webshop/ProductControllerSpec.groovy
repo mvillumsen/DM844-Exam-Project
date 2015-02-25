@@ -11,8 +11,8 @@ class ProductControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = "TestProduct"
+        params["category"] = new Category(name: "Food")
     }
 
     void "Test the index action returns the correct model"() {

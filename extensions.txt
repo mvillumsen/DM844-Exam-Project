@@ -4,8 +4,7 @@
 
 - Warehouse
     Stock status
-    When to buy products (depended on current stock)
+    When to buy products (depended on current stock) (domain restock)
 
 - Customer registration
-
 

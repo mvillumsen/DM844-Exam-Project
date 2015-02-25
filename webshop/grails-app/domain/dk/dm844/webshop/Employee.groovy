@@ -1,8 +1,13 @@
 package dk.dm844.webshop
 
-class Employee extends Person {
+class Employee {
 
-    static hasMany = [orders : Order]
+    int salary
+    Date dateHired
+    Date dateCreated
+    Date lastUpdated
+    static hasOne = [credentials : Person]
+    static hasMany = [assignedOrders : Order]
 
     static constraints = {
     }

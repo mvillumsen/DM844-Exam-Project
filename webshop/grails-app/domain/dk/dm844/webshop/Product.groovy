@@ -15,7 +15,6 @@ class Product {
     static constraints = {
         id unique: true, blank: false
         name blank: false
-        price min: 0
         description nullable: true
     }
 

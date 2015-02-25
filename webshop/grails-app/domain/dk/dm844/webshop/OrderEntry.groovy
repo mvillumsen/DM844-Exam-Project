@@ -9,5 +9,6 @@ class OrderEntry {
     static belongsTo = [order : Order, product : Product]
 
     static constraints = {
+        amount min: 1
     }
 }

@@ -11,5 +11,10 @@ class Person {
     Date lastUpdated
 
     static constraints = {
+        id unique: true, blank: false
+        name blank: false
+        address blank: false
+        phone nullable: true
+        email blank: false, email: true
     }
 }

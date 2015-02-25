@@ -11,11 +11,11 @@ class Order {
     Date dateCreated
     Date lastUpdated
     static hasMany = [orderEntries : OrderEntry]
-    static belongsTo = [customer : Customer, employee : Employee]
-
+    static belongsTo = [customer : Customer, assignedEmployee: Employee]
 
     static constraints = {
         id unique: true, blank: false
-        employee nullable: true
+        assignedEmployee nullable: true
+	orderEntries nullable: true
     }
 }

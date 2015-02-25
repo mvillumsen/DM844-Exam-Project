@@ -10,10 +10,10 @@
 	
 <ul class="one-to-many">
 <g:each in="${employeeInstance?.assignedOrders?}" var="a">
-    <li><g:link controller="order" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="productOrder" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="order" action="create" params="['employee.id': employeeInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'order.label', default: 'Order')])}</g:link>
+<g:link controller="productOrder" action="create" params="['employee.id': employeeInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'productOrder.label', default: 'ProductOrder')])}</g:link>
 </li>
 </ul>
 

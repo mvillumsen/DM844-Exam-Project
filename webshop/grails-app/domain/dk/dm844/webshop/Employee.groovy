@@ -8,9 +8,14 @@ class Employee {
     Date dateCreated
     Date lastUpdated
     static belongsTo = [credentials : Person]
-    static hasMany = [assignedOrders : Order]
+    static hasMany = [assignedOrders : ProductOrder]
 
     static constraints = {
 
+    }
+
+    @Override
+    String toString() {
+        return credentials.name
     }
 }

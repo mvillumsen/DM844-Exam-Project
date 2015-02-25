@@ -55,7 +55,7 @@
 					<span id="orders-label" class="property-label"><g:message code="customer.orders.label" default="Orders" /></span>
 					
 						<g:each in="${customerInstance.orders}" var="o">
-						<span class="property-value" aria-labelledby="orders-label"><g:link controller="order" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="orders-label"><g:link controller="productOrder" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

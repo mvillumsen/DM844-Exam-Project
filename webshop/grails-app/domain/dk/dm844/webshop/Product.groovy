@@ -21,4 +21,9 @@ class Product {
     def getPicture() {
         return "http://lorempixel.com/150/150/food/$name"
     }
+
+    @Override
+    String toString() {
+        return name
+    }
 }

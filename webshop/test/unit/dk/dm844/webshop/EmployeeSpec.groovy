@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
+import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -9,12 +10,25 @@ import spock.lang.Specification
 @TestFor(Employee)
 class EmployeeSpec extends Specification {
 
+    @Shared Person p = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
+    @Shared Date d = new Date()
+
     def setup() {
+        mockForConstraintsTests(Employee)
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
+    void "EmployeeValidation"() {
+        expect:
+        employee.validate() == result
+
+        where:
+        employee                                      ||  result
+        new Employee()                                ||  false
+        new Employee(credentials: p)                  ||  false
+        new Employee(dateHired: d)                    ||  false
+        new Employee(credentials: p, dateHired: d)    ||  true
     }
 }

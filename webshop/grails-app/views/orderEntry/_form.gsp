@@ -16,7 +16,7 @@
 		<g:message code="orderEntry.order.label" default="Order" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="order" name="order.id" from="${dk.dm844.webshop.Order.list()}" optionKey="id" required="" value="${orderEntryInstance?.order?.id}" class="many-to-one"/>
+	<g:select id="order" name="order.id" from="${dk.dm844.webshop.ProductOrder.list()}" optionKey="id" required="" value="${orderEntryInstance?.order?.id}" class="many-to-one"/>
 
 </div>
 

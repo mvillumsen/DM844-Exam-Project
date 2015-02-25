@@ -15,4 +15,9 @@ class Category {
         description nullable: true
     }
 
+    @Override
+    String toString() {
+        return name
+    }
+
 }

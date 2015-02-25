@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
+import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -9,12 +10,22 @@ import spock.lang.Specification
 @TestFor(Customer)
 class CustomerSpec extends Specification {
 
+    @Shared Person p = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
+
     def setup() {
+        mockForConstraintsTests(Customer)
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
+    void "CustomerValidation"() {
+        expect:
+        customer.validate() == result
+
+        where:
+        customer                        ||  result
+        new Customer()                  ||  false
+        new Customer(credentials: p)    ||  true
     }
 }

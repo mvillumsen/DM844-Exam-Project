@@ -54,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="order-label" class="property-label"><g:message code="orderEntry.order.label" default="Order" /></span>
 					
-						<span class="property-value" aria-labelledby="order-label"><g:link controller="order" action="show" id="${orderEntryInstance?.order?.id}">${orderEntryInstance?.order?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="order-label"><g:link controller="productOrder" action="show" id="${orderEntryInstance?.order?.id}">${orderEntryInstance?.order?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

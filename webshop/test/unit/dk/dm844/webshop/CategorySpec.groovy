@@ -21,8 +21,9 @@ class CategorySpec extends Specification {
         category.validate() == result
 
         where:
-        category                            || result
-        new Category()                      || false
-        new Category(id: 1, name: "test")   || true
+        category                                                        || result
+        new Category()                                                  || false
+        new Category(id: 1, name: "test")                               || true
+        new Category(id: 1, name: "test", description: "Description")   || true
     }
 }

@@ -1,6 +1,6 @@
 package dk.dm844.webshop
 
-class Order {
+class ProductOrder {
 
     enum Status {
         UNASSIGNED, OPEN, COMPLETED, CLOSED
@@ -17,5 +17,10 @@ class Order {
         id unique: true, blank: false
         assignedEmployee nullable: true
 	orderEntries nullable: true
+    }
+
+    @Override
+    String toString() {
+        return "Order no.: $id"
     }
 }

@@ -19,10 +19,10 @@
 	
 <ul class="one-to-many">
 <g:each in="${customerInstance?.orders?}" var="o">
-    <li><g:link controller="order" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="productOrder" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="order" action="create" params="['customer.id': customerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'order.label', default: 'Order')])}</g:link>
+<g:link controller="productOrder" action="create" params="['customer.id': customerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'productOrder.label', default: 'ProductOrder')])}</g:link>
 </li>
 </ul>
 

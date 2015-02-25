@@ -28,7 +28,7 @@
 					<span id="assignedOrders-label" class="property-label"><g:message code="employee.assignedOrders.label" default="Assigned Orders" /></span>
 					
 						<g:each in="${employeeInstance.assignedOrders}" var="a">
-						<span class="property-value" aria-labelledby="assignedOrders-label"><g:link controller="order" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="assignedOrders-label"><g:link controller="productOrder" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

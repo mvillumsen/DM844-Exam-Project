@@ -17,4 +17,9 @@ class Person {
         phone nullable: true
         email blank: false, email: true
     }
+
+    @Override
+    String toString() {
+        return name
+    }
 }

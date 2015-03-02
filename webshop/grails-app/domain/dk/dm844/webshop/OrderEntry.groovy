@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 class OrderEntry {
 
-    int id
     int amount
     int price
     Date dateCreated

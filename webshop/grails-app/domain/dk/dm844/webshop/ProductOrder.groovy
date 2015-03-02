@@ -6,7 +6,6 @@ class ProductOrder {
         UNASSIGNED, OPEN, COMPLETED, CLOSED
     }
 
-    int id
     Status status = Status.UNASSIGNED
     Date dateCreated
     Date lastUpdated
@@ -14,9 +13,8 @@ class ProductOrder {
     static belongsTo = [customer : Customer, assignedEmployee: Employee]
 
     static constraints = {
-        id unique: true, blank: false
         assignedEmployee nullable: true
-	orderEntries nullable: true
+	    orderEntries nullable: true
     }
 
     @Override

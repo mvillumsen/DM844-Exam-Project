@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 class Product {
 
-    int id
     String name
     int price
     String description
@@ -13,7 +12,6 @@ class Product {
     static hasMany = [orderEntries : OrderEntry]
 
     static constraints = {
-        id unique: true, blank: false
         name blank: false
         description nullable: true
     }

@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 class Person {
 
-    int id
     String name
     String address
     String phone
@@ -11,7 +10,6 @@ class Person {
     Date lastUpdated
 
     static constraints = {
-        id unique: true, blank: false
         name blank: false
         address blank: false
         phone nullable: true

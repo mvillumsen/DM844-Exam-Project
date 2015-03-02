@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 class Employee {
 
-    int id
     int salary
     Date dateHired
     Date dateCreated

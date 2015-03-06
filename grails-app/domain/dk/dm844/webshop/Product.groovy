@@ -14,6 +14,7 @@ class Product {
     static constraints = {
         name blank: false
         description nullable: true
+        stock min: 0
     }
 
     def getPicture() {

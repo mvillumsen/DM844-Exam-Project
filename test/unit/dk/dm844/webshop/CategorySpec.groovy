@@ -23,7 +23,7 @@ class CategorySpec extends Specification {
         where:
         category                                                        || result
         new Category()                                                  || false
-        new Category(id: 1, name: "test")                               || false
+        new Category(id: 1, name: "test")                               || true
         new Category(id: 1, name: "test", description: "Description")   || true
     }
 }

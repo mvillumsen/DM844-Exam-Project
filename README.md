@@ -27,3 +27,13 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+
+## Comments for project 1
+
+* Fine modelling and description
+* You have not tagged the release or branched it (at least not described in the report)
+* Short but relevant coding style guide
+* No login for jenkins provided, but otherwise ok setup
+* For product, the constraints are not properly tested (stock)
+* Be carefull with your toString methods. They should also be tested, and not throw exceptions
+

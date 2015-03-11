@@ -30,7 +30,7 @@ class ProductSpec extends Specification {
         new Product()                                                                       ||  false
         new Product(name: "Milk")                                                           ||  false
         new Product(name: "Milk", category: c, price: 100)                                  ||  false
-        new Product(name: "Milk", category: c, price: 100, stock: 1                         ||  true
+        new Product(name: "Milk", category: c, price: 100, stock: 1)                        ||  true
         new Product(name: "   ", category: c)                                               ||  false
         new Product(name: "Milk", category: c, price: 100, description: "desc", stock: 0)   ||  true
         new Product(name: "Milk", category: c, stock: -1)                                   ||  false

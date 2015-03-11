@@ -56,21 +56,47 @@ grails.project.dependency.resolution = {
     plugins {
         // plugins for the build system only
         build ":tomcat:7.0.55"
+        test(":code-coverage:2.0.3-3") {
+            export = false
+        }
 
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
         compile ":asset-pipeline:1.9.9"
+        compile ":spring-security-core:2.0-RC4"
+        compile ":codenarc:0.23"
+        compile ":build-test-data:2.4.0"
+
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
 
-        // Uncomment these to enable additional asset-pipeline capabilities
+         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
         //compile ":less-asset-pipeline:1.10.0"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
+        coverage {
+            exclusions = ["*CodeNarcRules*"]
+        }
+
+        codenarc {
+
+            ruleSetFiles = "file:grails-app/conf/CodeNarcRules.groovy"
+
+            reports = {
+                MyXmlReport('xml') {
+                    outputFile = 'target/codenarc/CodeNarc-Report.xml'
+                    title = 'DM844 Website Report'
+                }
+                MyHtmlReport('html') {
+                    outputFile = 'target/codenarc/CodeNarc-Report.html'
+                    title = 'DM844 Website Report'
+                }
+            }
+        }
     }
 }

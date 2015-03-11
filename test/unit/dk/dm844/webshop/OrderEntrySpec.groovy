@@ -3,6 +3,7 @@ package dk.dm844.webshop
 import grails.test.mixin.TestFor
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -23,14 +24,33 @@ class OrderEntrySpec extends Specification {
     def cleanup() {
     }
 
+    @Unroll
     void "OrderEntryValidation"() {
         expect:
         entry.validate() == result
 
         where:
-        entry                                               ||  result
-        new OrderEntry()                                    ||  false
-        new OrderEntry(amount: 1, product: pr, order: o)    ||  true
-        // TODO: More tests
+        entry                                                               ||  result
+        new OrderEntry()                                                    ||  false
+        new OrderEntry(order: o)                                            ||  false
+        new OrderEntry(product: pr)                                         ||  false
+        new OrderEntry(product: pr, order: o)                               ||  false
+        new OrderEntry(amount: 1, product: pr, order: o)                    ||  false
+        new OrderEntry(price: 10, product: pr, order: o)                    ||  true
+        new OrderEntry(amount: 1, price: 10, product: pr, order: o)         ||  true
+        new OrderEntry(amount: 0, price: 10, product: pr, order: o)         ||  false
+    }
+
+    @Unroll
+    void "toStringTest"() {
+        expect:
+        entry.toString() == results
+
+        where:
+        entry                                                               ||  result
+        new OrderEntry(product: pr, order: o)                               ||  "Name: $pr.name\t$null\t$null"
+        new OrderEntry(amount: 0, price: 10, product: pr, order: o)         ||  "Name: $pr.name\t10\t0"
+        new OrderEntry(amount: 0, product: pr, order: o)                    ||  "Name: $pr.name\t$null\t0"
+        new OrderEntry(price: 10, product: pr, order: o)                    ||  "Name: $pr.name\t10\t$null"
     }
 }

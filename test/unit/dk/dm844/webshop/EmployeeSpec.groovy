@@ -3,6 +3,7 @@ package dk.dm844.webshop
 import grails.test.mixin.TestFor
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -20,6 +21,7 @@ class EmployeeSpec extends Specification {
     def cleanup() {
     }
 
+    @Unroll
     void "EmployeeValidation"() {
         expect:
         employee.validate() == result
@@ -30,5 +32,18 @@ class EmployeeSpec extends Specification {
         new Employee(credentials: p)                  ||  false
         new Employee(dateHired: d)                    ||  false
         new Employee(credentials: p, dateHired: d)    ||  true
+    }
+
+    @Unroll
+    void "toStringTest"() {
+        expect:
+        employee.toString() == name
+
+        where:
+        employee                                    ||  name
+        new Employee()                              ||  null
+        new Employee(credentials: p)                ||  null
+        new Employee(dateHired: d)                  ||  null
+        new Employee(credentials: p, dateHired: d)  ||  "Martin"
     }
 }

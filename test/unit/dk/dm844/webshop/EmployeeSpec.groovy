@@ -27,11 +27,12 @@ class EmployeeSpec extends Specification {
         employee.validate() == result
 
         where:
-        employee                                      ||  result
-        new Employee()                                ||  false
-        new Employee(credentials: p)                  ||  false
-        new Employee(dateHired: d)                    ||  false
-        new Employee(credentials: p, dateHired: d)    ||  true
+        employee                                                ||  result
+        new Employee()                                          ||  false
+        new Employee(credentials: p)                            ||  false
+        new Employee(dateHired: d)                              ||  false
+        new Employee(credentials: p, dateHired: d, salary: -1)  ||  false
+        new Employee(credentials: p, dateHired: d, salary: 10)  ||  true
     }
 
     @Unroll

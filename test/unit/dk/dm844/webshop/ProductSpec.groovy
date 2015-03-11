@@ -48,6 +48,6 @@ class ProductSpec extends Specification {
         new Product()                                       ||  null
         new Product(name: "Milk")                           ||  "Milk"
         new Product(name: "Milk", category: c)              ||  "Milk"
-        new Product(name: "  ", category: c)                ||  "null"
+        new Product(name: "  ", category: c)                ||  null
     }
 }

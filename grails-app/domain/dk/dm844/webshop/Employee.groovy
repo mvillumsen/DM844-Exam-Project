@@ -2,7 +2,7 @@ package dk.dm844.webshop
 
 class Employee {
 
-    int salary
+    Integer salary
     Date dateHired
     Date dateCreated
     Date lastUpdated

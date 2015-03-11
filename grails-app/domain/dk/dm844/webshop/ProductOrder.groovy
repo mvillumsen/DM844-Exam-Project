@@ -17,6 +17,10 @@ class ProductOrder {
 	    orderEntries nullable: true
     }
 
+    static mapping = {
+        orderEntries cascade: "all-delete-orphan"
+    }
+
     @Override
     String toString() {
         return "Order no.: $id"

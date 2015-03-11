@@ -4,11 +4,11 @@ class Customer {
 
     Date dateCreated
     Date lastUpdated
-    static belongsTo = [credentials : Person]
+    Person credentials
+
     static hasMany = [orders : ProductOrder]
 
     static constraints = {
-
     }
 
     @Override

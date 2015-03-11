@@ -6,11 +6,11 @@ class Employee {
     Date dateHired
     Date dateCreated
     Date lastUpdated
-    static belongsTo = [credentials : Person]
+    Person credentials
+
     static hasMany = [assignedOrders : ProductOrder]
 
     static constraints = {
-
     }
 
     @Override

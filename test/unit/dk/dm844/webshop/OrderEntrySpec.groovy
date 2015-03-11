@@ -48,9 +48,9 @@ class OrderEntrySpec extends Specification {
 
         where:
         entry                                                               ||  result
-        new OrderEntry(product: pr, order: o)                               ||  "Name: $pr.name\t$null\t$null"
+        new OrderEntry(product: pr, order: o)                               ||  "Name: $pr.name\tnull\tnull"
         new OrderEntry(amount: 0, price: 10, product: pr, order: o)         ||  "Name: $pr.name\t10\t0"
-        new OrderEntry(amount: 0, product: pr, order: o)                    ||  "Name: $pr.name\t$null\t0"
-        new OrderEntry(price: 10, product: pr, order: o)                    ||  "Name: $pr.name\t10\t$null"
+        new OrderEntry(amount: 0, product: pr, order: o)                    ||  "Name: $pr.name\tnull\t0"
+        new OrderEntry(price: 10, product: pr, order: o)                    ||  "Name: $pr.name\t10\tnull"
     }
 }

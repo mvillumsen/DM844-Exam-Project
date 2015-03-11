@@ -11,6 +11,7 @@ class EmployeeControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
+        params["salary"] = 1000
         params["credentials"] = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
         params["dateHired"] = new Date()
     }

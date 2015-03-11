@@ -46,8 +46,8 @@ class ProductSpec extends Specification {
         where:
         product                                             ||  name
         new Product()                                       ||  null
-        new Product(name: "Milk")                           ||  null
-        new Product(name: "Milk", category: c)              || "Milk"
-        new Product(name: "  ", category: c)                || "Milk"
+        new Product(name: "Milk")                           ||  "Milk"
+        new Product(name: "Milk", category: c)              ||  "Milk"
+        new Product(name: "  ", category: c)                ||  "null"
     }
 }

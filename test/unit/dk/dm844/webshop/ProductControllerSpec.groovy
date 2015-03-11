@@ -12,7 +12,9 @@ class ProductControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
         params["name"] = "TestProduct"
+        params["price"] = 10
         params["category"] = new Category(name: "Food")
+        params["stock"] = 1
     }
 
     void "Test the index action returns the correct model"() {

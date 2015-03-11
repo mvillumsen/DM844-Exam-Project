@@ -2,7 +2,7 @@ package dk.dm844.webshop
 
 class Employee {
 
-    int salary
+    Integer salary
     Date dateHired
     Date dateCreated
     Date lastUpdated
@@ -15,6 +15,6 @@ class Employee {
 
     @Override
     String toString() {
-        return credentials.name
+        return credentials?.name
     }
 }

@@ -2,8 +2,8 @@ package dk.dm844.webshop
 
 class OrderEntry {
 
-    int amount
-    int price
+    Integer amount
+    Integer price
     Date dateCreated
     Date lastUpdated
     static belongsTo = [order : ProductOrder, product : Product]

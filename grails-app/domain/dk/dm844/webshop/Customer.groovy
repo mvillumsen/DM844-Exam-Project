@@ -13,6 +13,6 @@ class Customer {
 
     @Override
     String toString() {
-        return credentials.name
+        return credentials?.name
     }
 }

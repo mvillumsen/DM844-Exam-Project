@@ -40,6 +40,6 @@ class ProductOrderSpec extends Specification {
 
         where:
         order                           ||  id
-        new ProductOrder()              ||  "Order no.: 1"
+        new ProductOrder()              ||  "Order no.: null"
     }
 }

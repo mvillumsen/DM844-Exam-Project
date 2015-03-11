@@ -11,6 +11,7 @@ class Employee {
     static hasMany = [assignedOrders : ProductOrder]
 
     static constraints = {
+        assignedOrders nullable:true
     }
 
     @Override

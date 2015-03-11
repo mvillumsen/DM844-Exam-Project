@@ -1,32 +1,16 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This project is for the course DM844 at SDU.
 
-### What is this repository for? ###
+### Business idea: ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+The goal of this project is to build a simple webshop consisting of a back-end
+for employees, and a front end for customers.
 
-### How do I get set up? ###
+The back-end is used to assign product orders to employees that are suited for 
+handling specific (parts of) orders, and completeing them.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+The front-end must allow users to select products and make orders.
 
 ## Comments for project 1
 

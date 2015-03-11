@@ -42,7 +42,7 @@ class EmployeeSpec extends Specification {
         where:
         employee                                    ||  name
         new Employee()                              ||  null
-        new Employee(credentials: p)                ||  null
+        new Employee(credentials: p)                ||  "Martin"
         new Employee(dateHired: d)                  ||  null
         new Employee(credentials: p, dateHired: d)  ||  "Martin"
     }

@@ -16,6 +16,7 @@ class OrderEntryControllerSpec extends Specification {
         Customer c = new Customer(credentials: p)
         Category ca = new Category(name: "Food")
 
+        params["price"] = 10
         params["amount"] = 1
         params["product"] = new Product(name: "Milk", category: ca)
         params["order"] = new ProductOrder(customer: c)

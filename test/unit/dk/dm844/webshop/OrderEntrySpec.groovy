@@ -36,7 +36,7 @@ class OrderEntrySpec extends Specification {
         new OrderEntry(product: pr)                                         ||  false
         new OrderEntry(product: pr, order: o)                               ||  false
         new OrderEntry(amount: 1, product: pr, order: o)                    ||  false
-        new OrderEntry(price: 10, product: pr, order: o)                    ||  true
+        new OrderEntry(price: 10, product: pr, order: o)                    ||  false
         new OrderEntry(amount: 1, price: 10, product: pr, order: o)         ||  true
         new OrderEntry(amount: 0, price: 10, product: pr, order: o)         ||  false
     }
@@ -44,7 +44,7 @@ class OrderEntrySpec extends Specification {
     @Unroll
     void "toStringTest"() {
         expect:
-        entry.toString() == results
+        entry.toString() == result
 
         where:
         entry                                                               ||  result

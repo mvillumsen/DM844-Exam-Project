@@ -246,7 +246,6 @@ ruleset {
     ImportFromSamePackage 
     ImportFromSunPackages 
     MisorderedStaticImports 
-    NoWildcardImports 
     UnnecessaryGroovyImport 
     UnusedImport 
     
@@ -374,7 +373,6 @@ ruleset {
     UnnecessaryPackageReference 
     UnnecessaryParenthesesForMethodCallWithClosure 
     UnnecessaryPublicModifier 
-    UnnecessaryReturnKeyword 
     UnnecessarySafeNavigationOperator 
     UnnecessarySelfAssignment 
     UnnecessarySemicolon 

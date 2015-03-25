@@ -63,7 +63,7 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
-        compile ":asset-pipeline:1.9.9"
+        compile ":asset-pipeline:2.1.4"
         compile ":spring-security-core:2.0-RC4"
         compile ":codenarc:0.23"
         compile ":build-test-data:2.4.0"
@@ -77,6 +77,8 @@ grails.project.dependency.resolution = {
          // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
         //compile ":less-asset-pipeline:1.10.0"
+        compile ":less-asset-pipeline:2.0.8"
+        compile ":twitter-bootstrap:3.3.2.1"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
         coverage {

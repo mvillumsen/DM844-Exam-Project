@@ -129,3 +129,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll']
 ]
 
+grails.asset.plugin."twitter-bootstrap".excludes=["**/*.less"]
+grails.asset.plugin."twitter-bootstrap".includes=["bootstrap.less"]
+

@@ -4,6 +4,7 @@
 *.synctex.gz
 *.toc
 *~
+*.swp
 .idea/
 .project
 .class

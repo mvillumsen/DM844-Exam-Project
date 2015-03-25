@@ -32,7 +32,7 @@ ruleset {
     EmptyForStatement 
     EmptyIfStatement 
     EmptyInstanceInitializer 
-    EmptyMethod 
+    EmptyMethod( priority: 1 )
     EmptyStaticInitializer 
     EmptySwitchStatement 
     EmptySynchronizedStatement 
@@ -164,7 +164,7 @@ ruleset {
     ClosureStatementOnOpeningLineOfMultipleLineClosure 
     ConsecutiveBlankLines 
     FileEndsWithoutNewline 
-    LineLength 
+    LineLength(length: 80)
     MissingBlankLineAfterImports 
     MissingBlankLineAfterPackage 
     SpaceAfterCatch 
@@ -299,7 +299,7 @@ ruleset {
     FactoryMethodName 
     FieldName 
     InterfaceName 
-    MethodName 
+    MethodName( doNorApplyToClassNames: '*Spec')
     ObjectOverrideMisspelledMethodName 
     PackageName 
     PackageNameMatchesFilePath 
@@ -358,7 +358,7 @@ ruleset {
     UnnecessaryElseStatement 
     UnnecessaryFinalOnPrivateMethod 
     UnnecessaryFloatInstantiation 
-    UnnecessaryGString 
+    //UnnecessaryGString 
     UnnecessaryGetter 
     UnnecessaryIfStatement 
     UnnecessaryInstanceOfCheck 

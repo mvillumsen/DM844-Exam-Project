@@ -299,7 +299,7 @@ ruleset {
     FactoryMethodName 
     FieldName 
     InterfaceName 
-    MethodName( doNorApplyToClassNames: '*Spec')
+    MethodName( doNotApplyToClassNames: '*Spec')
     ObjectOverrideMisspelledMethodName 
     PackageName 
     PackageNameMatchesFilePath 

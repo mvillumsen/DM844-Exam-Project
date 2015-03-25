@@ -21,3 +21,8 @@ The front-end must allow users to select products and make orders.
 * For product, the constraints are not properly tested (stock)
 * Be carefull with your toString methods. They should also be tested, and not throw exceptions
 
+## Info
+* Test-reports: 188.226.206.170/test-reports
+* Jenkins: 188.226.206.170:8090/jenkins/
+* Tomcat: 188.226.206.170:8080
+

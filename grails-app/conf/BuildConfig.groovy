@@ -83,20 +83,22 @@ grails.project.dependency.resolution = {
             exclusions = ["*CodeNarcRules*"]
         }
 
-        codenarc {
+    }
+}
 
-            ruleSetFiles = "file:grails-app/conf/CodeNarcRules.groovy"
+codenarc {
 
-            reports = {
-                MyXmlReport('xml') {
-                    outputFile = 'target/codenarc/CodeNarc-Report.xml'
-                    title = 'DM844 Website Report'
-                }
-                MyHtmlReport('html') {
-                    outputFile = 'target/codenarc/CodeNarc-Report.html'
-                    title = 'DM844 Website Report'
-                }
-            }
+    ruleSetFiles = "file:grails-app/conf/CodeNarcRules.groovy"
+
+    reports = {
+        MyXmlReport('xml') {
+            outputFile = 'target/codenarc/CodeNarc-Report.xml'
+            title = 'DM844 Website Report'
+        }
+        MyHtmlReport('html') {
+            outputFile = 'target/codenarc/CodeNarc-Report.html'
+            title = 'DM844 Website Report'
         }
     }
 }
+

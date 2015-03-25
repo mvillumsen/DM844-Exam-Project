@@ -4,22 +4,22 @@ import dk.dm844.webshop.UserAliasSecurityRole
 
 class BootStrap {
 
+    def springSecurityService
+
     def init = { servletContext ->
 
-        def adminRole = new SecurityRole(authority: 'ROLE_ADMIN').save(flush: true)
-        def userRole = new SecurityRole(authority: 'ROLE_USER').save(flush: true)
+        def employeeRole = new SecurityRole(authority: 'ROLE_EMPLOYEE').save(failOnError: true, flush: true)
+        def customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
 
-        def testUser = new UserAlias(username: 'anders', password: 'testpassword')
-        testUser.save(flush: true)
-        def testUser2 = new UserAlias(username: 'bruger', password: 'hejsa')
-        testUser2.save(flush: true)
+        def adminUser = new UserAlias(username: 'emp', password: 'emp', enabled: true).save(failOnError: true, flush: true)
+        UserAliasSecurityRole.create adminUser, employeeRole, true
 
-        UserAliasSecurityRole.create testUser, adminRole, true
-        UserAliasSecurityRole.create testUser2, userRole, true
+        def customer1 = new UserAlias(username: 'cus', password: 'cus', enabled: true).save(failOnError: true, flush: true)
+        UserAliasSecurityRole.create customer1, customerRole, true
 
         assert UserAlias.count() == 2
         assert SecurityRole.count() == 2
-        assert UserAlias.count() == 2 }
+    }
 
     def destroy = {
     }

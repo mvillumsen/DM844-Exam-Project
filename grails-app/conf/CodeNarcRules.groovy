@@ -32,7 +32,7 @@ ruleset {
     EmptyForStatement 
     EmptyIfStatement 
     EmptyInstanceInitializer 
-    EmptyMethod( priority: 1 )
+    EmptyMethod( priority: 1, doNotApplyToClassNames: '*Spec' )
     EmptyStaticInitializer 
     EmptySwitchStatement 
     EmptySynchronizedStatement 
@@ -124,7 +124,7 @@ ruleset {
     DuplicateListLiteral 
     DuplicateMapLiteral 
     DuplicateNumberLiteral 
-    DuplicateStringLiteral 
+    //DuplicateStringLiteral 
     
     // rulesets/enhanced.xml
     CloneWithoutCloneable 
@@ -160,11 +160,11 @@ ruleset {
     BracesForIfElse 
     BracesForMethod 
     BracesForTryCatchFinally 
-    ClassJavadoc 
+    //ClassJavadoc 
     ClosureStatementOnOpeningLineOfMultipleLineClosure 
     ConsecutiveBlankLines 
     FileEndsWithoutNewline 
-    LineLength(length: 80)
+    LineLength(length: 100)
     MissingBlankLineAfterImports 
     MissingBlankLineAfterPackage 
     SpaceAfterCatch 
@@ -177,7 +177,7 @@ ruleset {
     SpaceAfterSwitch 
     SpaceAfterWhile 
     SpaceAroundClosureArrow 
-    SpaceAroundMapEntryColon 
+    //SpaceAroundMapEntryColon 
     SpaceAroundOperator 
     SpaceBeforeClosingBrace 
     SpaceBeforeOpeningBrace 

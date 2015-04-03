@@ -20,7 +20,8 @@ class Product {
     }
 
     def getPicture() {
-        return "http://lorempixel.com/150/150/food/$name"
+        // TODO: Solve issue with product names consisting of multiple words
+        return "http://lorempixel.com/150/150/food/${name.split(" ")[0]}"
     }
 
     @Override

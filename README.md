@@ -1,7 +1,5 @@
 # README #
 
-#### GROUP 05
-
 This project is for the course DM844 at SDU.
 
 ### Business idea: ###

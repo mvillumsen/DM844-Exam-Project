@@ -16,20 +16,18 @@
 		<g:if test="${categoryInstance?.products}">
 			<g:each in="${categoryInstance.products}" var="p">
 				<div class="col-sm-3 col-md-3">
-					<div class="thumbnail">
+					<div class="thumbnail products">
 						<img src="${p.getPicture()}" alt="${p.name}">
-						<div class="caption">
+						<div class="caption productCaption">
 							<h5 class="text-center">${p.name}</h5>
-							<p class="small">${p.description}</p>
-							<div class="row">
-								<div class="col-xs-5">
-								</div>
-								<div class="col-xs-2">
-									<input class="form-control input-sm" id="amount" type="text">
-								</div>
-								<div class="col-xs-4">
-									<button type="submit" class="btn btn-primary btn-sm" role="button">Buy</button>
-								</div>
+							<p class="small">${p.description} ${p.description}</p>
+						</div>
+						<div class="row productBuy">
+							<div class="col-sm-6 col-md-6 buyButton">
+								<button type="submit" class="btn btn-primary btn-sm" role="button">Buy</button>
+							</div>
+							<div class="col-sm-6 col-md-6 buyForm">
+								<input class="form-control input-sm buyForm" id="amount" type="text" value="1">
 							</div>
 						</div>
 					</div>

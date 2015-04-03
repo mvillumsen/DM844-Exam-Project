@@ -57,47 +57,50 @@
         </nav>
 
         <%-- CONTENT --%>
-        <div class="container">
+        <div id="wrap">
+            <div class="container">
 
-            <div class="page-header">
-                <h1>The Webshop <small>Fresh groceries for everyone!</small></h1>
-            </div>
-
-            <%-- SIDEBAR --%>
-            <%-- TODO: Layout for small devices (col-xs) --%>
-            <%-- TODO: Move to a TagLib at some point? --%>
-            <div class="row">
-                <div class="hidden-xs col-sm-3 col-md-3">
-                    <ul class="nav nav-pills nav-stacked">
-                        <%-- DUMMY DATA --%>
-                        <li role="presentation" class="disabled"><a href="#">Special Offers</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Fruit & Vegetables</a></li>
-                        
-                        <%-- Show categories--%>
-                        <g:each in="${dk.dm844.webshop.Category.list()}" var="category">
-                            <li role="presentation"><g:link controller="Category" action="show" id="${category.id}">${category.name}</g:link></li>
-                        </g:each>
-                        
-                        <%-- DUMMY DATA -->%
-                        <li role="presentation" class="disabled"><a href="#">Cold Cuts & Sausages</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Bakery</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Colonial</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Frozen Food</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Drinks</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Crisps & Candy</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Household</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Health & Beauty</a></li>
-                        <li role="presentation" class="disabled"><a href="#">Home & Ents</a></li>
-                    </ul>
+                <div class="page-header">
+                    <h1>The Webshop <small>Fresh groceries for everyone!</small></h1>
                 </div>
 
-                <%-- Main content frame --%>
-                <div class="col-xs-12 col-sm-9 col-md-9">
-                    <g:layoutBody/>
+                <%-- SIDEBAR --%>
+                <%-- TODO: Layout for small devices (col-xs) --%>
+                <%-- TODO: Move to a TagLib at some point? --%>
+                <div class="row">
+                    <div class="hidden-xs col-sm-3 col-md-3">
+                        <ul class="nav nav-pills nav-stacked">
+
+                            <%-- DUMMY DATA --%>
+                            <li role="presentation" class="disabled"><a href="#">Special Offers</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Fruit & Vegetables</a></li>
+
+                            <%-- Show categories--%>
+                            <g:each in="${dk.dm844.webshop.Category.list()}" var="category">
+                                <li role="presentation"><g:link controller="Category" action="show" id="${category.id}">${category.name}</g:link></li>
+                            </g:each>
+
+                            <%-- DUMMY DATA --%>
+                            <li role="presentation" class="disabled"><a href="#">Cold Cuts & Sausages</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Bakery</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Colonial</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Frozen Food</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Drinks</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Crisps & Candy</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Household</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Health & Beauty</a></li>
+                            <li role="presentation" class="disabled"><a href="#">Home & Ents</a></li>
+                        </ul>
+                    </div>
+
+                    <%-- Main content frame --%>
+                    <div class="col-xs-12 col-sm-9 col-md-9">
+                        <g:layoutBody/>
+                    </div>
+
                 </div>
-
             </div>
-
+            <div id="push"></div>
         </div>
 
         <%-- FOOTER --%>

@@ -1,7 +1,7 @@
 package dk.dm844.webshop
 
 import grails.plugin.springsecurity.annotation.Secured
-@Secured(['ROLE_EMPLOYEE','ROLE_CUSTOMER'])
+@Secured(['ROLE_EMPLOYEE'])
 class SecureController {
 
     def index() {

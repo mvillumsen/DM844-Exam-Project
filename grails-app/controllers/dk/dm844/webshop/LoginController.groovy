@@ -26,7 +26,7 @@ import org.springframework.security.web.WebAttributes
 
 import javax.servlet.http.HttpServletResponse
 
-//@Secured('permitAll')
+@Secured('permitAll')
 class LoginController {
 
 	/**

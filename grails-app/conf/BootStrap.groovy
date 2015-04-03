@@ -11,10 +11,22 @@ class BootStrap {
         def employeeRole = new SecurityRole(authority: 'ROLE_EMPLOYEE').save(failOnError: true, flush: true)
         def customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
 
-        def adminUser = new UserAlias(username: 'emp', password: 'emp', enabled: true).save(failOnError: true, flush: true)
+        def adminUser = new UserAlias(
+                name: 'emp',
+                address: 'add',
+                username: 'emp',
+                password: 'emp',
+                enabled: true,
+                email: 'emp@email.com').save(failOnError: true, flush: true)
         UserAliasSecurityRole.create adminUser, employeeRole, true
 
-        def customer1 = new UserAlias(username: 'cus', password: 'cus', enabled: true).save(failOnError: true, flush: true)
+        def customer1 = new UserAlias(
+                name: 'cus',
+                address: 'add',
+                username: 'cus',
+                password: 'cus',
+                enabled: true,
+                email: 'cus@email.com').save(failOnError: true, flush: true)
         UserAliasSecurityRole.create customer1, customerRole, true
 
         assert UserAlias.count() == 2

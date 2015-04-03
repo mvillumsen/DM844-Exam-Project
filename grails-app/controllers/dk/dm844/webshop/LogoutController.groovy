@@ -19,7 +19,7 @@ import org.springframework.security.access.annotation.Secured
 
 import javax.servlet.http.HttpServletResponse
 
-//@Secured('permitAll')
+@Secured('permitAll')
 class LogoutController {
 
 	/**

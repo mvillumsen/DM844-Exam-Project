@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="hidden-xs col-sm-3 col-md-3">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation"><a href="#">Special Offers</a></li>
+                        <li role="presentation" class="active"><a href="#">Special Offers</a></li>
                         <li role="presentation"><a href="#">Fruit & Vegetables</a></li>
                         <li role="presentation"><a href="#">Dairy</a></li>
                         <li role="presentation"><a href="#">Meat</a></li>
@@ -86,6 +86,14 @@
             </div>
 
         </div>
+
+        <%-- FOOTER --%>
+        <div id="footer">
+            <div class="container">
+                <p class="muted credit">Example footer</p>
+            </div>
+        </div>
+
         <asset:javascript src="application.js"/>
     </body>
 </html>

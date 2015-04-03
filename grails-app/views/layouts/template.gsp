@@ -32,18 +32,31 @@
                         <li><a href="#">Link</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-                            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;">
-                                <form method="post" action="login" accept-charset="UTF-8">
-                                    <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username" class="form-control">
-                                    <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password" class="form-control">
-                                    <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" >
-                                    <label class="string optional"> Remember me</label>
-                                    <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
-                                </form>
-                            </div>
-                        </li>
+                        <sec:ifLoggedIn>
+                            <li>
+                                <a href="#">Welcome, <sec:username/></a>
+                            </li>
+                            <li>
+                                <form name="logout" method="POST" action="${createLink(controller:'logout') }"> <input type="submit" value="logout"></form></a>
+                            </li>
+                            <li>
+                                <a href="/webshop/logout/index">Logout</a>
+                            </li>
+                        </sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;">
+                                    <form action="/webshop/j_spring_security_check" method="POST" accept-charset="UTF-8">
+                                        <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="j_username" class="text_">
+                                        <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="j_password" class="text_">
+                                        <input style="float: left; margin-right: 10px;" type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" >
+                                        <label class="string optional"> Remember me</label>
+                                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
+                                    </form>
+                                </div>
+                            </li>
+                        </sec:ifNotLoggedIn>
                     </ul>
                 </div> <%-- /.navbar-collapse --%>
             </div> <%-- /.container-fluid --%>

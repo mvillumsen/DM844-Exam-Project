@@ -1,6 +1,6 @@
 package dk.dm844.webshop
 
-class Person {
+class UserAlias {
 
     String name
     String address
@@ -55,4 +55,5 @@ class Person {
     String toString() {
         return name
     }
+
 }

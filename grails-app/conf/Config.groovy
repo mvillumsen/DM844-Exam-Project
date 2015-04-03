@@ -117,6 +117,9 @@ log4j.main = {
 }
 
 
+grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.rejectPublicInvocations = false
+
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],

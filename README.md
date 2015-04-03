@@ -1,5 +1,7 @@
 # README #
 
+#### Group 05
+
 This project is for the course DM844 at SDU.
 
 ### Business idea: ###
@@ -25,4 +27,3 @@ The front-end must allow users to select products and make orders.
 * Test-reports: 188.226.206.170/test-reports
 * Jenkins: 188.226.206.170:8090/jenkins/
 * Tomcat: 188.226.206.170:8080
-

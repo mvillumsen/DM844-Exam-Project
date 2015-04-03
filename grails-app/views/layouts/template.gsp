@@ -1,3 +1,4 @@
+<%@ page import="dk.dm844.webshop.Category" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +22,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">WEBSHOP</a>
+                    <a class="navbar-brand" href="/webshop">WEBSHOP</a>
                 </div>
 
                 <%-- Collect the nav links, forms, and other content for toggling --%>
@@ -40,7 +41,7 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
                                 <div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;">
-                                    <form action="/webshop/j_spring_security_check" method="POST" accept-charset="UTF-8">
+                                    <form action="${resource(file: 'j_spring_security_check')}" method="POST" accept-charset="UTF-8">
                                         <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="j_username" class="text_">
                                         <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="j_password" class="text_">
                                         <input style="float: left; margin-right: 10px;" type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" >
@@ -68,19 +69,22 @@
             <div class="row">
                 <div class="hidden-xs col-sm-3 col-md-3">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation" class="active"><a href="#">Special Offers</a></li>
-                        <li role="presentation"><a href="#">Fruit & Vegetables</a></li>
-                        <li role="presentation"><a href="#">Dairy</a></li>
-                        <li role="presentation"><a href="#">Meat</a></li>
-                        <li role="presentation"><a href="#">Cold Cuts & Sausages</a></li>
-                        <li role="presentation"><a href="#">Bakery</a></li>
-                        <li role="presentation"><a href="#">Colonial</a></li>
-                        <li role="presentation"><a href="#">Frozen Food</a></li>
-                        <li role="presentation"><a href="#">Drinks</a></li>
-                        <li role="presentation"><a href="#">Crisps & Candy</a></li>
-                        <li role="presentation"><a href="#">Household</a></li>
-                        <li role="presentation"><a href="#">Health & Beauty</a></li>
-                        <li role="presentation"><a href="#">Home & Ents</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Special Offers</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Fruit & Vegetables</a></li>
+                        
+                        <g:each in="${dk.dm844.webshop.Category.list()}" var="category">
+                            <li role="presentation"><g:link controller="Category" action="show" id="${category.id}">${category.name}</g:link></li>
+                        </g:each>
+                        
+                        <li role="presentation" class="disabled"><a href="#">Cold Cuts & Sausages</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Bakery</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Colonial</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Frozen Food</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Drinks</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Crisps & Candy</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Household</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Health & Beauty</a></li>
+                        <li role="presentation" class="disabled"><a href="#">Home & Ents</a></li>
                     </ul>
                 </div>
 

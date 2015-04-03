@@ -33,15 +33,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <sec:ifLoggedIn>
-                            <li>
-                                <a href="#">Welcome, <sec:username/></a>
-                            </li>
-                            <li>
-                                <form name="logout" method="POST" action="${createLink(controller:'logout') }"> <input type="submit" value="logout"></form></a>
-                            </li>
-                            <li>
-                                <a href="/webshop/logout/index">Logout</a>
-                            </li>
+                            <li><p class="navbar-text">Logged in as <sec:username/></p></li>
+                            <li><a class="navbar-link" href="j_spring_security_logout">Logout</a></li>
                         </sec:ifLoggedIn>
                         <sec:ifNotLoggedIn>
                             <li class="dropdown">

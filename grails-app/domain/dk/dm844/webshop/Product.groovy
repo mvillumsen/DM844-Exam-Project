@@ -1,5 +1,7 @@
 package dk.dm844.webshop
 
+
+
 class Product {
 
     String name

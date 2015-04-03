@@ -8,6 +8,8 @@
 .idea/
 .project
 .class
+prodDb.h2.db
+prodDb.lock.db
 target/
 webshop-grailsPlugins.iml
 webshop.iml

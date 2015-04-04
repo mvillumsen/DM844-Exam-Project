@@ -23,12 +23,14 @@
 							<p class="small">${p.description} ${p.description}</p>
 						</div>
 						<div class="row productBuy">
+							<g:form controller="product" action="addToCart" id="${p.id}">
 							<div class="col-sm-6 col-md-6 buyButton">
 								<button type="submit" class="btn btn-primary btn-sm" role="button">Buy</button>
 							</div>
 							<div class="col-sm-6 col-md-6 buyForm">
-								<input class="form-control input-sm buyForm" id="amount" type="text" value="1">
+                            <g:textField class="form-control input-sm buyForm" id="amount" type="text" value="1" name="amount"/>
 							</div>
+							</g:form>
 						</div>
 					</div>
 				</div>

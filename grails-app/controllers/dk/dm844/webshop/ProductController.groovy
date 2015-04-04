@@ -8,6 +8,8 @@ import grails.transaction.Transactional
 @Secured(['ROLE_EMPLOYEE'])
 class ProductController {
 
+    def shoppingCartService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -100,5 +102,52 @@ class ProductController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def addToCart(Product productInstance) {
+        if (productInstance == null) {
+            notFound()
+            return
+        }
+
+        Integer amount = 1
+        def param = request.getParameter("amount")
+        if (param && param.isInteger())
+            amount = Math.max(1, param.toInteger())
+
+        productInstance.addQuantityToShoppingCart(amount)
+        productInstance.save flush: true
+
+        redirect(uri: request.getHeader('referer') )
+    }
+
+    def removeFromCart(Product productInstance) {
+        if (productInstance == null) {
+            notFound()
+            return
+        }
+
+        Integer amount = 1
+        def param = request.getParameter("amount")
+        if (param && param.isInteger())
+            amount = Math.max(1, param.toInteger())
+
+        productInstance.removeQuantityFromShoppingCart(amount);
+        productInstance.save flush: true
+
+        redirect(uri: request.getHeader('referer') )
+    }
+
+    def removeAllFromCart(Product productInstance) {
+        if (productInstance == null) {
+            notFound()
+            return
+        }
+
+        int amount = shoppingCartService.getQuantity(productInstance);
+        productInstance.removeQuantityFromShoppingCart(amount);
+        productInstance.save flush: true
+
+        redirect(uri: request.getHeader('referer') )
     }
 }

@@ -31,6 +31,7 @@
                         <%-- TODO: Insert menu items --%>
                         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Link</a></li>
+                        <li><g:link controller="ShoppingCart">ShoppingCart (<sc:count>it</sc:count>)</g:link>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <sec:ifLoggedIn>

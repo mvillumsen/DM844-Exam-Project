@@ -1,8 +1,8 @@
 package dk.dm844.webshop
 
+import com.metasieve.shoppingcart.Shoppable
 
-
-class Product {
+class Product extends Shoppable {
 
     String name
     Integer price
@@ -21,7 +21,7 @@ class Product {
 
     def getPicture() {
         // TODO: Solve issue with product names consisting of multiple words
-        return "http://lorempixel.com/150/150/food/${name.split(" ")[0]}"
+        return "http://lorempixel.com/150/150/food/${name.encodeAsHTML()}"
     }
 
     @Override

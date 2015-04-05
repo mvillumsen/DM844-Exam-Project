@@ -36,6 +36,6 @@
 				</div>
 			</g:each>
 		</g:if>
-		</div>
+		</div> <!-- Hvad lukker denne div? -->
 	</body>
 </html>

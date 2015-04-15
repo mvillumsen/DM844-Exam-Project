@@ -1,7 +1,5 @@
 package dk.dm844.webshop
 
-import webshop.CategoriesService
-
 class CategoriesTagLib {
     static namespace = "cat"
     static defaultEncodeAs = [taglib: 'none']

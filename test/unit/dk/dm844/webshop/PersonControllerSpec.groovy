@@ -14,6 +14,8 @@ class PersonControllerSpec extends Specification {
         params["name"] = "testName"
         params["address"] = "addr."
         params["email"] = "test@test.dk"
+        params["username"] = "user1"
+        params["password"] = "pass123"
     }
 
     void "Test the index action returns the correct model"() {

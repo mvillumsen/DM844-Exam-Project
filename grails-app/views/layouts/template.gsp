@@ -50,11 +50,9 @@
             <%-- SIDEBAR --%>
             <tb:row>
                 <tb:sidebar>
-                    <%-- TODO: Move to Service --%>
+
                     <%-- Show categories--%>
-                    <g:each in="${Category.list()}" var="category">
-                        <li role="presentation"><g:link controller="Category" action="show" id="${category.id}">${category.name}</g:link></li>
-                    </g:each>
+                    <cat:listCategories/>
 
                     <%-- DUMMY DATA --%>
                     <li role="presentation" class="disabled"><a href="#">Special Offers</a></li>

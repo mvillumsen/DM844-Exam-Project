@@ -1,5 +1,5 @@
+import dk.dm844.webshop.Person
 import dk.dm844.webshop.SecurityRole
-import dk.dm844.webshop.UserAlias
 import dk.dm844.webshop.UserAliasSecurityRole
 
 class BootStrap {
@@ -8,8 +8,8 @@ class BootStrap {
 
     def init = { servletContext ->
 
-        def packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
         def customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
+        def packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
         def driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
         def adminRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_ADMIN').save(failOnError: true, flush: true)
 
@@ -20,9 +20,9 @@ class BootStrap {
                 ['Dennis', 'Deal Street 1', 'den', 'de456', 'dennis@email.dk'],
                 ['Erik', 'Elm Street 4', 'erik','er567','erik@email.dk']
         ].each {
-            new UserAlias(
+            new Person(
                     name: it[0],
-                    address: it[1],
+                    address: null,
                     username: it[2],
                     password: it[3],
                     enabled: true,
@@ -30,16 +30,17 @@ class BootStrap {
             ).save(failOnError: true, flush: true)
         }
 
-        UserAliasSecurityRole.create( UserAlias.findByName('Alice'), customerRole )
-        UserAliasSecurityRole.create( UserAlias.findByName('Bob'), customerRole )
-        UserAliasSecurityRole.create( UserAlias.findByName('Cassie'), packerRole )
-        UserAliasSecurityRole.create( UserAlias.findByName('Dennis'), driverRole )
-        UserAliasSecurityRole.create( UserAlias.findByName('Erik'), adminRole )
-        UserAliasSecurityRole.create( UserAlias.findByName('Erik'), driverRole )
+        UserAliasSecurityRole.create( Person.findByName('Alice'), customerRole, true )
+        UserAliasSecurityRole.create( Person.findByName('Bob'), customerRole, true )
+        UserAliasSecurityRole.create( Person.findByName('Cassie'), packerRole, true )
+        UserAliasSecurityRole.create( Person.findByName('Dennis'), driverRole, true )
+        UserAliasSecurityRole.create( Person.findByName('Erik'), adminRole, true )
+        UserAliasSecurityRole.create( Person.findByName('Erik'), driverRole, true )
 
 
-        assert UserAlias.count() == 5
+        assert Person.count() == 5
         assert SecurityRole.count() == 4
+        assert UserAliasSecurityRole.count() == 6
     }
 
     def destroy = {

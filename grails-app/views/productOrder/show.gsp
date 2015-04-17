@@ -27,7 +27,7 @@
 				<li class="fieldcontain">
 					<span id="assignedEmployee-label" class="property-label"><g:message code="productOrder.assignedEmployee.label" default="Assigned Employee" /></span>
 					
-						<span class="property-value" aria-labelledby="assignedEmployee-label"><g:link controller="employee" action="show" id="${productOrderInstance?.assignedEmployee?.id}">${productOrderInstance?.assignedEmployee?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="assignedEmployee-label"><g:link controller="person" action="show" id="${productOrderInstance?.assignedEmployee?.id}">${productOrderInstance?.assignedEmployee?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -43,11 +43,20 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${productOrderInstance?.alternativeAddress}">
+				<li class="fieldcontain">
+					<span id="alternativeAddress-label" class="property-label"><g:message code="productOrder.alternativeAddress.label" default="Alternative Address" /></span>
+					
+						<span class="property-value" aria-labelledby="alternativeAddress-label"><g:link controller="address" action="show" id="${productOrderInstance?.alternativeAddress?.id}">${productOrderInstance?.alternativeAddress?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${productOrderInstance?.customer}">
 				<li class="fieldcontain">
 					<span id="customer-label" class="property-label"><g:message code="productOrder.customer.label" default="Customer" /></span>
 					
-						<span class="property-value" aria-labelledby="customer-label"><g:link controller="customer" action="show" id="${productOrderInstance?.customer?.id}">${productOrderInstance?.customer?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="customer-label"><g:link controller="person" action="show" id="${productOrderInstance?.customer?.id}">${productOrderInstance?.customer?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

@@ -31,8 +31,8 @@ class PersonSpec extends Specification {
         new Person()                                        ||  false
         new Person(name: "ma")                              ||  false
         new Person(name: "ma", address: "am")               ||  false
-        new Person(name: "ma", address: "am", email: cmail) ||  true
-        new Person(name: "ma", address: "am", email: wmail) ||  false
+        new Person(name: "ma", address: null, email: cmail) ||  true
+        new Person(name: "ma", address: null, email: wmail) ||  false
     }
 
     @Unroll

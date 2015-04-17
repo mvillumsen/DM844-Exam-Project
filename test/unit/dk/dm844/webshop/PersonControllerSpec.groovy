@@ -11,9 +11,8 @@ class PersonControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["name"] = "testName"
-        params["address"] = "addr."
-        params["email"] = "test@test.dk"
+        // TODO: Populate valid properties like...
+        //params["name"] = 'someValidName'
     }
 
     void "Test the index action returns the correct model"() {

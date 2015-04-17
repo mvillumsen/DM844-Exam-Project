@@ -119,7 +119,7 @@ log4j.main = {
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'dk.dm844.webshop.UserAlias'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'dk.dm844.webshop.Person'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dk.dm844.webshop.UserAliasSecurityRole'
 grails.plugin.springsecurity.authority.className = 'dk.dm844.webshop.SecurityRole'
 //grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"

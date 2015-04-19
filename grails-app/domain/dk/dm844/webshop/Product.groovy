@@ -20,9 +20,8 @@ class Product extends Shoppable {
     }
 
     def getPicture() {
-        // TODO: Solve issue with product names consisting of multiple words
-        // Husk at slette TODO statements, vis de er løst
-        return "http://lorempixel.com/150/150/food/${name.encodeAsHTML()}"
+        String str = name.replaceAll(/[^A-Za-z0-9_ ]/, "")
+        return "http://lorempixel.com/150/150/food/${str}"
     }
 
     @Override

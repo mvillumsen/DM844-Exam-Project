@@ -1,4 +1,3 @@
-<%@ page import="com.metasieve.shoppingcart.Shoppable" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,33 +12,58 @@
 </ol>
 
 <table class="table">
+    <thead>
+        <tr>
+            <th><g:message code="cart.product" /></th>
+            <th><g:message code="cart.amount" /></th>
+            <th><g:message code="product.price" /></th>
+            <th><g:message code="cart.total" /></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
     <sc:each>
         <tr>
             <td>
-                ${Shoppable.findByShoppingItem(it['item'])}
+                ${it['product']}
             </td>
             <td>
-                ${it['qty']}
+                x ${it['qty']}
             </td>
             <td>
-                <g:form controller="product" action="addToCart" id="${Shoppable.findByShoppingItem(it['item']).id}">
-                    <g:submitButton name="Add 1" class="btn btn-success"/>
-                </g:form>
+                <sc:price>
+                    ${it['product'].price}
+                </sc:price>
             </td>
             <td>
-                <g:form controller="product" action="removeFromCart" id="${Shoppable.findByShoppingItem(it['item']).id}">
-                    <g:submitButton name="Remove 1" class="form-control btn btn-warning" />
-                </g:form>
+                <sc:price>
+                    ${it['product'].price * it['qty']}
+                </sc:price>
             </td>
             <td>
-                <g:form controller="product" action="removeAllFromCart" id="${Shoppable.findByShoppingItem(it['item']).id}">
-                    <g:submitButton name="Remove All" class="form-control btn btn-danger" />
+                <g:form controller="product" action="removeAllFromCart" id="${it['product'].id}">
+                    <g:submitButton name="Remove" class="form-control btn btn-danger"/>
                 </g:form>
             </td>
         </tr>
     </sc:each>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><g:message code="cart.grandtotal" /></td>
+            <td/>
+            <td/>
+            <td>
+                <sc:price><sc:total /></sc:price>
+            </td>
+            <td>
+                <g:form action="checkout">
+                    <g:submitButton name="Order now!" class="btn btn-primary" />
+                </g:form>
+            </td>
+        </tr>
+    </tfoot>
 </table>
-<g:submitButton name="Order now! (Coming soon)" class="btn btn-primary" disabled="disabled" />
 
 </body>
 </html>

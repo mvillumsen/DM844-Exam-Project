@@ -1,29 +1,29 @@
 package dk.dm844.webshop
 
-import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.SpringSecurityService
 import org.springframework.security.access.annotation.Secured
 
 @Secured(['ROLE_EMPLOYEE'])
 class ShoppingCartController {
 
-    def shoppingCartService
+    CartService cartService
 
     def index() {
+        //Do nothing
     }
 
-    // Er dette testet? I førlge coverage rapporten er det ikke ;)
-
-    def count() {
-        // I jeres egen coding style skriver i at i bruger eksplicitte typer!
-        def items = shoppingCartService.getItems()
-        def count = items ? items.size() : 0
-        render(contentType: 'text/json') {[
-                'count': count
-        ]}
+    def checkout() {
+        //Do nothing
     }
 
-    // Gør denne noget?
-    def show() {
-
+    def doCheckout() {
+        Person person = Person.findOrCreateWhere(
+                name: "Martin",
+                address: "Rosenbæk Torv 15.2.8, 5000 Odense C",
+                username: "maan511",
+                password: "1234",
+                email: "martinandersen@live.dk").save()
+        cartService.doCheckout(person)
+        redirect(controller: "Home", action: "index")
     }
 }

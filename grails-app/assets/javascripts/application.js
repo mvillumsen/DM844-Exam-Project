@@ -19,5 +19,37 @@ if (typeof jQuery !== 'undefined') {
 		}).ajaxStop(function() {
 			$(this).fadeOut();
 		});
+
+		$('.btn-add-to-cart').click(function(event) {
+			var form = $(this).closest('form');
+			var amountField = $(form).find("input[name='amount']");
+			$.post(
+				$(form).attr('action'),
+				{ amount: $(amountField).val() } )
+			.done(function (result) {
+					$('#cart-count').html(result['count']);
+					var msg =
+						'<strong>' + $(amountField).val() + '</strong> "' +
+						$(form).find('h5').html() + '" has been added to your cart.';
+					displayMessage('success', msg);
+					$(amountField).val(1);
+			});
+			event.preventDefault();
+		});
 	})(jQuery);
+
+	function displayMessage(alertType, msg) {
+		$('#feedback-area').queue( function() {
+			$(this).html(
+			'<div class="alert alert-' + alertType + '">' +
+			'<a href="#" class="close" data-dismiss="alert">&times;</a>' +
+				msg +
+			'</div>'
+			);
+			$.dequeue(this)
+		})
+		.fadeIn()
+		.delay(2000)
+		.fadeOut();
+	}
 }

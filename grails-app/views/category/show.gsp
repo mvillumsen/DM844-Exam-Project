@@ -17,21 +17,21 @@
 			<g:each in="${categoryInstance.products}" var="p">
 				<div class="col-sm-3 col-md-3">
 					<div class="thumbnail products">
-						<img src="${p.getPicture()}" alt="${p.name}">
-						<div class="caption productCaption">
-							<h5 class="text-center">${p.name}</h5>
-							<p class="small">${p.description} ${p.description}</p>
-						</div>
-						<div class="row productBuy">
-							<g:form controller="product" action="addToCart" id="${p.id}">
-							<div class="col-sm-6 col-md-6 buyButton">
-								<button type="submit" class="btn btn-primary btn-sm" role="button">Buy</button>
+						<g:form controller="product" action="addToCart" id="${p.id}">
+							<img src="${p.getPicture()}" alt="${p.name}">
+							<div class="caption productCaption">
+								<h5 class="text-center">${p.name}</h5>
+								<p class="small">${p.description}</p>
 							</div>
-							<div class="col-sm-6 col-md-6 buyForm">
-                            <g:textField class="form-control input-sm buyForm" id="amount" type="text" value="1" name="amount"/>
+							<div class="row productBuy">
+								<div class="col-sm-6 col-md-6 buyButton">
+									<button type="submit" class="btn btn-primary btn-sm btn-add-to-cart" role="button">Add</button>
+								</div>
+								<div class="col-sm-6 col-md-6 buyForm">
+								<g:textField class="form-control input-sm buyForm" id="amount" type="text" value="1" name="amount"/>
+								</div>
 							</div>
-							</g:form>
-						</div>
+						</g:form>
 					</div>
 				</div>
 			</g:each>

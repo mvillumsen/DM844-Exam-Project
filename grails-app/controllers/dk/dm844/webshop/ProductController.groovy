@@ -8,6 +8,7 @@ import grails.transaction.Transactional
 @Secured(['ROLE_EMPLOYEE'])
 class ProductController {
 
+    def cartService
     def shoppingCartService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -111,31 +112,21 @@ class ProductController {
         }
 
         Integer amount = 1
-        def param = request.getParameter("amount")
+        String param = request.getParameter("amount")
         if (param && param.isInteger())
             amount = Math.max(1, param.toInteger())
 
         productInstance.addQuantityToShoppingCart(amount)
         productInstance.save flush: true
 
-        redirect(uri: request.getHeader('referer') )
-    }
-
-    def removeFromCart(Product productInstance) {
-        if (productInstance == null) {
-            notFound()
-            return
+        if(request.xhr) {
+            render(contentType: 'text/json') {[
+                    'count': cartService.count()
+            ]}
+        } else {
+            redirect(uri: request.getHeader('referer') )
         }
 
-        Integer amount = 1
-        def param = request.getParameter("amount")
-        if (param && param.isInteger())
-            amount = Math.max(1, param.toInteger())
-
-        productInstance.removeQuantityFromShoppingCart(amount);
-        productInstance.save flush: true
-
-        redirect(uri: request.getHeader('referer') )
     }
 
     def removeAllFromCart(Product productInstance) {
@@ -148,6 +139,12 @@ class ProductController {
         productInstance.removeQuantityFromShoppingCart(amount);
         productInstance.save flush: true
 
-        redirect(uri: request.getHeader('referer') )
+        if(request.xhr) {
+            render(contentType: 'text/json') {[
+                    'count': cartService.count()
+            ]}
+        } else {
+            redirect(uri: request.getHeader('referer') )
+        }
     }
 }

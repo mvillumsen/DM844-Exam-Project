@@ -57,6 +57,9 @@
             </div> <%-- /.container-fluid --%>
         </nav>
 
+        <%-- FEEDBACK AREA --%>
+        <section id="feedback-area"></section>
+
         <%-- CONTENT --%>
         <div id="wrap">
             <div class="container">

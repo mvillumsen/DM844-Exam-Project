@@ -10,4 +10,8 @@ class CategoryService {
     List<Category> getCategories() {
         return Category.list([sort: 'name', order: 'asc'])
     }
+
+    List<Product> getProducts(Category c) {
+        return c.products.list([sort: 'name', order: 'asc'])
+    }
 }

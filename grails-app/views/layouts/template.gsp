@@ -16,7 +16,7 @@
     <body>
         <tb:navbar>
             <tb:navbarLeftContent>
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <tb:activeli><a href="#">Link <span class="sr-only">(current)</span></a></tb:activeli>
                 <li><a href="#">Link</a></li>
                 <li><g:link controller="ShoppingCart">ShoppingCart (<sc:count>it</sc:count>)</g:link>
             </tb:navbarLeftContent>
@@ -27,13 +27,14 @@
                 </sec:ifLoggedIn>
                 <sec:ifNotLoggedIn>
                     <tb:signinDropdown>
-                        <form action="${resource(file: 'j_spring_security_check')}" method="POST" accept-charset="UTF-8">
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="j_username" class="text_">
-                            <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="j_password" class="text_">
-                            <input style="float: left; margin-right: 10px;" type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" >
-                            <label class="string optional"> Remember me</label>
-                            <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
-                        </form>
+                        <login:form resource="${resource(file: 'j_spring_security_check')}">
+                            <login:label for="username">Username</login:label>
+                            <login:formGroup><login:inputForm name="j_username" id="username" placeholder="Username"/></login:formGroup>
+                            <login:label for="password">Password</login:label>
+                            <login:formGroup><login:inputForm name="j_password" id="password" placeholder="Password"/></login:formGroup>
+                            <login:checkbox>Remember me</login:checkbox>
+                            <login:signInButton>Sign In</login:signInButton>
+                        </login:form>
                     </tb:signinDropdown>
                 </sec:ifNotLoggedIn>
             </tb:navbarRightContent>

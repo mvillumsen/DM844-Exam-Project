@@ -72,6 +72,13 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
+    def col12 = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-12 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
     def buyButton = { attrs, body ->
         out << """<button type="submit" class="btn btn-primary btn-sm" role="button">"""
         out << body()
@@ -90,5 +97,25 @@ class GridLayoutTagLib {
         out << """<li class="active ${cssClasses}">"""
         out << body()
         out << """</li>"""
+    }
+
+    def pLeadText = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<p class="lead ${cssClasses}">"""
+        out << body()
+        out << """</p>"""
+    }
+
+    def activeli = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<li class="active ${cssClasses}">"""
+        out << body()
+        out << """</li>"""
+    }
+
+    def address = { attrs, body ->
+        out << """<address>"""
+        out << body()
+        out << """</address>"""
     }
 }

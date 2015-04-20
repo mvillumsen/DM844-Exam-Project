@@ -12,6 +12,6 @@ class CategoryService {
     }
 
     List<Product> getProducts(Category c) {
-        return c.products.list([sort: 'name', order: 'asc'])
+        return Product.findAllByCategory(c, [sort: 'name', order: 'asc'])
     }
 }

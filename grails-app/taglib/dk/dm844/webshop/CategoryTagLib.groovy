@@ -12,17 +12,15 @@ class CategoryTagLib {
         List<Category> categories = categoryService.getCategories()
 
         categories?.each { Category cat ->
-            out << """<li role="presentation">${g.link(controller: 'categories', action: 'show', id: cat.id) { cat.name } }</li>"""
+            out << """<li role="presentation">${g.link(controller: 'Category', action: 'show', id: cat.id) { cat.name } }</li>"""
         }
     }
 
-    /*
     def listProducts = { attrs, body ->
-        List<Product> products = categoryService.getProducts(Category)
+        List<Product> products = categoryService.getProducts(attrs.category)
 
         products?.each { Product prod ->
-            out << """"""
+            out << body(prod)
         }
     }
-    */
 }

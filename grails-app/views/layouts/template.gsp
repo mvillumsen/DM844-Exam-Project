@@ -23,15 +23,15 @@
             <tb:navbarRightContent>
                 <sec:ifLoggedIn>
                     <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
-                    <li><tb:navbarLink url="j_spring_security_logout">Logout</tb:navbarLink></li>
+                    <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
                 </sec:ifLoggedIn>
                 <sec:ifNotLoggedIn>
                     <tb:signinDropdown>
                         <login:form resource="${resource(file: 'j_spring_security_check')}">
                             <login:label for="username">Username</login:label>
-                            <login:formGroup><login:inputForm name="j_username" id="username" placeholder="Username"/></login:formGroup>
+                            <login:formGroup><login:inputForm name="j_username" id="username" type="username" placeholder="Username"/></login:formGroup>
                             <login:label for="password">Password</login:label>
-                            <login:formGroup><login:inputForm name="j_password" id="password" placeholder="Password"/></login:formGroup>
+                            <login:formGroup><login:inputForm name="j_password" id="password" type="password" placeholder="Password"/></login:formGroup>
                             <login:checkbox>Remember me</login:checkbox>
                             <login:signInButton>Sign In</login:signInButton>
                         </login:form>

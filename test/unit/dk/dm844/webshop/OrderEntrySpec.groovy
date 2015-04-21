@@ -20,9 +20,6 @@ class OrderEntrySpec extends Specification {
         mockForConstraintsTests(OrderEntry)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "OrderEntryValidation"() {
         expect:

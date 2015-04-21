@@ -18,9 +18,6 @@ class PersonSpec extends Specification {
         mockForConstraintsTests(Person)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "PersonValidation"() {
         expect:

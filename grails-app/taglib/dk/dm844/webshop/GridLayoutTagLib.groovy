@@ -86,20 +86,6 @@ class GridLayoutTagLib {
         out << """</button>"""
     }
 
-    def breadcrumb = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
-        out << """<ol class="breadcrumb ${cssClasses}">"""
-        out << body()
-        out << """</ol>"""
-    }
-
-    def breadcrumbActive = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
-        out << """<li class="active ${cssClasses}">"""
-        out << body()
-        out << """</li>"""
-    }
-
     def pLeadText = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<p class="lead ${cssClasses}">"""

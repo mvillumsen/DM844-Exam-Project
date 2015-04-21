@@ -8,9 +8,11 @@
 
         <%-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --%>
 
+        <g:javascript library="jquery" plugin="jquery"/>
+        <asset:stylesheet src="application.css"/>
+
         <link rel="shortcut icon" href="http://faviconist.com/icons/d2d33e488275751fc34e3d0fe953857c/favicon.ico" />
         <title><g:layoutTitle default="Grails"/></title>
-        <asset:stylesheet src="application.css"/>
         <g:layoutHead/>
     </head>
     <body>
@@ -18,7 +20,7 @@
             <tb:navbarLeftContent>
                 <tb:activeli><a href="#">Link <span class="sr-only">(current)</span></a></tb:activeli>
                 <li><a href="#">Link</a></li>
-                <li><g:link controller="ShoppingCart">ShoppingCart (<sc:count>it</sc:count>)</g:link>
+                <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/> (<sc:count>it</sc:count>)</g:link>
             </tb:navbarLeftContent>
             <tb:navbarRightContent>
                 <sec:ifLoggedIn>
@@ -28,10 +30,10 @@
                 <sec:ifNotLoggedIn>
                     <tb:signinDropdown>
                         <login:form resource="${resource(file: 'j_spring_security_check')}">
-                            <login:label for="username">Username</login:label>
-                            <login:formGroup><login:inputForm name="j_username" id="username" type="username" placeholder="Username"/></login:formGroup>
-                            <login:label for="password">Password</login:label>
-                            <login:formGroup><login:inputForm name="j_password" id="password" type="password" placeholder="Password"/></login:formGroup>
+                            <tb:label for="username">Username</tb:label>
+                            <tb:formGroup><tb:inputForm name="j_username" id="username" type="username" placeholder="Username"/></tb:formGroup>
+                            <tb:label for="password">Password</tb:label>
+                            <tb:formGroup><tb:inputForm name="j_password" id="password" type="password" placeholder="Password"/></tb:formGroup>
                             <login:checkbox>Remember me</login:checkbox>
                             <login:signInButton>Sign In</login:signInButton>
                         </login:form>

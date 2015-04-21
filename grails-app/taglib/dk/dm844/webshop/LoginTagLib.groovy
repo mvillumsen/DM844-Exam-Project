@@ -11,12 +11,6 @@ class LoginTagLib {
         out << """</form>"""
     }
 
-    def formGroup = { attrs, body ->
-        out << """<div class="form-group">"""
-        out << body()
-        out << """</div>"""
-    }
-
     def checkbox = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="checkbox ${cssClasses}">"""
@@ -31,23 +25,5 @@ class LoginTagLib {
         out << """<button class="btn btn-primary" type="submit" id="sign-in">"""
         out << body()
         out << """</button>"""
-    }
-
-    def label = { attrs, body ->
-        String f = attrs.for ?: ''
-        out << """<label for="${f}">"""
-        out << body()
-        out << """</label>"""
-    }
-
-    def inputForm = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
-        String type = attrs.type ?: ''
-        String id = attrs.id ?: ''
-        String name = attrs.name ?: ''
-        String placeholder = attrs.placeholder ?: ''
-
-        out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}">"""
-
     }
 }

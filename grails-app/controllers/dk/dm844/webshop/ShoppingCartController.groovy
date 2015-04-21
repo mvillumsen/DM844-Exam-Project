@@ -11,6 +11,10 @@ class ShoppingCartController {
     def index() {
     }
 
+    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+    def delivery() {
+    }
+
     // TODO: Er dette testet? I førlge coverage rapporten er det ikke ;)
 
     def count() {

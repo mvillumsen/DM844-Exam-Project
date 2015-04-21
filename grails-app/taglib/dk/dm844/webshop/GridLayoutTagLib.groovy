@@ -105,4 +105,34 @@ class GridLayoutTagLib {
         out << body()
         out << """</address>"""
     }
+
+    def formHorizontal = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<form class="form-horizontal ${cssClasses}">"""
+        out << body()
+        out << """</form>"""
+    }
+
+    def formGroup = { attrs, body ->
+        out << """<div class="form-group">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def label = { attrs, body ->
+        String f = attrs.for ?: ''
+        out << """<label for="${f}">"""
+        out << body()
+        out << """</label>"""
+    }
+
+    def inputForm = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        String type = attrs.type ?: ''
+        String id = attrs.id ?: ''
+        String name = attrs.name ?: ''
+        String placeholder = attrs.placeholder ?: ''
+
+        out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}">"""
+    }
 }

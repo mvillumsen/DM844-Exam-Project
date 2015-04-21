@@ -15,7 +15,7 @@ class CategoryTagLibSpec extends Specification {
     void "test listCategories"() {
         setup:
         tagLib.categoryService = Mock(CategoryService)
-        tagLib.categoryService.categories >> [new Category(id: 1, name: "Cat 1"),new Category(id: 2, name: "Cat 2")]
+        tagLib.categoryService.getCategories() >> [new Category(id: 1, name: "Cat 1"), new Category(id: 2, name: "Cat 2")]
 
         when:
         String result = tagLib.listCategories()
@@ -23,7 +23,7 @@ class CategoryTagLibSpec extends Specification {
 
         then:
         document.select('li').size() == 2
-        document.select('li').every{ it.select('a') }
+        document.select('li').every { it.select('a') }
         // TODO more checks needed
     }
 }

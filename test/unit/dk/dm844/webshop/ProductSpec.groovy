@@ -17,9 +17,6 @@ class ProductSpec extends Specification {
         mockForConstraintsTests(Product)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "ProductValidation"() {
         expect:

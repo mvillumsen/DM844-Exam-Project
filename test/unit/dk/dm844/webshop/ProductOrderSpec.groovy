@@ -18,9 +18,6 @@ class ProductOrderSpec extends Specification {
         mockForConstraintsTests(ProductOrder)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "ProductOrderValidate"() {
         expect:

@@ -11,8 +11,6 @@ class AddressControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
         params['address1'] = 'somestreet 4'
         params['zipCode'] = '4532'
         params['city'] = 'Gotham'

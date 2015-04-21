@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<tb:breadcrumb>
-			<li>Home</li>
+			<li><g:link url="/webshop">Home</g:link></li>
 			<tb:breadcrumbActive>${categoryInstance.name}</tb:breadcrumbActive>
 		</tb:breadcrumb>
 

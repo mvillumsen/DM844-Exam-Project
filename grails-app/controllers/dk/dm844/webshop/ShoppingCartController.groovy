@@ -3,7 +3,7 @@ package dk.dm844.webshop
 import static org.springframework.http.HttpStatus.*
 import org.springframework.security.access.annotation.Secured
 
-@Secured(['ROLE_EMPLOYEE'])
+@Secured(['permitAll'])
 class ShoppingCartController {
 
     def shoppingCartService
@@ -11,7 +11,7 @@ class ShoppingCartController {
     def index() {
     }
 
-    // Er dette testet? I førlge coverage rapporten er det ikke ;)
+    // TODO: Er dette testet? I førlge coverage rapporten er det ikke ;)
 
     def count() {
         // I jeres egen coding style skriver i at i bruger eksplicitte typer!
@@ -20,10 +20,5 @@ class ShoppingCartController {
         render(contentType: 'text/json') {[
                 'count': count
         ]}
-    }
-
-    // Gør denne noget?
-    def show() {
-
     }
 }

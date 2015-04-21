@@ -35,6 +35,7 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
+    // TODO: Style sidebar for xs (extra small) devices
     def sidebar = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="hidden-xs col-sm-3 col-md-3 ${cssClasses}">"""
@@ -67,7 +68,14 @@ class GridLayoutTagLib {
 
     def col6of12 = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
-        out << """<div class="col-sm-6 col-md-6 ${cssClasses}">"""
+        out << """<div class="col-xs-6 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def col12 = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-12 ${cssClasses}">"""
         out << body()
         out << """</div>"""
     }
@@ -90,5 +98,25 @@ class GridLayoutTagLib {
         out << """<li class="active ${cssClasses}">"""
         out << body()
         out << """</li>"""
+    }
+
+    def pLeadText = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<p class="lead ${cssClasses}">"""
+        out << body()
+        out << """</p>"""
+    }
+
+    def activeli = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<li class="active ${cssClasses}">"""
+        out << body()
+        out << """</li>"""
+    }
+
+    def address = { attrs, body ->
+        out << """<address>"""
+        out << body()
+        out << """</address>"""
     }
 }

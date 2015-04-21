@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
+import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -10,11 +11,28 @@ import spock.lang.Unroll
 @TestFor(Category)
 class CategorySpec extends Specification {
 
+    @Shared
+    Category cat1
+
     def setup() {
         mockForConstraintsTests(Category)
+        cat1 = new Category(name: "uniqueName")
     }
 
-    def cleanup() {
+    @Unroll
+    void "Test uniqueness of category names"() {
+        when:
+        Category cat2 = new Category(name: "uniqueName")
+        mockForConstraintsTests(Category, [cat2])
+
+        then:
+        assertFalse cat1.validate()
+
+        when:
+        cat1 = new Category(name: "uniqueName1")
+
+        then:
+        assertTrue cat1.validate()
     }
 
     @Unroll

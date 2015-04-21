@@ -9,7 +9,7 @@ class Category {
     static hasMany = [products : Product]
 
     static constraints = {
-        name blank: false
+        name blank: false, unique: true
         description nullable: true
     }
 

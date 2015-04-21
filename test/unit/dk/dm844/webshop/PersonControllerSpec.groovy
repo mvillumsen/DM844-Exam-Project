@@ -13,6 +13,11 @@ class PersonControllerSpec extends Specification {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+        params['name'] = 'Morten'
+        params['email'] = 'morten@m.dk'
+        params['username'] = 'mo'
+        params['password'] = 'mopass'
+
     }
 
     void "Test the index action returns the correct model"() {

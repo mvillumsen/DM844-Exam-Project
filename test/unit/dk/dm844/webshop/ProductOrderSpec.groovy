@@ -12,7 +12,7 @@ import spock.lang.Unroll
 @TestMixin(GrailsUnitTestMixin)
 class ProductOrderSpec extends Specification {
 
-    @Shared Person p = new Person(name: "Martin", email: "ma@ma.dk")
+    @Shared Person p = new Person(name: "Martin", email: "ma@ma.dk", username: 'mar', password: 'mar')
 
     def setup() {
         mockForConstraintsTests(ProductOrder)

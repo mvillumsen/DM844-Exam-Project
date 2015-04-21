@@ -27,12 +27,12 @@ class PersonSpec extends Specification {
         person.validate() == result
 
         where:
-        person                                              ||  result
-        new Person()                                        ||  false
-        new Person(name: "ma")                              ||  false
-        new Person(name: "ma", address: "am")               ||  false
-        new Person(name: "ma", address: null, email: cmail) ||  true
-        new Person(name: "ma", address: null, email: wmail) ||  false
+        person                                                                               ||  result
+        new Person()                                                                         ||  false
+        new Person(name: "ma")                                                               ||  false
+        new Person(name: "ma", address: "am")                                                ||  false
+        new Person(name: "ma", address: null, email: cmail, username: 'ma', password: 'ma')  ||  true
+        new Person(name: "ma", address: null, email: wmail, username: 'ma', password: 'ma')  ||  false
     }
 
     @Unroll

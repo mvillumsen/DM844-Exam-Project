@@ -8,7 +8,6 @@ class Address {
     String zipCode
     String city
     String country
-    Person owner
 
     static constraints = {
         name nullable: true
@@ -17,6 +16,5 @@ class Address {
         zipCode blank: false
         city blank: false
         country blank: false
-        owner nullable: true
     }
 }

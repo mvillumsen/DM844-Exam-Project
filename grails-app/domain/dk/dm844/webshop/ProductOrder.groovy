@@ -7,7 +7,7 @@ class ProductOrder {
     }
 
     Status status = Status.UNASSIGNED
-    Address alternativeAddress
+    Address address
     Date dateCreated
     Date lastUpdated
     static hasMany = [orderEntries : OrderEntry]

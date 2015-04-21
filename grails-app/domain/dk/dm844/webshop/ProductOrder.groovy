@@ -7,14 +7,16 @@ class ProductOrder {
     }
 
     Status status = Status.UNASSIGNED
+    Address address
     Date dateCreated
     Date lastUpdated
     static hasMany = [orderEntries : OrderEntry]
-    static belongsTo = [customer : Customer, assignedEmployee: Employee]
+    static belongsTo = [customer : Person, assignedEmployee: Person]
 
     static constraints = {
         assignedEmployee nullable: true
 	    orderEntries nullable: true
+        alternativeAddress nullable: true
     }
 
     static mapping = {

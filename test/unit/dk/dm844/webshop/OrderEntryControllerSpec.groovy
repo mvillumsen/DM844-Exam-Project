@@ -12,14 +12,13 @@ class OrderEntryControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
 
-        Person p = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
-        Customer c = new Customer(credentials: p)
+        Person p = new Person(name: "Martin", email: "ma@ma.dk", username: 'mar', password: 'mar')
         Category ca = new Category(name: "Food")
 
         params["price"] = 10
         params["amount"] = 1
         params["product"] = new Product(name: "Milk", category: ca)
-        params["order"] = new ProductOrder(customer: c)
+        params["order"] = new ProductOrder(customer: p)
     }
 
     void "Test the index action returns the correct model"() {

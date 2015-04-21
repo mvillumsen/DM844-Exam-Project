@@ -7,7 +7,7 @@
 		<g:message code="productOrder.assignedEmployee.label" default="Assigned Employee" />
 		
 	</label>
-	<g:select id="assignedEmployee" name="assignedEmployee.id" from="${dk.dm844.webshop.Employee.list()}" optionKey="id" value="${productOrderInstance?.assignedEmployee?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="assignedEmployee" name="assignedEmployee.id" from="${dk.dm844.webshop.Person.list()}" optionKey="id" value="${productOrderInstance?.assignedEmployee?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -29,12 +29,21 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: productOrderInstance, field: 'alternativeAddress', 'error')} required">
+	<label for="alternativeAddress">
+		<g:message code="productOrder.alternativeAddress.label" default="Alternative Address" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="alternativeAddress" name="alternativeAddress.id" from="${dk.dm844.webshop.Address.list()}" optionKey="id" required="" value="${productOrderInstance?.alternativeAddress?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: productOrderInstance, field: 'customer', 'error')} required">
 	<label for="customer">
 		<g:message code="productOrder.customer.label" default="Customer" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="customer" name="customer.id" from="${dk.dm844.webshop.Customer.list()}" optionKey="id" required="" value="${productOrderInstance?.customer?.id}" class="many-to-one"/>
+	<g:select id="customer" name="customer.id" from="${dk.dm844.webshop.Person.list()}" optionKey="id" required="" value="${productOrderInstance?.customer?.id}" class="many-to-one"/>
 
 </div>
 

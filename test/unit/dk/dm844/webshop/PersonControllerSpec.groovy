@@ -11,11 +11,10 @@ class PersonControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["name"] = "testName"
-        params["address"] = "addr."
-        params["email"] = "test@test.dk"
-        params["username"] = "user1"
-        params["password"] = "pass123"
+        params['name'] = 'Morten'
+        params['email'] = 'morten@m.dk'
+        params['username'] = 'mo'
+        params['password'] = 'mopass'
     }
 
     void "Test the index action returns the correct model"() {

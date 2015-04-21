@@ -11,9 +11,8 @@ import spock.lang.Unroll
 @TestFor(OrderEntry)
 class OrderEntrySpec extends Specification {
 
-    @Shared Person p = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
-    @Shared Customer c = new Customer(credentials: p)
-    @Shared ProductOrder o = new ProductOrder(customer: c)
+    @Shared Person p = new Person(name: "Martin", email: "ma@ma.dk")
+    @Shared ProductOrder o = new ProductOrder(customer: p)
     @Shared Category ca = new Category(name: "Food")
     @Shared Product pr = new Product(name: "Milk", category: ca)
 

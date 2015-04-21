@@ -26,15 +26,15 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'person.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="address" title="${message(code: 'person.address.label', default: 'Address')}" />
+						<th><g:message code="person.address.label" default="Address" /></th>
 					
 						<g:sortableColumn property="phone" title="${message(code: 'person.phone.label', default: 'Phone')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'person.email.label', default: 'Email')}" />
 					
-						<g:sortableColumn property="dateCreated" title="${message(code: 'person.dateCreated.label', default: 'Date Created')}" />
+						<g:sortableColumn property="salary" title="${message(code: 'person.salary.label', default: 'Salary')}" />
 					
-						<g:sortableColumn property="lastUpdated" title="${message(code: 'person.lastUpdated.label', default: 'Last Updated')}" />
+						<g:sortableColumn property="dateHired" title="${message(code: 'person.dateHired.label', default: 'Date Hired')}" />
 					
 					</tr>
 				</thead>
@@ -50,9 +50,9 @@
 					
 						<td>${fieldValue(bean: personInstance, field: "email")}</td>
 					
-						<td><g:formatDate date="${personInstance.dateCreated}" /></td>
+						<td>${fieldValue(bean: personInstance, field: "salary")}</td>
 					
-						<td><g:formatDate date="${personInstance.lastUpdated}" /></td>
+						<td><g:formatDate date="${personInstance.dateHired}" /></td>
 					
 					</tr>
 				</g:each>

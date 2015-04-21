@@ -16,6 +16,7 @@ class CategoryController {
         respond Category.list(params), model:[categoryInstanceCount: Category.count()]
     }
 
+    @Secured(['permitAll'])
     def show(Category categoryInstance) {
         respond categoryInstance
     }

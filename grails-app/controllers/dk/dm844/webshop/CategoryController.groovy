@@ -71,7 +71,7 @@ class CategoryController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Category.label', default: 'Category'), categoryInstance.id])
                 redirect categoryInstance
             }
-            '*'{ respond categoryInstance, [status: OK] }
+            '*' { respond categoryInstance, [status: OK] }
         }
     }
 
@@ -90,7 +90,7 @@ class CategoryController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Category.label', default: 'Category'), categoryInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -100,7 +100,7 @@ class CategoryController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'category.label', default: 'Category'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

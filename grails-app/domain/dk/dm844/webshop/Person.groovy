@@ -34,7 +34,7 @@ class Person {
     }
 
     Set<SecurityRole> getAuthorities() {
-        UserAliasSecurityRole.findAllByPerson(this).collect { it.securityRole }
+        UserAliasSecurityRole.findAllByPerson(this)*.securityRole
     }
 
     def beforeInsert() {

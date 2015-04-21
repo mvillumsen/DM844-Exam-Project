@@ -18,4 +18,8 @@ class Category {
         return name
     }
 
+    @Override
+    boolean equals(Object o) {
+        return name == o.name
+    }
 }

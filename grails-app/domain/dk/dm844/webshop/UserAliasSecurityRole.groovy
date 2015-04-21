@@ -20,14 +20,18 @@ class UserAliasSecurityRole implements Serializable {
 
 	int hashCode() {
 		def builder = new HashCodeBuilder()
-		if (person) builder.append(person.id)
-		if (securityRole) builder.append(securityRole.id)
+		if (person) {
+            builder.append(person.id)
+        }
+		if (securityRole) {
+            builder.append(securityRole.id)
+        }
 		builder.toHashCode()
 	}
 
 	static UserAliasSecurityRole get(long personId, long securityRoleId) {
 		UserAliasSecurityRole.where {
-			person == Person.load(person) &&
+			person == Person.load(personId) &&
 			securityRole == SecurityRole.load(securityRoleId)
 		}.get()
 	}
@@ -46,7 +50,9 @@ class UserAliasSecurityRole implements Serializable {
 	}
 
 	static boolean remove(Person p, SecurityRole r, boolean flush = false) {
-		if (p == null || r == null) return false
+		if (p == null || r == null) {
+            return false
+        }
 
 		int rowCount = UserAliasSecurityRole.where {
 			person == Person.load(p.id) &&
@@ -59,7 +65,9 @@ class UserAliasSecurityRole implements Serializable {
 	}
 
 	static void removeAll(Person p, boolean flush = false) {
-		if (p == null) return
+		if (p == null) {
+            return
+        }
 
 		UserAliasSecurityRole.where {
 			person == Person.load(p.id)
@@ -69,7 +77,9 @@ class UserAliasSecurityRole implements Serializable {
 	}
 
 	static void removeAll(SecurityRole r, boolean flush = false) {
-		if (r == null) return
+		if (r == null) {
+            return
+        }
 
 		UserAliasSecurityRole.where {
 			securityRole == SecurityRole.load(r.id)
@@ -80,7 +90,9 @@ class UserAliasSecurityRole implements Serializable {
 
 	static constraints = {
 		securityRole validator: { SecurityRole r, UserAliasSecurityRole ur ->
-			if (ur.person == null) return
+			if (ur.person == null) {
+                return
+            }
 			boolean existing = false
 			UserAliasSecurityRole.withNewSession {
 				existing = UserAliasSecurityRole.exists(ur.person.id, r.id)
@@ -95,4 +107,8 @@ class UserAliasSecurityRole implements Serializable {
 		id composite: ['securityRole', 'person']
 		version false
 	}
+
+    String toString() {
+        return "N/A"
+    }
 }

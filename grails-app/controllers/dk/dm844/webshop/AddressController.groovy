@@ -70,7 +70,7 @@ class AddressController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
                 redirect addressInstance
             }
-            '*'{ respond addressInstance, [status: OK] }
+            '*' { respond addressInstance, [status: OK] }
         }
     }
 
@@ -89,7 +89,7 @@ class AddressController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -99,7 +99,7 @@ class AddressController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'address.label', default: 'Address'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

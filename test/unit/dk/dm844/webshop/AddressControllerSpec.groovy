@@ -1,7 +1,5 @@
 package dk.dm844.webshop
 
-
-
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -34,7 +32,7 @@ class AddressControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.addressInstance!= null
+            model.addressInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -47,7 +45,7 @@ class AddressControllerSpec extends Specification {
             controller.save(address)
 
         then:"The create view is rendered again with the correct model"
-            model.addressInstance!= null
+            model.addressInstance != null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
@@ -104,7 +102,6 @@ class AddressControllerSpec extends Specification {
         then:"A 404 error is returned"
             response.redirectedUrl == '/address/index'
             flash.message != null
-
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()

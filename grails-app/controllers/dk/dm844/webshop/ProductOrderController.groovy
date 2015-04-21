@@ -40,7 +40,8 @@ class ProductOrderController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'productOrder.label', default: 'ProductOrder'), productOrderInstance.id])
+                flash.message = message(code: 'default.created.message',
+                                        args: [message(code: 'productOrder.label', default: 'ProductOrder'), productOrderInstance.id])
                 redirect productOrderInstance
             }
             '*' { respond productOrderInstance, [status: CREATED] }
@@ -67,10 +68,11 @@ class ProductOrderController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
+                flash.message = message(code: 'default.updated.message',
+                                        args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
                 redirect productOrderInstance
             }
-            '*'{ respond productOrderInstance, [status: OK] }
+            '*' { respond productOrderInstance, [status: OK] }
         }
     }
 
@@ -86,20 +88,22 @@ class ProductOrderController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
+                flash.message = message(code: 'default.deleted.message',
+                                        args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'productOrder.label', default: 'ProductOrder'), params.id])
+                flash.message = message(code: 'default.not.found.message',
+                                        args: [message(code: 'productOrder.label', default: 'ProductOrder'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

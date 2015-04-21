@@ -19,7 +19,7 @@
 					<img src="${it.getPicture()}" alt="${it.name}">
 					<div class="caption productCaption">
 						<h5 class="text-center">${it.name}</h5>
-						<p class="small">${it.description} ${it.description}</p>
+						<p class="small">${it.description}</p>
 					</div>
 					<tb:row cssClasses="productBuy">
 						<g:form controller="product" action="addToCart" id="${it.id}">

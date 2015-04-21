@@ -7,20 +7,29 @@ class CategoryServiceIntegrationSpec extends Specification {
 
     CategoryService categoryService
 
-    void "Test getCategories finds a few products (happy day)"() {
+    void "Test getCategories finds a few categories"() {
         setup:
         int countBefore = Category.count
-        3.times {
-            // TODO Is it ok for multiple categories to have the same name?
-            new Category(name: "Category").save(failOnError: true)
-        }
+        createCategories()
 
         when:
-        List<Category> categories = categoryService.categories
+        List<Category> categories = categoryService.getCategories()
 
         then:
         categories
-        categories.size() == 3 + countBefore
+        categories.size() == 5 + countBefore
         categories.every { it instanceof Category }
+    }
+
+    private static createCategories() {
+        [
+                "Category1",
+                "Category2",
+                "Category3",
+                "Category4",
+                "Category5"
+        ].each {
+            new Category(name: it).save(failOnError: true)
+        }
     }
 }

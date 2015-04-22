@@ -24,8 +24,8 @@ The front-end must allow users to select products and make orders.
 * Be carefull with your toString methods. They should also be tested, and not throw exceptions
 
 ## Info
-* Test-reports: <188.226.206.170/test-reports/standard>
+* Test-reports: http://188.226.206.170/test-reports/standard/
 * Test-reports (Code Coverage): http://188.226.206.170/test-reports/cobertura/
 * Test-reports (CodeNarc): http://188.226.206.170/test-reports/codenarc
-* Jenkins: 188.226.206.170:8090/jenkins/
-* Tomcat: 188.226.206.170:8080
+* Jenkins: http://188.226.206.170:8090/jenkins/
+* Tomcat: http://188.226.206.170:8080

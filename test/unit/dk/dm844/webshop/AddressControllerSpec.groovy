@@ -1,19 +1,18 @@
 package dk.dm844.webshop
 
-
-
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(EmployeeController)
-@Mock(Employee)
-class EmployeeControllerSpec extends Specification {
+@TestFor(AddressController)
+@Mock(Address)
+class AddressControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["salary"] = 1000
-        params["credentials"] = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
-        params["dateHired"] = new Date()
+        params['address1'] = 'somestreet 4'
+        params['zipCode'] = '4532'
+        params['city'] = 'Gotham'
+        params['country'] = 'DC Comics'
     }
 
     void "Test the index action returns the correct model"() {
@@ -22,8 +21,8 @@ class EmployeeControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.employeeInstanceList
-            model.employeeInstanceCount == 0
+            !model.addressInstanceList
+            model.addressInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -31,7 +30,7 @@ class EmployeeControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.employeeInstance!= null
+            model.addressInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -39,25 +38,25 @@ class EmployeeControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def employee = new Employee()
-            employee.validate()
-            controller.save(employee)
+            def address = new Address()
+            address.validate()
+            controller.save(address)
 
         then:"The create view is rendered again with the correct model"
-            model.employeeInstance!= null
+            model.addressInstance != null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            employee = new Employee(params)
+            address = new Address(params)
 
-            controller.save(employee)
+            controller.save(address)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/employee/show/1'
+            response.redirectedUrl == '/address/show/1'
             controller.flash.message != null
-            Employee.count() == 1
+            Address.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -69,11 +68,11 @@ class EmployeeControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def employee = new Employee(params)
-            controller.show(employee)
+            def address = new Address(params)
+            controller.show(address)
 
         then:"A model is populated containing the domain instance"
-            model.employeeInstance == employee
+            model.addressInstance == address
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -85,11 +84,11 @@ class EmployeeControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def employee = new Employee(params)
-            controller.edit(employee)
+            def address = new Address(params)
+            controller.edit(address)
 
         then:"A model is populated containing the domain instance"
-            model.employeeInstance == employee
+            model.addressInstance == address
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -99,28 +98,27 @@ class EmployeeControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/employee/index'
+            response.redirectedUrl == '/address/index'
             flash.message != null
-
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def employee = new Employee()
-            employee.validate()
-            controller.update(employee)
+            def address = new Address()
+            address.validate()
+            controller.update(address)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.employeeInstance == employee
+            model.addressInstance == address
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            employee = new Employee(params).save(flush: true)
-            controller.update(employee)
+            address = new Address(params).save(flush: true)
+            controller.update(address)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/employee/show/$employee.id"
+            response.redirectedUrl == "/address/show/$address.id"
             flash.message != null
     }
 
@@ -131,23 +129,23 @@ class EmployeeControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/employee/index'
+            response.redirectedUrl == '/address/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def employee = new Employee(params).save(flush: true)
+            def address = new Address(params).save(flush: true)
 
         then:"It exists"
-            Employee.count() == 1
+            Address.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(employee)
+            controller.delete(address)
 
         then:"The instance is deleted"
-            Employee.count() == 0
-            response.redirectedUrl == '/employee/index'
+            Address.count() == 0
+            response.redirectedUrl == '/address/index'
             flash.message != null
     }
 }

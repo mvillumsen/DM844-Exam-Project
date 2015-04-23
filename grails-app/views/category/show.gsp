@@ -1,4 +1,3 @@
-
 <%@ page import="dk.dm844.webshop.Category" %>
 <!DOCTYPE html>
 <html>
@@ -8,33 +7,32 @@
 		<title>${categoryInstance?.name}</title>
 	</head>
 	<body>
-		<ol class="breadcrumb">
-			<li>Home</li>
-			<li class="active">${categoryInstance.name}</li>
-		</ol>
+		<tb:breadcrumb>
+			<li><g:link url="/webshop">Home</g:link></li>
+			<tb:breadcrumbActive>${categoryInstance.name}</tb:breadcrumbActive>
+		</tb:breadcrumb>
 
-		<g:if test="${categoryInstance?.products}">
-			<g:each in="${categoryInstance.products}" var="p">
-				<div class="col-sm-3 col-md-3">
-					<div class="thumbnail products">
-						<g:form controller="product" action="addToCart" id="${p.id}">
-							<img src="${p.getPicture()}" alt="${p.name}">
-							<div class="caption productCaption">
-								<h5 class="text-center">${p.name}</h5>
-								<p class="small">${p.description}</p>
-							</div>
-							<div class="row productBuy">
-								<div class="col-sm-6 col-md-6 buyButton">
-									<button type="submit" class="btn btn-primary btn-sm btn-add-to-cart" role="button">Add</button>
-								</div>
-								<div class="col-sm-6 col-md-6 buyForm">
-								<g:textField class="form-control input-sm buyForm" id="amount" type="text" value="1" name="amount"/>
-								</div>
-							</div>
-						</g:form>
+		<%-- TODO: Test this --%>
+		<cat:listProducts category="${categoryInstance}">
+			<tb:productsGridLayout>
+				<tb:thumbnails cssClasses="products">
+					<img src="${it.getPicture()}" alt="${it.name}">
+					<div class="caption productCaption">
+						<h5 class="text-center">${it.name}</h5>
+						<p class="small">${it.description}</p>
 					</div>
-				</div>
-			</g:each>
-		</g:if>
+					<tb:row cssClasses="productBuy">
+						<g:form controller="product" action="addToCart" id="${it.id}">
+							<tb:col6of12 cssClasses="buyButton">
+								<tb:buyButton>Buy</tb:buyButton>
+							</tb:col6of12>
+							<tb:col6of12 cssClasses="buyForm">
+								<g:textField class="form-control input-sm buyForm" id="amount" type="text" value="1" name="amount"/>
+							</tb:col6of12>
+						</g:form>
+					</tb:row>
+				</tb:thumbnails>
+			</tb:productsGridLayout>
+		</cat:listProducts>
 	</body>
 </html>

@@ -3,9 +3,18 @@ package dk.dm844.webshop
 class Person {
 
     String name
-    String address
+    Address address
     String phone
     String email
+
+    Date dateHired
+    Integer salary
+
+    static hasMany = [assignedOrders: ProductOrder,
+                      orders        : ProductOrder]
+    static mappedBy = [assignedOrders: "assignedEmployee",
+                       orders: "customer"]
+
     Date dateCreated
     Date lastUpdated
 
@@ -25,7 +34,7 @@ class Person {
     }
 
     Set<SecurityRole> getAuthorities() {
-        UserAliasSecurityRole.findAllByUserAlias(this).collect { it.securityRole }
+        UserAliasSecurityRole.findAllByPerson(this)*.securityRole
     }
 
     def beforeInsert() {
@@ -44,9 +53,11 @@ class Person {
 
     static constraints = {
         name blank: false
-        address blank: false
+        address nullable: true
         phone nullable: true
         email blank: false, email: true
+        salary nullable: true
+        dateHired nullable: true
         username blank: false, unique: true
         password blank: false
     }

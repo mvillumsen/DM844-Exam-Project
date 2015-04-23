@@ -36,7 +36,9 @@ The front-end must allow users to select products and make orders.
 * Check the commit for a few comments placed in the code
 
 ## Info
-* Test-reports: 188.226.206.170/test-reports
+* Test-reports: 188.226.206.170/test-reports/standard
+* Test-reports (Code Coverage): http://188.226.206.170/test-reports/cobertura/
+* Test-reports (CodeNarc): http://188.226.206.170/test-reports/codenarc
 * Jenkins: 188.226.206.170:8090/jenkins/
 * Tomcat: 188.226.206.170:8080
 

@@ -5,7 +5,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_EMPLOYEE'])
+@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
 class ProductController {
 
     def cartService
@@ -72,7 +72,7 @@ class ProductController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
                 redirect productInstance
             }
-            '*'{ respond productInstance, [status: OK] }
+            '*' { respond productInstance, [status: OK] }
         }
     }
 
@@ -91,7 +91,7 @@ class ProductController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -101,7 +101,7 @@ class ProductController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 
@@ -113,8 +113,9 @@ class ProductController {
 
         Integer amount = 1
         String param = request.getParameter("amount")
-        if (param && param.isInteger())
+        if (param && param.isInteger()) {
             amount = Math.max(1, param.toInteger())
+        }
 
         productInstance.addQuantityToShoppingCart(amount)
         productInstance.save flush: true
@@ -127,6 +128,7 @@ class ProductController {
             redirect(uri: request.getHeader('referer') )
         }
 
+        redirect(uri: request.getHeader('referer') )
     }
 
     def removeAllFromCart(Product productInstance) {
@@ -135,8 +137,8 @@ class ProductController {
             return
         }
 
-        int amount = shoppingCartService.getQuantity(productInstance);
-        productInstance.removeQuantityFromShoppingCart(amount);
+        int amount = shoppingCartService.getQuantity(productInstance)
+        productInstance.removeQuantityFromShoppingCart(amount)
         productInstance.save flush: true
 
         if(request.xhr) {

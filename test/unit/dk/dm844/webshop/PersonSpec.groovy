@@ -18,21 +18,20 @@ class PersonSpec extends Specification {
         mockForConstraintsTests(Person)
     }
 
-    def cleanup() {
-    }
-
     @Unroll
     void "PersonValidation"() {
         expect:
         person.validate() == result
 
         where:
-        person                                              ||  result
-        new Person()                                        ||  false
-        new Person(name: "ma")                              ||  false
-        new Person(name: "ma", address: "am")               ||  false
-        new Person(name: "ma", address: "am", email: cmail) ||  true
-        new Person(name: "ma", address: "am", email: wmail) ||  false
+        person                                                                               ||  result
+        new Person()                                                                         ||  false
+        new Person(name: "ma")                                                               ||  false
+        new Person(name: "ma2", address: "am")                                               ||  false
+        new Person(name: "ma3", address: null, email: cmail, username: 'ma', password: 'ma') ||  true
+        new Person(name: "ma4", address: null, email: wmail, username: 'ma', password: 'ma') ||  false
+        new Person(name: "ma4", address: new Address(address1: 'test street 13', zipCode: '2', city: 'metropolis', country: 'mouseguard'),
+                email: wmail, username: 'ma', password: 'ma')                                ||  false
     }
 
     @Unroll

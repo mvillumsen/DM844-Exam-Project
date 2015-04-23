@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_EMPLOYEE'])
+@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
 class OrderEntryController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -40,7 +40,8 @@ class OrderEntryController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'orderEntry.label', default: 'OrderEntry'), orderEntryInstance.id])
+                flash.message = message(code: 'default.created.message',
+                                        args: [message(code: 'orderEntry.label', default: 'OrderEntry'), orderEntryInstance.id])
                 redirect orderEntryInstance
             }
             '*' { respond orderEntryInstance, [status: CREATED] }
@@ -67,10 +68,11 @@ class OrderEntryController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'OrderEntry.label', default: 'OrderEntry'), orderEntryInstance.id])
+                flash.message = message(code: 'default.updated.message',
+                                        args: [message(code: 'OrderEntry.label', default: 'OrderEntry'), orderEntryInstance.id])
                 redirect orderEntryInstance
             }
-            '*'{ respond orderEntryInstance, [status: OK] }
+            '*' { respond orderEntryInstance, [status: OK] }
         }
     }
 
@@ -86,20 +88,22 @@ class OrderEntryController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'OrderEntry.label', default: 'OrderEntry'), orderEntryInstance.id])
+                flash.message = message(code: 'default.deleted.message',
+                                        args: [message(code: 'OrderEntry.label', default: 'OrderEntry'), orderEntryInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'orderEntry.label', default: 'OrderEntry'), params.id])
+                flash.message = message(code: 'default.not.found.message',
+                                        args: [message(code: 'orderEntry.label', default: 'OrderEntry'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

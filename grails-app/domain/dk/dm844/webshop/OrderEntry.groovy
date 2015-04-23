@@ -16,4 +16,5 @@ class OrderEntry {
     String toString() {
         return "Name: $product?.name\t$price\t$amount"
     }
+
 }

@@ -11,4 +11,9 @@ class SecurityRole {
 	static constraints = {
 		authority blank: false, unique: true
 	}
+
+    @Override
+    String toString() {
+        return authority
+    }
 }

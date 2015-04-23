@@ -6,12 +6,12 @@
 
 	</head>
 	<body>
-        <ol class="breadcrumb">
-            <li class="active">Home</li>
-        </ol>
+        <tb:breadcrumb>
+            <tb:breadcrumbActive>Home</tb:breadcrumbActive>
+        </tb:breadcrumb>
 
         <h1>Welcome to our webshop</h1>
-        <p class="lead">Pick a category in the menu to the left in order to browse our goods.</p>
+        <tb:pLeadText>Pick a category in the menu to the left in order to browse our goods.</tb:pLeadText>
 
 	</body>
 </html>

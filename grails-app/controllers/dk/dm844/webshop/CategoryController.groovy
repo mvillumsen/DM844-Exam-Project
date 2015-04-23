@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_EMPLOYEE'])
+@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
 class CategoryController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -16,6 +16,7 @@ class CategoryController {
         respond Category.list(params), model:[categoryInstanceCount: Category.count()]
     }
 
+    @Secured(['permitAll'])
     def show(Category categoryInstance) {
         respond categoryInstance
     }
@@ -70,7 +71,7 @@ class CategoryController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Category.label', default: 'Category'), categoryInstance.id])
                 redirect categoryInstance
             }
-            '*'{ respond categoryInstance, [status: OK] }
+            '*' { respond categoryInstance, [status: OK] }
         }
     }
 
@@ -89,7 +90,7 @@ class CategoryController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Category.label', default: 'Category'), categoryInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -99,7 +100,7 @@ class CategoryController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'category.label', default: 'Category'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

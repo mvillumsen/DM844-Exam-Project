@@ -2,11 +2,20 @@
 
 body {
   padding-top: 50px;
-  margin-bottom: 60px;
+  height: 100%;
 }
 
 .container .credit {
   margin: 20px 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.center form {
+  display:inline-block;
+  text-align: left;
 }
 
 .buyForm {
@@ -34,8 +43,7 @@ body {
 }
 
 /* SETTINGS FOR STICKY FOOTER */
-html,
-body {
+html {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
@@ -49,20 +57,14 @@ body {
   margin: 0 auto -60px;
 }
 
-/* Set the fixed height of the footer here */
-#push,
-#footer {
-  height: 60px;
-}
-
-#footer {
-  background-color: #f5f5f5;
+footer {
+  background-color: #f8f8f8;
   height: 60px;
 }
 
 /* Apply responsive CSS fixes for footer */
 @media (max-width: 767px) {
-  #footer {
+  footer {
     margin-left: -20px;
     margin-right: -20px;
     padding-left: 20px;

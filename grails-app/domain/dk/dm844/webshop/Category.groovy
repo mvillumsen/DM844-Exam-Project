@@ -9,7 +9,7 @@ class Category {
     static hasMany = [products : Product]
 
     static constraints = {
-        name blank: false
+        name blank: false, unique: true
         description nullable: true
     }
 
@@ -18,4 +18,8 @@ class Category {
         return name
     }
 
+    @Override
+    boolean equals(Object o) {
+        return name == o.name
+    }
 }

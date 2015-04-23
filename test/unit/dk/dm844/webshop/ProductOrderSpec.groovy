@@ -12,14 +12,10 @@ import spock.lang.Unroll
 @TestMixin(GrailsUnitTestMixin)
 class ProductOrderSpec extends Specification {
 
-    @Shared Person p = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
-    @Shared Customer c = new Customer(credentials: p)
+    @Shared Person p = new Person(name: "Martin", email: "ma@ma.dk", username: 'mar', password: 'mar')
 
     def setup() {
         mockForConstraintsTests(ProductOrder)
-    }
-
-    def cleanup() {
     }
 
     @Unroll
@@ -30,7 +26,7 @@ class ProductOrderSpec extends Specification {
         where:
         order                                               ||  result
         new ProductOrder()                                  ||  false
-        new ProductOrder(customer: c)                       ||  true
+        new ProductOrder(customer: p)                       ||  true
     }
 
     @Unroll

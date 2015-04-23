@@ -6,7 +6,7 @@ class UserAliasSecurityRole implements Serializable {
 
 	private static final long serialVersionUID = 1
 
-	UserAlias userAlias
+	Person person
 	SecurityRole securityRole
 
 	boolean equals(other) {
@@ -14,42 +14,48 @@ class UserAliasSecurityRole implements Serializable {
 			return false
 		}
 
-		other.userAlias?.id == userAlias?.id &&
+		other.person?.id == person?.id &&
 		other.securityRole?.id == securityRole?.id
 	}
 
 	int hashCode() {
 		def builder = new HashCodeBuilder()
-		if (userAlias) builder.append(userAlias.id)
-		if (securityRole) builder.append(securityRole.id)
+		if (person) {
+            builder.append(person.id)
+        }
+		if (securityRole) {
+            builder.append(securityRole.id)
+        }
 		builder.toHashCode()
 	}
 
-	static UserAliasSecurityRole get(long userAliasId, long securityRoleId) {
+	static UserAliasSecurityRole get(long personId, long securityRoleId) {
 		UserAliasSecurityRole.where {
-			userAlias == UserAlias.load(userAliasId) &&
+			person == Person.load(personId) &&
 			securityRole == SecurityRole.load(securityRoleId)
 		}.get()
 	}
 
-	static boolean exists(long userAliasId, long securityRoleId) {
+	static boolean exists(long personId, long securityRoleId) {
 		UserAliasSecurityRole.where {
-			userAlias == UserAlias.load(userAliasId) &&
+			person == Person.load(personId) &&
 			securityRole == SecurityRole.load(securityRoleId)
 		}.count() > 0
 	}
 
-	static UserAliasSecurityRole create(UserAlias userAlias, SecurityRole securityRole, boolean flush = false) {
-		def instance = new UserAliasSecurityRole(userAlias: userAlias, securityRole: securityRole)
+	static UserAliasSecurityRole create(Person person, SecurityRole securityRole, boolean flush = false) {
+		def instance = new UserAliasSecurityRole(person: person, securityRole: securityRole)
 		instance.save(flush: flush, insert: true)
 		instance
 	}
 
-	static boolean remove(UserAlias u, SecurityRole r, boolean flush = false) {
-		if (u == null || r == null) return false
+	static boolean remove(Person p, SecurityRole r, boolean flush = false) {
+		if (p == null || r == null) {
+            return false
+        }
 
 		int rowCount = UserAliasSecurityRole.where {
-			userAlias == UserAlias.load(u.id) &&
+			person == Person.load(p.id) &&
 			securityRole == SecurityRole.load(r.id)
 		}.deleteAll()
 
@@ -58,18 +64,22 @@ class UserAliasSecurityRole implements Serializable {
 		rowCount > 0
 	}
 
-	static void removeAll(UserAlias u, boolean flush = false) {
-		if (u == null) return
+	static void removeAll(Person p, boolean flush = false) {
+		if (p == null) {
+            return
+        }
 
 		UserAliasSecurityRole.where {
-			userAlias == UserAlias.load(u.id)
+			person == Person.load(p.id)
 		}.deleteAll()
 
 		if (flush) { UserAliasSecurityRole.withSession { it.flush() } }
 	}
 
 	static void removeAll(SecurityRole r, boolean flush = false) {
-		if (r == null) return
+		if (r == null) {
+            return
+        }
 
 		UserAliasSecurityRole.where {
 			securityRole == SecurityRole.load(r.id)
@@ -80,19 +90,25 @@ class UserAliasSecurityRole implements Serializable {
 
 	static constraints = {
 		securityRole validator: { SecurityRole r, UserAliasSecurityRole ur ->
-			if (ur.userAlias == null) return
+			if (ur.person == null) {
+                return
+            }
 			boolean existing = false
 			UserAliasSecurityRole.withNewSession {
-				existing = UserAliasSecurityRole.exists(ur.userAlias.id, r.id)
+				existing = UserAliasSecurityRole.exists(ur.person.id, r.id)
 			}
 			if (existing) {
-				return 'userRole.exists'
+				return 'person.exists'
 			}
 		}
 	}
 
 	static mapping = {
-		id composite: ['securityRole', 'userAlias']
+		id composite: ['securityRole', 'person']
 		version false
 	}
+
+    String toString() {
+        return "N/A"
+    }
 }

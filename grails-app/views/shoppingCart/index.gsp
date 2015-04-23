@@ -7,8 +7,8 @@
 </head>
 <body>
 <ol class="breadcrumb">
-    <li>Home</li>
-    <li>ShoppingCart</li>
+    <li><g:link url="/webshop">Home</g:link></li>
+    <tb:breadcrumbActive>ShoppingCart</tb:breadcrumbActive>
 </ol>
 
 <table class="table">

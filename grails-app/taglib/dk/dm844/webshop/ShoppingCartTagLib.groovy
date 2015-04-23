@@ -5,7 +5,7 @@ import com.metasieve.shoppingcart.Shoppable
 class ShoppingCartTagLib {
     static namespace = "sc"
 
-    def cartService
+    CartService cartService
 
     def count = {
         out << "<span id=\"cart-count\">"

@@ -31,8 +31,8 @@ class CartService extends ShoppingCartService {
         return total
     }
 
-    def doCheckout(Customer customer) {
-        ProductOrder order = new ProductOrder(customer: customer)
+    def doCheckout(Person customer, Address address) {
+        ProductOrder order = new ProductOrder(customer: customer, address: address);
         Set<ShoppingItem> items = checkOut()
         items?.each {
             Product product = Shoppable.findByShoppingItem(it['item']);
@@ -42,6 +42,7 @@ class CartService extends ShoppingCartService {
                     amount: it['qty']
             )
         }
-        order.save(flush: true)
+        order.save(failOnError: true, flush: true)
+        return items
     }
 }

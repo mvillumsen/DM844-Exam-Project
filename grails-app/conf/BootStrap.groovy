@@ -1,3 +1,4 @@
+import dk.dm844.webshop.Address
 import dk.dm844.webshop.Product
 import dk.dm844.webshop.Category
 import dk.dm844.webshop.Person
@@ -9,7 +10,6 @@ class BootStrap {
     def springSecurityService
 
     def init = { servletContext ->
-
 
         /* Initialize products */
         Category dairy = new Category(name: "Dairy").save(failOnError: true, flush: true)
@@ -32,25 +32,27 @@ class BootStrap {
         new Product(name: "Bacon, 8 slices", price: 26, description: "8 slices of bacon, ummmm, BACON!", stock: 90, category: meat).save(failOnError: true, flush: true)
         new Product(name: "Bacon, 400g", price: 32, description: "One piece of bacon, approximately 400g. Umm more bacon!", stock: 83, category: meat).save(failOnError: true, flush: true)
 
-        def customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
-        def packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
-        def driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
-        def adminRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_ADMIN').save(failOnError: true, flush: true)
+        SecurityRole customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
+        SecurityRole packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
+        SecurityRole driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
+        SecurityRole adminRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_ADMIN').save(failOnError: true, flush: true)
+
+        Address address = new Address(name: 'home', address1: 'Street of Awesome', city: 'Odense', zipCode: '5000', country: 'Denmark').save(failOnError: true, flush: true)
 
         [
-                ['Alice', 'Al Street 1', 'alice', 'al123','alice@email.dk'],
-                ['Bob', 'Bob Boulevard 2', 'bob', 'bo234', 'bob@email.dk'],
-                ['Cassie', 'City Town 12', 'cas', 'ca345', 'cas@email.dk'],
-                ['Dennis', 'Deal Street 1', 'den', 'de456', 'dennis@email.dk'],
-                ['Erik', 'Elm Street 4', 'erik','er567','erik@email.dk']
+                ['Alice', 'alice', 'al123','alice@email.dk'],
+                ['Bob', 'bob', 'bo234', 'bob@email.dk'],
+                ['Cassie', 'cas', 'ca345', 'cas@email.dk'],
+                ['Dennis', 'den', 'de456', 'dennis@email.dk'],
+                ['Erik', 'erik','er567','erik@email.dk']
         ].each {
             new Person(
                     name: it[0],
-                    address: null,
-                    username: it[2],
-                    password: it[3],
+                    address: address,
+                    username: it[1],
+                    password: it[2],
                     enabled: true,
-                    email: it[4]
+                    email: it[3]
             ).save(failOnError: true, flush: true)
         }
 
@@ -68,5 +70,6 @@ class BootStrap {
     }
 
     def destroy = {
+        //Do nothing
     }
 }

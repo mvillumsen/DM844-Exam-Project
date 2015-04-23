@@ -9,31 +9,11 @@ import spock.lang.Specification
 @TestFor(CartService)
 class CartServiceSpec extends Specification {
 
-    Product p = mockDomain(Product)
-
     def setup() {
+        //Do nothing
     }
 
     def cleanup() {
-    }
-
-    void "Test count"() {
-//        when:
-//        service.createShoppingCart()
-//
-//        then:
-//        service.count() == 0
-//
-//        when:
-//        service.addToShoppingCart(p, 10)
-//
-//        then:
-//        service.count() == 10
-//
-//        when:
-//        service.addToShoppingCart(p, 1)
-//
-//        then:
-//        servic .count() == 11
+        //Do nothing
     }
 }

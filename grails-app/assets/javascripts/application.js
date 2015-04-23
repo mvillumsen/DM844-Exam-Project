@@ -20,7 +20,7 @@ if (typeof jQuery !== 'undefined') {
 			$(this).fadeOut();
 		});
 
-		$('.btn-add-to-cart').click(function(event) {
+		$('.buyButton button').click(function(event) {
 			var form = $(this).closest('form');
 			var amountField = $(form).find("input[name='amount']");
 			$.post(

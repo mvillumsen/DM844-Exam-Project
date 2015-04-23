@@ -14,7 +14,7 @@ class OrderEntry {
 
     @Override
     String toString() {
-        return "Name: $product?.name\t$price\t$amount"
+        return "Name: ${product?.name}\t$price\t$amount"
     }
 
 }

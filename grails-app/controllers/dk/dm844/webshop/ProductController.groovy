@@ -105,6 +105,7 @@ class ProductController {
         }
     }
 
+    @Secured(['permitAll'])
     def addToCart(Product productInstance) {
         if (productInstance == null) {
             notFound()
@@ -127,10 +128,9 @@ class ProductController {
         } else {
             redirect(uri: request.getHeader('referer') )
         }
-
-        redirect(uri: request.getHeader('referer') )
     }
 
+    @Secured(['permitAll'])
     def removeAllFromCart(Product productInstance) {
         if (productInstance == null) {
             notFound()

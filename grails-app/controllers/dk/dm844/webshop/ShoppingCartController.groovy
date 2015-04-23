@@ -3,11 +3,13 @@ package dk.dm844.webshop
 import grails.plugin.springsecurity.SpringSecurityService
 import org.springframework.security.access.annotation.Secured
 
-@Secured(['permitAll'])
+@Secured(['ROLE_CUSTOMER'])
 class ShoppingCartController {
 
     CartService cartService
+    SpringSecurityService securityService
 
+    @Secured(['permitAll'])
     def index() {
         //Do nothing
     }
@@ -17,13 +19,8 @@ class ShoppingCartController {
     }
 
     def doCheckout() {
-        Person person = Person.findOrCreateWhere(
-                name: "Martin",
-                address: "Rosenbæk Torv 15.2.8, 5000 Odense C",
-                username: "maan511",
-                password: "1234",
-                email: "martinandersen@live.dk").save()
-        cartService.doCheckout(person)
+        Person person = securityService.currentUser
+        cartService.doCheckout(person, person.address)
         redirect(controller: "Home", action: "index")
     }
 }

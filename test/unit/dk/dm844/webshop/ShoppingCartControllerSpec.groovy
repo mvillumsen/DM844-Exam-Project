@@ -9,12 +9,20 @@ import spock.lang.Specification
 @TestFor(ShoppingCartController)
 class ShoppingCartControllerSpec extends Specification {
 
-    def setup() {
+    void "Test the index action"() {
+        when: "The index action is executed"
+        controller.index()
+
+        then: "The status code 200 is returned"
+        response.status == 200
     }
 
-    def cleanup() {
+    void "Test checkout action"() {
+        when: "The checkout action is executed"
+        controller.checkout()
+
+        then: "The status code 200 is returned"
+        response.status == 200
     }
 
-    void "test something"() {
-    }
 }

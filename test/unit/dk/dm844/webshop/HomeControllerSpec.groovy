@@ -9,12 +9,11 @@ import spock.lang.Specification
 @TestFor(HomeController)
 class HomeControllerSpec extends Specification {
 
-    def setup() {
-    }
+    void "Test index action"() {
+        when:
+        controller.index()
 
-    def cleanup() {
-    }
-
-    void "test something"() {
+        then:
+        response.status == 200
     }
 }

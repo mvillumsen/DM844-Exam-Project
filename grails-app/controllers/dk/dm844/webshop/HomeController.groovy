@@ -6,6 +6,6 @@ import org.springframework.security.access.annotation.Secured
 class HomeController {
 
     def index() {
-        render()
+        respond { }
     }
 }

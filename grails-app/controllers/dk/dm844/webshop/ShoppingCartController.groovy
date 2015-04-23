@@ -11,11 +11,11 @@ class ShoppingCartController {
 
     @Secured(['permitAll'])
     def index() {
-        render()
+        respond { }
     }
 
     def checkout() {
-        render()
+        respond { }
     }
 
     def doCheckout() {

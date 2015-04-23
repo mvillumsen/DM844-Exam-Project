@@ -1,8 +1,12 @@
 package dk.dm844.webshop
 
+import grails.plugin.springsecurity.SpringSecurityService
+
 class LoginTagLib {
     static namespace = "login"
     static defaultEncodeAs = [taglib:'none']
+
+    SpringSecurityService securityService
 
     def form = { attrs, body ->
         String res = attrs.resource ?: ''
@@ -25,5 +29,20 @@ class LoginTagLib {
         out << """<button class="btn btn-primary" type="submit" id="sign-in">"""
         out << body()
         out << """</button>"""
+    }
+
+    def getUserInfo = { attrs, body ->
+        Person person = securityService.currentUser
+
+        out << """<strong>${person.name}</strong><br>"""
+        out << """${person.address.address1}<br>"""
+
+        if (person.address.address2) {
+            out << """${person.address.address2}<br>"""
+        }
+
+        out << """${person.address.zipCode}<br>"""
+        out << """${person.address.city}<br>"""
+        out << """${person.address.country}<br>"""
     }
 }

@@ -30,16 +30,15 @@
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
             <h4>Alternative Delivery Address</h4>
+            <tb:address>
+                <login:getUserInfo/>
+            </tb:address>
         </label>
         <fieldset id="alternativeAddress" disabled>
         <tb:formHorizontal cssClasses="address">
             <tb:formGroup>
-                <tb:label for="firstName"><g:message code="delivery.firstName.label"/></tb:label>
-                <tb:inputForm id="firstName" name="firstName" type="text" placeholder="First name"/>
-            </tb:formGroup>
-            <tb:formGroup>
-                <tb:label for="lasttName"><g:message code="delivery.lastName.label"/></tb:label>
-                <tb:inputForm id="lastName" name="lasttName" type="text" placeholder="Last name"/>
+                <tb:label for="name"><g:message code="delivery.name.label"/></tb:label>
+                <tb:inputForm id="name" name="name" type="text" placeholder="Full name"/>
             </tb:formGroup>
             <tb:formGroup>
                 <tb:label for="address-line1"><g:message code="delivery.address1.label"/></tb:label>

@@ -11,7 +11,6 @@ import webshop.CategoryService
 @TestFor(CategoryTagLib)
 class CategoryTagLibSpec extends Specification {
 
-
     void "test listCategories"() {
         setup:
         tagLib.categoryService = Mock(CategoryService)
@@ -23,7 +22,12 @@ class CategoryTagLibSpec extends Specification {
 
         then:
         document.select('li').size() == 2
-        document.select('li').every { it.select('a') }
-        // TODO more checks needed
+        document.select('li').every {
+            it.select('a')
+            it.hasAttr("role")
+            it.attr("role").trim() == "presentation"
+        }
+        document.select('li')[0].select('a').text() == "Cat 1"
+        document.select('li')[1].select('a').text() == "Cat 2"
     }
 }

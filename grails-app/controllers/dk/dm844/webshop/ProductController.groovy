@@ -121,10 +121,10 @@ class ProductController {
         productInstance.addQuantityToShoppingCart(amount)
         productInstance.save flush: true
 
-        if(request.xhr) {
-            render(contentType: 'text/json') {[
-                    'count': cartService.count()
-            ]}
+        if (request.xhr) {
+            render(contentType: 'text/json') {
+                ['count': cartService.count()]
+            }
         } else {
             redirect(uri: request.getHeader('referer') )
         }
@@ -141,10 +141,10 @@ class ProductController {
         productInstance.removeQuantityFromShoppingCart(amount)
         productInstance.save flush: true
 
-        if(request.xhr) {
-            render(contentType: 'text/json') {[
-                    'count': cartService.count()
-            ]}
+        if (request.xhr) {
+            render(contentType: 'text/json') {
+                ['count': cartService.count()]
+            }
         } else {
             redirect(uri: request.getHeader('referer') )
         }

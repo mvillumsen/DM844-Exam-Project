@@ -1,29 +1,28 @@
 package dk.dm844.webshop
 
-import grails.buildtestdata.mixin.MockDomainHelper
 import grails.test.mixin.integration.Integration
 import spock.lang.Shared
 import spock.lang.Specification
-import spock.lang.Unroll
 
 @Integration
 class CartServiceIntegrationSpec extends Specification {
 
     CartService cartService
 
-    def setup() {
-        //Do nothing
-    }
+    @Shared
+    Product p
 
-    def cleanup() {
-        //Do nothing
+    @Shared
+    Product p2
+
+    def setup() {
+        saveProductInDatabase()
+        savePersonInDatabase()
+        p = Product.get(1)
+        p2 = Product.get(2)
     }
 
     void "Test count"() {
-        setup:
-        saveProductInDatabase();
-        Product p = Product.list().first()
-
         when:
         cartService.createShoppingCart()
 
@@ -44,11 +43,6 @@ class CartServiceIntegrationSpec extends Specification {
     }
 
     void "Test total"() {
-        setup:
-        saveProductInDatabase();
-        Product p = Product.get(1)
-        Product p2 = Product.get(2)
-
         when:
         cartService.createShoppingCart()
 
@@ -71,12 +65,9 @@ class CartServiceIntegrationSpec extends Specification {
 
     void "Test checkout"() {
         setup:
-        saveProductInDatabase()
-        Product p = Product.get(1)
-        Product p2 = Product.get(2)
         Person person = Person.get(1)
-        int orderCountBefore = ProductOrder.count();
-        int entryCountBefore = OrderEntry.count();
+        int orderCountBefore = ProductOrder.count()
+        int entryCountBefore = OrderEntry.count()
 
         when:
         cartService.createShoppingCart()

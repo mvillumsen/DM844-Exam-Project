@@ -4,7 +4,6 @@ import com.metasieve.shoppingcart.Shoppable
 import com.metasieve.shoppingcart.ShoppingCartService
 import com.metasieve.shoppingcart.ShoppingItem
 import grails.transaction.Transactional
-import liquibase.exception.CustomPreconditionErrorException
 
 @Transactional
 class CartService extends ShoppingCartService {
@@ -32,10 +31,10 @@ class CartService extends ShoppingCartService {
     }
 
     def doCheckout(Person customer, Address address) {
-        ProductOrder order = new ProductOrder(customer: customer, address: address);
+        ProductOrder order = new ProductOrder(customer: customer, address: address)
         Set<ShoppingItem> items = checkOut()
         items?.each {
-            Product product = Shoppable.findByShoppingItem(it['item']);
+            Product product = Shoppable.findByShoppingItem(it['item'])
             order.addToOrderEntries(
                     product: product,
                     price: product.price,

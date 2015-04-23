@@ -235,7 +235,7 @@ ruleset {
     ExplicitStackInstantiation
     ExplicitTreeSetInstantiation
     GStringAsMapKey
-    GStringExpressionWithinString
+    GStringExpressionWithinString(doNotApplyToClassNames: "*TagLibIntegrationSpec")
     GetterMethodCouldBeProperty
     GroovyLangImmutable
     UseCollectMany

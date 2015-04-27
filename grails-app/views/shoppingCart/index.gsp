@@ -9,7 +9,7 @@
 <body>
 <ol class="breadcrumb">
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
-    <tb:breadcrumbActive><g:message code="shoppingCart.label"/></tb:breadcrumbActive>
+    <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </ol>
 
 <table class="table">

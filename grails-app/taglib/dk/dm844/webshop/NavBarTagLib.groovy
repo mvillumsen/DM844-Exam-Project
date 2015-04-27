@@ -65,11 +65,4 @@ class NavBarTagLib {
         out << body()
         out << """</ol>"""
     }
-
-    def breadcrumbActive = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
-        out << """<li class="active ${cssClasses}">"""
-        out << body()
-        out << """</li>"""
-    }
 }

@@ -18,7 +18,7 @@
     <body>
         <tb:navbar>
             <tb:navbarLeftContent>
-                <tb:activeli><a href="#">Link <span class="sr-only">(current)</span></a></tb:activeli>
+                <tb:liActive><a href="#">Link <span class="sr-only">(current)</span></a></tb:liActive>
                 <li><a href="#">Link</a></li>
                 <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/> (<sc:count>it</sc:count>)</g:link>
             </tb:navbarLeftContent>

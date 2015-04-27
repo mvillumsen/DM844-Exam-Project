@@ -8,7 +8,7 @@
 <body>
     <tb:breadcrumb>
         <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
-        <tb:breadcrumbActive><g:message code="default.login.label"/></tb:breadcrumbActive>
+        <tb:liActive><g:message code="default.login.label"/></tb:liActive>
     </tb:breadcrumb>
 
     <h1><g:message code="springSecurity.login.header"/></h1>

@@ -29,4 +29,22 @@ class CategoryTagLibSpec extends Specification {
         document.select('li')[0].select('a').text() == "Cat 1"
         document.select('li')[1].select('a').text() == "Cat 2"
     }
+
+    // TODO: FIX THIS
+    /*
+    void "test listProducts()"() {
+        setup:
+        Category c = new Category(name: "Cat1")
+        tagLib.categoryService = Mock(CategoryService)
+        tagLib.categoryService.getProducts(c) >> [ new Product(name: "Prod1", price: 1, description: "Test description", stock: 10, category: c),
+                                                   new Product(name: "Prod2", price: 2, description: "Test description", stock: 10, category: c) ]
+
+        where:
+        String result = tagLib.listProducts()
+        def document = Jsoup.parse(result)
+
+        then:
+
+    }
+    */
 }

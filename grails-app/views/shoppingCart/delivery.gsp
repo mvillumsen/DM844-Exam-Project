@@ -9,7 +9,7 @@
     <tb:breadcrumb>
         <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
         <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
-        <tb:breadcrumbActive><g:message code="delivery.breadcrumbs.label"/></tb:breadcrumbActive>
+        <tb:liActive><g:message code="delivery.breadcrumbs.label"/></tb:liActive>
     </tb:breadcrumb>
 
     <h1><g:message code="delivery.title.label"/></h1>
@@ -65,11 +65,11 @@
         </tb:formHorizontal>
         </fieldset>
     </tb:radio>
-    <tb:col6of12 cssClasses="backButton">
+    <tb:col6 cssClasses="backButton">
         <g:submitButton name="Back" class="btn btn-primary" disabled="disabled"/>
-    </tb:col6of12>
-    <tb:col6of12 cssClasses="forwardButton">
+    </tb:col6>
+    <tb:col6 cssClasses="forwardButton">
         <g:submitButton name="Next" class="btn btn-primary" disabled="disabled"/>
-    </tb:col6of12>
+    </tb:col6>
     </body>
 </html>

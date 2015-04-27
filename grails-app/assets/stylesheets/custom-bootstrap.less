@@ -3,6 +3,8 @@
 body {
   padding-top: 50px;
   height: 100%;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
 
 .container .credit {
@@ -29,6 +31,16 @@ body {
   margin-right: -20px;
 }
 
+.backButton {
+  text-align: left;
+  margin: 25px 0px;
+}
+
+.forwardButton {
+  text-align: right;
+  margin: 25px 0px;
+}
+
 .products {
   height: 300px;
 }
@@ -43,28 +55,33 @@ body {
 }
 
 .address {
-  width: 50%;
-  margin: 10px 50px;
+  width: 100%;
+  margin: 10px 50px 50px 50px;
 }
 
-/* SETTINGS FOR STICKY FOOTER */
+.delivery {
+  margin-left: -15px;
+}
+
+.deliveryLabel {
+  padding: 0px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: right;
+}
+
 html {
-  height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
-}
-
-/* Wrapper for page content to push down footer */
-#wrap {
+  position: relative;
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /* Negative indent footer by it's height */
-  margin: 0 auto -60px;
 }
 
-footer {
-  background-color: #f8f8f8;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
   height: 60px;
+  background-color: #f8f8f8;
 }
 
 /* Apply responsive CSS fixes for footer */

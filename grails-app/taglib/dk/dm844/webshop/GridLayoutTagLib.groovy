@@ -4,16 +4,6 @@ class GridLayoutTagLib {
     static namespace = "tb"
     static defaultEncodeAs = [taglib:'none']
 
-    def content = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
-        out << """<div id="wrap">"""
-        out << """<div class="container ${cssClasses}">"""
-        out << body()
-        out << """</div>"""
-        out << """<div id="push"></div>"""
-        out << """</div>"""
-    }
-
     def container = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="container ${cssClasses}">"""
@@ -80,6 +70,20 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
+    def col2 = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-2 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def col8 = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-8 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
     def buyButton = { attrs, body ->
         out << """<button type="submit" class="btn btn-primary btn-sm" role="button">"""
         out << body()
@@ -101,7 +105,8 @@ class GridLayoutTagLib {
     }
 
     def address = { attrs, body ->
-        out << """<address>"""
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<address class="${cssClasses}">"""
         out << body()
         out << """</address>"""
     }
@@ -120,8 +125,9 @@ class GridLayoutTagLib {
     }
 
     def label = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
         String f = attrs.for ?: ''
-        out << """<label for="${f}">"""
+        out << """<label class="${cssClasses}" for="${f}">"""
         out << body()
         out << """</label>"""
     }
@@ -134,5 +140,18 @@ class GridLayoutTagLib {
         String placeholder = attrs.placeholder ?: ''
 
         out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}">"""
+    }
+
+    def footer = { attrs, body ->
+        out << """<footer class="footer">"""
+        out << body()
+        out << """</footer>"""
+    }
+
+    def radio = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="radio ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
     }
 }

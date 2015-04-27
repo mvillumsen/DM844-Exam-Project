@@ -43,7 +43,7 @@
         </tb:navbar>
 
         <%-- CONTENT --%>
-        <tb:content>
+        <tb:container>
             <header>
                 <tb:header>
                     <h1>The Webshop <small>Fresh groceries for everyone!</small></h1>
@@ -78,13 +78,13 @@
                     </article>
                 </tb:contentFrame>
             </tb:row>
-        </tb:content>
+        </tb:container>
 
-        <footer>
+        <tb:footer>
             <tb:container>
                 <p class="muted credit">Example footer</p>
             </tb:container>
-        </footer>
+        </tb:footer>
 
         <asset:javascript src="application.js"/>
     </body>

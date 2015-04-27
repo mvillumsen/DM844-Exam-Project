@@ -21,3 +21,7 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
+
+// Enable/disable fields within radios in shoppingCart/delivery.gsp
+$("#optionsRadios1").click(function() {$("#alternativeAddress").prop("disabled", true);});
+$("#optionsRadios2").click(function() {$("#alternativeAddress").prop("disabled", false);});

@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 import spock.lang.Shared
 import spock.lang.Specification
-import webshop.CategoryService
 
 class CategoryServiceIntegrationSpec extends Specification {
 

@@ -6,7 +6,7 @@ class LoginTagLib {
     static namespace = "login"
     static defaultEncodeAs = [taglib:'none']
 
-    SpringSecurityService securityService
+    SpringSecurityService springSecurityService
 
     def form = { attrs, body ->
         String res = attrs.resource ?: ''
@@ -32,17 +32,29 @@ class LoginTagLib {
     }
 
     def getUserInfo = { attrs, body ->
-        Person person = securityService.currentUser
+        String cssClasses = attrs.cssClasses ?: ''
+        if (springSecurityService.isLoggedIn()) {
+            def username = springSecurityService.authentication.name
+            Person currUser = Person.findByUsername(username)
 
-        out << """<strong>${person.name}</strong><br>"""
-        out << """${person.address.address1}<br>"""
+            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
+            out << """<div class="col-xs-8">${currUser.name}</div><br>"""
+            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
+            out << """<div class="col-xs-8">${currUser.address.address1}</div><br>"""
 
-        if (person.address.address2) {
-            out << """${person.address.address2}<br>"""
+            if (currUser.address.address2) {
+                out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
+                out << """<div class="col-xs-8">${currUser.address.address2}</div><br>"""
+            }
+
+            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.postalCode')}:</strong></label></div>"""
+            out << """<div class="col-xs-8">${currUser.address.zipCode}</div><br>"""
+
+            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.city')}:</strong></label></div>"""
+            out << """<div class="col-xs-8">${currUser.address.city}</div><br>"""
+
+            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
+            out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
         }
-
-        out << """${person.address.zipCode}<br>"""
-        out << """${person.address.city}<br>"""
-        out << """${person.address.country}<br>"""
     }
 }

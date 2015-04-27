@@ -3,7 +3,6 @@ package dk.dm844.webshop
 import grails.test.mixin.TestFor
 import org.jsoup.Jsoup
 import spock.lang.Specification
-import webshop.CategoryService
 
 /**
  * See the API for {@link grails.test.mixin.web.GroovyPageUnitTestMixin} for usage instructions

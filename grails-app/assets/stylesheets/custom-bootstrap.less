@@ -1,5 +1,9 @@
 @import "bootstrap.less";
 
+@backgroundColor: #f8f8f8;
+@borderColor: #e7e7e7;
+@buttonsMargin: 25px 0px;
+
 body {
   padding-top: 50px;
   height: 100%;
@@ -33,14 +37,17 @@ body {
 
 .backButton {
   text-align: left;
-  margin: 25px 0px;
+  margin: @buttonsMargin;
 }
 
 .forwardButton {
   text-align: right;
-  margin: 25px 0px;
+  margin: @buttonsMargin;
 }
 
+.breadcrumb {
+  background-color: @backgroundColor;
+}
 .products {
   height: 300px;
 }
@@ -84,13 +91,19 @@ html {
   background-color: #f8f8f8;
 }
 
+.navbar-default {
+  background-color: @backgroundColor;
+  border-color: @borderColor;
+}
+
 /* Apply responsive CSS fixes for footer */
+@footerCSSfix: 20px;
 @media (max-width: 767px) {
   footer {
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: -@footerCSSfix;
+    margin-right: -@footerCSSfix;
+    padding-left: @footerCSSfix;
+    padding-right: @footerCSSfix;
   }
 }
 

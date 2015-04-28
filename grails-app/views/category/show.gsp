@@ -23,12 +23,12 @@
 							<p class="small">${it.description}</p>
 						</div>
 						<tb:row cssClasses="productBuy">
-								<tb:col6of12 cssClasses="buyButton">
+								<tb:col6 cssClasses="buyButton">
 									<tb:buyButton>Buy</tb:buyButton>
-								</tb:col6of12>
-								<tb:col6of12 cssClasses="buyForm">
+								</tb:col6>
+								<tb:col6 cssClasses="buyForm">
 									<g:field type="number" min="1" class="form-control input-sm buyForm" id="amount" value="1" name="amount"/>
-								</tb:col6of12>
+								</tb:col6>
 						</tb:row>
 					</g:form>
 				</tb:thumbnails>

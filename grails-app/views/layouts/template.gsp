@@ -48,7 +48,7 @@
         <tb:container>
             <header>
                 <tb:header>
-                    <h1>The Webshop <small>Fresh groceries for everyone!</small></h1>
+                    <h1>The Grocery Shop <small>Fresh groceries for everyone!</small></h1>
                 </tb:header>
             </header>
 

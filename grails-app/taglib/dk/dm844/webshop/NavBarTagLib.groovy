@@ -17,7 +17,7 @@ class NavBarTagLib {
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """</button>"""
-        out << """<a class="navbar-brand" href="/webshop">WEBSHOP</a>"""
+        out << """<a class="navbar-brand" href="/webshop">GroceryShop</a>"""
         out << """</div>"""
         out << """<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">"""
         out << body()

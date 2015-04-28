@@ -49,7 +49,7 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.29'
-        // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
+        runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
         compile  "org.jsoup:jsoup:1.8.2"
     }
@@ -69,6 +69,7 @@ grails.project.dependency.resolution = {
         compile ":codenarc:0.23"
         compile ":build-test-data:2.4.0"
         compile ":shopping-cart:0.8.2"
+        compile ":postgresql-extensions:4.4.0"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"

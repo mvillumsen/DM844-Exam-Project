@@ -106,6 +106,7 @@ class ProductController {
     }
 
     @Secured(['permitAll'])
+    @Transactional
     def addToCart(Product productInstance) {
         if (productInstance == null) {
             notFound()
@@ -131,6 +132,7 @@ class ProductController {
     }
 
     @Secured(['permitAll'])
+    @Transactional
     def removeAllFromCart(Product productInstance) {
         if (productInstance == null) {
             notFound()

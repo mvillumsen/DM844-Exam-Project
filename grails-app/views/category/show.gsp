@@ -17,7 +17,7 @@
 			<tb:productsGridLayout>
 				<tb:thumbnails cssClasses="products">
 					<g:form controller="product" action="addToCart" id="${it.id}">
-						<img src="${it.getPicture()}" alt="${it.name}">
+						<img class="centerIMG" src="${it.getPicture()}" alt="${it.name}">
 						<div class="caption productCaption">
 							<h5 class="text-center">${it.name}</h5>
 							<p class="small">${it.description}</p>

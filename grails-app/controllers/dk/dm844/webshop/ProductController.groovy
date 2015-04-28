@@ -104,6 +104,7 @@ class ProductController {
         }
     }
 
+    @Transactional
     def addToCart(Product productInstance) {
         if (productInstance == null) {
             notFound()
@@ -122,6 +123,7 @@ class ProductController {
         redirect(uri: request.getHeader('referer') )
     }
 
+    @Transactional
     def removeFromCart(Product productInstance) {
         if (productInstance == null) {
             notFound()
@@ -140,6 +142,7 @@ class ProductController {
         redirect(uri: request.getHeader('referer') )
     }
 
+    @Transactional
     def removeAllFromCart(Product productInstance) {
         if (productInstance == null) {
             notFound()

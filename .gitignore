@@ -5,6 +5,7 @@
 *.toc
 *~
 *.swp
+*.orig
 .idea/
 .project
 .class

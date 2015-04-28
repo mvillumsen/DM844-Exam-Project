@@ -26,7 +26,6 @@ class ProductOrder {
     static constraints = {
         assignedEmployee nullable: true
 	    orderEntries nullable: true
-        address nullable: true
     }
 
     static mapping = {

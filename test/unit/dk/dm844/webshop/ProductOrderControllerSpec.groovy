@@ -2,6 +2,7 @@ package dk.dm844.webshop
 
 import grails.test.mixin.*
 import spock.lang.*
+import sun.java2d.pipe.AAShapePipe
 
 @TestFor(ProductOrderController)
 @Mock(ProductOrder)
@@ -9,7 +10,8 @@ class ProductOrderControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["customer"] = new Person(name: "Martin", email: "ma@ma.dk", username: 'mar', password: 'mar')
+        params["customer"] = new Person(name: "Martin", address: new Address(address1: 'g',  zipCode: '2', city: 'c', country: 'd'), email: "ma@ma.dk", username: 'mar', password: 'mar')
+        params["address"] = new Address(address1: 'g',  zipCode: '2', city: 'c', country: 'd')
     }
 
     void "Test the index action returns the correct model"() {

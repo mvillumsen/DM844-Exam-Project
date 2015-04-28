@@ -34,28 +34,25 @@ class LoginTagLib {
     // TODO: Test this!
     def getUserInfo = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
-        if (springSecurityService.isLoggedIn()) {
-            def username = springSecurityService.authentication.name
-            Person currUser = Person.findByUsername(username)
+        Person currUser = springSecurityService.currentUser
 
-            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.name}</div><br>"""
-            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.address.address1}</div><br>"""
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
+        out << """<div class="col-xs-8">${currUser.name}</div><br>"""
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
+        out << """<div class="col-xs-8">${currUser.address.address1}</div><br>"""
 
-            if (currUser.address.address2) {
-                out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
-                out << """<div class="col-xs-8">${currUser.address.address2}</div><br>"""
-            }
-
-            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.postalCode')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.address.zipCode}</div><br>"""
-
-            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.city')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.address.city}</div><br>"""
-
-            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
+        if (currUser.address.address2) {
+            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
+            out << """<div class="col-xs-8">${currUser.address.address2}</div><br>"""
         }
+
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.postalCode')}:</strong></label></div>"""
+        out << """<div class="col-xs-8">${currUser.address.zipCode}</div><br>"""
+
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.city')}:</strong></label></div>"""
+        out << """<div class="col-xs-8">${currUser.address.city}</div><br>"""
+
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
+        out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
     }
 }

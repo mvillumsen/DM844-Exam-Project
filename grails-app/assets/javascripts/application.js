@@ -29,9 +29,9 @@ if (typeof jQuery !== 'undefined') {
 			.done(function (result) {
 					$('#cart-count').html(result['count']);
 					var msg =
-						'<strong>' + $(amountField).val() + '</strong> "' +
+						'<strong>' + $(amountField).val() + 'x</strong> "' +
 						$(form).find('h5').html() + '" has been added to your cart.';
-					displayMessage('success', msg);
+					displayMessage('info', msg);
 					$(amountField).val(1);
 			});
 			event.preventDefault();
@@ -62,8 +62,8 @@ if (typeof jQuery !== 'undefined') {
 			);
 			$.dequeue(this)
 		})
-		.fadeIn()
+		.fadeIn(500)
 		.delay(2000)
-		.fadeOut();
+		.fadeOut(1000);
 	}
 }

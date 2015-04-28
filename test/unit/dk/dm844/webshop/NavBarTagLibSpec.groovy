@@ -17,15 +17,17 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         tag                     | cssClass      | bodyClosure               || result
-        'navbarLeftContent'     | ''            | {}                        || '<ul class="nav navbar-nav"></ul>'
+        'navbarLeftContent'     | ''            | { }                       || '<ul class="nav navbar-nav"></ul>'
         'navbarLeftContent'     | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav">My Body Closure</ul>'
-        'navbarRightContent'    | ''            | {}                        || '<ul class="nav navbar-nav navbar-right"></ul>'
+        'navbarRightContent'    | ''            | { }                       || '<ul class="nav navbar-nav navbar-right"></ul>'
         'navbarRightContent'    | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav navbar-right">My Body Closure</ul>'
-        'navbarText'            | ''            | {}                        || '<p class="navbar-text "></p>'
+        'navbarText'            | ''            | { }                       || '<p class="navbar-text "></p>'
         'navbarText'            | ''            | { -> 'My Body Closure' }  || '<p class="navbar-text ">My Body Closure</p>'
         'navbarText'            | 'myClass'     | { -> 'My Body Closure' }  || '<p class="navbar-text myClass">My Body Closure</p>'
-        'signinDropdown'        | ''            | {}                        || '<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a><div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;"></div></li>'
-        'breadcrumb'            | ''            | {}                        || '<ol class="breadcrumb "></ol>'
+        'signinDropdown'        | ''            | { }                       || '<li class="dropdown">' +
+                '<a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret">' +
+                '</strong></a><div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;"></div></li>'
+        'breadcrumb'            | ''            | { }                       || '<ol class="breadcrumb "></ol>'
         'breadcrumb'            | ''            | { -> 'My Body Closure' }  || '<ol class="breadcrumb ">My Body Closure</ol>'
         'breadcrumb'            | 'myClass'     | { -> 'My Body Closure' }  || '<ol class="breadcrumb myClass">My Body Closure</ol>'
     }
@@ -37,10 +39,10 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         cssClass        | href                      | bodyClosure               || result
-        ''              | ''                        | {}                        || '<a class="navbar-link " href=""></a>'
-        ''              | '#'                       | {}                        || '<a class="navbar-link " href="#"></a>'
-        ''              | '#'                       | { -> "Empty link"}        || '<a class="navbar-link " href="#">Empty link</a>'
-        'myClass'       | 'http://www.dr.dk'        | {}                        || '<a class="navbar-link myClass" href="http://www.dr.dk"></a>'
+        ''              | ''                        | { }                       || '<a class="navbar-link " href=""></a>'
+        ''              | '#'                       | { }                       || '<a class="navbar-link " href="#"></a>'
+        ''              | '#'                       | { -> "Empty link" }       || '<a class="navbar-link " href="#">Empty link</a>'
+        'myClass'       | 'http://www.dr.dk'        | { }                       || '<a class="navbar-link myClass" href="http://www.dr.dk"></a>'
         'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link myClass" href="http://www.dr.dk">Visit dr.dk</a>'
         ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link " href="http://www.dr.dk">Visit dr.dk</a>'
     }

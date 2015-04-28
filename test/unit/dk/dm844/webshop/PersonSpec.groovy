@@ -13,6 +13,7 @@ class PersonSpec extends Specification {
 
     @Shared String cmail = "ma@ma.dk"
     @Shared String wmail = "maaa@@ma"
+    @Shared Address address = new Address(address1: 'Testgade 1', zipCode: '5000', city: 'odense', country: 'Danmark')
 
     def setup() {
         mockForConstraintsTests(Person)
@@ -28,8 +29,8 @@ class PersonSpec extends Specification {
         new Person()                                                                         ||  false
         new Person(name: "ma")                                                               ||  false
         new Person(name: "ma2", address: "am")                                               ||  false
-        new Person(name: "ma3", address: null, email: cmail, username: 'ma', password: 'ma') ||  true
-        new Person(name: "ma4", address: null, email: wmail, username: 'ma', password: 'ma') ||  false
+        new Person(name: "ma3", address: address, email: cmail, username: 'ma', password: 'ma') ||  true
+        new Person(name: "ma4", address: address, email: wmail, username: 'ma', password: 'ma') ||  false
         new Person(name: "ma4", address: new Address(address1: 'test street 13', zipCode: '2', city: 'metropolis', country: 'mouseguard'),
                 email: wmail, username: 'ma', password: 'ma')                                ||  false
     }

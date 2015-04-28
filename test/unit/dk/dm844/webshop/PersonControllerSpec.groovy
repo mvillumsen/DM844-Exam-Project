@@ -10,6 +10,7 @@ class PersonControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
         params['name'] = 'Morten'
+        params['address'] = new Address(address1: 'Mortenstrasse 2', zipCode: '5214', city: 'Nulby', country: 'Narnia')
         params['email'] = 'morten@m.dk'
         params['username'] = 'mo'
         params['password'] = 'mopass'

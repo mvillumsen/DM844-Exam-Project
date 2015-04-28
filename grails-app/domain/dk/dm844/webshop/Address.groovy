@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 class Address {
 
-    String name
     String address1
     String address2
     String zipCode
@@ -10,7 +9,6 @@ class Address {
     String country
 
     static constraints = {
-        name nullable: true
         address1 blank: false
         address2 nullable: true
         zipCode blank: false
@@ -20,8 +18,7 @@ class Address {
 
     @Override
     boolean equals(Object o) {
-        return name == o.name &&
-                address1 == o.address1 &&
+        return address1 == o.address1 &&
                 address2 == o.address2 &&
                 zipCode == o.zipCode &&
                 city == o.city &&
@@ -31,9 +28,6 @@ class Address {
     @Override
     String toString() {
         String out = ""
-        if (name) {
-            out += "$name\n"
-        }
         out += "$address1\n"
         if (address2) {
             out += "$address2\n"

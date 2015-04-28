@@ -19,7 +19,7 @@ class PersonSpec extends Specification {
     }
 
     @Unroll
-    void "PersonValidation"() {
+    void "PersonValidation for Person with name: '#person'"() {
         expect:
         person.validate() == result
 
@@ -35,7 +35,7 @@ class PersonSpec extends Specification {
     }
 
     @Unroll
-    void "toStringTest"() {
+    void "toStringTest for Person with name: '#person'"() {
         expect:
         person.toString() == name
 

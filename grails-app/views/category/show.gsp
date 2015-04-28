@@ -9,7 +9,7 @@
 	<body>
 		<tb:breadcrumb>
 			<li><g:link url="/webshop">Home</g:link></li>
-			<tb:breadcrumbActive>${categoryInstance.name}</tb:breadcrumbActive>
+			<tb:liActive>${categoryInstance.name}</tb:liActive>
 		</tb:breadcrumb>
 
 		<%-- TODO: Test this --%>

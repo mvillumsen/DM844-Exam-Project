@@ -18,6 +18,11 @@ class ShoppingCartController {
         respond { }
     }
 
+    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+    def delivery() {
+	respond { }
+    }
+
     def doCheckout() {
         Person person = securityService.currentUser
         cartService.doCheckout(person, person.address)

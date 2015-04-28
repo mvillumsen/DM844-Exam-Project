@@ -7,7 +7,7 @@
 	</head>
 	<body>
         <tb:breadcrumb>
-            <tb:breadcrumbActive>Home</tb:breadcrumbActive>
+            <tb:liActive>Home</tb:liActive>
         </tb:breadcrumb>
 
         <h1>Welcome to our webshop</h1>

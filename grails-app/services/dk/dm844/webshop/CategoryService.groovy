@@ -1,7 +1,4 @@
-package webshop
-
-import dk.dm844.webshop.Category
-import dk.dm844.webshop.Product
+package dk.dm844.webshop
 
 class CategoryService {
 

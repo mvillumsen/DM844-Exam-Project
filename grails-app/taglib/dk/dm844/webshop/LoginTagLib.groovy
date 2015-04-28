@@ -19,7 +19,7 @@ class LoginTagLib {
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="checkbox ${cssClasses}">"""
         out << """<label>"""
-        out << """<input type="checkbox"> """
+        out << """<input type="checkbox">"""
         out << body()
         out << """</label>"""
         out << """</div>"""
@@ -31,6 +31,7 @@ class LoginTagLib {
         out << """</button>"""
     }
 
+    // TODO: Test this!
     def getUserInfo = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         if (springSecurityService.isLoggedIn()) {

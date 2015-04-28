@@ -18,8 +18,7 @@
     <body>
         <tb:navbar>
             <tb:navbarLeftContent>
-                <tb:liActive><a href="#">Link <span class="sr-only">(current)</span></a></tb:liActive>
-                <li><a href="#">Link</a></li>
+                <tb:language/>
                 <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/> (<sc:count>it</sc:count>)</g:link>
             </tb:navbarLeftContent>
             <tb:navbarRightContent>
@@ -35,7 +34,7 @@
                             <tb:label for="password">Password</tb:label>
                             <tb:formGroup><tb:inputForm name="j_password" id="password" type="password" placeholder="Password"/></tb:formGroup>
                             <login:checkbox>Remember me</login:checkbox>
-                            <login:signInButton>Sign In</login:signInButton>
+                            <login:signInButton><g:message code="default.signIn.label"/></login:signInButton>
                         </login:form>
                     </tb:signinDropdown>
                 </sec:ifNotLoggedIn>

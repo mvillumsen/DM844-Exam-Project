@@ -42,7 +42,7 @@ class NavBarTagLibSpec extends Specification {
         ''              | '#'                       | { -> "Empty link"}        || '<a class="navbar-link " href="#">Empty link</a>'
         'myClass'       | 'http://www.dr.dk'        | {}                        || '<a class="navbar-link myClass" href="http://www.dr.dk"></a>'
         'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link myClass" href="http://www.dr.dk">Visit dr.dk</a>'
-        ''       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link " href="http://www.dr.dk">Visit dr.dk</a>'
+        ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link " href="http://www.dr.dk">Visit dr.dk</a>'
     }
 
     @Unroll

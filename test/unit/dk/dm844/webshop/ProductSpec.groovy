@@ -18,7 +18,7 @@ class ProductSpec extends Specification {
     }
 
     @Unroll
-    void "ProductValidation"() {
+    void "ProductValidation for Product with name: '#product'"() {
         expect:
         product.validate() == result
 
@@ -36,7 +36,7 @@ class ProductSpec extends Specification {
     }
 
     @Unroll
-    void "toStringTest"() {
+    void "toStringTest for Product with name: '#product'"() {
         expect:
         product.toString() == name
 

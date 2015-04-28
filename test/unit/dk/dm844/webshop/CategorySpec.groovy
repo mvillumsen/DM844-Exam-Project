@@ -36,7 +36,7 @@ class CategorySpec extends Specification {
     }
 
     @Unroll
-    void "CategoryValidation"() {
+    void "CategoryValidation for Category with name: '#category'"() {
         expect:
         category.validate() == result
 
@@ -48,7 +48,7 @@ class CategorySpec extends Specification {
     }
 
     @Unroll
-    void "toStringTest"() {
+    void "toStringTest for Category with name: '#category'"() {
         expect:
         category.toString() == name
 

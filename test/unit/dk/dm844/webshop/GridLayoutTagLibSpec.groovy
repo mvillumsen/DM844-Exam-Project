@@ -71,7 +71,6 @@ class GridLayoutTagLibSpec extends Specification {
         'radio'                 | ''            | {}                            || '<div class="radio "></div>'
         'radio'                 | ''            | { -> 'My Body Closure' }      || '<div class="radio ">My Body Closure</div>'
         'radio'                 | 'myClass'     | { -> 'My Body Closure' }      || '<div class="radio myClass">My Body Closure</div>'
-
     }
 
     @Unroll

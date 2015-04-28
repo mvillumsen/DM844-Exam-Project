@@ -30,7 +30,7 @@ class CategoryTagLibSpec extends Specification {
         document.select('li')[1].select('a').text() == "Cat 2"
     }
 
-    // TODO: FIX THIS
+    // TODO: FIX THIS (move to integration test)
     /*
     void "test listProducts()"() {
         setup:

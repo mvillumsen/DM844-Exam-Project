@@ -1,5 +1,7 @@
 package dk.dm844.webshop
 
+import org.springframework.web.servlet.support.RequestContextUtils
+
 class NavBarTagLib {
     static namespace = "tb"
     static defaultEncodeAs = [taglib:'none']
@@ -25,7 +27,7 @@ class NavBarTagLib {
     }
 
     def navbarLeftContent = { attrs, body ->
-        out << """<ul class="nav navbar-nav">"""
+        out << """<ul class="nav navbar-nav navbar-left">"""
         out << body()
         out << """</ul>"""
     }
@@ -64,5 +66,22 @@ class NavBarTagLib {
         out << """<ol class="breadcrumb ${cssClasses}">"""
         out << body()
         out << """</ol>"""
+    }
+
+    // TODO: Test this!
+    def language = { attrs, body ->
+        Locale currLang = RequestContextUtils.getLocale(request)
+
+        out << """<li class="lang ${isActive(currLang, 'en')}">${g.link(url: '?lang=en', 'EN')}</li>"""
+        out << """<li class="lang ${isActive(currLang, 'da')}">${g.link(url: '?lang=da', 'DA')}</li>"""
+    }
+
+    String isActive(Locale locale, String lang) {
+
+        if ( locale.toString().startsWith( lang ) ) {
+            return 'active'
+        }
+
+        return ''
     }
 }

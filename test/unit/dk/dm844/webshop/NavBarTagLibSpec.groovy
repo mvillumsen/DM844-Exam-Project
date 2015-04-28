@@ -17,8 +17,8 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         tag                     | cssClass      | bodyClosure               || result
-        'navbarLeftContent'     | ''            | { }                       || '<ul class="nav navbar-nav"></ul>'
-        'navbarLeftContent'     | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav">My Body Closure</ul>'
+        'navbarLeftContent'     | ''            | { }                       || '<ul class="nav navbar-nav navbar-left"></ul>'
+        'navbarLeftContent'     | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav navbar-left">My Body Closure</ul>'
         'navbarRightContent'    | ''            | { }                       || '<ul class="nav navbar-nav navbar-right"></ul>'
         'navbarRightContent'    | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav navbar-right">My Body Closure</ul>'
         'navbarText'            | ''            | { }                       || '<p class="navbar-text "></p>'

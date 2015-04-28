@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional
 class CartService extends ShoppingCartService {
 
-    def count() {
+    int count() {
         Set<ShoppingItem> items = getItems()
         int count = 0
 
@@ -18,7 +18,7 @@ class CartService extends ShoppingCartService {
         return count
     }
 
-    def total() {
+    int total() {
         Set<ShoppingItem> items = getItems()
         int total = 0
 
@@ -30,7 +30,7 @@ class CartService extends ShoppingCartService {
         return total
     }
 
-    def doCheckout(Person customer, Address address) {
+    Set<ShoppingItem> doCheckout(Person customer, Address address) {
         ProductOrder order = new ProductOrder(customer: customer, address: address)
         Set<ShoppingItem> items = checkOut()
         items?.each {

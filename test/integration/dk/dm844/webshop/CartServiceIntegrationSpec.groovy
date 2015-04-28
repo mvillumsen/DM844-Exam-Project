@@ -98,7 +98,7 @@ class CartServiceIntegrationSpec extends Specification {
     private savePersonInDatabase() {
         new Person(
                 name: 'Martin',
-                address: null,
+                address: new Address(address1: 'gade', zipCode: '2', city: 'by', country: 'UK').save(failOnError: true, flush: true),
                 username: 'ma',
                 password: 'ma',
                 enabled: true,

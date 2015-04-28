@@ -53,7 +53,6 @@ class Person {
 
     static constraints = {
         name blank: false
-        address nullable: true
         phone nullable: true
         email blank: false, email: true
         salary nullable: true

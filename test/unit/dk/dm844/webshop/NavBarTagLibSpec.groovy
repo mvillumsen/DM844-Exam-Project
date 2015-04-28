@@ -59,7 +59,7 @@ class NavBarTagLibSpec extends Specification {
                             '<span class="icon-bar"></span>' +
                             '<span class="icon-bar"></span>' +
                             '</button>' +
-                            '<a class="navbar-brand" href="/webshop">WEBSHOP</a>' +
+                            '<a class="navbar-brand" href="/webshop">GroceryShop</a>' +
                             '</div>' +
                             '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">' +
                             '</div></div></nav>'
@@ -73,7 +73,7 @@ class NavBarTagLibSpec extends Specification {
                 '<span class="icon-bar"></span>' +
                 '<span class="icon-bar"></span>' +
                 '</button>' +
-                '<a class="navbar-brand" href="/webshop">WEBSHOP</a>' +
+                '<a class="navbar-brand" href="/webshop">GroceryShop</a>' +
                 '</div>' +
                 '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">' +
                 'My Body Closure</div></div></nav>'

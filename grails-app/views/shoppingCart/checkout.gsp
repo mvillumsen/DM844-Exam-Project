@@ -54,7 +54,7 @@
     </tfoot>
 </table>
 
-<g:form action="doCheckout">
+<g:form action="delivery">
     <g:submitButton name="Confirm" class="btn btn-primary" />
 </g:form>
 

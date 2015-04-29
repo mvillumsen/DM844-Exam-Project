@@ -9,4 +9,8 @@ class EmployeeService {
     List<ProductOrder> getAssignedOrdersByStatus(Person employee, Status status) {
         return ProductOrder.findAllByAssignedEmployeeAndStatus(employee, status, [sort: 'dateCreated', order: 'asc'])
     }
+
+    Integer getAssignedCount(Person employee) {
+        return ProductOrder.findAllByAssignedEmployee(employee).size()
+    }
 }

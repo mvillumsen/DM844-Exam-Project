@@ -15,7 +15,7 @@
     <h1><g:message code="delivery.title.label"/></h1>
     <tb:pLeadText><g:message code="delivery.message"/></tb:pLeadText>
 
-    <g:form controller="ShoppingCart" action="doCheckout" class="form-horizontal address">
+    <g:form controller="ShoppingCart" action="confirmation" class="form-horizontal address">
     <tb:radio cssClasses="delivery">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>

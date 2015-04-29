@@ -3,7 +3,6 @@ package dk.dm844.webshop.admin
 import dk.dm844.webshop.EmployeeService
 import dk.dm844.webshop.Person
 import dk.dm844.webshop.ProductOrder
-import dk.dm844.webshop.ProductOrderService
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -17,7 +16,11 @@ class EmployeeController {
     SpringSecurityService springSecurityService
 
     def assignments() {
-        Person employee = springSecurityService.currentUser
+        Person employee = springSecurityService?.currentUser
+        if (!employee) {
+            respond { status: HttpStatus.UNAUTHORIZED }
+            return
+        }
 
         List<ProductOrder> packingOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.PACKING)
         List<ProductOrder> deliveringOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.DELIVERING)

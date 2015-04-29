@@ -9,12 +9,7 @@ import spock.lang.Specification
 @TestFor(EmployeeController)
 class EmployeeControllerSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
     void "test something"() {
     }
+
 }

@@ -136,4 +136,3 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 grails.asset.plugin."twitter-bootstrap".excludes=["**/*.less"]
 grails.asset.plugin."twitter-bootstrap".includes=["bootstrap.less"]
-

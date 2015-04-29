@@ -3,20 +3,21 @@ package dk.dm844.webshop
 class ProductOrder {
 
     enum Status {
-        UNASSIGNED, OPEN, COMPLETED, CLOSED
+        NEW, PACKING, PACKED, DELIVERING, COMPLETED
 
         String toString() {
             switch (this) {
-                case UNASSIGNED: return "UNASSIGNED"
-                case OPEN: return "OPEN"
+                case NEW: return "NEW"
+                case PACKING: return "PACKING"
+                case PACKED: return "PACKED"
+                case DELIVERING: return "DELIVERING"
                 case COMPLETED: return "COMPLETED"
-                case CLOSED: return "CLOSED"
                 default: return ""
             }
         }
     }
 
-    Status status = Status.UNASSIGNED
+    Status status = Status.NEW
     Address address
     Date dateCreated
     Date lastUpdated

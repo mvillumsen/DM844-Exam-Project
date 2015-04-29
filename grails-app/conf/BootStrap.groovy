@@ -32,10 +32,10 @@ class BootStrap {
         new Product(name: "Bacon, 8 slices", price: 26, description: "8 slices of bacon, ummmm, BACON!", stock: 90, category: meat).save(failOnError: true, flush: true)
         new Product(name: "Bacon, 400g", price: 32, description: "One piece of bacon, approximately 400g. Umm more bacon!", stock: 83, category: meat).save(failOnError: true, flush: true)
 
-        SecurityRole customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
-        SecurityRole packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
-        SecurityRole driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
-        SecurityRole adminRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_ADMIN').save(failOnError: true, flush: true)
+        SecurityRole customerRole = new SecurityRole(authority: SecurityRole.CUSTOMER).save(failOnError: true, flush: true)
+        SecurityRole packerRole = new SecurityRole(authority: SecurityRole.Employee.PACKER).save(failOnError: true, flush: true)
+        SecurityRole driverRole =  new SecurityRole(authority: SecurityRole.Employee.DRIVER).save(failOnError: true, flush: true)
+        SecurityRole adminRole =  new SecurityRole(authority: SecurityRole.Employee.ADMIN).save(failOnError: true, flush: true)
 
         Address address = new Address(name: 'home', address1: 'Street of Awesome', city: 'Odense', zipCode: '5000', country: 'Denmark').save(failOnError: true, flush: true)
 

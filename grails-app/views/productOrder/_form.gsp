@@ -29,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productOrderInstance, field: 'alternativeAddress', 'error')} required">
-	<label for="alternativeAddress">
-		<g:message code="productOrder.alternativeAddress.label" default="Alternative Address" />
+<div class="fieldcontain ${hasErrors(bean: productOrderInstance, field: 'address', 'error')} required">
+	<label for="address">
+		<g:message code="productOrder.address.label" default="Address" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="alternativeAddress" name="alternativeAddress.id" from="${dk.dm844.webshop.Address.list()}" optionKey="id" required="" value="${productOrderInstance?.alternativeAddress?.id}" class="many-to-one"/>
+	<g:select id="address" name="address.id" from="${dk.dm844.webshop.Address.list()}" optionKey="id" required="" value="${productOrderInstance?.alternativeAddress?.id}" class="many-to-one"/>
 
 </div>
 

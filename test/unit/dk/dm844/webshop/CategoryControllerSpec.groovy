@@ -1,7 +1,5 @@
 package dk.dm844.webshop
 
-
-
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -29,7 +27,7 @@ class CategoryControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.categoryInstance!= null
+            model.categoryInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -42,7 +40,7 @@ class CategoryControllerSpec extends Specification {
             controller.save(category)
 
         then:"The create view is rendered again with the correct model"
-            model.categoryInstance!= null
+            model.categoryInstance != null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
@@ -98,7 +96,6 @@ class CategoryControllerSpec extends Specification {
         then:"A 404 error is returned"
             response.redirectedUrl == '/category/index'
             flash.message != null
-
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()

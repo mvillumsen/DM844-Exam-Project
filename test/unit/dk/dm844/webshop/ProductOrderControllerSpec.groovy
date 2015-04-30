@@ -1,9 +1,8 @@
 package dk.dm844.webshop
 
-
-
 import grails.test.mixin.*
 import spock.lang.*
+import sun.java2d.pipe.AAShapePipe
 
 @TestFor(ProductOrderController)
 @Mock(ProductOrder)
@@ -11,7 +10,8 @@ class ProductOrderControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        params["customer"] = new Customer(credentials: new Person(name: "Martin", address: "Odense", email: "ma@ma.dk"))
+        params["customer"] = new Person(name: "Martin", address: new Address(address1: 'g',  zipCode: '2', city: 'c', country: 'd'), email: "ma@ma.dk", username: 'mar', password: 'mar')
+        params["address"] = new Address(address1: 'g',  zipCode: '2', city: 'c', country: 'd')
     }
 
     void "Test the index action returns the correct model"() {
@@ -29,7 +29,7 @@ class ProductOrderControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.productOrderInstance!= null
+            model.productOrderInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -42,7 +42,7 @@ class ProductOrderControllerSpec extends Specification {
             controller.save(productOrder)
 
         then:"The create view is rendered again with the correct model"
-            model.productOrderInstance!= null
+            model.productOrderInstance != null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
@@ -99,7 +99,6 @@ class ProductOrderControllerSpec extends Specification {
         then:"A 404 error is returned"
             response.redirectedUrl == '/productOrder/index'
             flash.message != null
-
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()

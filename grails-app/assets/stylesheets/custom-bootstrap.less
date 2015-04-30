@@ -1,1 +1,123 @@
 @import "bootstrap.less";
+
+@backgroundColor: #f8f8f8;
+@borderColor: #e7e7e7;
+@buttonsMargin: 25px 0px;
+
+body {
+  padding-top: 50px;
+  height: 100%;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.container .credit {
+  margin: 20px 0;
+}
+
+.centerIMG {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.center form {
+  display:inline-block;
+  text-align: left;
+}
+
+.buyForm {
+  width: 60px;
+  float: left;
+  margin-left: 5px;
+}
+
+.buyButton {
+  float: right;
+  margin-right: -20px;
+}
+
+.backButton {
+  text-align: left;
+  margin: @buttonsMargin;
+}
+
+.forwardButton {
+  text-align: right;
+  margin: @buttonsMargin;
+}
+
+.breadcrumb {
+  background-color: @backgroundColor;
+}
+.products {
+  height: 300px;
+}
+
+.productCaption {
+  height: 95px;
+  overflow: hidden;
+}
+
+.productBuy {
+  margin-top: 5px;
+}
+
+.address {
+  width: 100%;
+  margin: 10px 50px 50px 50px;
+}
+
+.delivery {
+  margin-left: -15px;
+}
+
+.deliveryLabel {
+  padding: 0px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: right;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f8f8f8;
+}
+
+.navbar-default {
+  background-color: @backgroundColor;
+  border-color: @borderColor;
+}
+
+/* Apply responsive CSS fixes for footer */
+@footerCSSfix: 20px;
+@media (max-width: 767px) {
+  footer {
+    margin-left: -@footerCSSfix;
+    margin-right: -@footerCSSfix;
+    padding-left: @footerCSSfix;
+    padding-right: @footerCSSfix;
+  }
+}
+
+#feedback-area {
+  position: fixed;
+  left: 35%;
+  right: 35%;
+  top: 75px;
+  z-index: 999;
+  display: none;
+}

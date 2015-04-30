@@ -1,11 +1,13 @@
 package dk.dm844.webshop
 
-
+import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+//@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+@Secured(['permitAll'])
 class PersonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -69,7 +71,7 @@ class PersonController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Person.label', default: 'Person'), personInstance.id])
                 redirect personInstance
             }
-            '*'{ respond personInstance, [status: OK] }
+            '*' { respond personInstance, [status: OK] }
         }
     }
 
@@ -88,7 +90,7 @@ class PersonController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Person.label', default: 'Person'), personInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +100,7 @@ class PersonController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

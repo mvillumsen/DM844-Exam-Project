@@ -1,7 +1,5 @@
 package dk.dm844.webshop
 
-
-
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -12,14 +10,13 @@ class OrderEntryControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
 
-        Person p = new Person(name: "Martin", address: "Odense", email: "ma@ma.dk")
-        Customer c = new Customer(credentials: p)
+        Person p = new Person(name: "Martin", email: "ma@ma.dk", username: 'mar', password: 'mar')
         Category ca = new Category(name: "Food")
 
         params["price"] = 10
         params["amount"] = 1
         params["product"] = new Product(name: "Milk", category: ca)
-        params["order"] = new ProductOrder(customer: c)
+        params["order"] = new ProductOrder(customer: p)
     }
 
     void "Test the index action returns the correct model"() {
@@ -37,7 +34,7 @@ class OrderEntryControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.orderEntryInstance!= null
+            model.orderEntryInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -50,7 +47,7 @@ class OrderEntryControllerSpec extends Specification {
             controller.save(orderEntry)
 
         then:"The create view is rendered again with the correct model"
-            model.orderEntryInstance!= null
+            model.orderEntryInstance != null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
@@ -107,7 +104,6 @@ class OrderEntryControllerSpec extends Specification {
         then:"A 404 error is returned"
             response.redirectedUrl == '/orderEntry/index'
             flash.message != null
-
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()

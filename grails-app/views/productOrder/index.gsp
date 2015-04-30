@@ -26,6 +26,8 @@
 					
 						<th><g:message code="productOrder.assignedEmployee.label" default="Assigned Employee" /></th>
 					
+						<th><g:message code="productOrder.alternativeAddress.label" default="Alternative Address" /></th>
+					
 						<th><g:message code="productOrder.customer.label" default="Customer" /></th>
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'productOrder.dateCreated.label', default: 'Date Created')}" />
@@ -41,6 +43,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "assignedEmployee")}</g:link></td>
+					
+						<td>${fieldValue(bean: productOrderInstance, field: "alternativeAddress")}</td>
 					
 						<td>${fieldValue(bean: productOrderInstance, field: "customer")}</td>
 					

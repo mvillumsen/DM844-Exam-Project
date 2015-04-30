@@ -1,12 +1,15 @@
 package dk.dm844.webshop
 
-
-
+import grails.plugin.springsecurity.annotation.Secured
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
 class ProductController {
+
+    def cartService
+    def shoppingCartService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,7 +22,7 @@ class ProductController {
         respond productInstance
     }
 
-    def create() {
+   def create() {
         respond new Product(params)
     }
 
@@ -69,7 +72,7 @@ class ProductController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
                 redirect productInstance
             }
-            '*'{ respond productInstance, [status: OK] }
+            '*' { respond productInstance, [status: OK] }
         }
     }
 
@@ -88,7 +91,7 @@ class ProductController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +101,54 @@ class ProductController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
+        }
+    }
+
+    @Secured(['permitAll'])
+    @Transactional
+    def addToCart(Product productInstance) {
+        if (productInstance == null) {
+            notFound()
+            return
+        }
+
+        Integer amount = 1
+        String param = request.getParameter("amount")
+        if (param && param.isInteger()) {
+            amount = Math.max(1, param.toInteger())
+        }
+
+        productInstance.addQuantityToShoppingCart(amount)
+        productInstance.save flush: true
+
+        if (request.xhr) {
+            render(contentType: 'text/json') {
+                ['count': cartService.count()]
+            }
+        } else {
+            redirect(uri: request.getHeader('referer') )
+        }
+    }
+
+    @Secured(['permitAll'])
+    @Transactional
+    def removeAllFromCart(Product productInstance) {
+        if (productInstance == null) {
+            notFound()
+            return
+        }
+
+        int amount = shoppingCartService.getQuantity(productInstance)
+        productInstance.removeQuantityFromShoppingCart(amount)
+        productInstance.save flush: true
+
+        if (request.xhr) {
+            render(contentType: 'text/json') {
+                ['count': cartService.count()]
+            }
+        } else {
+            redirect(uri: request.getHeader('referer') )
         }
     }
 }

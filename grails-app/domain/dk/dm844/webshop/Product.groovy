@@ -1,6 +1,8 @@
 package dk.dm844.webshop
 
-class Product {
+import com.metasieve.shoppingcart.Shoppable
+
+class Product extends Shoppable {
 
     String name
     Integer price
@@ -17,8 +19,9 @@ class Product {
         stock min: 0
     }
 
-    def getPicture() {
-        return "http://lorempixel.com/150/150/food/$name"
+    String getPicture() {
+        String str = name.replaceAll(/[^A-Za-z0-9_ ]/, "")
+        return "http://lorempixel.com/150/150/food/${str}"
     }
 
     @Override

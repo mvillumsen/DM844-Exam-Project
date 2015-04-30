@@ -1,8 +1,6 @@
 # README #
 
-#### Group 05
-
-This project is for the course DM844 at SDU.
+This project is for the course DM844 at SDU from group 05.
 
 ### Business idea: ###
 
@@ -23,9 +21,24 @@ The front-end must allow users to select products and make orders.
 * For product, the constraints are not properly tested (stock)
 * Be carefull with your toString methods. They should also be tested, and not throw exceptions
 
+## Comments for project 2
+
+* Funny usage of role names. I would think a customer should be allowed to order items?
+* Wireframes not in report
+* Only 1 weekly report received in the 4 week span
+* Access to database in view - not allowed.
+* You have not extracted the bootstrap specific classes to a taglib. This is not dry, and harder to maintain.
+* You could have desribed the use of the shopping cart plugin
+* You violate your own coding guidelines
+* Lots of violations in codenarc
+* Test failing at time of handing in
+* As you conclude yourself, this part of the project is not quite done - not able to complete an order :(
+* Check the commit for a few comments placed in the code
+
 ## Info
-* Test-reports: http://188.226.206.170/test-reports/standard/
+* Test-reports: 188.226.206.170/test-reports/standard
 * Test-reports (Code Coverage): http://188.226.206.170/test-reports/cobertura/
 * Test-reports (CodeNarc): http://188.226.206.170/test-reports/codenarc
-* Jenkins: http://188.226.206.170:8090/jenkins/
-* Tomcat: http://188.226.206.170:8080
+* Jenkins: 188.226.206.170:8090/jenkins/
+* Tomcat: 188.226.206.170:8080
+

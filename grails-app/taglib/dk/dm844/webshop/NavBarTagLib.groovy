@@ -8,7 +8,8 @@ class NavBarTagLib {
 
     // Navigation bar tags
     def navbar = { attrs, body ->
-        out << """<nav class="navbar navbar-default navbar-fixed-top">"""
+        String cssClasses = attrs.cssClasses ?: '' // 'default' or 'inverse'
+        out << """<nav class="navbar navbar-default navbar-fixed-top ${cssClasses}">"""
         out << """<div class="container">"""
         out << """<div class="navbar-header">"""
         out << """<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">"""
@@ -23,6 +24,27 @@ class NavBarTagLib {
         out << body()
         out << """</div>"""
         out << """</div>"""
+        out << """</nav>"""
+    }
+
+    def navbarAdmin = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: '' // 'default' or 'inverse'
+        out << """<nav class="navbar navbar-inverse navbar-fixed-top ${cssClasses}">"""
+        out << """<div class="container-fluid">"""
+        out << """<div class="navbar-header">"""
+        out << """<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">"""
+        out << """<span class="sr-only">Toggle navigation</span>"""
+        out << """<span class="icon-bar"></span>"""
+        out << """<span class="icon-bar"></span>"""
+        out << """<span class="icon-bar"></span>"""
+        out << """</button>"""
+        out << """<a class="navbar-brand" href="/webshop">GroceryShop</a>"""
+        out << """</div>"""
+        out << """<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">"""
+        out << body()
+        out << """</div>"""
+        out << """</div>"""
+
         out << """</nav>"""
     }
 
@@ -47,9 +69,7 @@ class NavBarTagLib {
 
     def navbarLink = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
-        out << """<a class="navbar-link ${cssClasses}" href="${attrs.url}">"""
-        out << body()
-        out << """</a>"""
+        out << """${g.link(url: attrs.url, class: cssClasses, body() )}"""
     }
 
     def signinDropdown = { attrs, body ->
@@ -83,5 +103,9 @@ class NavBarTagLib {
         }
 
         return ''
+    }
+
+    def tasks = { attrs, body ->
+        out << """<p class="navbar-text">My Tasks (0)</p>"""
     }
 }

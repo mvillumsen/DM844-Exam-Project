@@ -16,7 +16,7 @@
         <g:layoutHead/>
     </head>
     <body>
-        <tb:navbar>
+        <tb:navbar cssClasses="default">
             <tb:navbarLeftContent>
                 <tb:language/>
                 <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/> (<sc:count>it</sc:count>)</g:link>
@@ -82,7 +82,7 @@
             </tb:row>
         </tb:container>
 
-        <tb:footer>
+        <tb:footer cssClasses="user">
             <tb:container>
                 <p class="muted credit">Example footer</p>
             </tb:container>

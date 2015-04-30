@@ -11,6 +11,13 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
+    def containerFluid = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="container-fluid ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
     def header = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="page-header ${cssClasses}">"""
@@ -143,7 +150,8 @@ class GridLayoutTagLib {
     }
 
     def footer = { attrs, body ->
-        out << """<footer class="footer">"""
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<footer class="footer ${cssClasses}">"""
         out << body()
         out << """</footer>"""
     }

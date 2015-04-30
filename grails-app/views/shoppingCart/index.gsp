@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="template">
+    <meta name="layout" content="shopTemplate">
     <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}" />
     <title>${categoryInstance?.name}</title>
 </head>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="template"/>
+    <meta name="layout" content="shopTemplate"/>
     <title><g:message code="springSecurity.login.title"/></title>
 
 </head>

@@ -15,19 +15,27 @@ class EmployeeController {
     EmployeeService employeeService
     SpringSecurityService springSecurityService
 
+    def index() {
+        println "hello"
+        render "Hello"
+    }
+
     def assignments() {
-        Person employee = springSecurityService?.currentUser
-        if (!employee) {
-            respond { status: HttpStatus.UNAUTHORIZED }
-            return
-        }
+        render HttpStatus.OK
 
-        List<ProductOrder> packingOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.PACKING)
-        List<ProductOrder> deliveringOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.DELIVERING)
-
-        print packingOrders
-        print deliveringOrders
-
-        [packingOrders: packingOrders, deliveringOrders: deliveringOrders]
+//        Person employee = springSecurityService.currentUser
+//
+//        if (!employee) {
+//            respond { status: HttpStatus.UNAUTHORIZED }
+//            return
+//        }
+//
+//        List<ProductOrder> packingOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.PACKING)
+//        List<ProductOrder> deliveringOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.DELIVERING)
+//
+//        print packingOrders
+//        print deliveringOrders
+//
+//        [packingOrders: packingOrders, deliveringOrders: deliveringOrders]
     }
 }

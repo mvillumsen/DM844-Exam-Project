@@ -5,16 +5,16 @@ class ProductOrder {
     enum Status {
         NEW, PACKING, PACKED, DELIVERING, COMPLETED
 
-        String toString() {
-            switch (this) {
-                case NEW: return "NEW"
-                case PACKING: return "PACKING"
-                case PACKED: return "PACKED"
-                case DELIVERING: return "DELIVERING"
-                case COMPLETED: return "COMPLETED"
-                default: return ""
-            }
-        }
+//        String toString() {
+//            switch (this) {
+//                case NEW: return "NEW"
+//                case PACKING: return "PACKING"
+//                case PACKED: return "PACKED"
+//                case DELIVERING: return "DELIVERING"
+//                case COMPLETED: return "COMPLETED"
+//                default: return ""
+//            }
+//        }
     }
 
     Status status = Status.NEW

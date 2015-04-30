@@ -1,4 +1,3 @@
-<%@ page import="dk.dm844.webshop.Category" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,6 +22,10 @@
             </tb:navbarLeftContent>
             <tb:navbarRightContent>
                 <sec:ifLoggedIn>
+                    <sec:ifAnyGranted roles="ROLE_EMPLOYEE_DRIVER, ROLE_EMPLOYEE_ADMIN, ROLE_EMPLOYEE_PACKER">
+                        <li><g:link controller="admin">Admin</g:link></li>
+                    </sec:ifAnyGranted>
+
                     <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
                     <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
                 </sec:ifLoggedIn>
@@ -55,22 +58,8 @@
             <%-- SIDEBAR --%>
             <tb:row>
                 <tb:sidebar>
-
                     <%-- Show categories--%>
                     <cat:listCategories/>
-
-                    <%-- DUMMY DATA --%>
-                    <li role="presentation" class="disabled"><a href="#">Special Offers</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Fruit & Vegetables</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Cold Cuts & Sausages</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Bakery</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Colonial</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Frozen Food</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Drinks</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Crisps & Candy</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Household</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Health & Beauty</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Home & Ents</a></li>
                 </tb:sidebar>
 
                 <%-- Main content frame --%>

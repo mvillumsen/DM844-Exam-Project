@@ -4,7 +4,7 @@
 @userBorderColor: #e7e7e7;
 @adminBackgroundColor: #333333;
 @adminBorderColor: #777777;
-@adminColor: #EEEEEE;
+@adminColor: #9d9d9d;
 @buttonsMargin: 25px 0px;
 
 body {
@@ -120,7 +120,7 @@ html {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -139,6 +139,8 @@ html {
 
 .sidebar {
   margin-bottom: 60px;
+  margin-top: 50px;
+  padding: 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -146,4 +148,28 @@ html {
   z-index: 1000;
   display: block;
   background-color: @adminBackgroundColor;
+  border-right: 1px solid @adminBorderColor;
+  
+  a {
+    color: @adminColor;
+  }
+
+  .header {
+    color: @adminColor;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0px;
+  }
+
+  hr {
+    margin: 0px;
+  }
+}
+
+.content {
+  padding: 0px 50px;
+}
+
+.headerAdmin {
+  border-bottom: 1px solid @adminBorderColor;
 }

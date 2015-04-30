@@ -4,7 +4,7 @@ import org.springframework.web.servlet.support.RequestContextUtils
 
 class NavBarTagLib {
     static namespace = "tb"
-    static defaultEncodeAs = [taglib:'none']
+    static defaultEncodeAs = [taglib: 'none']
 
     // Navigation bar tags
     def navbar = { attrs, body ->
@@ -69,7 +69,7 @@ class NavBarTagLib {
 
     def navbarLink = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
-        out << """${g.link(url: attrs.url, class: cssClasses, body() )}"""
+        out << """${g.link(url: attrs.url, class: cssClasses, body())}"""
     }
 
     def signinDropdown = { attrs, body ->
@@ -98,14 +98,10 @@ class NavBarTagLib {
 
     String isActive(Locale locale, String lang) {
 
-        if ( locale.toString().startsWith( lang ) ) {
+        if (locale.toString().startsWith(lang)) {
             return 'active'
         }
 
         return ''
-    }
-
-    def tasks = { attrs, body ->
-        out << """<p class="navbar-text">My Tasks (0)</p>"""
     }
 }

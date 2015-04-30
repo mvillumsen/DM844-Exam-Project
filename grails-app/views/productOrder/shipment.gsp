@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="template">
+    <meta name="layout" content="adminTemplate"/>
     <title>Ready for shipment</title>
 </head>
 

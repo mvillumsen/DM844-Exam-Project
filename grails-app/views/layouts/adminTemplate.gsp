@@ -1,4 +1,3 @@
-<%@ page import="dk.dm844.webshop.admin.AdminController" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,8 @@
 <tb:navbarAdmin cssClasses="admin">
     <tb:navbarLeftContent>
         <tb:language/>
-        <tb:tasks/>
+        <%-- TODO: Make counter for tasks --%>
+        <li><g:link controller="Employee" action="assignments" class="navbar-link">My Tasks (0)</g:link></li>
     </tb:navbarLeftContent>
     <tb:navbarRightContent>
         <sec:ifLoggedIn>
@@ -31,21 +31,35 @@
 </tb:navbarAdmin>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-2 sidebar">
-            <ul class="nav nav-pills nav-stacked admin" role="tablist">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">About</a></li>
+    <tb:row>
+        <tb:col2 cssClasses="sidebar">
+            <ul class="nav nav-pills nav-stacked admin">
+                <li class="navbar-brand header">My User</li><hr>
+                <li class="menu"><g:link controller="employee" action="assignments" class="navbar-link">Assignments</g:link></li>
+                <li class="menu"><a href="#">Categories</a></li>
+            </ul><br>
+            <ul class="nav nav-pills nav-stacked admin">
+                <li class="navbar-brand header">Products</li><hr>
+                <li class="menu"><a href="#">All products</a></li>
+                <li class="menu"><a href="#">Categories</a></li>
+            </ul><br>
+            <ul class="nav nav-pills nav-stacked admin">
+            <li class="navbar-brand header">Orders</li><hr>
+                <li class="menu"><a href="#">All orders</a></li>
+                <li class="menu"><g:link controller="productOrder" action="shipment">Shipment</g:link></li>
+                <li class="menu"><g:link controller="productOrder" action="packaging">Packing</g:link></li>
+                <li class="menu"><g:link controller="productOrder" action="completed">Completed orders</g:link></li>
             </ul>
-        </div>
-        <div class="col-xs-9 col-xs-offset-2 content">
-            <tb:header>
-                <h1>The Grocery Shop <small>Fresh groceries for everyone!</small></h1>
+        </tb:col2>
+        <div class="col-xs-10 col-xs-offset-2 content">
+            <tb:header cssClasses="headerAdmin">
+                <h1><g:layoutTitle/></h1>
             </tb:header>
+            <article>
+                <g:layoutBody/>
+            </article>
         </div>
-    </div>
+    </tb:row>
 </div>
 
 <%-- FEEDBACK AREA --%>

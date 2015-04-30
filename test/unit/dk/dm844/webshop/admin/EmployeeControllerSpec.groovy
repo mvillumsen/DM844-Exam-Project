@@ -14,19 +14,15 @@ import spock.lang.Specification
 @TestFor(EmployeeController)
 class EmployeeControllerSpec extends Specification {
 
-
-
-    @IgnoreRest
     void "test assignments uden rettighed"() {
         setup:
         controller.springSecurityService = Mock(SpringSecurityService)
 
         when:
-        println controller.dump()
-        controller.index()
+        println controller.assignments()
 
         then:
-        response.status == HttpStatus.UNAUTHORIZED
+        response.status == HttpStatus.UNAUTHORIZED.value()
     }
 
     void "test assigments med rettighed"() {
@@ -39,7 +35,7 @@ class EmployeeControllerSpec extends Specification {
         controller.assignments()
 
         then:
-        response.status == HttpStatus.OK
+        response.status == HttpStatus.OK.value()
     }
 
 

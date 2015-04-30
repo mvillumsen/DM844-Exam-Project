@@ -16,6 +16,7 @@
 <section>
     These orders are ready for shipment.
     <g:render template="packingList" model="${[orders: orders]}" />
+
 </section>
 </body>
 </html>

@@ -15,6 +15,14 @@
 <body>
     This is a list of orders assigned to you.
     <h2>Packing:</h2>
+    <po:ordersAccordion id="orderAccordion">
+        <g:each in="${packingOrders}" var="order">
+            <po:orderAccordionPanel title="${order}" id="panel${order.id}" parentId="orderAccordion">
+               entries
+         </po:orderAccordionPanel>
+       </g:each>
+    </po:ordersAccordion>
+
     <tb:table cssClasses="table-hover table-striped">
         <thead>
         <tr>

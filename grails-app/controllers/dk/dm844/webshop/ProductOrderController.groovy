@@ -1,13 +1,18 @@
 package dk.dm844.webshop
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.http.HttpStatus
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+@Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
 class ProductOrderController {
+
+    ProductOrderService productOrderService
+    SpringSecurityService springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -94,6 +99,62 @@ class ProductOrderController {
             }
             '*' { render status: NO_CONTENT }
         }
+    }
+
+    @Secured([SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
+    def packaging() {
+        List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.NEW)
+        [orders: orders]
+    }
+
+    @Secured([SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
+    def assignPackaging(ProductOrder productOrderInstance) {
+        if (!productOrderInstance) {
+            notFound()
+            return
+        }
+        Person employee = springSecurityService.currentUser
+        productOrderService.assignEmployeeFor(employee, productOrderInstance, ProductOrder.Status.PACKING)
+        redirect uri: request.getHeader('referer')
+    }
+
+    @Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.ADMIN])
+    def shipment() {
+        List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.PACKED)
+        [orders: orders]
+    }
+
+    @Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.ADMIN])
+    def assignShipment(ProductOrder productOrderInstance) {
+        if (!productOrderInstance) {
+            notFound()
+            return
+        }
+
+        Person employee = springSecurityService.currentUser
+        productOrderService.assignEmployeeFor(employee, productOrderInstance, ProductOrder.Status.DELIVERING)
+        redirect uri: request.getHeader('referer')
+    }
+
+    def finishAssignment(ProductOrder productOrderInstance) {
+        if (!productOrderInstance) {
+            notFound()
+            return
+        }
+
+        Person employee = springSecurityService.currentUser
+        if  (employee != productOrderInstance.assignedEmployee)
+            return render { status: UNAUTHORIZED }
+
+        productOrderService.finishAssignment(employee, productOrderInstance)
+        redirect uri: request.getHeader('referer')
+    }
+
+
+    @Secured([SecurityRole.Employee.ADMIN])
+    def completed() {
+        List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.COMPLETED)
+        [orders: orders]
     }
 
     protected void notFound() {

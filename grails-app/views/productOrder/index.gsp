@@ -26,7 +26,7 @@
 					
 						<th><g:message code="productOrder.assignedEmployee.label" default="Assigned Employee" /></th>
 					
-						<th><g:message code="productOrder.alternativeAddress.label" default="Alternative Address" /></th>
+						<th><g:message code="productOrder.address.label" default="Address" /></th>
 					
 						<th><g:message code="productOrder.customer.label" default="Customer" /></th>
 					
@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "assignedEmployee")}</g:link></td>
 					
-						<td>${fieldValue(bean: productOrderInstance, field: "alternativeAddress")}</td>
+						<td>${fieldValue(bean: productOrderInstance, field: "address")}</td>
 					
 						<td>${fieldValue(bean: productOrderInstance, field: "customer")}</td>
 					
@@ -53,7 +53,7 @@
 						<td><g:formatDate date="${productOrderInstance.lastUpdated}" /></td>
 					
 						<td>${fieldValue(bean: productOrderInstance, field: "status")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

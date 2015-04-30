@@ -57,7 +57,7 @@
                 <sc:price><sc:total /></sc:price>
             </td>
             <td>
-                <g:form action="delivery">
+                <g:form action="checkout">
                     <g:submitButton name="Order now!" class="btn btn-primary" />
                 </g:form>
             </td>

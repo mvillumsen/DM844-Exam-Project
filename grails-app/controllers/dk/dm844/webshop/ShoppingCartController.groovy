@@ -16,18 +16,18 @@ class ShoppingCartController {
     }
 
     @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
-    def checkout() {
+    def delivery() {
         respond { }
     }
 
     @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
-    def delivery() {
-	respond { }
+    def checkout() {
+        respond { }
     }
 
-    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
     @Transactional
-    def doCheckout(Address addressInstance) {
+    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+    def confirmation(Address addressInstance) {
         if (addressInstance.hasErrors()) {
             respond addressInstance.errors, view:'delivery'
             return
@@ -36,7 +36,8 @@ class ShoppingCartController {
         addressInstance.save flush:true
 
         Person person = springSecurityService.currentUser
-        cartService.doCheckout(person, addressInstance)
-        redirect(controller: "Home", action: "index")
+        ProductOrder order = cartService.doCheckout(person, addressInstance)
+
+        [order: order]
     }
 }

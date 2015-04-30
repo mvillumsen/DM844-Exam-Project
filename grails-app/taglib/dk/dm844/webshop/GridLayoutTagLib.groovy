@@ -162,4 +162,11 @@ class GridLayoutTagLib {
         out << body()
         out << """</div>"""
     }
+
+    def table = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<table class="table ${cssClasses}">"""
+        out << body()
+        out << """</table>"""
+    }
 }

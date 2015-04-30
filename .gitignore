@@ -6,6 +6,7 @@
 *~
 *.swp
 *.orig
+cobertura.ser
 .idea/
 .project
 .class

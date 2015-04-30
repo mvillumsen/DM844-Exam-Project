@@ -3,21 +3,22 @@ package dk.dm844.webshop
 class ProductOrder {
 
     enum Status {
-        UNASSIGNED, OPEN, COMPLETED, CLOSED
+        CREATED, PACKING, READY_TO_SHIP, DELIVIERING, DELIVERED
 
         String toString() {
             switch (this) {
-                case UNASSIGNED: return "UNASSIGNED"
-                case OPEN: return "OPEN"
-                case COMPLETED: return "COMPLETED"
-                case CLOSED: return "CLOSED"
+                case CREATED: return "Created"
+                case PACKING: return "Packing"
+                case READY_TO_SHIP: return "Ready to ship"
+                case DELIVIERING: return "Delivering"
+                case DELIVERED: return "Delivered"
                 default: return ""
             }
         }
     }
 
-    Status status = Status.UNASSIGNED
-    Address address
+    Status status = Status.CREATED
+    Address alternativeAddress
     Date dateCreated
     Date lastUpdated
     static hasMany = [orderEntries : OrderEntry]

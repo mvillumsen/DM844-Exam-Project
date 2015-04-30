@@ -133,6 +133,12 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll']
 ]
+grails.plugin.springsecurity.roleHierarchy = '''
+    ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_PACKER
+    ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_DRIVER
+    ROLE_EMPLOYEE_PACKER > ROLE_CUSTOMER
+    ROLE_EMPLOYEE_DRIVER > ROLE_CUSTOMER
+'''
 
 grails.asset.plugin."twitter-bootstrap".excludes=["**/*.less"]
 grails.asset.plugin."twitter-bootstrap".includes=["bootstrap.less"]

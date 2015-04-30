@@ -20,3 +20,4 @@ test-reports/
 *.iml
 prodDb.h2.db
 prodDb.lock.db
+*.db

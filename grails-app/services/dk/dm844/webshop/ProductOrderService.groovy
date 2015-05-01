@@ -23,7 +23,7 @@ class ProductOrderService {
                 assert order.status == Status.PACKED
                 break
             default:
-                throw AssertionError
+                throw new AssertionError("Invalid status.")
         }
 
         order.status = status
@@ -42,7 +42,7 @@ class ProductOrderService {
                 order.status = Status.COMPLETED
                 break
             default:
-                throw AssertionError
+                throw new AssertionError("Invalid status.")
         }
 
         order.assignedEmployee = null

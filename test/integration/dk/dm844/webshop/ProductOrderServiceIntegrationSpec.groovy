@@ -26,7 +26,7 @@ class ProductOrderServiceIntegrationSpec extends Specification {
         employee = createEmployee()
     }
 
-    void "test getOrders returns oders"() {
+    void "test getOrders returns orders"() {
         when: "Saving 5 orders"
         (1..5).each { createProductOrder() }
         List<ProductOrder> orders = productOrderService.getOrders()

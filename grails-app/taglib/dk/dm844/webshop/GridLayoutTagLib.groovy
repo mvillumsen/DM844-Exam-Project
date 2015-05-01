@@ -51,7 +51,7 @@ class GridLayoutTagLib {
         String cssClasses = attrs.cssClasses ?: ''
         out << """<li class="navbar-brand ${cssClasses}">"""
         out << body()
-        out << """/li><hr>"""
+        out << """</li><hr>"""
     }
 
     def contentFrame = { attrs, body ->

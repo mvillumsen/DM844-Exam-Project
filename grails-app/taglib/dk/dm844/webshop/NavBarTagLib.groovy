@@ -29,13 +29,14 @@ class NavBarTagLib {
 
     def navbarCollapse = { attrs, body ->
         String brand = attrs.brand ?: ''
+        String url = attrs.url ?: ''
         out << """<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">"""
         out << """<span class="sr-only">Toggle navigation</span>"""
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """</button>"""
-        out << """<a class="navbar-brand" href="/webshop">${brand}</a>"""
+        out << """<a class="navbar-brand" href="${url}">${brand}</a>"""
         out << """</div>"""
         out << """<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">"""
         out << body()
@@ -80,6 +81,15 @@ class NavBarTagLib {
         out << """<ol class="breadcrumb ${cssClasses}">"""
         out << body()
         out << """</ol>"""
+    }
+
+    def progressBar = { attrs, body ->
+        String percentCompleted = attrs.percentCompleted ?: ''
+        out << """<div class="progress">"""
+        out << """<div class="progress-bar" role="progressbar" aria-valuenow="${percentCompleted}" aria-valuemin="0" aria-valuemax="100" style="width: ${percentCompleted}%;">"""
+        out << """${percentCompleted}%"""
+        out << """</div>"""
+        out << """</div>"""
     }
 
     // TODO: Test this!

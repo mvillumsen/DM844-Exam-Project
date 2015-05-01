@@ -46,4 +46,20 @@ class NavBarTagLibSpec extends Specification {
         'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a href="http://www.dr.dk" class="navbar-link myClass">Visit dr.dk</a>'
         ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a href="http://www.dr.dk" class="navbar-link ">Visit dr.dk</a>'
     }
+
+    @Unroll
+    void "Testing tag: progressBar with percentate completed: '#completed'"() {
+        expect:
+        tagLib.progressBar( percentCompleted: completed ) == result
+
+        where:
+        completed   || result
+        ''          || '<div class="progress">' +
+                '<div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: %;">%' +
+                '</div></div>'
+
+        '50'        || '<div class="progress">' +
+                '<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%' +
+                '</div></div>'
+    }
 }

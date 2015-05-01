@@ -20,7 +20,7 @@
 <tb:navbarInverse cssClasses="admin">
     <tb:containerFluid>
         <tb:navbarHeader>
-            <tb:navbarCollapse brand="GroceryShop">
+            <tb:navbarCollapse brand="GroceryShop" url="/webshop/admin">
                 <tb:navbarLeftContent>
                     <tb:language/>
                 <%-- TODO: Make counter for number of assigned tasks --%>
@@ -29,9 +29,9 @@
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
                         <li><tb:navbarLink url="/webshop/">Webshop</tb:navbarLink>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
+                        <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
                     </sec:ifLoggedIn>
                 </tb:navbarRightContent>
             </tb:navbarCollapse>
@@ -44,8 +44,14 @@
         <tb:col2 cssClasses="sidebar">
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header">Users</tb:sidebarHeader>
-                <li><g:link controller="person" class="navbar-link">All Users</g:link></li>
-                <li><g:link controller="person" action="create" class="navbar-link">Create User</g:link></li>
+                <sec:ifAnyGranted roles="ROLE_EMPLOYEE_ADMIN">
+                    <li><g:link controller="person" class="navbar-link">All Users</g:link></li>
+                    <li><g:link controller="person" action="create" class="navbar-link">Create User</g:link></li>
+                </sec:ifAnyGranted>
+                <sec:ifNotGranted roles="ROLE_EMPLOYEE_ADMIN">
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">All Users</g:link></li>
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Create User</g:link></li>
+                </sec:ifNotGranted>
             </tb:navPills><br>
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header">Products</tb:sidebarHeader>

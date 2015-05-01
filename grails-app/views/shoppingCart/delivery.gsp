@@ -12,7 +12,7 @@
     <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
     <tb:liActive><g:message code="delivery.breadcrumbs.label"/></tb:liActive>
 </tb:breadcrumb>
-
+<tb:progressBar percentCompleted="75"/>
 <h1><g:message code="delivery.title.label"/></h1>
 <tb:pLeadText><g:message code="delivery.message"/></tb:pLeadText>
 

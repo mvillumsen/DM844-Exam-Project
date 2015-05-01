@@ -37,8 +37,6 @@ class BootStrap {
         SecurityRole driverRole =  new SecurityRole(authority: SecurityRole.Employee.DRIVER).save(failOnError: true, flush: true)
         SecurityRole adminRole =  new SecurityRole(authority: SecurityRole.Employee.ADMIN).save(failOnError: true, flush: true)
 
-        Address address = new Address(name: 'home', address1: 'Street of Awesome', city: 'Odense', zipCode: '5000', country: 'Denmark').save(failOnError: true, flush: true)
-
         [
                 ['Alice', new Address(address1: 'Al Street 1', address2: 'My Address 2', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'alice', 'al123','alice@email.dk'],
                 ['Bob', new Address(address1: 'Bob Boulevard 2', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'bob', 'bo234', 'bob@email.dk'],

@@ -50,6 +50,12 @@ if (typeof jQuery !== 'undefined') {
 		}
 	});
 
+	$('.navbar-link.adminDisabled').click(function(event) {
+		$('#feedback-area').css('text-align','center');
+		var msg = '<h4>You are not authorized to use this function!</h4>';
+		displayMessage('danger', msg);
+	});
+
 	})(jQuery);
 
 	function displayMessage(alertType, msg) {

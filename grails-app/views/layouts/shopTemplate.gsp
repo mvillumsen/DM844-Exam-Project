@@ -19,7 +19,7 @@
 <tb:navbarDefault cssClasses="user">
     <tb:container>
         <tb:navbarHeader>
-            <tb:navbarCollapse brand="GroceryShop">
+            <tb:navbarCollapse brand="GroceryShop" url="/webshop/">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="ShoppingCart"><g:message
@@ -27,11 +27,11 @@
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
                         <sec:ifAnyGranted roles="ROLE_EMPLOYEE_DRIVER, ROLE_EMPLOYEE_ADMIN, ROLE_EMPLOYEE_PACKER">
                             <li><g:link controller="admin">Admin</g:link></li>
                         </sec:ifAnyGranted>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
+                        <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <tb:signinDropdown>

@@ -74,7 +74,6 @@ class CartServiceIntegrationSpec extends Specification {
         cartService.createShoppingCart()
 
         then:
-        // TODO: isEmpty() does not exists?
         cartService.doCheckout(person, person.address).isEmpty()
         ProductOrder.count() == orderCountBefore + 1
         OrderEntry.count() == entryCountBefore

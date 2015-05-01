@@ -7,11 +7,11 @@
 </head>
 
 <body>
-<ol class="breadcrumb">
+<tb:breadcrumb>
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
-</ol>
-
+</tb:breadcrumb>
+<tb:progressBar percentCompleted="25"/>
 <table class="table">
     <thead>
     <tr>

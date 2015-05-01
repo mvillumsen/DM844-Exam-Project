@@ -32,7 +32,7 @@ class LoginTagLib {
     }
 
     // TODO: Test this!
-    def getUserInfo = { attrs, body ->
+    def printUserInfo = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         Person currUser = springSecurityService.currentUser
 
@@ -54,5 +54,13 @@ class LoginTagLib {
 
         out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
         out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
+    }
+
+    def getUserInfo = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        Person currUser = springSecurityService.currentUser
+        Address address = currUser.address
+        Map<String> userInfo = [name: currUser.name, address1: address.address1, address2: address.address2, zipCode: address.zipCode, city: address.city, country: address.country]
+        out << body(userInfo)
     }
 }

@@ -168,6 +168,16 @@ class GridLayoutTagLib {
         out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}">"""
     }
 
+    def preFilledInputForm = { attrs ->
+        String cssClasses = attrs.cssClasses ?: ''
+        String type = attrs.type ?: ''
+        String id = attrs.id ?: ''
+        String name = attrs.name ?: ''
+        String value = attrs.value ?: ''
+
+        out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" value="${value}">"""
+    }
+
     def footer = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<footer class="footer ${cssClasses}">"""

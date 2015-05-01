@@ -47,4 +47,16 @@ class ProductSpec extends Specification {
         new Product(name: "Milk", category: c)              ||  "Milk"
         new Product(name: "  ", category: c)                ||  null
     }
+
+    @Unroll
+    void "Test getPicture with name: '#product'"() {
+        expect:
+        product.getPicture() == result
+
+        where:
+        product                                                                    || result
+        new Product(name: "Milk", category: c, price: 100, stock: 1)               || 'http://lorempixel.com/150/150/food/Milk'
+        new Product(name: "Minced Beef", category: c, price: 100, stock: 1)        || 'http://lorempixel.com/150/150/food/Minced Beef'
+        new Product(name: "Bacon, 8 slices", category: c, price: 100, stock: 1)    || 'http://lorempixel.com/150/150/food/Bacon 8 slices'
+    }
 }

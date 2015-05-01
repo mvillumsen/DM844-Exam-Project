@@ -17,6 +17,14 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         tag                     | cssClass      | bodyClosure               || result
+        'navbarDefault'         | ''            | { }                       || '<nav class="navbar navbar-default navbar-fixed-top "></nav>'
+        'navbarDefault'         | ''            | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top ">My Body Closure</nav>'
+        'navbarDefault'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top myClass">My Body Closure</nav>'
+        'navbarInverse'         | ''            | { }                       || '<nav class="navbar navbar-inverse navbar-fixed-top "></nav>'
+        'navbarInverse'         | ''            | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top ">My Body Closure</nav>'
+        'navbarInverse'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top myClass">My Body Closure</nav>'
+        'navbarHeader'          | ''            | { }                       || '<div class="navbar-header"></div>'
+        'navbarHeader'          | ''            | { -> 'My Body Closure' }  || '<div class="navbar-header">My Body Closure</div>'
         'navbarLeftContent'     | ''            | { }                       || '<ul class="nav navbar-nav navbar-left"></ul>'
         'navbarLeftContent'     | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav navbar-left">My Body Closure</ul>'
         'navbarRightContent'    | ''            | { }                       || '<ul class="nav navbar-nav navbar-right"></ul>'

@@ -24,7 +24,14 @@
 
                     <p class="small">${it.description}</p>
                 </div>
+                <tb:row>
+                    <tb:col12>
+                        <p class="price">${it.price} kr.</p>
+                    </tb:col12>
+                </tb:row>
                 <tb:row cssClasses="productBuy">
+                    <div class="col-xs-4"
+                    ></div>
                     <tb:col6 cssClasses="buyButton">
                         <tb:buyButton>Buy</tb:buyButton>
                     </tb:col6>

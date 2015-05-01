@@ -43,6 +43,7 @@ class ProductOrderTagLib {
         entries?.each { OrderEntry entry ->
             out << body(entry)
         }
+    }
 
     // TODO: Test this
     def calcTotalPrice = { attrs, body ->

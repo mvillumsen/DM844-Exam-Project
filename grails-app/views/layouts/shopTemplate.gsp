@@ -31,7 +31,7 @@
                             <li><g:link controller="admin">Admin</g:link></li>
                         </sec:ifAnyGranted>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
-                        <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
+                        <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <tb:signinDropdown>
@@ -67,7 +67,7 @@
 <%-- SIDEBAR --%>
     <tb:row>
         <tb:sidebar>
-            <tb:navPills cssClasses="user">
+            <tb:navPills>
             <%-- Show categories--%>
                 <cat:listCategories/>
             </tb:navPills>

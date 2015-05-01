@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
-import org.springframework.http.HttpStatus
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -101,13 +100,13 @@ class ProductOrderController {
         }
     }
 
-    @Secured([SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
+    @Secured([SecurityRole.Employee.PACKER])
     def packaging() {
         List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.NEW)
         [orders: orders]
     }
 
-    @Secured([SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
+    @Secured([SecurityRole.Employee.PACKER])
     def assignPackaging(ProductOrder productOrderInstance) {
         if (!productOrderInstance) {
             notFound()
@@ -118,13 +117,13 @@ class ProductOrderController {
         redirect uri: request.getHeader('referer')
     }
 
-    @Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.ADMIN])
+    @Secured([SecurityRole.Employee.DRIVER])
     def shipment() {
         List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.PACKED)
         [orders: orders]
     }
 
-    @Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.ADMIN])
+    @Secured([SecurityRole.Employee.DRIVER])
     def assignShipment(ProductOrder productOrderInstance) {
         if (!productOrderInstance) {
             notFound()
@@ -143,13 +142,14 @@ class ProductOrderController {
         }
 
         Person employee = springSecurityService.currentUser
-        if  (employee != productOrderInstance.assignedEmployee)
-            return render { status: UNAUTHORIZED }
+        if (employee != productOrderInstance.assignedEmployee) {
+            render { status: UNAUTHORIZED }
+            return
+        }
 
         productOrderService.finishAssignment(employee, productOrderInstance)
         redirect uri: request.getHeader('referer')
     }
-
 
     @Secured([SecurityRole.Employee.ADMIN])
     def completed() {

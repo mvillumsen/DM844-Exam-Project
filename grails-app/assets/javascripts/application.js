@@ -42,7 +42,7 @@ if (typeof jQuery !== 'undefined') {
 	$("#optionsRadios2").click(function() {$("#alternativeAddress").prop("disabled", false);});
 
 	// Dynamically update active link in navbar
-	$('.navbar-left .lang').click(function(e) {
+	$('.navbar-lpacking.gspft .lang').click(function(e) {
 		var $this = $(this);
 		$('.navbar-left .lang').removeClass('active');
 		if (!$this.hasClass('active')) {

@@ -1,6 +1,5 @@
 package dk.dm844.webshop.admin
 
-import dk.dm844.webshop.EmployeeService
 import dk.dm844.webshop.Person
 import dk.dm844.webshop.ProductOrder
 import grails.plugin.springsecurity.SpringSecurityService
@@ -23,9 +22,6 @@ class EmployeeController {
 
         List<ProductOrder> packingOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.PACKING)
         List<ProductOrder> deliveringOrders = employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.DELIVERING)
-
-        print packingOrders
-        print deliveringOrders
 
         [packingOrders: packingOrders, deliveringOrders: deliveringOrders]
     }

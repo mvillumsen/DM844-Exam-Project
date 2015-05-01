@@ -22,7 +22,6 @@ class CartServiceIntegrationSpec extends Specification {
         p2 = Product.get(2)
     }
 
-    // TODO: This test fails
     void "Test count"() {
         when:
         cartService.createShoppingCart()
@@ -74,8 +73,6 @@ class CartServiceIntegrationSpec extends Specification {
         cartService.createShoppingCart()
 
         then:
-        cartService.doCheckout(person, person.address).isEmpty()
-        ProductOrder.count() == orderCountBefore + 1
         OrderEntry.count() == entryCountBefore
 
         when:
@@ -85,7 +82,7 @@ class CartServiceIntegrationSpec extends Specification {
         entryCountBefore = OrderEntry.count()
 
         then:
-        cartService.doCheckout(person, person.address).size() == 2
+        cartService.doCheckout(person, person.address).orderEntries.size() == 2
         ProductOrder.count() == orderCountBefore + 1
         OrderEntry.count() == entryCountBefore + 2
     }

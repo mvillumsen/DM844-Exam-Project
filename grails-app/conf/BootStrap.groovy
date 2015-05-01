@@ -60,11 +60,12 @@ class BootStrap {
         UserAliasSecurityRole.create( Person.findByName('Dennis'), driverRole, true )
         UserAliasSecurityRole.create( Person.findByName('Erik'), adminRole, true )
         UserAliasSecurityRole.create( Person.findByName('Erik'), driverRole, true )
+        UserAliasSecurityRole.create( Person.findByName('Erik'), packerRole, true )
 
 
         assert Person.count() == 5
         assert SecurityRole.count() == 4
-        assert UserAliasSecurityRole.count() == 6
+        assert UserAliasSecurityRole.count() == 7
     }
 
     def destroy = {

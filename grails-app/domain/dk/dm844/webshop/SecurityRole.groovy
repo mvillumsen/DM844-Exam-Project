@@ -10,7 +10,6 @@ class SecurityRole {
 		final static String ADMIN = "ROLE_EMPLOYEE_ADMIN"
 	}
 
-
 	String authority
 
 	static mapping = {

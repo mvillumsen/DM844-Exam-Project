@@ -2,11 +2,9 @@
     <thead>
     <tr>
         <th><g:message code="productOrder.id.label"/></th>
-        <th><g:message code="productOrder.status.label"/></th>
         <th><g:message code="productOrder.address.label"/></th>
         <th><g:message code="productOrder.dateCreated.label"/></th>
         <th><g:message code="productOrder.customer.label"/></th>
-        <th><g:message code="productOrder.assignedEmployee.label"/></th>
         <th></th>
     </tr>
     </thead>

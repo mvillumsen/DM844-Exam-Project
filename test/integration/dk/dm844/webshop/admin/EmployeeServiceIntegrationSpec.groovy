@@ -1,8 +1,10 @@
-package dk.dm844.webshop
+package dk.dm844.webshop.admin
 
+import dk.dm844.webshop.Address
+import dk.dm844.webshop.Person
+import dk.dm844.webshop.ProductOrder
 import spock.lang.Shared
 import spock.lang.Specification
-import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
@@ -18,7 +20,6 @@ class EmployeeServiceIntegrationSpec extends Specification {
         createEmployee()
     }
 
-    @Unroll
     void "Test assigned count"() {
         when: "No orders have been assigned"
 
@@ -42,7 +43,6 @@ class EmployeeServiceIntegrationSpec extends Specification {
         employeeService.getAssignedCount(employee) == 2
     }
 
-    @Unroll
     void "Test get assigned orders by status"() {
         when: "no orders have been assigned"
 
@@ -52,7 +52,6 @@ class EmployeeServiceIntegrationSpec extends Specification {
         employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.PACKED).size() == 0
         employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.DELIVERING).size() == 0
         employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.COMPLETED).size() == 0
-
 
         when: "one order is assigned"
         ProductOrder order = createProductOrder()
@@ -65,7 +64,6 @@ class EmployeeServiceIntegrationSpec extends Specification {
         employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.PACKED).size() == 0
         employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.DELIVERING).size() == 0
         employeeService.getAssignedOrdersByStatus(employee, ProductOrder.Status.COMPLETED).size() == 0
-
 
         when: "two orders are assigned"
         order = createProductOrder()
@@ -92,7 +90,7 @@ class EmployeeServiceIntegrationSpec extends Specification {
 
     }
 
-    private void createEmployee() {
+    private Person createEmployee() {
         employee = new Person(
                 name: 'Erik',
                 address: new Address(address1: 'road', zipCode: '5000', city: 'od', country: 'dk').save(failOnError: true, flush: true),

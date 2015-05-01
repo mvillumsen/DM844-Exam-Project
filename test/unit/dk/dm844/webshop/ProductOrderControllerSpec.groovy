@@ -1,12 +1,21 @@
 package dk.dm844.webshop
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.*
+import org.springframework.http.HttpStatus
 import spock.lang.*
 import sun.java2d.pipe.AAShapePipe
 
 @TestFor(ProductOrderController)
 @Mock(ProductOrder)
 class ProductOrderControllerSpec extends Specification {
+
+    def setup() {
+        controller.productOrderService = Mock(ProductOrderService)
+        controller.springSecurityService = Mock(SpringSecurityService)
+        controller.springSecurityService.currentUser >> new Person()
+        controller.productOrderService.getOrdersByStatus(_) >> { new ArrayList<ProductOrder>() }
+    }
 
     def populateValidParams(params) {
         assert params != null
@@ -147,4 +156,84 @@ class ProductOrderControllerSpec extends Specification {
             response.redirectedUrl == '/productOrder/index'
             flash.message != null
     }
+
+    void "Test packaging"() {
+        when:
+        controller.packaging()
+
+        then:
+        response.status == HttpStatus.OK.value()
+    }
+
+    void "Test completed"() {
+        when:
+        controller.packaging()
+
+        then:
+        response.status == HttpStatus.OK.value()
+    }
+
+    void "Test shipment"() {
+        when:
+        controller.shipment()
+
+        then:
+        response.status == HttpStatus.OK.value()
+    }
+
+    void "Test assign packaging"() {
+        when:
+        controller.assignPackaging(new ProductOrder())
+
+        then:
+        response.status == HttpStatus.MOVED_TEMPORARILY.value()
+
+        when:
+        controller.assignPackaging(null)
+
+        then:
+        response.status == HttpStatus.NOT_FOUND.value()
+    }
+
+    void "Test assign shipment"() {
+        when:
+        controller.assignShipment(new ProductOrder())
+
+        then:
+        response.status == HttpStatus.MOVED_TEMPORARILY.value()
+
+        when:
+        controller.assignShipment(null)
+
+        then:
+        response.status == HttpStatus.NOT_FOUND.value()
+    }
+
+    void "Test finish assignment"() {
+        when:
+        controller.finishAssignment(null)
+
+        then:
+        response.status == HttpStatus.NOT_FOUND.value()
+
+        when:
+        response.reset()
+        controller.finishAssignment(new ProductOrder())
+
+        then:
+        response.status == HttpStatus.OK.value()
+
+        when:
+        response.reset()
+        ProductOrder order = new ProductOrder()
+        Person person = new Person()
+        controller.springSecurityService.currentUser >> person
+        order.assignedEmployee = person
+        controller.finishAssignment(order)
+
+        then:
+        response.status == HttpStatus.OK.value()
+    }
+
+
 }

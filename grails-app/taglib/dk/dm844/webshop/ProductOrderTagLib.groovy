@@ -2,8 +2,9 @@ package dk.dm844.webshop
 
 class ProductOrderTagLib {
 
+    ProductOrderService productOrderService
+
     static namespace = "po"
-    static defaultEncodeAs = [taglib: 'None']
 
     def ordersAccordion = { attrs, body ->
         out << '<div class="panel-group" id="' << attrs.id << '">'
@@ -29,6 +30,12 @@ class ProductOrderTagLib {
                 </div>
             </div>
         </div>"""
+    }
+
+    def count = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        Integer count = productOrderService.getOrdersByStatus((ProductOrder.Status) attrs.status).size()
+        out << "<span class=\"${cssClasses}\">${count}</span>"
     }
 
 }

@@ -9,7 +9,6 @@ import grails.transaction.Transactional
 class ProductController {
 
     def cartService
-    def shoppingCartService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -119,8 +118,8 @@ class ProductController {
             amount = Math.max(1, param.toInteger())
         }
 
-        productInstance.addQuantityToShoppingCart(amount)
-        productInstance.save flush: true
+        cartService.addToShoppingCart(productInstance, amount)
+        productInstance.save (flush: true)
 
         if (request.xhr) {
             render(contentType: 'text/json') {
@@ -139,8 +138,8 @@ class ProductController {
             return
         }
 
-        int amount = shoppingCartService.getQuantity(productInstance)
-        productInstance.removeQuantityFromShoppingCart(amount)
+        int amount = cartService.getQuantity(productInstance)
+        cartService.removeFromShoppingCart(productInstance, amount)
         productInstance.save flush: true
 
         if (request.xhr) {

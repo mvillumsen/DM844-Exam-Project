@@ -23,7 +23,7 @@ class ProductOrderService {
                 assert order.status == Status.PACKED
                 break
             default:
-                assert false
+                throw AssertionError
         }
 
         order.status = status
@@ -34,7 +34,7 @@ class ProductOrderService {
     void finishAssignment(Person employee, ProductOrder order) {
         assert order.assignedEmployee == employee
 
-        switch(order.status) {
+        switch (order.status) {
             case Status.PACKING:
                 order.status = Status.PACKED
                 break
@@ -42,7 +42,7 @@ class ProductOrderService {
                 order.status = Status.COMPLETED
                 break
             default:
-                assert false
+                throw AssertionError
         }
 
         order.assignedEmployee = null

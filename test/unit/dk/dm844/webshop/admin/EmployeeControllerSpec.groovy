@@ -1,6 +1,5 @@
 package dk.dm844.webshop.admin
 
-import dk.dm844.webshop.EmployeeService
 import dk.dm844.webshop.Person
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.TestFor
@@ -18,7 +17,7 @@ class EmployeeControllerSpec extends Specification {
         controller.springSecurityService = Mock(SpringSecurityService)
 
         when:
-        println controller.assignments()
+        controller.assignments()
 
         then:
         response.status == HttpStatus.UNAUTHORIZED.value()

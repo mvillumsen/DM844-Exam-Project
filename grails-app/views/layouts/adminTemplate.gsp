@@ -1,3 +1,4 @@
+<%@ page import="dk.dm844.webshop.SecurityRole; dk.dm844.webshop.ProductOrder" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +24,8 @@
             <tb:navbarCollapse brand="GroceryShop" url="/webshop/admin">
                 <tb:navbarLeftContent>
                     <tb:language/>
-                <%-- TODO: Make counter for number of assigned tasks --%>
                     <li><g:link controller="Employee" action="assignments"
-                                class="navbar-link">My Tasks (0)</g:link></li>
+                                class="navbar-link">My Tasks (<emp:assignedCount />)</g:link></li>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
@@ -44,11 +44,11 @@
         <tb:col2 cssClasses="sidebar">
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header">Users</tb:sidebarHeader>
-                <sec:ifAnyGranted roles="ROLE_EMPLOYEE_ADMIN">
+                <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li><g:link controller="person" class="navbar-link">All Users</g:link></li>
                     <li><g:link controller="person" action="create" class="navbar-link">Create User</g:link></li>
                 </sec:ifAnyGranted>
-                <sec:ifNotGranted roles="ROLE_EMPLOYEE_ADMIN">
+                <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">All Users</g:link></li>
                     <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Create User</g:link></li>
                 </sec:ifNotGranted>
@@ -61,11 +61,36 @@
             </tb:navPills><br>
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header">Orders</tb:sidebarHeader>
+
                 <li><g:link controller="productOrder" class="navbar-link">All Orders</g:link></li>
-                <li><g:link controller="productOrder" action="shipment" class="navbar-link">Shipment</g:link></li>
-                <li><g:link controller="productOrder" action="packaging" class="navbar-link">Packing</g:link></li>
-                <li><g:link controller="productOrder" action="completed"
-                            class="navbar-link">Completed orders</g:link></li>
+
+                <sec:ifAnyGranted roles="${SecurityRole.Employee.PACKER}">
+                    <li><g:link controller="productOrder" action="packaging" class="navbar-link">
+                        Packing (<po:count status="${ProductOrder.Status.NEW}" />)
+                    </g:link></li>
+                </sec:ifAnyGranted>
+                <sec:ifNotGranted roles="${SecurityRole.Employee.PACKER}">
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Shipment</g:link></li>
+                </sec:ifNotGranted>
+
+                <sec:ifAnyGranted roles="${SecurityRole.Employee.DRIVER}">
+                    <li><g:link controller="productOrder" action="shipment" class="navbar-link">
+                        Shipment (<po:count status="${ProductOrder.Status.PACKED}" />)
+                    </g:link></li>
+                </sec:ifAnyGranted>
+                <sec:ifNotGranted roles="${SecurityRole.Employee.DRIVER}">
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Shipment</g:link></li>
+                </sec:ifNotGranted>
+
+                <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
+                    <li><g:link controller="productOrder" action="completed" class="navbar-link">
+                        Completed orders (<po:count status="${ProductOrder.Status.COMPLETED}" />)
+                    </g:link></li>
+                 </sec:ifAnyGranted>
+                <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Completed</g:link></li>
+                </sec:ifNotGranted>
+
             </tb:navPills>
         </tb:col2>
         <tb:contentFrameAdmin cssClasses="content">

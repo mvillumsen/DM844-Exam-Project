@@ -2,11 +2,9 @@
     <thead>
     <tr>
         <th><g:message code="productOrder.id.label"/></th>
-        <th><g:message code="productOrder.status.label"/></th>
         <th><g:message code="productOrder.address.label"/></th>
         <th><g:message code="productOrder.dateCreated.label"/></th>
         <th><g:message code="productOrder.customer.label"/></th>
-        <th><g:message code="productOrder.assignedEmployee.label"/></th>
         <th></th>
     </tr>
     </thead>
@@ -14,7 +12,6 @@
     <g:each in="${orders}" status="i" var="order">
         <tr>
             <g:render template="/productOrder/productOrderRow" model="${[productOrderInstance: order]}"/>
-
             <td>
                 <g:link action="assignPackaging" id="${order.id}">
                     <g:message code="productOrder.assignEmployee"/>

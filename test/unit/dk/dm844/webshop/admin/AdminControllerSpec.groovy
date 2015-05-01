@@ -12,14 +12,12 @@ import dk.dm844.webshop.Person
 @TestFor(AdminController)
 class AdminControllerSpec extends Specification {
 
-
-
     void "Test admin without authorities"() {
         setup:
         controller.springSecurityService = Mock(SpringSecurityService)
 
         when:
-        println controller.index()
+        controller.index()
 
         then:
         response.status == HttpStatus.UNAUTHORIZED.value()

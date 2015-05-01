@@ -1,9 +1,7 @@
 package dk.dm844.webshop
 
-import com.sun.org.apache.xerces.internal.util.Status
 import spock.lang.Shared
 import spock.lang.Specification
-import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions

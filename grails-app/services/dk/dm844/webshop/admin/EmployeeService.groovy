@@ -1,5 +1,7 @@
-package dk.dm844.webshop
+package dk.dm844.webshop.admin
 
+import dk.dm844.webshop.Person
+import dk.dm844.webshop.ProductOrder
 import dk.dm844.webshop.ProductOrder.Status
 import grails.transaction.Transactional
 

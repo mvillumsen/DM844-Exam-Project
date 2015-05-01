@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate">
-    <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}" />
+    <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}"/>
     <title>${categoryInstance?.name}</title>
 </head>
+
 <body>
 <ol class="breadcrumb">
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
@@ -13,13 +14,13 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th><g:message code="cart.product" /></th>
-            <th><g:message code="cart.amount" /></th>
-            <th><g:message code="product.price" /></th>
-            <th><g:message code="cart.total" /></th>
-            <th></th>
-        </tr>
+    <tr>
+        <th><g:message code="cart.product"/></th>
+        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="product.price"/></th>
+        <th><g:message code="cart.total"/></th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
     <sc:each>
@@ -49,19 +50,19 @@
     </sc:each>
     </tbody>
     <tfoot>
-        <tr>
-            <td><g:message code="cart.grandtotal" /></td>
-            <td/>
-            <td/>
-            <td>
-                <sc:price><sc:total /></sc:price>
-            </td>
-            <td>
-                <g:form action="checkout">
-                    <g:submitButton name="Order now!" class="btn btn-primary" />
-                </g:form>
-            </td>
-        </tr>
+    <tr>
+        <td><g:message code="cart.grandtotal"/></td>
+        <td/>
+        <td/>
+        <td>
+            <sc:price><sc:total/></sc:price>
+        </td>
+        <td>
+            <g:form action="checkout">
+                <g:submitButton name="Order now!" class="btn btn-primary"/>
+            </g:form>
+        </td>
+    </tr>
     </tfoot>
 </table>
 

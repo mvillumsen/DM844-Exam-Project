@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta name="layout" content="adminTemplate"/>
-    <title>Welcome to Admin Interface</title>
-
+    <title><g:message code="admin.welcome"/></title>
 </head>
+
 <body>
 
 </body>

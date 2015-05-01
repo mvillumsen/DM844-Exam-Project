@@ -17,7 +17,7 @@
 
             <td>
                 <g:link action="assignPackaging" id="${order.id}">
-                    <g:message code="productOrder.assignEmployee" />
+                    <g:message code="productOrder.assignEmployee"/>
                 </g:link>
             </td>
         </tr>

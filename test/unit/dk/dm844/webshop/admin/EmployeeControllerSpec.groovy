@@ -5,7 +5,6 @@ import dk.dm844.webshop.Person
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.TestFor
 import org.springframework.http.HttpStatus
-import spock.lang.IgnoreRest
 import spock.lang.Specification
 
 /**
@@ -37,7 +36,4 @@ class EmployeeControllerSpec extends Specification {
         then:
         response.status == HttpStatus.OK.value()
     }
-
-
-
 }

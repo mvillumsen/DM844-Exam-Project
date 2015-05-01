@@ -36,15 +36,34 @@ class GridLayoutTagLib {
     def sidebar = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="hidden-xs col-sm-3 ${cssClasses}">"""
-        out << """<ul class="nav nav-pills nav-stacked">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def navPills = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<ul class="nav nav-pills nav-stacked ${cssClasses}">"""
         out << body()
         out << """</ul>"""
-        out << """</div>"""
+    }
+
+    def sidebarHeader = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<li class="navbar-brand ${cssClasses}">"""
+        out << body()
+        out << """/li><hr>"""
     }
 
     def contentFrame = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="col-xs-12 col-sm-9 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def contentFrameAdmin = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-10 col-xs-offset-2 ${cssClasses}">"""
         out << body()
         out << """</div>"""
     }
@@ -139,7 +158,7 @@ class GridLayoutTagLib {
         out << """</label>"""
     }
 
-    def inputForm = { attrs, body ->
+    def inputForm = { attrs ->
         String cssClasses = attrs.cssClasses ?: ''
         String type = attrs.type ?: ''
         String id = attrs.id ?: ''

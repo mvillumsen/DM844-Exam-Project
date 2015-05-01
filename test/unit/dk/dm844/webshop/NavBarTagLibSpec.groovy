@@ -39,43 +39,11 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         cssClass        | href                      | bodyClosure               || result
-        ''              | ''                        | { }                       || '<a class="navbar-link " href=""></a>'
-        ''              | '#'                       | { }                       || '<a class="navbar-link " href="#"></a>'
-        ''              | '#'                       | { -> "Empty link" }       || '<a class="navbar-link " href="#">Empty link</a>'
-        'myClass'       | 'http://www.dr.dk'        | { }                       || '<a class="navbar-link myClass" href="http://www.dr.dk"></a>'
-        'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link myClass" href="http://www.dr.dk">Visit dr.dk</a>'
-        ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link " href="http://www.dr.dk">Visit dr.dk</a>'
-    }
-
-    @Unroll
-    void "Testing tag: navbar with body: '#bodyClosure'"() {
-        expect:
-        tagLib.navbar() == '<nav class="navbar navbar-default navbar-fixed-top">' +
-                            '<div class="container">' +
-                            '<div class="navbar-header">' +
-                            '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">' +
-                            '<span class="sr-only">Toggle navigation</span>' +
-                            '<span class="icon-bar"></span>' +
-                            '<span class="icon-bar"></span>' +
-                            '<span class="icon-bar"></span>' +
-                            '</button>' +
-                            '<a class="navbar-brand" href="/webshop">GroceryShop</a>' +
-                            '</div>' +
-                            '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">' +
-                            '</div></div></nav>'
-
-        tagLib.navbar( { -> 'My Body Closure' } ) == '<nav class="navbar navbar-default navbar-fixed-top">' +
-                '<div class="container">' +
-                '<div class="navbar-header">' +
-                '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">' +
-                '<span class="sr-only">Toggle navigation</span>' +
-                '<span class="icon-bar"></span>' +
-                '<span class="icon-bar"></span>' +
-                '<span class="icon-bar"></span>' +
-                '</button>' +
-                '<a class="navbar-brand" href="/webshop">GroceryShop</a>' +
-                '</div>' +
-                '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">' +
-                'My Body Closure</div></div></nav>'
+        ''              | ''                        | { }                       || '<a href="/" class="navbar-link "></a>'
+        ''              | '#'                       | { }                       || '<a href="#" class="navbar-link "></a>'
+        ''              | '#'                       | { -> "Empty link" }       || '<a href="#" class="navbar-link ">Empty link</a>'
+        'myClass'       | 'http://www.dr.dk'        | { }                       || '<a href="http://www.dr.dk" class="navbar-link myClass"></a>'
+        'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a href="http://www.dr.dk" class="navbar-link myClass">Visit dr.dk</a>'
+        ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a href="http://www.dr.dk" class="navbar-link ">Visit dr.dk</a>'
     }
 }

@@ -15,11 +15,13 @@
 </td>
 
 <td>
-    <g:link action="show" id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "customer")}</g:link>
+    <g:link action="show"
+            id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "customer")}</g:link>
 </td>
 
 <td>
-    <g:link action="show" id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "assignedEmployee")}</g:link>
+    <g:link action="show"
+            id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "assignedEmployee")}</g:link>
 </td>
 %{--    <g:link controller="ship" action="edit" id="${shipInstance.id}">Edit</g:link>
 

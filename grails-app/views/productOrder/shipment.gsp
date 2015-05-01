@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <section>
-        These orders are ready for shipment.
-        <g:render template="shipmentList" model="${[orders: orders]}" />
-    </section>
+<section>
+    These orders are ready for shipment.
+    <g:render template="shipmentList" model="${[orders: orders]}"/>
+</section>
 </body>
 </html>

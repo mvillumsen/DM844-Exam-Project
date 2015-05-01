@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate">
-    <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}" />
-    <title><g:message code="shoppingcart.checkout.title" /></title>
+    <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}"/>
+    <title><g:message code="shoppingcart.checkout.title"/></title>
 </head>
+
 <body>
 <ol class="breadcrumb">
     <li>Home</li>
@@ -14,10 +15,10 @@
 <table class="table">
     <thead>
     <tr>
-        <th><g:message code="cart.product" /></th>
-        <th><g:message code="cart.amount" /></th>
-        <th><g:message code="product.price" /></th>
-        <th><g:message code="cart.total" /></th>
+        <th><g:message code="cart.product"/></th>
+        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="product.price"/></th>
+        <th><g:message code="cart.total"/></th>
     </tr>
     </thead>
     <tbody>
@@ -44,18 +45,18 @@
     </tbody>
     <tfoot>
     <tr>
-        <td><g:message code="cart.grandtotal" /></td>
+        <td><g:message code="cart.grandtotal"/></td>
         <td/>
         <td/>
         <td>
-            <sc:price><sc:total /></sc:price>
+            <sc:price><sc:total/></sc:price>
         </td>
     </tr>
     </tfoot>
 </table>
 
 <g:form action="delivery">
-    <g:submitButton name="Confirm" class="btn btn-primary" />
+    <g:submitButton name="Confirm" class="btn btn-primary"/>
 </g:form>
 
 </body>

@@ -9,48 +9,48 @@
 <html>
 <head>
     <meta name="layout" content="adminTemplate"/>
-    <title><g:message code="productOrder.assigned.all.title" /></title>
+    <title><g:message code="productOrder.assigned.all.title"/></title>
 </head>
 
 <body>
-    This is a list of orders assigned to you.
-    <h2>Packing:</h2>
-    <po:ordersAccordion id="orderAccordion">
-        <g:each in="${packingOrders}" var="order">
-            <po:orderAccordionPanel title="${order}" id="panel${order.id}" parentId="orderAccordion">
-               entries
-         </po:orderAccordionPanel>
-       </g:each>
-    </po:ordersAccordion>
+This is a list of orders assigned to you.
+<h2>Packing:</h2>
+<po:ordersAccordion id="orderAccordion">
+    <g:each in="${packingOrders}" var="order">
+        <po:orderAccordionPanel title="${order}" id="panel${order.id}" parentId="orderAccordion">
+            entries
+        </po:orderAccordionPanel>
+    </g:each>
+</po:ordersAccordion>
 
-    <tb:table cssClasses="table-hover table-striped">
-        <thead>
+<tb:table cssClasses="table-hover table-striped">
+    <thead>
+    <tr>
+        <th><g:message code="productOrder.id.label"/></th>
+        <th><g:message code="productOrder.status.label"/></th>
+        <th><g:message code="productOrder.address.label"/></th>
+        <th><g:message code="productOrder.dateCreated.label"/></th>
+        <th><g:message code="productOrder.customer.label"/></th>
+        <th><g:message code="productOrder.assignedEmployee.label"/></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <g:each in="${packingOrders}" status="i" var="order">
         <tr>
-            <th><g:message code="productOrder.id.label"/></th>
-            <th><g:message code="productOrder.status.label"/></th>
-            <th><g:message code="productOrder.address.label"/></th>
-            <th><g:message code="productOrder.dateCreated.label"/></th>
-            <th><g:message code="productOrder.customer.label"/></th>
-            <th><g:message code="productOrder.assignedEmployee.label"/></th>
-            <th></th>
+            <g:render template="/productOrder/productOrderRow" model="${[productOrderInstance: order]}"/>
+
+            <td>
+                <g:link controller="productOrder" action="finishAssignment" id="${order.id}">
+                    <g:message code="productOrder.finishAssignment"/>
+                </g:link>
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        <g:each in="${packingOrders}" status="i" var="order">
-            <tr>
-                <g:render template="/productOrder/productOrderRow" model="${[productOrderInstance: order]}"/>
+    </g:each>
+    </tbody>
+</tb:table>
 
-                <td>
-                    <g:link controller="productOrder" action="finishAssignment" id="${order.id}">
-                        <g:message code="productOrder.finishAssignment" />
-                    </g:link>
-                </td>
-            </tr>
-        </g:each>
-        </tbody>
-    </tb:table>
-
-    <h2>Delivering:</h2>
+<h2>Delivering:</h2>
 <tb:table cssClasses="table-hover table-striped">
     <thead>
     <tr>
@@ -70,7 +70,7 @@
 
             <td>
                 <g:link controller="productOrder" action="finishAssignment" id="${order.id}">
-                    <g:message code="productOrder.finishAssignment" />
+                    <g:message code="productOrder.finishAssignment"/>
                 </g:link>
             </td>
         </tr>

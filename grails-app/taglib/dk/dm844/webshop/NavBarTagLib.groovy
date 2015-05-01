@@ -7,45 +7,39 @@ class NavBarTagLib {
     static defaultEncodeAs = [taglib: 'none']
 
     // Navigation bar tags
-    def navbar = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: '' // 'default' or 'inverse'
+    def navbarDefault = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
         out << """<nav class="navbar navbar-default navbar-fixed-top ${cssClasses}">"""
-        out << """<div class="container">"""
-        out << """<div class="navbar-header">"""
-        out << """<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">"""
-        out << """<span class="sr-only">Toggle navigation</span>"""
-        out << """<span class="icon-bar"></span>"""
-        out << """<span class="icon-bar"></span>"""
-        out << """<span class="icon-bar"></span>"""
-        out << """</button>"""
-        out << """<a class="navbar-brand" href="/webshop">GroceryShop</a>"""
-        out << """</div>"""
-        out << """<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">"""
         out << body()
-        out << """</div>"""
-        out << """</div>"""
         out << """</nav>"""
     }
 
-    def navbarAdmin = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: '' // 'default' or 'inverse'
+    def navbarInverse = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
         out << """<nav class="navbar navbar-inverse navbar-fixed-top ${cssClasses}">"""
-        out << """<div class="container-fluid">"""
+        out << body()
+        out << """</nav>"""
+    }
+
+    def navbarHeader = { attrs, body ->
         out << """<div class="navbar-header">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def navbarCollapse = { attrs, body ->
+        String brand = attrs.brand ?: ''
         out << """<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">"""
         out << """<span class="sr-only">Toggle navigation</span>"""
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """</button>"""
-        out << """<a class="navbar-brand" href="/webshop">GroceryShop</a>"""
+        out << """<a class="navbar-brand" href="/webshop">${brand}</a>"""
         out << """</div>"""
         out << """<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">"""
         out << body()
         out << """</div>"""
-        out << """</div>"""
-
-        out << """</nav>"""
     }
 
     def navbarLeftContent = { attrs, body ->
@@ -69,7 +63,7 @@ class NavBarTagLib {
 
     def navbarLink = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
-        out << """${g.link(url: attrs.url, class: cssClasses, body())}"""
+        out << """${g.link(url: attrs.url, class: "navbar-link ${cssClasses}", body())}"""
     }
 
     def signinDropdown = { attrs, body ->

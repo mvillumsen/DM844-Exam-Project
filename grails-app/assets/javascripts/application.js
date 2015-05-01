@@ -41,7 +41,7 @@ if (typeof jQuery !== 'undefined') {
 	$("#optionsRadios1").click(function() {$("#alternativeAddress").prop("disabled", true);});
 	$("#optionsRadios2").click(function() {$("#alternativeAddress").prop("disabled", false);});
 
-	// Update active link in navbar
+	// Dynamically update active link in navbar
 	$('.navbar-left .lang').click(function(e) {
 		var $this = $(this);
 		$('.navbar-left .lang').removeClass('active');
@@ -49,15 +49,6 @@ if (typeof jQuery !== 'undefined') {
 			$this.addClass('active');
 		}
 	});
-
-	// dynamically activate list items when clicked
-    $(".nav-pills.admin.menu").click(function(e) {
-    	var $this = $(this);
-    	$(".nav-pills.admin.menu").removeClass("active");
-    	if (!$this.hasClass('active')) {
-    		$this.addClass('active');
-      	}
-    });
 
 	})(jQuery);
 

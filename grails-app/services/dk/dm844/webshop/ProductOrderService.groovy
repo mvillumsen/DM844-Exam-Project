@@ -52,4 +52,9 @@ class ProductOrderService {
     List<OrderEntry> getOrderEntries(ProductOrder productOrder) {
         return OrderEntry.findAllByOrder(productOrder, [sort: 'id', order: 'asc'])
     }
+
+    // TODO: Test this
+    def calcTotalPrice(ProductOrder order) {
+        return order.orderEntries.sum { it.amount * it.price }
+    }
 }

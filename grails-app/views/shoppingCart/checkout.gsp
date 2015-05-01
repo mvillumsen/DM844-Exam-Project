@@ -12,6 +12,8 @@
     <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.checkout"/></tb:liActive>
 </tb:breadcrumb>
+
+<h2>Checkout</h2>
 <tb:progressBar percentCompleted="33"/>
 
 <table class="table">
@@ -56,11 +58,11 @@
     </tr>
     </tfoot>
 </table>
-
-<g:form action="delivery">
-    <g:submitButton name="Confirm" class="btn btn-primary"/>
-</g:form>
-
+<tb:pullRight>
+    <g:form action="delivery">
+        <g:submitButton name="Confirm" class="btn btn-primary"/>
+    </g:form>
+</tb:pullRight>
 </body>
 </html>
 

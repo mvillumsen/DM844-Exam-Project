@@ -46,13 +46,13 @@ class LoginTagLib {
             out << """<div class="col-xs-8">${currUser.address.address2}</div><br>"""
         }
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.postalCode')}:</strong></label></div>"""
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.zipCode')}:</strong></label></div>"""
         out << """<div class="col-xs-8">${currUser.address.zipCode}</div><br>"""
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.city')}:</strong></label></div>"""
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.city')}:</strong></label></div>"""
         out << """<div class="col-xs-8">${currUser.address.city}</div><br>"""
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
+        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.country')}:</strong></label></div>"""
         out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
     }
 

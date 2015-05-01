@@ -16,29 +16,64 @@
 <tb:breadcrumb>
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
-    <li><g:link controller="shoppingCart" action="delivery"><g:message code="delivery.breadcrumbs.label"/></g:link></li>
     <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout"/></g:link></li>
+    <li><g:link controller="shoppingCart" action="delivery"><g:message code="delivery.breadcrumbs.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.confirmation"/></tb:liActive>
 </tb:breadcrumb>
+
+<h2>Order Confirmation</h2>
 <tb:progressBar percentCompleted="100"/>
-<section>
-    Thank you for your order!
-    <dl>
-        <dt><g:message code="productOrder.id.label"/></dt>
-        <dd>${order.id}</dd>
-
-        <dt><g:message code="productOrder.address.label"/></dt>
-        <dd>${order.address}</dd>
-
-        <dt><g:message code="productOrder.entries.label"/></dt>
-        <dd>
-            <ul>
-                <g:each in="${order.orderEntries}" var="entry">
-                    <li>${entry}</li>
-                </g:each>
-            </ul>
-        </dd>
-    </dl>
-</section>
+<tb:pLeadText>Thank you for your order!</tb:pLeadText>
+<tb:label><h4>Delivery Address</h4></tb:label>
+<tb:address cssClasses="address">
+    <tb:label><g:message code="delivery.name.label"/>:</tb:label> ${order.customer.name}<br>
+    <tb:label><g:message code="delivery.address1.label"/>:</tb:label> ${order.address.address1}<br>
+    <tb:label><g:message code="delivery.address2.label"/>:</tb:label> ${order.address.address2}<br>
+    <tb:label><g:message code="delivery.zipCode"/>:</tb:label> ${order.address.zipCode}<br>
+    <tb:label><g:message code="delivery.city"/>:</tb:label>${order.address.city}<br>
+    <tb:label><g:message code="delivery.country"/>:</tb:label>${order.address.country}<br>
+</tb:address>
+<table class="table">
+    <thead>
+    <tr>
+        <th><g:message code="cart.product"/></th>
+        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="product.price"/></th>
+        <th><g:message code="cart.total"/></th>
+    </tr>
+    </thead>
+    <tbody>
+    <g:each in="${order.orderEntries}" var="entry">
+        <tr>
+            <td>
+                ${entry.product}
+            </td>
+            <td>
+                x ${entry.amount}
+            </td>
+            <td>
+                <sc:price>
+                    ${entry.product.price}
+                </sc:price>
+            </td>
+            <td>
+                <sc:price>
+                    ${entry.product.price * entry.amount}
+                </sc:price>
+            </td>
+        </tr>
+    </g:each>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td><g:message code="cart.grandtotal"/></td>
+        <td/>
+        <td/>
+        <td>
+            <sc:price><po:calcTotalPrice order="${order}"/></sc:price>
+        </td>
+    </tr>
+    </tfoot>
+</table>
 </body>
 </html>

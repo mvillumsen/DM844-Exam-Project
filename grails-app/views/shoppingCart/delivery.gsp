@@ -10,11 +10,11 @@
 <tb:breadcrumb>
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="shoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
-    <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout"/></g:link></li>
+    <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout"/></g:link> </li>
     <tb:liActive><g:message code="delivery.breadcrumbs.label"/></tb:liActive>
 </tb:breadcrumb>
-<tb:progressBar percentCompleted="66"/>
 <h1><g:message code="delivery.title.label"/></h1>
+<tb:progressBar percentCompleted="66"/>
 <tb:pLeadText><g:message code="delivery.message"/></tb:pLeadText>
 
 <g:form controller="ShoppingCart" action="confirmation" class="form-horizontal address">
@@ -53,18 +53,18 @@
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="zipCode"><strong><g:message
-                            code="delivery.address.postalCode"/>:</strong></tb:label></tb:col2>
+                            code="delivery.zipCode"/>:</strong></tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="zipCode" name="zipCode" type="text"
                                                     value="${it.zipCode}"/></tb:col8>
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="city"><strong><g:message
-                            code="delivery.address.city"/></strong>:</tb:label></tb:col2>
+                            code="delivery.city"/></strong>:</tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="city" name="city" type="text" value="${it.city}"/></tb:col8>
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="country"><strong><g:message
-                            code="delivery.address.country"/></strong>:</tb:label></tb:col2>
+                            code="delivery.country"/></strong>:</tb:label></tb:col2>
                     <tb:col8>
                         <select name="country" class="form-control">
                             <option value="${it.country}" selected="selected">${it.country}</option>
@@ -81,7 +81,7 @@
         <g:link controller="ShoppingCart" name="Back" class="btn btn-primary">Back</g:link>
     </tb:col6>
     <tb:col6 cssClasses="forwardButton">
-        <g:submitButton controller="ShoppingCart" action="checkout" name="Next" class="btn btn-primary"/>
+        <g:submitButton controller="ShoppingCart" action="confirmation" name="Next" class="btn btn-primary"/>
     </tb:col6>
 </g:form>
 </body>

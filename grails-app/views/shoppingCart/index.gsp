@@ -11,7 +11,7 @@
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </tb:breadcrumb>
-
+<h2>Shopping Cart</h2>
 <table class="table">
     <thead>
     <tr>

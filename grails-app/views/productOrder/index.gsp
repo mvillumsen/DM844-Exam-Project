@@ -3,18 +3,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'productOrder.label', default: 'ProductOrder')}" />
+        <meta name="layout" content="template">
+        <g:set var="entityName" value="${message(code: 'productOrder.label', default: 'Product order')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-productOrder" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+        <tb:breadcrumb>
+            <li><g:link url="/webshop"><g:message code="default.home.label" default="Home" /></g:link></li>
+            <tb:liActive><g:message code="productOrder.listOrders" default="Orders" /></tb:liActive>
+        </tb:breadcrumb>
+
 		<div id="list-productOrder" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -51,9 +49,9 @@
 						<td><g:formatDate date="${productOrderInstance.dateCreated}" /></td>
 					
 						<td><g:formatDate date="${productOrderInstance.lastUpdated}" /></td>
-					
-						<td>${fieldValue(bean: productOrderInstance, field: "status")}</td>
-					
+
+                        <td><g:link action="show" id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "status")}</g:link></td>
+
 					</tr>
 				</g:each>
 				</tbody>

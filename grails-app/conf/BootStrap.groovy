@@ -32,6 +32,29 @@ class BootStrap {
         new Product(name: "Bacon, 8 slices", price: 26, description: "8 slices of bacon, ummmm, BACON!", stock: 90, category: meat).save(failOnError: true, flush: true)
         new Product(name: "Bacon, 400g", price: 32, description: "One piece of bacon, approximately 400g. Umm more bacon!", stock: 83, category: meat).save(failOnError: true, flush: true)
 
+        [
+                'Special Offers',
+                'Fruit & Vegetables',
+                'Cold Cuts & Sausages',
+                'Bakery',
+                'Colonial',
+                'Frozen Food',
+                'Drinks',
+                'Crisps & Candy',
+                'Household',
+                'Health & Beauty',
+                'Home & Ents'
+        ].each {
+            new Category(name: it).save(failOnError: true, flush: true)
+        }
+
+        Category.findAll().each {
+            for (i in (1..10)) {
+                new Product(name: "$it.name product $i", price: 10+2*i, description: "Random description for $it.name", stock: 10+i, category: it).save(failOnError: true, flush: true)
+            }
+        }
+
+
         SecurityRole customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
         SecurityRole packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
         SecurityRole driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
@@ -61,12 +84,11 @@ class BootStrap {
         UserAliasSecurityRole.create( Person.findByName('Cassie'), packerRole, true )
         UserAliasSecurityRole.create( Person.findByName('Dennis'), driverRole, true )
         UserAliasSecurityRole.create( Person.findByName('Erik'), adminRole, true )
-        UserAliasSecurityRole.create( Person.findByName('Erik'), driverRole, true )
 
 
         assert Person.count() == 5
         assert SecurityRole.count() == 4
-        assert UserAliasSecurityRole.count() == 6
+        assert UserAliasSecurityRole.count() == 5
     }
 
     def destroy = {

@@ -48,7 +48,7 @@
         <tb:container>
             <header>
                 <tb:header>
-                    <h1>The Grocery Shop <small>Fresh groceries for everyone!</small></h1>
+                    <h1><g:message code="default.store.name" default="The Grocery Shop"/> <small><g:message code="default.store.slogan" default="Fresh groceries for everyone!"/></small></h1>
                 </tb:header>
             </header>
 
@@ -59,18 +59,6 @@
                     <%-- Show categories--%>
                     <cat:listCategories/>
 
-                    <%-- DUMMY DATA --%>
-                    <li role="presentation" class="disabled"><a href="#">Special Offers</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Fruit & Vegetables</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Cold Cuts & Sausages</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Bakery</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Colonial</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Frozen Food</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Drinks</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Crisps & Candy</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Household</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Health & Beauty</a></li>
-                    <li role="presentation" class="disabled"><a href="#">Home & Ents</a></li>
                 </tb:sidebar>
 
                 <%-- Main content frame --%>

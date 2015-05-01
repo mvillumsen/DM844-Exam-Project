@@ -70,8 +70,7 @@
         <td/>
         <td/>
         <td>
-            <%-- TODO: Calculate total price --%>
-            <sc:price></sc:price>
+            <sc:price><po:calcTotalPrice order="${order}"/></sc:price>
         </td>
     </tr>
     </tfoot>

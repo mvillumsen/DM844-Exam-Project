@@ -38,4 +38,9 @@ class ProductOrderTagLib {
         out << "<span class=\"${cssClasses}\">${count}</span>"
     }
 
+    // TODO: Test this
+    def calcTotalPrice = { attrs, body ->
+        Integer total = productOrderService.calcTotalPrice(attrs.order)
+        out << """${total}"""
+    }
 }

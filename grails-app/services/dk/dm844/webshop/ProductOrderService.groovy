@@ -48,4 +48,9 @@ class ProductOrderService {
         order.assignedEmployee = null
         order.save(failOnError: true, flush:true)
     }
+
+    // TODO: Test this
+    def calcTotalPrice(ProductOrder order) {
+        return order.orderEntries.sum { it.amount * it.price }
+    }
 }

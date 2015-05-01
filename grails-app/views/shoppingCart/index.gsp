@@ -15,10 +15,10 @@
 <table class="table">
     <thead>
     <tr>
-        <th><g:message code="cart.product"/></th>
-        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="shoppingCart.product"/></th>
+        <th><g:message code="shoppingCart.amount"/></th>
         <th><g:message code="product.price"/></th>
-        <th><g:message code="cart.total"/></th>
+        <th><g:message code="shoppingCart.total"/></th>
         <th></th>
     </tr>
     </thead>
@@ -51,7 +51,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <td><g:message code="cart.grandtotal"/></td>
+        <td><g:message code="shoppingCart.grandTotal"/></td>
         <td/>
         <td/>
         <td>

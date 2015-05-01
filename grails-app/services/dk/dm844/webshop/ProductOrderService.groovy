@@ -49,19 +49,6 @@ class ProductOrderService {
         order.save(failOnError: true, flush: true)
     }
 
-    // TODO: Return type?
-    def listOrdersForAssignment() {
-        def c = ProductOrder.createCriteria()
-        def results = c.list {
-            or {
-                eq("status", Status.NEW)
-                eq("status", Status.PACKED)
-            }
-            order("dateCreated", "asc")
-        }
-        return results
-    }
-
     List<OrderEntry> getOrderEntries(ProductOrder productOrder) {
         return OrderEntry.findAllByOrder(productOrder, [sort: 'id', order: 'asc'])
     }

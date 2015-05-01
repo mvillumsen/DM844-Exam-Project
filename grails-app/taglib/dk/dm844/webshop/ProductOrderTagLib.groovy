@@ -3,7 +3,8 @@ package dk.dm844.webshop
 class ProductOrderTagLib {
 
     static namespace = "po"
-    static defaultEncodeAs = [taglib: 'None']
+
+    ProductOrderService productOrderService
 
     def ordersAccordion = { attrs, body ->
         out << '<div class="panel-group" id="' << attrs.id << '">'
@@ -31,15 +32,6 @@ class ProductOrderTagLib {
         </div>"""
     }
 
-    ProductOrderService productOrderService
-
-    def listOrdersForAssignment = { attrs, body ->
-        List<ProductOrder> orders = productOrderService.listOrdersForAssignment()
-
-        orders?.each { ProductOrder order ->
-            out << body(order)
-        }
-    }
 
     def listOrderEntries = { attrs, body ->
         List<OrderEntry> entries = productOrderService.getOrderEntries(attrs.order)

@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="shopTemplate">
     <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}"/>
-    <title><g:message code="shoppingcart.checkout.title"/></title>
+    <title><g:message code="shoppingCart.checkout.title"/></title>
 </head>
 
 <body>
@@ -17,10 +17,10 @@
 <table class="table">
     <thead>
     <tr>
-        <th><g:message code="cart.product"/></th>
-        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="shoppingCart.product"/></th>
+        <th><g:message code="shoppingCart.amount"/></th>
         <th><g:message code="product.price"/></th>
-        <th><g:message code="cart.total"/></th>
+        <th><g:message code="shoppingCart.total"/></th>
     </tr>
     </thead>
     <tbody>
@@ -47,7 +47,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <td><g:message code="cart.grandtotal"/></td>
+        <td><g:message code="shoppingCart.grandTotal"/></td>
         <td/>
         <td/>
         <td>

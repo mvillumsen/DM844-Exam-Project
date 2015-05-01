@@ -1,6 +1,7 @@
 <%@ page import="dk.dm844.webshop.ProductOrder" %>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="layout" content="adminTemplate"/>
     <g:set var="entityName" value="${message(code: 'productOrder.label', default: 'ProductOrder')}"/>
@@ -8,7 +9,13 @@
 </head>
 
 <body>
+<tb:breadcrumb>
+    <li><g:link url="/webshop"><g:message code="default.home.label" default="Home"/></g:link></li>
+    <tb:liActive><g:message code="productOrder.listOrders" default="Orders"/></tb:liActive>
+</tb:breadcrumb>
 
+<a href="#list-productOrder" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+                                                                   default="Skip to content&hellip;"/></a>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>

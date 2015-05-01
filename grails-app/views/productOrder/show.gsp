@@ -8,6 +8,12 @@
 </head>
 
 <body>
+<tb:breadcrumb>
+    <li><g:link url="/webshop"><g:message code="default.home.label" default="Home"/></g:link></li>
+    <li><g:link url="/webshop/productOrder"><g:message code="productOrder.listOrders" default="Orders"/></g:link></li>
+    <tb:liActive><g:message code="productOrder.orderNumber"/> ${productOrderInstance.id}</tb:liActive>
+</tb:breadcrumb>
+
 <a href="#show-productOrder" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                    default="Skip to content&hellip;"/></a>
 
@@ -120,5 +126,29 @@
         </fieldset>
     </g:form>
 </div>
+
+<div id="list-orderEntry" class="content scaffold-list" role="main">
+    <h1><g:message code="productOrder.orderNumber" default="Order no."/> ${productOrderInstance.id}</h1>
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <table>
+        <thead>
+        <tr>
+            <th><g:message code="orderEntry.product.label" default="Product"/></th>
+            <th><g:message code="orderEntry.amount.label" default="Amount"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <po:listOrderEntries order="${productOrderInstance}">
+            <tr>
+                <td>${it.product.name}</td>
+                <td>${it.amount}</td>
+            </tr>
+        </po:listOrderEntries>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

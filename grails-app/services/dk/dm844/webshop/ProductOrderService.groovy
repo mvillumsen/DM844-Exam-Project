@@ -28,7 +28,7 @@ class ProductOrderService {
 
         order.status = status
         order.assignedEmployee = employee
-        order.save(failOnError: true, flush:true)
+        order.save(failOnError: true, flush: true)
     }
 
     void finishAssignment(Person employee, ProductOrder order) {
@@ -46,6 +46,10 @@ class ProductOrderService {
         }
 
         order.assignedEmployee = null
-        order.save(failOnError: true, flush:true)
+        order.save(failOnError: true, flush: true)
+    }
+
+    List<OrderEntry> getOrderEntries(ProductOrder productOrder) {
+        return OrderEntry.findAllByOrder(productOrder, [sort: 'id', order: 'asc'])
     }
 }

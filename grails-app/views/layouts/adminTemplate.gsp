@@ -31,7 +31,7 @@
                     <sec:ifLoggedIn>
                         <li><tb:navbarLink url="/webshop/">Webshop</tb:navbarLink>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
-                        <li><tb:navbarText>Logged in as <sec:username/></tb:navbarText></li>
+                        <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
                 </tb:navbarRightContent>
             </tb:navbarCollapse>

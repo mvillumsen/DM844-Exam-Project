@@ -38,4 +38,10 @@ class ProductOrderTagLib {
         out << "<span class=\"${cssClasses}\">${count}</span>"
     }
 
+    def listOrderEntries = { attrs, body ->
+        List<OrderEntry> entries = productOrderService.getOrderEntries(attrs.order)
+        entries?.each { OrderEntry entry ->
+            out << body(entry)
+        }
+    }
 }

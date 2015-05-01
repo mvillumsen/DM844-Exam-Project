@@ -28,7 +28,7 @@
         <g:each in="${categoryInstance?.products ?}" var="p">
             <li><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
         </g:each>
-        <li class="add">
+        <li>
             <g:link controller="product" action="create"
                     params="['category.id': categoryInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
         </li>

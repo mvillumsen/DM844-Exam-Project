@@ -198,4 +198,25 @@ class GridLayoutTagLib {
         out << body()
         out << """</table>"""
     }
+
+    def pullRight = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="pull-right ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def pullLeft = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="pull-left ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def button = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<button type="button" class="btn btn-primary ${cssClasses}">"""
+        out << body()
+        out << """</button>"""
+    }
 }

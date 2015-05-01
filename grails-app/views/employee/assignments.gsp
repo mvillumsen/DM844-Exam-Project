@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<g:message code="employee.assignments.description" />
+<g:message code="employee.assignments.description"/>
 <sec:ifAnyGranted roles="${dk.dm844.webshop.SecurityRole.Employee.PACKER}">
     <h2><g:message code="employee.assignments.packing.header"/>:</h2>
     <g:if test="${packingOrders.size() > 0}">
@@ -21,7 +21,7 @@
                   model="${[orders: packingOrders, id: "packingAccordion"]}"/>
     </g:if>
     <g:else>
-        <g:message code="employee.assignments.description.noPackagingOrders"
+        <g:message code="employee.assignments.description.noPackagingOrders"/>
     </g:else>
 </sec:ifAnyGranted>
 
@@ -32,7 +32,7 @@
                   model="${[orders: deliveringOrders, id: "deliveringAccordion"]}"/>
     </g:if>
     <g:else>
-        <g:message code="employee.assignments.description.noDeliveringOrders"
+        <g:message code="employee.assignments.description.noDeliveringOrders"/>
     </g:else>
 </sec:ifAnyGranted>
 </body>

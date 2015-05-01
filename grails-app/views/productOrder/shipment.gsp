@@ -14,7 +14,7 @@
 
 <body>
 <section>
-    These orders are ready for shipment.
+    <tb:pLeadText>These orders are ready for shipment.</tb:pLeadText>
     <g:render template="shipmentList" model="${[orders: orders]}"/>
 </section>
 </body>

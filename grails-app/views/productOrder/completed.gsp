@@ -14,7 +14,7 @@
 
 <body>
 <section>
-    These orders have been handled and shipped off to the customer.
+    <tb:pLeadText>These orders have been handled and shipped off to the customer.</tb:pLeadText>
     <tb:table cssClasses="table-hover table-striped">
         <thead>
         <tr>

@@ -25,7 +25,7 @@
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="Employee" action="assignments"
-                                class="navbar-link">My Tasks (<emp:assignedCount />)</g:link></li>
+                                class="navbar-link">My Tasks (<emp:assignedCount/>)</g:link></li>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
@@ -58,6 +58,7 @@
                 <li><g:link controller="product" class="navbar-link">All Products</g:link></li>
                 <li><g:link controller="product" action="create">Create Product</g:link></li>
                 <li><g:link controller="category" class="navbar-link">Categories</g:link></li>
+                <li><g:link controller="category" action="create" class="navbar-link">Create Categorys</g:link></li>
             </tb:navPills><br>
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header">Orders</tb:sidebarHeader>
@@ -66,7 +67,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.PACKER}">
                     <li><g:link controller="productOrder" action="packaging" class="navbar-link">
-                        Packing (<po:count status="${ProductOrder.Status.NEW}" />)
+                        Packing (<po:count status="${ProductOrder.Status.NEW}"/>)
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.PACKER}">
@@ -75,7 +76,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.DRIVER}">
                     <li><g:link controller="productOrder" action="shipment" class="navbar-link">
-                        Shipment (<po:count status="${ProductOrder.Status.PACKED}" />)
+                        Shipment (<po:count status="${ProductOrder.Status.PACKED}"/>)
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.DRIVER}">
@@ -84,9 +85,9 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li><g:link controller="productOrder" action="completed" class="navbar-link">
-                        Completed orders (<po:count status="${ProductOrder.Status.COMPLETED}" />)
+                        Completed orders (<po:count status="${ProductOrder.Status.COMPLETED}"/>)
                     </g:link></li>
-                 </sec:ifAnyGranted>
+                </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Completed</g:link></li>
                 </sec:ifNotGranted>

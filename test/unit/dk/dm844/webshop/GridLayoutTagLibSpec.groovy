@@ -87,6 +87,15 @@ class GridLayoutTagLibSpec extends Specification {
         'table'                 | ''            | { }                           || '<table class="table "></table>'
         'table'                 | ''            | { -> 'My Body Closure' }      || '<table class="table ">My Body Closure</table>'
         'table'                 | 'myClass'     | { -> 'My Body Closure' }      || '<table class="table myClass">My Body Closure</table>'
+        'pullRight'             | ''            | { }                           || '<div class="pull-right "></div>'
+        'pullRight'             | ''            | { -> 'My Body Closure' }      || '<div class="pull-right ">My Body Closure</div>'
+        'pullRight'             | 'myClass'     | { -> 'My Body Closure' }      || '<div class="pull-right myClass">My Body Closure</div>'
+        'pullLeft'              | ''            | { }                           || '<div class="pull-left "></div>'
+        'pullLeft'              | ''            | { -> 'My Body Closure' }      || '<div class="pull-left ">My Body Closure</div>'
+        'pullLeft'              | 'myClass'     | { -> 'My Body Closure' }      || '<div class="pull-left myClass">My Body Closure</div>'
+        'button'                | ''            | { }                           || '<button type="button" class="btn btn-primary "></button>'
+        'button'                | ''            | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary ">My Body Closure</button>'
+        'button'                | 'myClass'     | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary myClass">My Body Closure</button>'
     }
 
     @Unroll

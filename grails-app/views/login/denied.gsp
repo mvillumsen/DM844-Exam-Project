@@ -8,7 +8,7 @@
 
 <body>
 <tb:breadcrumb>
-    <tb:liActive>Home</tb:liActive>
+    <tb:liActive><g:message code="default.home.label"/></tb:liActive>
 </tb:breadcrumb>
 
 <div class='body'>

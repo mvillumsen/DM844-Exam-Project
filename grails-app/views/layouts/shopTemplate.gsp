@@ -68,8 +68,8 @@
     <tb:row>
         <tb:sidebar>
             <tb:navPills cssClasses="user">
-        <%-- Show categories--%>
-            <cat:listCategories/>
+            <%-- Show categories--%>
+                <cat:listCategories/>
             </tb:navPills>
         </tb:sidebar>
 

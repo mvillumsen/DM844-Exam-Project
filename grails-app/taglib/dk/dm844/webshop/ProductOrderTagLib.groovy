@@ -31,9 +31,6 @@ class ProductOrderTagLib {
         </div>"""
     }
 
-    static namespace = "ord"
-    static defaultEncodeAs = [taglib: 'none']
-
     ProductOrderService productOrderService
 
     def listOrdersForAssignment = { attrs, body ->

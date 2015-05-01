@@ -3,11 +3,11 @@ package dk.dm844.webshop
 class ProductOrder {
 
     enum Status {
-        CREATED, PACKING, READY_TO_SHIP, DELIVIERING, DELIVERED
+        NEW, PACKING, PACKED, DELIVERING, COMPLETED
     }
 
-    Status status = Status.CREATED
-    Address alternativeAddress // TODO: Just address?
+    Status status = Status.NEW
+    Address address
     Date dateCreated
     Date lastUpdated
     static hasMany = [orderEntries : OrderEntry]
@@ -26,5 +26,4 @@ class ProductOrder {
     String toString() {
         return "Order no.: $id"
     }
-
 }

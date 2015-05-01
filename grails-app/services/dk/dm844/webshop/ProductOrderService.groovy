@@ -6,8 +6,6 @@ import grails.transaction.Transactional
 @Transactional
 class ProductOrderService {
 
-    static transactional = false
-
     List<ProductOrder> getOrders() {
         return ProductOrder.list([sort: 'dateCreated', order: 'asc'])
     }
@@ -51,13 +49,13 @@ class ProductOrderService {
         order.save(failOnError: true, flush: true)
     }
 
-    // TODO: Return type ???
+    // TODO: Return type?
     def listOrdersForAssignment() {
         def c = ProductOrder.createCriteria()
         def results = c.list {
             or {
-                eq("status", Status.CREATED)
-                eq("status", Status.READY_TO_SHIP)
+                eq("status", Status.NEW)
+                eq("status", Status.PACKED)
             }
             order("dateCreated", "asc")
         }

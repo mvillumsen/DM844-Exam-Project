@@ -140,12 +140,12 @@
         </tr>
         </thead>
         <tbody>
-        <ord:listOrderEntries order="${productOrderInstance}">
+        <po:listOrderEntries order="${productOrderInstance}">
             <tr>
                 <td>${it.product.name}</td>
                 <td>${it.amount}</td>
             </tr>
-        </ord:listOrderEntries>
+        </po:listOrderEntries>
         </tbody>
     </table>
 </div>

@@ -3,22 +3,11 @@ package dk.dm844.webshop
 class ProductOrder {
 
     enum Status {
-        NEW, PACKING, PACKED, DELIVERING, COMPLETED
-
-//        String toString() {
-//            switch (this) {
-//                case NEW: return "NEW"
-//                case PACKING: return "PACKING"
-//                case PACKED: return "PACKED"
-//                case DELIVERING: return "DELIVERING"
-//                case COMPLETED: return "COMPLETED"
-//                default: return ""
-//            }
-//        }
+        CREATED, PACKING, READY_TO_SHIP, DELIVIERING, DELIVERED
     }
 
-    Status status = Status.NEW
-    Address address
+    Status status = Status.CREATED
+    Address alternativeAddress // TODO: Just address?
     Date dateCreated
     Date lastUpdated
     static hasMany = [orderEntries : OrderEntry]

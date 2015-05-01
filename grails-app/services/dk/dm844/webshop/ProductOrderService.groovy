@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 @Transactional
 class ProductOrderService {
 
+    static transactional = false
+
     List<ProductOrder> getOrders() {
         return ProductOrder.list([sort: 'dateCreated', order: 'asc'])
     }
@@ -28,13 +30,13 @@ class ProductOrderService {
 
         order.status = status
         order.assignedEmployee = employee
-        order.save(failOnError: true, flush:true)
+        order.save(failOnError: true, flush: true)
     }
 
     void finishAssignment(Person employee, ProductOrder order) {
         assert order.assignedEmployee == employee
 
-        switch(order.status) {
+        switch (order.status) {
             case Status.PACKING:
                 order.status = Status.PACKED
                 break
@@ -46,6 +48,23 @@ class ProductOrderService {
         }
 
         order.assignedEmployee = null
-        order.save(failOnError: true, flush:true)
+        order.save(failOnError: true, flush: true)
+    }
+
+    // TODO: Return type ???
+    def listOrdersForAssignment() {
+        def c = ProductOrder.createCriteria()
+        def results = c.list {
+            or {
+                eq("status", Status.CREATED)
+                eq("status", Status.READY_TO_SHIP)
+            }
+            order("dateCreated", "asc")
+        }
+        return results
+    }
+
+    List<OrderEntry> getOrderEntries(ProductOrder productOrder) {
+        return OrderEntry.findAllByOrder(productOrder, [sort: 'id', order: 'asc'])
     }
 }

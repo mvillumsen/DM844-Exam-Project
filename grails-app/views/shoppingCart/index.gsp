@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="template">
-    <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}" />
+    <meta name="layout" content="shopTemplate">
+    <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}"/>
     <title>${categoryInstance?.name}</title>
 </head>
+
 <body>
-<ol class="breadcrumb">
+<tb:breadcrumb>
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
-</ol>
-
+</tb:breadcrumb>
+<h2>Shopping Cart</h2>
 <table class="table">
     <thead>
-        <tr>
-            <th><g:message code="cart.product" /></th>
-            <th><g:message code="cart.amount" /></th>
-            <th><g:message code="product.price" /></th>
-            <th><g:message code="cart.total" /></th>
-            <th></th>
-        </tr>
+    <tr>
+        <th><g:message code="shoppingCart.product"/></th>
+        <th><g:message code="shoppingCart.amount"/></th>
+        <th><g:message code="product.price"/></th>
+        <th><g:message code="shoppingCart.total"/></th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
     <sc:each>
@@ -49,19 +50,19 @@
     </sc:each>
     </tbody>
     <tfoot>
-        <tr>
-            <td><g:message code="cart.grandtotal" /></td>
-            <td/>
-            <td/>
-            <td>
-                <sc:price><sc:total /></sc:price>
-            </td>
-            <td>
-                <g:form action="delivery">
-                    <g:submitButton name="Order now!" class="btn btn-primary" />
-                </g:form>
-            </td>
-        </tr>
+    <tr>
+        <td><g:message code="shoppingCart.grandTotal"/></td>
+        <td/>
+        <td/>
+        <td>
+            <sc:price><sc:total/></sc:price>
+        </td>
+        <td>
+            <g:form action="checkout">
+                <g:submitButton name="Order now!" class="btn btn-primary"/>
+            </g:form>
+        </td>
+    </tr>
     </tfoot>
 </table>
 

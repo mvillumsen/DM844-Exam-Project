@@ -5,6 +5,8 @@
 *.toc
 *~
 *.swp
+*.orig
+cobertura.ser
 .idea/
 .project
 .class
@@ -20,3 +22,5 @@ test-reports/
 *.iml
 prodDb.h2.db
 prodDb.lock.db
+*.db
+*.old

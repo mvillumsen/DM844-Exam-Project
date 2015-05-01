@@ -3,20 +3,10 @@ package dk.dm844.webshop
 class ProductOrder {
 
     enum Status {
-        UNASSIGNED, OPEN, COMPLETED, CLOSED
-
-        String toString() {
-            switch (this) {
-                case UNASSIGNED: return "UNASSIGNED"
-                case OPEN: return "OPEN"
-                case COMPLETED: return "COMPLETED"
-                case CLOSED: return "CLOSED"
-                default: return ""
-            }
-        }
+        NEW, PACKING, PACKED, DELIVERING, COMPLETED
     }
 
-    Status status = Status.UNASSIGNED
+    Status status = Status.NEW
     Address address
     Date dateCreated
     Date lastUpdated
@@ -36,5 +26,4 @@ class ProductOrder {
     String toString() {
         return "Order no.: $id"
     }
-
 }

@@ -33,10 +33,8 @@ class AddressSpec extends Specification {
         new Address(address1: address1, address2: address2, zipCode: zip, city: city, country: country).toString() == result
 
         where:
-        address1           |address2        | zip       | city              |country            ||  result
-        "Test1"            |null            | "5000"    | "Odense"          |"Danmark"          ||  "Test1\n5000 Odense\nDanmark"
-        'Test2'            |'Test323'       | '6789'    | "Berlin"          |"Sverige"          ||  "Test2\nTest323\n6789 Berlin\nSverige"
-
-
+        address1    | address2        | zip       | city       | country            ||  result
+        "Test1"     | null            | "5000"    | "Odense"   | "Danmark"          ||  "Test1\n5000 Odense\nDanmark"
+        'Test2'     | 'Test323'       | '6789'    | "Berlin"   | "Sverige"          ||  "Test2\nTest323\n6789 Berlin\nSverige"
     }
 }

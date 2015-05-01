@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.*
+import org.springframework.http.HttpStatus
 import spock.lang.*
 
 @TestFor(ProductController)
@@ -34,6 +35,14 @@ class ProductControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
+
+        when:
+            request.contentType = FORM_CONTENT_TYPE
+            request.method = 'POST'
+            controller.save(null)
+
+        then:
+            model.productInstance == null
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
@@ -147,5 +156,46 @@ class ProductControllerSpec extends Specification {
             Product.count() == 0
             response.redirectedUrl == '/product/index'
             flash.message != null
+    }
+
+    void "Test add to cart"() {
+        setup:
+        controller.cartService = Mock(CartService)
+
+        when:
+        populateValidParams(params)
+        Product product = new Product(params).save(flush: true)
+        controller.addToCart(product)
+
+        then:
+        response.status == HttpStatus.MOVED_TEMPORARILY.value()
+
+        when:
+        response.reset()
+        controller.addToCart(null)
+
+        then:
+        response.status == HttpStatus.NOT_FOUND.value()
+    }
+
+    void "Test remove from cart"() {
+        setup:
+        controller.cartService = Mock(CartService)
+        controller.cartService.getQuantity(_) >> 0
+
+        when:
+        populateValidParams(params)
+        Product product = new Product(params).save(flush: true)
+        controller.removeAllFromCart(product)
+
+        then:
+        response.status == HttpStatus.MOVED_TEMPORARILY.value()
+
+        when:
+        response.reset()
+        controller.removeAllFromCart(null)
+
+        then:
+        response.status == HttpStatus.NOT_FOUND.value()
     }
 }

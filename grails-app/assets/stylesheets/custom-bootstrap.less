@@ -1,7 +1,10 @@
 @import "bootstrap.less";
 
-@backgroundColor: #f8f8f8;
-@borderColor: #e7e7e7;
+@userBackgroundColor: #f8f8f8;
+@userBorderColor: #e7e7e7;
+@adminBackgroundColor: #333333;
+@adminBorderColor: #777777;
+@adminColor: #9d9d9d;
 @buttonsMargin: 25px 0px;
 
 body {
@@ -26,7 +29,7 @@ body {
 }
 
 .center form {
-  display:inline-block;
+  display: inline-block;
   text-align: left;
 }
 
@@ -52,10 +55,17 @@ body {
 }
 
 .breadcrumb {
-  background-color: @backgroundColor;
+  background-color: @userBackgroundColor;
 }
+
 .products {
-  height: 300px;
+  height: 330px;
+}
+
+.price {
+  margin: 5px;
+  float: right;
+  font-size: 18px;
 }
 
 .productCaption {
@@ -88,20 +98,6 @@ html {
   min-height: 100%;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f8f8f8;
-}
-
-.navbar-default {
-  background-color: @backgroundColor;
-  border-color: @borderColor;
-}
-
 /* Apply responsive CSS fixes for footer */
 @footerCSSfix: 20px;
 @media (max-width: 767px) {
@@ -120,4 +116,76 @@ html {
   top: 75px;
   z-index: 999;
   display: none;
+}
+
+.admin {
+  background: @adminBackgroundColor;
+  border-color: @adminBorderColor;
+}
+
+.adminNewButton {
+  margin-left: 20px;
+}
+.user {
+  background-color: @userBackgroundColor;
+  border-color: @userBorderColor;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+
+.footer.admin {
+  background-color: @adminBackgroundColor;
+  border-top: 1px solid @adminBorderColor;
+}
+
+.footer.user {
+  background-color: @userBackgroundColor;
+  border-top: 1px solid @userBorderColor;
+}
+
+.sidebar {
+  margin-bottom: 60px;
+  margin-top: 50px;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: block;
+  background-color: @adminBackgroundColor;
+  border-right: 1px solid @adminBorderColor;
+
+  a {
+    color: @adminColor;
+  }
+
+  .header {
+    color: @adminColor;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0px;
+  }
+
+  hr {
+    margin: 0px;
+  }
+}
+
+.content {
+  padding: 0px 50px;
+}
+
+.headerAdmin {
+  border-bottom: 1px solid @adminBorderColor;
+}
+
+.optionRadio {
+  margin-top: 12px;
 }

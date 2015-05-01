@@ -30,7 +30,7 @@ class CartService extends ShoppingCartService {
         return total
     }
 
-    Set<ShoppingItem> doCheckout(Person customer, Address address) {
+    ProductOrder doCheckout(Person customer, Address address) {
         ProductOrder order = new ProductOrder(customer: customer, address: address)
         Set<ShoppingItem> items = checkOut()
         items?.each {
@@ -42,6 +42,6 @@ class CartService extends ShoppingCartService {
             )
         }
         order.save(failOnError: true, flush: true)
-        return items
+        return order
     }
 }

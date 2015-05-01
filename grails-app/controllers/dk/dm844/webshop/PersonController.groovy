@@ -6,7 +6,6 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-//@Secured(['ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
 @Secured(['permitAll'])
 class PersonController {
 
@@ -21,6 +20,7 @@ class PersonController {
         respond personInstance
     }
 
+    @Secured(['ROLE_EMPLOYEE_ADMIN'])
     def create() {
         respond new Person(params)
     }
@@ -76,6 +76,7 @@ class PersonController {
     }
 
     @Transactional
+    @Secured(['ROLE_EMPLOYEE_ADMIN'])
     def delete(Person personInstance) {
 
         if (personInstance == null) {

@@ -4,26 +4,43 @@ import org.springframework.web.servlet.support.RequestContextUtils
 
 class NavBarTagLib {
     static namespace = "tb"
-    static defaultEncodeAs = [taglib:'none']
+    static defaultEncodeAs = [taglib: 'none']
 
     // Navigation bar tags
-    def navbar = { attrs, body ->
-        out << """<nav class="navbar navbar-default navbar-fixed-top">"""
-        out << """<div class="container">"""
+    def navbarDefault = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<nav class="navbar navbar-default navbar-fixed-top ${cssClasses}">"""
+        out << body()
+        out << """</nav>"""
+    }
+
+    def navbarInverse = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<nav class="navbar navbar-inverse navbar-fixed-top ${cssClasses}">"""
+        out << body()
+        out << """</nav>"""
+    }
+
+    def navbarHeader = { attrs, body ->
         out << """<div class="navbar-header">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def navbarCollapse = { attrs, body ->
+        String brand = attrs.brand ?: ''
+        String url = attrs.url ?: ''
         out << """<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">"""
         out << """<span class="sr-only">Toggle navigation</span>"""
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """<span class="icon-bar"></span>"""
         out << """</button>"""
-        out << """<a class="navbar-brand" href="/webshop">GroceryShop</a>"""
+        out << """<a class="navbar-brand" href="${url}">${brand}</a>"""
         out << """</div>"""
         out << """<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">"""
         out << body()
         out << """</div>"""
-        out << """</div>"""
-        out << """</nav>"""
     }
 
     def navbarLeftContent = { attrs, body ->
@@ -47,9 +64,7 @@ class NavBarTagLib {
 
     def navbarLink = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
-        out << """<a class="navbar-link ${cssClasses}" href="${attrs.url}">"""
-        out << body()
-        out << """</a>"""
+        out << """${g.link(url: attrs.url, class: "navbar-link ${cssClasses}", body())}"""
     }
 
     def signinDropdown = { attrs, body ->
@@ -68,6 +83,15 @@ class NavBarTagLib {
         out << """</ol>"""
     }
 
+    def progressBar = { attrs, body ->
+        String percentCompleted = attrs.percentCompleted ?: ''
+        out << """<div class="progress">"""
+        out << """<div class="progress-bar" role="progressbar" aria-valuenow="${percentCompleted}" aria-valuemin="0" aria-valuemax="100" style="width: ${percentCompleted}%;">"""
+        out << """${percentCompleted}%"""
+        out << """</div>"""
+        out << """</div>"""
+    }
+
     // TODO: Test this!
     def language = { attrs, body ->
         Locale currLang = RequestContextUtils.getLocale(request)
@@ -78,7 +102,7 @@ class NavBarTagLib {
 
     String isActive(Locale locale, String lang) {
 
-        if ( locale.toString().startsWith( lang ) ) {
+        if (locale.toString().startsWith(lang)) {
             return 'active'
         }
 

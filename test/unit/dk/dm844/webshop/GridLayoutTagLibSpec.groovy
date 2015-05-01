@@ -20,18 +20,30 @@ class GridLayoutTagLibSpec extends Specification {
         'container'             | ''            | { }                           || '<div class="container "></div>'
         'container'             | ''            | { -> 'My Body Closure' }      || '<div class="container ">My Body Closure</div>'
         'container'             | 'myClass'     | { -> 'My Body Closure' }      || '<div class="container myClass">My Body Closure</div>'
+        'containerFluid'        | ''            | { }                           || '<div class="container-fluid "></div>'
+        'containerFluid'        | ''            | { -> 'My Body Closure' }      || '<div class="container-fluid ">My Body Closure</div>'
+        'containerFluid'        | 'myClass'     | { -> 'My Body Closure' }      || '<div class="container-fluid myClass">My Body Closure</div>'
         'header'                | ''            | { }                           || '<div class="page-header "></div>'
         'header'                | ''            | { -> 'My Body Closure' }      || '<div class="page-header ">My Body Closure</div>'
         'header'                | 'myClass'     | { -> 'My Body Closure' }      || '<div class="page-header myClass">My Body Closure</div>'
         'row'                   | ''            | { }                           || '<div class="row "></div>'
         'row'                   | ''            | { -> 'My Body Closure' }      || '<div class="row ">My Body Closure</div>'
         'row'                   | 'myClass'     | { -> 'My Body Closure' }      || '<div class="row myClass">My Body Closure</div>'
-        'sidebar'               | ''            | { }                           || '<div class="hidden-xs col-sm-3 "><ul class="nav nav-pills nav-stacked"></ul></div>'
-        'sidebar'               | ''            | { -> 'My Body Closure' }      || '<div class="hidden-xs col-sm-3 "><ul class="nav nav-pills nav-stacked">My Body Closure</ul></div>'
-        'sidebar'               | 'myClass'     | { -> 'My Body Closure' }      || '<div class="hidden-xs col-sm-3 myClass"><ul class="nav nav-pills nav-stacked">My Body Closure</ul></div>'
+        'sidebar'               | ''            | { }                           || '<div class="hidden-xs col-sm-3 "></div>'
+        'sidebar'               | ''            | { -> 'My Body Closure' }      || '<div class="hidden-xs col-sm-3 ">My Body Closure</div>'
+        'sidebar'               | 'myClass'     | { -> 'My Body Closure' }      || '<div class="hidden-xs col-sm-3 myClass">My Body Closure</div>'
+        'navPills'              | ''            | { }                           || '<ul class="nav nav-pills nav-stacked "></ul>'
+        'navPills'              | ''            | { -> 'My Body Closure' }      || '<ul class="nav nav-pills nav-stacked ">My Body Closure</ul>'
+        'navPills'              | 'myClass'     | { -> 'My Body Closure' }      || '<ul class="nav nav-pills nav-stacked myClass">My Body Closure</ul>'
+        'sidebarHeader'         | ''            | { }                           || '<li class="navbar-brand "></li><hr>'
+        'sidebarHeader'         | ''            | { -> 'My Body Closure' }      || '<li class="navbar-brand ">My Body Closure</li><hr>'
+        'sidebarHeader'         | 'myClass'     | { -> 'My Body Closure' }      || '<li class="navbar-brand myClass">My Body Closure</li><hr>'
         'contentFrame'          | ''            | { }                           || '<div class="col-xs-12 col-sm-9 "></div>'
         'contentFrame'          | ''            | { -> 'My Body Closure' }      || '<div class="col-xs-12 col-sm-9 ">My Body Closure</div>'
         'contentFrame'          | 'myClass'     | { -> 'My Body Closure' }      || '<div class="col-xs-12 col-sm-9 myClass">My Body Closure</div>'
+        'contentFrameAdmin'     | ''            | { }                           || '<div class="col-xs-10 col-xs-offset-2 "></div>'
+        'contentFrameAdmin'     | ''            | { -> 'My Body Closure' }      || '<div class="col-xs-10 col-xs-offset-2 ">My Body Closure</div>'
+        'contentFrameAdmin'     | 'myClass'     | { -> 'My Body Closure' }      || '<div class="col-xs-10 col-xs-offset-2 myClass">My Body Closure</div>'
         'productsGridLayout'    | ''            | { }                           || '<div class="col-xs-6 col-md-4 col-lg-3 "></div>'
         'productsGridLayout'    | ''            | { -> 'My Body Closure' }      || '<div class="col-xs-6 col-md-4 col-lg-3 ">My Body Closure</div>'
         'productsGridLayout'    | 'myClass'     | { -> 'My Body Closure' }      || '<div class="col-xs-6 col-md-4 col-lg-3 myClass">My Body Closure</div>'
@@ -66,11 +78,24 @@ class GridLayoutTagLibSpec extends Specification {
         'formHorizontal'        | 'myClass'     | { -> 'My Body Closure' }      || '<form class="form-horizontal myClass">My Body Closure</form>'
         'formGroup'             | ''            | { }                           || '<div class="form-group"></div>'
         'formGroup'             | ''            | { -> 'My Body Closure' }      || '<div class="form-group">My Body Closure</div>'
-        'footer'                | ''            | { }                           || '<footer class="footer"></footer>'
-        'footer'                | ''            | { -> 'My Body Closure' }      || '<footer class="footer">My Body Closure</footer>'
+        'footer'                | ''            | { }                           || '<footer class="footer "></footer>'
+        'footer'                | ''            | { -> 'My Body Closure' }      || '<footer class="footer ">My Body Closure</footer>'
+        'footer'                | 'myClass'     | { -> 'My Body Closure' }      || '<footer class="footer myClass">My Body Closure</footer>'
         'radio'                 | ''            | { }                           || '<div class="radio "></div>'
         'radio'                 | ''            | { -> 'My Body Closure' }      || '<div class="radio ">My Body Closure</div>'
         'radio'                 | 'myClass'     | { -> 'My Body Closure' }      || '<div class="radio myClass">My Body Closure</div>'
+        'table'                 | ''            | { }                           || '<table class="table "></table>'
+        'table'                 | ''            | { -> 'My Body Closure' }      || '<table class="table ">My Body Closure</table>'
+        'table'                 | 'myClass'     | { -> 'My Body Closure' }      || '<table class="table myClass">My Body Closure</table>'
+        'pullRight'             | ''            | { }                           || '<div class="pull-right "></div>'
+        'pullRight'             | ''            | { -> 'My Body Closure' }      || '<div class="pull-right ">My Body Closure</div>'
+        'pullRight'             | 'myClass'     | { -> 'My Body Closure' }      || '<div class="pull-right myClass">My Body Closure</div>'
+        'pullLeft'              | ''            | { }                           || '<div class="pull-left "></div>'
+        'pullLeft'              | ''            | { -> 'My Body Closure' }      || '<div class="pull-left ">My Body Closure</div>'
+        'pullLeft'              | 'myClass'     | { -> 'My Body Closure' }      || '<div class="pull-left myClass">My Body Closure</div>'
+        'button'                | ''            | { }                           || '<button type="button" class="btn btn-primary "></button>'
+        'button'                | ''            | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary ">My Body Closure</button>'
+        'button'                | 'myClass'     | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary myClass">My Body Closure</button>'
     }
 
     @Unroll
@@ -102,5 +127,20 @@ class GridLayoutTagLibSpec extends Specification {
         'myClass'   | 'myType'  | 'id1'     | ''        | ''                || '<input class="form-control myClass" type="myType" id="id1" name="" placeholder="">'
         'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''                || '<input class="form-control myClass" type="myType" id="id1" name="myName" placeholder="">'
         'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Placeholder'  || '<input class="form-control myClass" type="myType" id="id1" name="myName" placeholder="My Placeholder">'
+    }
+
+    @Unroll
+    void "Testing tag: preFilledInputForm with cssClass: '#cssClass', type: '#type', id: '#id', name: '#name' and value: '#value'"() {
+        expect:
+        tagLib.preFilledInputForm( cssClasses: cssClass, type: type, id: id, name: name, value: value )  == result
+
+        where:
+        cssClass    | type      | id        | name      | value       || result
+        ''          | ''        | ''        | ''        | ''          || '<input class="form-control " type="" id="" name="" value="">'
+        'myClass'   | ''        | ''        | ''        | ''          || '<input class="form-control myClass" type="" id="" name="" value="">'
+        'myClass'   | 'myType'  | ''        | ''        | ''          || '<input class="form-control myClass" type="myType" id="" name="" value="">'
+        'myClass'   | 'myType'  | 'id1'     | ''        | ''          || '<input class="form-control myClass" type="myType" id="id1" name="" value="">'
+        'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''          || '<input class="form-control myClass" type="myType" id="id1" name="myName" value="">'
+        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Value'  || '<input class="form-control myClass" type="myType" id="id1" name="myName" value="My Value">'
     }
 }

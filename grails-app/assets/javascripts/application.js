@@ -37,18 +37,24 @@ if (typeof jQuery !== 'undefined') {
 			event.preventDefault();
 		});
 
-		// Enable/disable fields within radios in shoppingCart/delivery.gsp
-		$("#optionsRadios1").click(function() {$("#alternativeAddress").prop("disabled", true);});
-		$("#optionsRadios2").click(function() {$("#alternativeAddress").prop("disabled", false);});
+	// Enable/disable fields within radios in shoppingCart/delivery.gsp
+	$("#optionsRadios1").click(function() {$("#alternativeAddress").prop("disabled", true);});
+	$("#optionsRadios2").click(function() {$("#alternativeAddress").prop("disabled", false);});
 
-		// Update active link in navbar
-		$('.navbar-left .lang').click(function(e) {
-			var $this = $(this);
-			$('.navbar-left .lang').removeClass('active');
-			if (!$this.hasClass('active')) {
-            			$this.addClass('active');
-          		}
-        	});
+	// Dynamically update active link in navbar
+	$('.navbar-lpacking.gspft .lang').click(function(e) {
+		var $this = $(this);
+		$('.navbar-left .lang').removeClass('active');
+		if (!$this.hasClass('active')) {
+			$this.addClass('active');
+		}
+	});
+
+	$('.navbar-link.adminDisabled').click(function(event) {
+		$('#feedback-area').css('text-align','center');
+		var msg = '<h4>You are not authorized to use this function!</h4>';
+		displayMessage('danger', msg);
+	});
 
 	})(jQuery);
 

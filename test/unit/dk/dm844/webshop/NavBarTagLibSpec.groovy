@@ -17,6 +17,14 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         tag                     | cssClass      | bodyClosure               || result
+        'navbarDefault'         | ''            | { }                       || '<nav class="navbar navbar-default navbar-fixed-top "></nav>'
+        'navbarDefault'         | ''            | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top ">My Body Closure</nav>'
+        'navbarDefault'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top myClass">My Body Closure</nav>'
+        'navbarInverse'         | ''            | { }                       || '<nav class="navbar navbar-inverse navbar-fixed-top "></nav>'
+        'navbarInverse'         | ''            | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top ">My Body Closure</nav>'
+        'navbarInverse'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top myClass">My Body Closure</nav>'
+        'navbarHeader'          | ''            | { }                       || '<div class="navbar-header"></div>'
+        'navbarHeader'          | ''            | { -> 'My Body Closure' }  || '<div class="navbar-header">My Body Closure</div>'
         'navbarLeftContent'     | ''            | { }                       || '<ul class="nav navbar-nav navbar-left"></ul>'
         'navbarLeftContent'     | ''            | { -> 'My Body Closure' }  || '<ul class="nav navbar-nav navbar-left">My Body Closure</ul>'
         'navbarRightContent'    | ''            | { }                       || '<ul class="nav navbar-nav navbar-right"></ul>'
@@ -39,43 +47,27 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         cssClass        | href                      | bodyClosure               || result
-        ''              | ''                        | { }                       || '<a class="navbar-link " href=""></a>'
-        ''              | '#'                       | { }                       || '<a class="navbar-link " href="#"></a>'
-        ''              | '#'                       | { -> "Empty link" }       || '<a class="navbar-link " href="#">Empty link</a>'
-        'myClass'       | 'http://www.dr.dk'        | { }                       || '<a class="navbar-link myClass" href="http://www.dr.dk"></a>'
-        'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link myClass" href="http://www.dr.dk">Visit dr.dk</a>'
-        ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a class="navbar-link " href="http://www.dr.dk">Visit dr.dk</a>'
+        ''              | ''                        | { }                       || '<a href="/" class="navbar-link "></a>'
+        ''              | '#'                       | { }                       || '<a href="#" class="navbar-link "></a>'
+        ''              | '#'                       | { -> "Empty link" }       || '<a href="#" class="navbar-link ">Empty link</a>'
+        'myClass'       | 'http://www.dr.dk'        | { }                       || '<a href="http://www.dr.dk" class="navbar-link myClass"></a>'
+        'myClass'       | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a href="http://www.dr.dk" class="navbar-link myClass">Visit dr.dk</a>'
+        ''              | 'http://www.dr.dk'        | { -> "Visit dr.dk" }      || '<a href="http://www.dr.dk" class="navbar-link ">Visit dr.dk</a>'
     }
 
     @Unroll
-    void "Testing tag: navbar with body: '#bodyClosure'"() {
+    void "Testing tag: progressBar with percentate completed: '#completed'"() {
         expect:
-        tagLib.navbar() == '<nav class="navbar navbar-default navbar-fixed-top">' +
-                            '<div class="container">' +
-                            '<div class="navbar-header">' +
-                            '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">' +
-                            '<span class="sr-only">Toggle navigation</span>' +
-                            '<span class="icon-bar"></span>' +
-                            '<span class="icon-bar"></span>' +
-                            '<span class="icon-bar"></span>' +
-                            '</button>' +
-                            '<a class="navbar-brand" href="/webshop">GroceryShop</a>' +
-                            '</div>' +
-                            '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">' +
-                            '</div></div></nav>'
+        tagLib.progressBar( percentCompleted: completed ) == result
 
-        tagLib.navbar( { -> 'My Body Closure' } ) == '<nav class="navbar navbar-default navbar-fixed-top">' +
-                '<div class="container">' +
-                '<div class="navbar-header">' +
-                '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">' +
-                '<span class="sr-only">Toggle navigation</span>' +
-                '<span class="icon-bar"></span>' +
-                '<span class="icon-bar"></span>' +
-                '<span class="icon-bar"></span>' +
-                '</button>' +
-                '<a class="navbar-brand" href="/webshop">GroceryShop</a>' +
-                '</div>' +
-                '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">' +
-                'My Body Closure</div></div></nav>'
+        where:
+        completed   || result
+        ''          || '<div class="progress">' +
+                '<div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: %;">%' +
+                '</div></div>'
+
+        '50'        || '<div class="progress">' +
+                '<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%' +
+                '</div></div>'
     }
 }

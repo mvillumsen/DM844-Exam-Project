@@ -10,7 +10,7 @@ class CategoryTagLib {
         List<Category> categories = categoryService.getCategories()
 
         categories?.each { Category cat ->
-            out << """<li role="presentation">${g.link(controller: 'Category', action: 'show', id: cat.id) { cat.name } }</li>"""
+            out << """<li>${g.link(controller: 'Category', action: 'show', id: cat.id) { cat.name } }</li>"""
         }
     }
 

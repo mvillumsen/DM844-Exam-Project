@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <meta name="layout" content="template"/>
-        <title>Welcome to The Webshop</title>
+<head>
+    <meta name="layout" content="shopTemplate"/>
+    <title>Welcome to The Webshop</title>
 
-	</head>
-	<body>
-        <ol class="breadcrumb">
-            <li class="active">Home</li>
-        </ol>
+</head>
 
-        <h1>Welcome to our webshop</h1>
-        <p class="lead">Pick a category in the menu to the left in order to browse our goods.</p>
+<body>
+<ol class="breadcrumb">
+    <li class="active">Home</li>
+</ol>
 
-	</body>
+<h1>Welcome to our webshop</h1>
+
+<p class="lead">Pick a category in the menu to the left in order to browse our goods.</p>
+
+</body>
 </html>

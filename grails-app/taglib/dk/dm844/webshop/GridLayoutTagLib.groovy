@@ -11,6 +11,13 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
+    def containerFluid = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="container-fluid ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
     def header = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="page-header ${cssClasses}">"""
@@ -29,15 +36,34 @@ class GridLayoutTagLib {
     def sidebar = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="hidden-xs col-sm-3 ${cssClasses}">"""
-        out << """<ul class="nav nav-pills nav-stacked">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def navPills = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<ul class="nav nav-pills nav-stacked ${cssClasses}">"""
         out << body()
         out << """</ul>"""
-        out << """</div>"""
+    }
+
+    def sidebarHeader = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<li class="navbar-brand ${cssClasses}">"""
+        out << body()
+        out << """</li><hr>"""
     }
 
     def contentFrame = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="col-xs-12 col-sm-9 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def contentFrameAdmin = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-10 col-xs-offset-2 ${cssClasses}">"""
         out << body()
         out << """</div>"""
     }
@@ -132,7 +158,7 @@ class GridLayoutTagLib {
         out << """</label>"""
     }
 
-    def inputForm = { attrs, body ->
+    def inputForm = { attrs ->
         String cssClasses = attrs.cssClasses ?: ''
         String type = attrs.type ?: ''
         String id = attrs.id ?: ''
@@ -142,8 +168,19 @@ class GridLayoutTagLib {
         out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}">"""
     }
 
+    def preFilledInputForm = { attrs ->
+        String cssClasses = attrs.cssClasses ?: ''
+        String type = attrs.type ?: ''
+        String id = attrs.id ?: ''
+        String name = attrs.name ?: ''
+        String value = attrs.value ?: ''
+
+        out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" value="${value}">"""
+    }
+
     def footer = { attrs, body ->
-        out << """<footer class="footer">"""
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<footer class="footer ${cssClasses}">"""
         out << body()
         out << """</footer>"""
     }
@@ -153,5 +190,33 @@ class GridLayoutTagLib {
         out << """<div class="radio ${cssClasses}">"""
         out << body()
         out << """</div>"""
+    }
+
+    def table = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<table class="table ${cssClasses}">"""
+        out << body()
+        out << """</table>"""
+    }
+
+    def pullRight = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="pull-right ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def pullLeft = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="pull-left ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def button = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<button type="button" class="btn btn-primary ${cssClasses}">"""
+        out << body()
+        out << """</button>"""
     }
 }

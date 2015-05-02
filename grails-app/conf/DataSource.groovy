@@ -35,7 +35,7 @@ environments {
             username = "dm844admin_prod"
             password = "dm844"
             dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:postgresql://localhost:5432/dm844dprod" //TODO change DB name for production
+            url = "jdbc:postgresql://localhost:5432/dm844prod"
 
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation

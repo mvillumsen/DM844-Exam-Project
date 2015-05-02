@@ -22,7 +22,7 @@ environments {
             dialect = "org.hibernate.dialect.PostgreSQLDialect"
             username = "dm844demo_dev"
             password = "dm844"
-            dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = 'create' // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:postgresql://localhost:5432/dm844demo_dev"
         }
     }
@@ -36,10 +36,10 @@ environments {
         dataSource {
             driverClassName = "org.postgresql.Driver"
             dialect = "org.hibernate.dialect.PostgreSQLDialect"
-            username = "dm844admin_prod"
+            username = "dm844demo_dev"
             password = "dm844"
             dbCreate = 'update' // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:postgresql://localhost:5432/dm844prod"
+            url = "jdbc:postgresql://localhost:5432/dm844demo_dev" //TODO change DB name for production
 
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation

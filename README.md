@@ -44,7 +44,7 @@ The front-end must allow users to select products and make orders.
 
 ## Deployed Web App
 * Available at: http://188.226.206.170
-### Users:
+### User Information:
 * Admin
     * Username: erik
     * Password: er456

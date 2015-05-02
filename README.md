@@ -35,12 +35,11 @@ The front-end must allow users to select products and make orders.
 * As you conclude yourself, this part of the project is not quite done - not able to complete an order :(
 * Check the commit for a few comments placed in the code
 
-## Info
-* Test-reports: 188.226.206.170/test-reports/standard
+## Info (Test reports currently not available due to config error in Virtual Host)
+* Test-reports: http://188.226.206.170/test-reports/standard
 * Test-reports (Code Coverage): http://188.226.206.170/test-reports/cobertura/
 * Test-reports (CodeNarc): http://188.226.206.170/test-reports/codenarc
-* Jenkins: 188.226.206.170:8090/jenkins/
-* Tomcat: 188.226.206.170:8080
+* Jenkins: http://188.226.206.170/jenkins/
 
 ## Deployed Web App
 * Available at: http://188.226.206.170

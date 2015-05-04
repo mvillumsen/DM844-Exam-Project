@@ -12,7 +12,7 @@
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
-<tb:table cssClasses="table-hover table-striped">
+<admin:tableStriped>
     <thead>
     <tr>
 
@@ -53,7 +53,7 @@
         </tr>
     </g:each>
     </tbody>
-</tb:table>
+</admin:tableStriped>
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
         <g:link class="create" action="create">

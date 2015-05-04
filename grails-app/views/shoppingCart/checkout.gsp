@@ -10,7 +10,7 @@
 <tb:breadcrumb>
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
-    <tb:liActive><g:message code="shoppingCart.checkout"/></tb:liActive>
+    <tb:liActive><g:message code="shoppingCart.checkout.title"/></tb:liActive>
 </tb:breadcrumb>
 
 <h2>Checkout</h2>
@@ -58,11 +58,14 @@
     </tr>
     </tfoot>
 </table>
-<tb:pullRight>
+<tb:col6 cssClasses="backButton">
+    <g:link controller="ShoppingCart" name="Back" class="btn btn-primary">Back</g:link>
+</tb:col6>
+<tb:col6 cssClasses="forwardButton">
     <g:form action="delivery">
         <g:submitButton name="Confirm" class="btn btn-primary"/>
     </g:form>
-</tb:pullRight>
+</tb:col6>
 </body>
 </html>
 

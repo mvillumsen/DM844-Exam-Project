@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.SpringSecurityService
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 
-@Secured(['ROLE_CUSTOMER'])
+@Secured([SecurityRole.CUSTOMER])
 class ShoppingCartController {
 
     CartService cartService
@@ -15,18 +15,18 @@ class ShoppingCartController {
         respond { }
     }
 
-    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+    @Secured(['permitAll'])
     def delivery() {
         respond { }
     }
 
-    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+    @Secured(['ROLE_CUSTOMER'])
     def checkout() {
         respond { }
     }
 
     @Transactional
-    @Secured(['ROLE_CUSTOMER', 'ROLE_EMPLOYEE_DRIVER', 'ROLE_EMPLOYEE_PACKER', 'ROLE_EMPLOYEE_ADMIN'])
+    @Secured(['ROLE_CUSTOMER'])
     def confirmation(Address addressInstance) {
         if (addressInstance.hasErrors()) {
             respond addressInstance.errors, view:'delivery'

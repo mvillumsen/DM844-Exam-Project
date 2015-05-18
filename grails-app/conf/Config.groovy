@@ -134,6 +134,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_PACKER
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_DRIVER
+    ROLE_EMPLOYEE_PACKER > ROLE_EMPLOYEE
+    ROLE_EMPLOYEE_DRIVER > ROLE_EMPLOYEE
     ROLE_EMPLOYEE_PACKER > ROLE_CUSTOMER
     ROLE_EMPLOYEE_DRIVER > ROLE_CUSTOMER
 '''

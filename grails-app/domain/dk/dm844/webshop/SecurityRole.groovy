@@ -3,6 +3,7 @@ package dk.dm844.webshop
 class SecurityRole {
 
 	final static String CUSTOMER = "ROLE_CUSTOMER"
+	final static String EMPLOYEE = "ROLE_EMPLOYEE"
 
 	final static class Employee {
 		final static String DRIVER = "ROLE_EMPLOYEE_DRIVER"

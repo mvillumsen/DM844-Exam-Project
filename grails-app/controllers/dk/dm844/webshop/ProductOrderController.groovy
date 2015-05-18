@@ -7,7 +7,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
+@Secured([SecurityRole.EMPLOYEE])
 class ProductOrderController {
 
     ProductOrderService productOrderService

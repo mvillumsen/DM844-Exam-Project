@@ -20,7 +20,7 @@ class PersonController {
         respond personInstance
     }
 
-    @Secured(['ROLE_EMPLOYEE_ADMIN'])
+    @Secured([SecurityRole.Employee.ADMIN])
     def create() {
         respond new Person(params)
     }
@@ -76,7 +76,7 @@ class PersonController {
     }
 
     @Transactional
-    @Secured(['ROLE_EMPLOYEE_ADMIN'])
+    @Secured([SecurityRole.Employee.ADMIN])
     def delete(Person personInstance) {
 
         if (personInstance == null) {

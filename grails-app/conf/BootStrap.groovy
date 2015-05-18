@@ -55,10 +55,11 @@ class BootStrap {
         }
 
 
-        SecurityRole customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
-        SecurityRole packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
-        SecurityRole driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
-        SecurityRole adminRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_ADMIN').save(failOnError: true, flush: true)
+        SecurityRole customerRole = new SecurityRole(authority: SecurityRole.CUSTOMER).save(failOnError: true, flush: true)
+        new SecurityRole(authority: SecurityRole.EMPLOYEE).save(failOnError: true, flush: true)
+        SecurityRole packerRole = new SecurityRole(authority: SecurityRole.Employee.PACKER).save(failOnError: true, flush: true)
+        SecurityRole driverRole =  new SecurityRole(authority: SecurityRole.Employee.DRIVER).save(failOnError: true, flush: true)
+        SecurityRole adminRole =  new SecurityRole(authority: SecurityRole.Employee.ADMIN).save(failOnError: true, flush: true)
 
         [
                 ['Alice', new Address(address1: 'Al Street 1', address2: 'My Address 2', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'alice', 'al123','alice@email.dk'],
@@ -85,7 +86,7 @@ class BootStrap {
 
 
         assert Person.count() == 5
-        assert SecurityRole.count() == 4
+        assert SecurityRole.count() == 5
         assert UserAliasSecurityRole.count() == 5
     }
 }

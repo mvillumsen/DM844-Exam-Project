@@ -25,7 +25,7 @@
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="Employee" action="assignments"
-                                class="navbar-link">My Tasks (<emp:assignedCount/>)</g:link></li>
+                                class="navbar-link">My Tasks <span class="badge"><emp:assignedCount/></span></g:link></li>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
@@ -67,7 +67,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.PACKER}">
                     <li><g:link controller="productOrder" action="packaging" class="navbar-link">
-                        Packing (<po:count status="${ProductOrder.Status.NEW}"/>)
+                        Packing <span class="badge"><po:count status="${ProductOrder.Status.NEW}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.PACKER}">
@@ -76,7 +76,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.DRIVER}">
                     <li><g:link controller="productOrder" action="shipment" class="navbar-link">
-                        Shipment (<po:count status="${ProductOrder.Status.PACKED}"/>)
+                        Shipment <span class="badge"><po:count status="${ProductOrder.Status.PACKED}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.DRIVER}">
@@ -85,7 +85,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li><g:link controller="productOrder" action="completed" class="navbar-link">
-                        Completed orders (<po:count status="${ProductOrder.Status.COMPLETED}"/>)
+                        Completed orders <span class="badge"><po:count status="${ProductOrder.Status.COMPLETED}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">

@@ -24,7 +24,7 @@
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="ShoppingCart"><g:message
-                        code="shoppingCart.label"/> (<sc:count/>)</g:link>
+                        code="shoppingCart.label"/> <span class="badge"><sc:count/></span></g:link>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>

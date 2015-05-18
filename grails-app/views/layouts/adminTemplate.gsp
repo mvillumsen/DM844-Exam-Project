@@ -21,7 +21,7 @@
 <tb:navbarInverse cssClasses="admin">
     <tb:containerFluid>
         <tb:navbarHeader>
-            <tb:navbarCollapse brand="GroceryShop" url="/webshop/admin">
+            <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'employee', action: 'index')}">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="Employee" action="assignments"
@@ -29,7 +29,7 @@
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <li><tb:navbarLink url="/webshop/">Webshop</tb:navbarLink>
+                        <li><tb:navbarLink url="${createLink(controller: 'home', action: 'index')}">Webshop</tb:navbarLink>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
                         <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>

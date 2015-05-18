@@ -20,13 +20,13 @@ class ShoppingCartController {
         respond { }
     }
 
-    @Secured(['ROLE_CUSTOMER'])
+    @Secured([SecurityRole.CUSTOMER])
     def checkout() {
         respond { }
     }
 
     @Transactional
-    @Secured(['ROLE_CUSTOMER'])
+    @Secured([SecurityRole.CUSTOMER])
     def confirmation(Address addressInstance) {
         if (addressInstance.hasErrors()) {
             respond addressInstance.errors, view:'delivery'
@@ -35,7 +35,7 @@ class ShoppingCartController {
 
         addressInstance.save flush:true
 
-        Person person = springSecurityService.currentUser
+        Person person = (Person) springSecurityService.currentUser
         ProductOrder order = cartService.doCheckout(person, addressInstance)
 
         [order: order]

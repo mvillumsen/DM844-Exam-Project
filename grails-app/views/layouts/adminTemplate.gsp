@@ -21,15 +21,15 @@
 <tb:navbarInverse cssClasses="admin">
     <tb:containerFluid>
         <tb:navbarHeader>
-            <tb:navbarCollapse brand="GroceryShop" url="/webshop/admin">
+            <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'employee', action: 'index')}">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="Employee" action="assignments"
-                                class="navbar-link">My Tasks (<emp:assignedCount/>)</g:link></li>
+                                class="navbar-link">My Tasks <span class="badge"><emp:assignedCount/></span></g:link></li>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <li><tb:navbarLink url="/webshop/">Webshop</tb:navbarLink>
+                        <li><tb:navbarLink url="${createLink(controller: 'home', action: 'index')}">Webshop</tb:navbarLink>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
                         <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
@@ -67,7 +67,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.PACKER}">
                     <li><g:link controller="productOrder" action="packaging" class="navbar-link">
-                        Packing (<po:count status="${ProductOrder.Status.NEW}"/>)
+                        Packing <span class="badge"><po:count status="${ProductOrder.Status.NEW}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.PACKER}">
@@ -76,7 +76,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.DRIVER}">
                     <li><g:link controller="productOrder" action="shipment" class="navbar-link">
-                        Shipment (<po:count status="${ProductOrder.Status.PACKED}"/>)
+                        Shipment <span class="badge"><po:count status="${ProductOrder.Status.PACKED}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.DRIVER}">
@@ -85,7 +85,7 @@
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li><g:link controller="productOrder" action="completed" class="navbar-link">
-                        Completed orders (<po:count status="${ProductOrder.Status.COMPLETED}"/>)
+                        Completed orders <span class="badge"><po:count status="${ProductOrder.Status.COMPLETED}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">

@@ -10,7 +10,7 @@
 
 <body>
 <tb:breadcrumb>
-    <li><g:link url="/webshop"><g:message code="default.home.label" default="Home"/></g:link></li>
+    <li><g:link controller="home" action="index" class="home"><g:message code="default.home.label" default="Home"/></g:link></li>
     <tb:liActive><g:message code="productOrder.listOrders" default="Orders"/></tb:liActive>
 </tb:breadcrumb>
 

@@ -2,18 +2,17 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate"/>
-    <title>Welcome to The Webshop</title>
+    <title>The Grocery Shop</title>
 
 </head>
 
 <body>
-<ol class="breadcrumb">
-    <li class="active">Home</li>
-</ol>
+<tb:breadcrumb>
+    <tb:liActive>Home</tb:liActive>
+</tb:breadcrumb>
 
-<h1>Welcome to our webshop</h1>
-
-<p class="lead">Pick a category in the menu to the left in order to browse our goods.</p>
+<h1>Welcome to The Grocery Shop</h1>
+<tb:pLeadText>Pick a category in the menu to the left in order to browse our goods.</tb:pLeadText>
 
 </body>
 </html>

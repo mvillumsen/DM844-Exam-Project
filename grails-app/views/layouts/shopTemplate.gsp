@@ -1,3 +1,4 @@
+<%@ page import="dk.dm844.webshop.SecurityRole" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,16 +20,16 @@
 <tb:navbarDefault>
     <tb:container>
         <tb:navbarHeader>
-            <tb:navbarCollapse brand="GroceryShop" url="/webshop/">
+            <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'home', action: 'index')}">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="ShoppingCart"><g:message
-                        code="shoppingCart.label"/> <sc:count/> </g:link>
+                        code="shoppingCart.label"/> <span class="badge"><sc:count/></span></g:link>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <sec:ifAnyGranted roles="ROLE_EMPLOYEE_DRIVER, ROLE_EMPLOYEE_ADMIN, ROLE_EMPLOYEE_PACKER">
-                            <li><g:link controller="admin">Admin</g:link></li>
+                        <sec:ifAnyGranted roles="${SecurityRole.EMPLOYEE}">
+                            <li><g:link controller="employee">Admin</g:link></li>
                         </sec:ifAnyGranted>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
                         <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>

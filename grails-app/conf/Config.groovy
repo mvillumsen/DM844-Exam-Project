@@ -124,7 +124,7 @@ grails.plugin.springsecurity.authority.className = 'dk.dm844.webshop.SecurityRol
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
     '/index':                         ['permitAll'],
-    '/index.gsp':                     ['permitAll'],
+    '/home/index.gsp':                ['permitAll'],
 	'/assets/**':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
@@ -134,6 +134,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_PACKER
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_DRIVER
+    ROLE_EMPLOYEE_PACKER > ROLE_EMPLOYEE
+    ROLE_EMPLOYEE_DRIVER > ROLE_EMPLOYEE
     ROLE_EMPLOYEE_PACKER > ROLE_CUSTOMER
     ROLE_EMPLOYEE_DRIVER > ROLE_CUSTOMER
 '''

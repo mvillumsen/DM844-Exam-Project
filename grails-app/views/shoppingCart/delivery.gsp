@@ -8,7 +8,7 @@
 
 <body>
 <tb:breadcrumb>
-    <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
+    <li><g:link controller="home" action="index"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="shoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
     <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout.title"/></g:link> </li>
     <tb:liActive><g:message code="delivery.breadcrumbs.label"/></tb:liActive>
@@ -53,7 +53,7 @@
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="zipCode"><strong><g:message
-                            code="delivery.address.postalCode"/>:</strong></tb:label></tb:col2>
+                            code="delivery.address.zipCode"/>:</strong></tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="zipCode" name="zipCode" type="text"
                                                     value="${it.zipCode}"/></tb:col8>
                 </tb:formGroup>

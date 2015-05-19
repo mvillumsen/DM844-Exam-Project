@@ -7,8 +7,8 @@
 </head>
 
 <body>
-<tb:breadcrumb cssClasses="navbar">
-    <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
+<tb:breadcrumb>
+    <li><g:link controller="home" action="index"><g:message code="default.home.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </tb:breadcrumb>
 <h2>Shopping Cart</h2>
@@ -52,8 +52,8 @@
     <tfoot>
     <tr>
         <td><g:message code="shoppingCart.grandTotal"/></td>
-        <td/>
-        <td/>
+        <td></td>
+        <td></td>
         <td>
             <sc:price><sc:total/></sc:price>
         </td>

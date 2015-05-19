@@ -1,4 +1,6 @@
 @import "bootstrap.less";
+@import "custom-variables.less";
+@import "bootswatch.less";
 
 @userBackgroundColor: #f8f8f8;
 @userBorderColor: #e7e7e7;
@@ -54,10 +56,6 @@ body {
   margin: @buttonsMargin;
 }
 
-.breadcrumb {
-  background-color: @userBackgroundColor;
-}
-
 .products {
   height: 330px;
 }
@@ -87,7 +85,7 @@ body {
 }
 
 .deliveryLabel {
-  padding: 0px;
+  padding: 0;
   margin-bottom: 10px;
   font-size: 14px;
   text-align: right;
@@ -170,16 +168,16 @@ html {
     color: @adminColor;
     font-weight: 500;
     font-size: 18px;
-    margin: 0px;
+    margin: 0;
   }
 
   hr {
-    margin: 0px;
+    margin: 0;
   }
 }
 
 .content {
-  padding: 0px 50px;
+  padding: 0 50px;
 }
 
 .headerAdmin {
@@ -188,4 +186,8 @@ html {
 
 .optionRadio {
   margin-top: 12px;
+}
+
+.badge {
+  margin-left: 5px;
 }

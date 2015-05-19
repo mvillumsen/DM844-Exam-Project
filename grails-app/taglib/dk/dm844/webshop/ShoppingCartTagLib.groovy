@@ -8,7 +8,7 @@ class ShoppingCartTagLib {
     CartService cartService
 
     def count = {
-        out << "<span id=\"cart-count\">"
+        out << "<span class=\"badge\">"
         out << cartService.count()
         out << "</span>"
     }

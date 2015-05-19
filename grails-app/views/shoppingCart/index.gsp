@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<tb:breadcrumb>
+<tb:breadcrumb cssClasses="navbar">
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </tb:breadcrumb>

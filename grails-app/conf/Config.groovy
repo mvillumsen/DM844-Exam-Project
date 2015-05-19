@@ -138,5 +138,6 @@ grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_EMPLOYEE_DRIVER > ROLE_CUSTOMER
 '''
 
-grails.asset.plugin."twitter-bootstrap".excludes=["**/*.less"]
-grails.asset.plugin."twitter-bootstrap".includes=["bootstrap.less"]
+grails.assets.less.compile = "less4j"
+grails.assets.plugin."twitter-bootstrap".excludes=["**/*.less"]
+grails.assets.plugin."twitter-bootstrap".includes=["bootstrap.less"]

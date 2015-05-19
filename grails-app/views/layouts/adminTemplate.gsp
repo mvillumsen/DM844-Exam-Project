@@ -39,7 +39,7 @@
     </tb:containerFluid>
 </tb:navbarInverse>
 
-<div class="container-fluid">
+<tb:containerFluid>
     <tb:row>
         <tb:col2 cssClasses="sidebar">
             <tb:navPills cssClasses="admin">
@@ -103,7 +103,7 @@
             </article>
         </tb:contentFrameAdmin>
     </tb:row>
-</div>
+</tb:containerFluid>
 
 <%-- FEEDBACK AREA --%>
 <section id="feedback-area"></section>

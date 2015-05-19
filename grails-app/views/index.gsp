@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate"/>
-    <title>Welcome to The Grocery Shop</title>
+    <title>The Grocery Shop</title>
 
 </head>
 

@@ -16,7 +16,7 @@
 <tb:breadcrumb>
     <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
-    <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout"/></g:link></li>
+    <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout.title"/></g:link></li>
     <li><g:link controller="shoppingCart" action="delivery"><g:message code="delivery.breadcrumbs.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.confirmation"/></tb:liActive>
 </tb:breadcrumb>
@@ -29,17 +29,17 @@
     <tb:label><g:message code="delivery.name.label"/>:</tb:label> ${order.customer.name}<br>
     <tb:label><g:message code="delivery.address1.label"/>:</tb:label> ${order.address.address1}<br>
     <tb:label><g:message code="delivery.address2.label"/>:</tb:label> ${order.address.address2}<br>
-    <tb:label><g:message code="delivery.zipCode"/>:</tb:label> ${order.address.zipCode}<br>
-    <tb:label><g:message code="delivery.city"/>:</tb:label>${order.address.city}<br>
-    <tb:label><g:message code="delivery.country"/>:</tb:label>${order.address.country}<br>
+    <tb:label><g:message code="delivery.address.postalCode"/>:</tb:label> ${order.address.zipCode}<br>
+    <tb:label><g:message code="delivery.address.city"/>:</tb:label>${order.address.city}<br>
+    <tb:label><g:message code="delivery.address.country"/>:</tb:label>${order.address.country}<br>
 </tb:address>
 <table class="table">
     <thead>
     <tr>
-        <th><g:message code="cart.product"/></th>
-        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="shoppingCart.product"/></th>
+        <th><g:message code="shoppingCart.amount"/></th>
         <th><g:message code="product.price"/></th>
-        <th><g:message code="cart.total"/></th>
+        <th><g:message code="shoppingCart.total"/></th>
     </tr>
     </thead>
     <tbody>
@@ -66,7 +66,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <td><g:message code="cart.grandtotal"/></td>
+        <td><g:message code="shoppingCart.total"/></td>
         <td/>
         <td/>
         <td>

@@ -16,14 +16,14 @@
 </head>
 
 <body>
-<tb:navbarDefault cssClasses="user">
+<tb:navbarDefault>
     <tb:container>
         <tb:navbarHeader>
             <tb:navbarCollapse brand="GroceryShop" url="/webshop/">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="ShoppingCart"><g:message
-                        code="shoppingCart.label"/> (<sc:count>it</sc:count>)</g:link>
+                        code="shoppingCart.label"/> <sc:count/> </g:link>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
@@ -60,7 +60,7 @@
 <tb:container>
     <header>
         <tb:header>
-            <h1>The Grocery Shop <small>Fresh groceries for everyone!</small></h1>
+            <h1><g:layoutTitle/></h1>
         </tb:header>
     </header>
 
@@ -82,9 +82,10 @@
     </tb:row>
 </tb:container>
 
+<%-- TODO: Put content in footer --%>
 <tb:footer cssClasses="user">
     <tb:container>
-        <p class="muted credit">Example footer</p>
+        <p class="credit">Example footer</p>
     </tb:container>
 </tb:footer>
 

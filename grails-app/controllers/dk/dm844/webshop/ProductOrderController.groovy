@@ -143,7 +143,7 @@ class ProductOrderController {
 
         Person employee = springSecurityService.currentUser
         if (employee != productOrderInstance.assignedEmployee) {
-            render { status: UNAUTHORIZED }
+            response.sendError(UNAUTHORIZED.value())
             return
         }
 
@@ -155,6 +155,21 @@ class ProductOrderController {
     def completed() {
         List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.COMPLETED)
         [orders: orders]
+    }
+
+    @Secured([SecurityRole.CUSTOMER])
+    def confirmation (ProductOrder productOrderInstance) {
+        if(!productOrderInstance) {
+            notFound()
+            return
+        }
+
+        Person customer = (Person) springSecurityService.currentUser
+        if (productOrderInstance.customer != customer) {
+            response.sendError(UNAUTHORIZED.value())
+            return
+        }
+        [order: productOrderInstance]
     }
 
     protected void notFound() {

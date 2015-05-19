@@ -221,7 +221,7 @@ class ProductOrderControllerSpec extends Specification {
         controller.finishAssignment(new ProductOrder())
 
         then:
-        response.status == HttpStatus.OK.value()
+        response.status == HttpStatus.UNAUTHORIZED.value()
 
         when:
         response.reset()

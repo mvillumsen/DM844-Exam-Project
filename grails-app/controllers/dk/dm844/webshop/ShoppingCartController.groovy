@@ -38,6 +38,6 @@ class ShoppingCartController {
         Person person = (Person) springSecurityService.currentUser
         ProductOrder order = cartService.doCheckout(person, addressInstance)
 
-        [order: order]
+        redirect(controller: 'productOrder', action: 'confirmation', id: order.id)
     }
 }

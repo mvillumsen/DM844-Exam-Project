@@ -4,11 +4,12 @@ import com.metasieve.shoppingcart.Shoppable
 
 class ShoppingCartTagLib {
     static namespace = "sc"
+    static defaultEncodeAs = [taglib: 'none']
 
     CartService cartService
 
     def count = {
-        out << "<span class=\"badge\">"
+        out << "<span id=\"cart-count\">"
         out << cartService.count()
         out << "</span>"
     }

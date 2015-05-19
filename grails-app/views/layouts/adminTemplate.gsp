@@ -17,8 +17,7 @@
 </head>
 
 <body>
-
-<tb:navbarInverse cssClasses="admin">
+<tb:navbarDefault>
     <tb:containerFluid>
         <tb:navbarHeader>
             <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'employee', action: 'index')}">
@@ -29,19 +28,19 @@
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <li><tb:navbarLink url="${createLink(controller: 'home', action: 'index')}">Webshop</tb:navbarLink>
-                        <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
-                        <li><tb:navbarText><strong><g:message code="default.loggedIn"/><sec:username/></strong></tb:navbarText></li>
+                        <li><tb:navbarLink url="${createLink(controller: 'home', action: 'index')}"><g:message code="admin.webshop.label" /></tb:navbarLink>
+                        <li><tb:navbarLink url="/webshop/j_spring_security_logout"><g:message code="default.logout.label"/></tb:navbarLink></li>
+                        <li><tb:navbarText><strong><g:message code="default.loggedIn"/> <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
                 </tb:navbarRightContent>
             </tb:navbarCollapse>
         </tb:navbarHeader>
     </tb:containerFluid>
-</tb:navbarInverse>
+</tb:navbarDefault>
 
 <tb:containerFluid>
     <tb:row>
-        <tb:col2 cssClasses="sidebar">
+        <tb:col2 cssClasses="navbar-default sidebar">
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header"><g:message code="admin.users.label" /></tb:sidebarHeader>
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
@@ -56,9 +55,9 @@
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header"><g:message code="admin.products.label" /></tb:sidebarHeader>
                 <li><g:link controller="product" class="navbar-link"><g:message code="admin.products.all" /></g:link></li>
-                <li><g:link controller="product" action="create"><g:message code="admin.products.create" /></g:link></li>
+                <li><g:link controller="product" class="navbar-link" action="create"><g:message code="admin.products.create" /></g:link></li>
                 <li><g:link controller="category" class="navbar-link"><g:message code="admin.categories.label" /></g:link></li>
-                <li><g:link controller="category" action="create" class="navbar-link"><g:message code="admin.categories.create" /></g:link></li>
+                <li><g:link controller="category" class="navbar-link" action="create"><g:message code="admin.categories.create" /></g:link></li>
             </tb:navPills><br>
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header"><g:message code="admin.orders.label" /></tb:sidebarHeader>
@@ -108,9 +107,8 @@
 <%-- FEEDBACK AREA --%>
 <section id="feedback-area"></section>
 
-<tb:footer cssClasses="admin">
+<tb:footer cssClasses="navbar-default">
     <tb:container>
-        <p class="muted credit">Example admin footer</p>
     </tb:container>
 </tb:footer>
 

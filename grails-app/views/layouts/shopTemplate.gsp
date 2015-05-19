@@ -29,18 +29,18 @@
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
                         <sec:ifAnyGranted roles="${SecurityRole.EMPLOYEE}">
-                            <li><g:link controller="employee">Admin</g:link></li>
+                            <li><g:link controller="employee"><g:message code="default.admin.label" /></g:link></li>
                         </sec:ifAnyGranted>
-                        <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
-                        <li><tb:navbarText><strong><g:message code="default.loggedIn" /><sec:username/></strong></tb:navbarText></li>
+                        <li><tb:navbarLink url="/webshop/j_spring_security_logout"><g:message code="default.logout.label"/> </tb:navbarLink></li>
+                        <li><tb:navbarText><strong><g:message code="default.loggedIn" /> <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <tb:signinDropdown>
                             <login:form resource="${resource(file: 'j_spring_security_check')}">
-                                <tb:label for="username">Username</tb:label>
+                                <tb:label for="username"><g:message code="default.username.label"/> </tb:label>
                                 <tb:formGroup><tb:inputForm name="j_username" id="username" type="username"
                                                             placeholder="Username"/></tb:formGroup>
-                                <tb:label for="password">Password</tb:label>
+                                <tb:label for="password"><g:message code="default.password.label"/> </tb:label>
                                 <tb:formGroup><tb:inputForm name="j_password" id="password" type="password"
                                                             placeholder="Password"/></tb:formGroup>
                                 <login:checkbox><g:message code="default.rememberMe" /></login:checkbox>
@@ -84,9 +84,8 @@
 </tb:container>
 
 <%-- TODO: Put content in footer --%>
-<tb:footer cssClasses="user">
+<tb:footer cssClasses="navbar-default">
     <tb:container>
-        <p class="credit">Example footer</p>
     </tb:container>
 </tb:footer>
 

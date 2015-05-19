@@ -116,17 +116,8 @@ html {
   display: none;
 }
 
-.admin {
-  background: @adminBackgroundColor;
-  border-color: @adminBorderColor;
-}
-
 .adminNewButton {
   margin-left: 20px;
-}
-.user {
-  background-color: @userBackgroundColor;
-  border-color: @userBorderColor;
 }
 
 .footer {
@@ -135,16 +126,7 @@ html {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-}
-
-.footer.admin {
-  background-color: @adminBackgroundColor;
-  border-top: 1px solid @adminBorderColor;
-}
-
-.footer.user {
-  background-color: @userBackgroundColor;
-  border-top: 1px solid @userBorderColor;
+  border-top: 1px solid;
 }
 
 .sidebar {
@@ -157,15 +139,9 @@ html {
   bottom: 0;
   z-index: 1000;
   display: block;
-  background-color: @adminBackgroundColor;
-  border-right: 1px solid @adminBorderColor;
-
-  a {
-    color: @adminColor;
-  }
+  border-right: 1px solid;
 
   .header {
-    color: @adminColor;
     font-weight: 500;
     font-size: 18px;
     margin: 0;
@@ -178,10 +154,6 @@ html {
 
 .content {
   padding: 0 50px;
-}
-
-.headerAdmin {
-  border-bottom: 1px solid @adminBorderColor;
 }
 
 .optionRadio {

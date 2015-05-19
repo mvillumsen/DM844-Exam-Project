@@ -5,6 +5,7 @@ import grails.plugin.springsecurity.SpringSecurityService
 
 class EmployeeTagLib {
     static namespace = "emp"
+    static defaultEncodeAs = [taglib: 'none']
 
     EmployeeService employeeService
     SpringSecurityService springSecurityService

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate"/>
-    <title>The Grocery Shop</title>
+    <title><g:message code="default.store.name"/> </title>
 
 </head>
 
@@ -11,8 +11,8 @@
     <tb:liActive>Home</tb:liActive>
 </tb:breadcrumb>
 
-<h1>Welcome to The Grocery Shop</h1>
-<tb:pLeadText>Pick a category in the menu to the left in order to browse our goods.</tb:pLeadText>
+<h1><g:message code="default.store.welcome" /></h1>
+<tb:pLeadText><g:message code="default.store.pickCategory" /></tb:pLeadText>
 
 </body>
 </html>

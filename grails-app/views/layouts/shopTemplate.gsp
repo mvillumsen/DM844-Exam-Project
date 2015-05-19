@@ -32,7 +32,7 @@
                             <li><g:link controller="employee">Admin</g:link></li>
                         </sec:ifAnyGranted>
                         <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
-                        <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>
+                        <li><tb:navbarText><strong><g:message code="default.loggedIn" /><sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <tb:signinDropdown>
@@ -43,7 +43,7 @@
                                 <tb:label for="password">Password</tb:label>
                                 <tb:formGroup><tb:inputForm name="j_password" id="password" type="password"
                                                             placeholder="Password"/></tb:formGroup>
-                                <login:checkbox>Remember me</login:checkbox>
+                                <login:checkbox><g:message code="default.rememberMe" /></login:checkbox>
                                 <login:signInButton><g:message code="default.signIn.label"/></login:signInButton>
                             </login:form>
                         </tb:signinDropdown>

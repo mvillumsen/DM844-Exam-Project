@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: martin
-  Date: 29/04/15
-  Time: 15:34
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -23,7 +16,7 @@
 
 <h2>Order Confirmation</h2>
 <tb:progressBar percentCompleted="100"/>
-<tb:pLeadText>Thank you for your order!</tb:pLeadText>
+<tb:pLeadText><g:message code="productOrder.thankYou" /></tb:pLeadText>
 <tb:label><h4>Delivery Address</h4></tb:label>
 <tb:address cssClasses="address">
     <tb:label><g:message code="delivery.name.label"/>:</tb:label> ${order.customer.name}<br>

@@ -122,9 +122,6 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'dk.dm844.webshop.
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dk.dm844.webshop.UserAliasSecurityRole'
 grails.plugin.springsecurity.authority.className = 'dk.dm844.webshop.SecurityRole'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-    '/index':                         ['permitAll'],
-    '/home/index.gsp':                ['permitAll'],
 	'/assets/**':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],

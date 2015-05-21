@@ -23,15 +23,16 @@
             <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'home', action: 'index')}">
                 <tb:navbarLeftContent>
                     <tb:language/>
-                    <li><g:link controller="ShoppingCart"><g:message
-                        code="shoppingCart.label"/> <span class="badge"><sc:count/></span></g:link>
+                    <li><g:link controller="ShoppingCart"><glyph:shoppingCart/> <g:message
+                        code="shoppingCart.label"/> <glyph:badge><sc:count/></glyph:badge></g:link>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
                         <sec:ifAnyGranted roles="${SecurityRole.EMPLOYEE}">
-                            <li><g:link controller="employee"><g:message code="default.admin.label"/></g:link></li>
+                            <li><g:link controller="employee"><glyph:admin/> <g:message
+                                    code="default.admin.label"/></g:link></li>
                         </sec:ifAnyGranted>
-                        <li><tb:navbarLink url="/webshop/j_spring_security_logout"><g:message
+                        <li><tb:navbarLink url="/webshop/j_spring_security_logout"><glyph:logout/> <g:message
                                 code="default.logout.label"/></tb:navbarLink></li>
                         <li><tb:navbarText><strong><g:message
                                 code="default.loggedIn"/> <sec:username/></strong></tb:navbarText></li>
@@ -96,7 +97,6 @@
     </tb:row>
 </tb:container>
 
-<%-- TODO: Put content in footer --%>
 <tb:footer cssClasses="navbar-default">
     <tb:container>
     </tb:container>

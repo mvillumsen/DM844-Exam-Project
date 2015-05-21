@@ -6,7 +6,7 @@ import spock.lang.*
 /**
  * Created by anders on 5/21/15.
  */
-class LoginWrongFunctionalSpec extends GebReportingSpec{
+class LoginWrongFunctionalSpec extends GebReportingSpec {
     @Shared
     String shoptitle = "Welcome to The Grocery Shop"
 

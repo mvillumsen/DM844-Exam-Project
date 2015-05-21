@@ -1,5 +1,6 @@
 package dk.dm844.webshop
 
+import dk.dm844.webshop.admin.EmployeeController
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*

@@ -8,25 +8,14 @@
 <body>
 <section>
     <tb:pLeadText><g:message code="productOrder.shippedToCustomer" /></tb:pLeadText>
-    <tb:table cssClasses="table-hover table-striped">
-        <thead>
-        <tr>
-            <th><g:message code="productOrder.id.label"/></th>
-            <th><g:message code="productOrder.status.label"/></th>
-            <th><g:message code="productOrder.address.label"/></th>
-            <th><g:message code="productOrder.dateCreated.label"/></th>
-            <th><g:message code="productOrder.customer.label"/></th>
-            <th><g:message code="productOrder.assignedEmployee.label"/></th>
-        </tr>
-        </thead>
-        <tbody>
-        <g:each in="${orders}" status="i" var="order">
-            <tr>
-                <g:render template="/productOrder/productOrderRow" model="${[productOrderInstance: order]}"/>
-            </tr>
-        </g:each>
-        </tbody>
-    </tb:table>
+
+    <g:if test="${orders.size() > 0}">
+        <g:render template="accordionList" model="${[orders: orders, id: "packingAccordion"]}"/>
+    </g:if>
+    <g:else>
+        <g:message code="productOrder.noOrders" />
+    </g:else>
+
 </section>
 </body>
 </html>

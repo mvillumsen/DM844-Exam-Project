@@ -11,7 +11,7 @@
     <tbody>
     <g:each in="${orders}" status="i" var="order">
         <tr>
-            <g:render template="/productOrder/productOrderRow" model="${[productOrderInstance: order]}"/>
+            <g:render template="productOrderRow" model="${[productOrderInstance: order]}"/>
 
             <td>
                 <g:link action="assignShipment" id="${order.id}">

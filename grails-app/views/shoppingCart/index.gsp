@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="shopTemplate">
     <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}"/>
-    <title>${categoryInstance?.name}</title>
+    <title><g:message code="shoppingCart.label"/></title>
 </head>
 
 <body>
@@ -11,8 +11,8 @@
     <li><g:link controller="home" action="index"><g:message code="default.home.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </tb:breadcrumb>
-<h2>Shopping Cart</h2>
-<table class="table">
+
+<tb:tableStriped>
     <thead>
     <tr>
         <th><g:message code="shoppingCart.product"/></th>
@@ -64,7 +64,7 @@
         </td>
     </tr>
     </tfoot>
-</table>
+</tb:tableStriped>
 
 </body>
 </html>

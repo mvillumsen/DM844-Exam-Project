@@ -15,7 +15,7 @@ class ShoppingCartController {
         respond { }
     }
 
-    @Secured(['permitAll'])
+    @Secured([SecurityRole.CUSTOMER])
     def delivery() {
         respond { }
     }

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<tb:navbarDefault>
+<tb:navbarDefault cssClasses="adminNav">
     <tb:containerFluid>
         <tb:navbarHeader>
             <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'employee', action: 'index')}">
@@ -40,12 +40,12 @@
 
 <tb:containerFluid>
     <tb:row>
-        <tb:col2 cssClasses="navbar-default sidebar">
+        <tb:col2 cssClasses="navbar-default adminSidebar">
             <tb:navPills cssClasses="admin">
                 <tb:sidebarHeader cssClasses="header"><g:message code="admin.users.label" /></tb:sidebarHeader>
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li><g:link controller="person" class="navbar-link"><g:message code="admin.allUsers" /></g:link></li>
-                    <li><g:link controller="person" action="create" class="navbar-link">Create User</g:link></li>
+                    <li><g:link controller="person" action="create" class="navbar-link"><g:message code="admin.user.create"/> </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li class="disabled"><g:link url="#" class="navbar-link adminDisabled"><g:message code="admin.allUsers" /></g:link></li>

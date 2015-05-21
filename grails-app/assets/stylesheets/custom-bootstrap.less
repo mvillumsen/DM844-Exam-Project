@@ -85,9 +85,7 @@ body {
 }
 
 .deliveryLabel {
-  padding: 0;
-  margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 16px;
   text-align: right;
 }
 
@@ -126,10 +124,10 @@ html {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  border-top: 1px solid;
+  border-top: 1px solid @breadcrumb-bg;
 }
 
-.sidebar {
+.adminSidebar {
   margin-bottom: 60px;
   margin-top: 50px;
   padding: 10px;
@@ -139,12 +137,14 @@ html {
   bottom: 0;
   z-index: 1000;
   display: block;
-  border-right: 1px solid;
+  border-right: 1px solid @breadcrumb-bg;
 
-  .header {
+  .header, .header:hover {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
+    color: #fff;
+    text-shadow: 2px 2px 8px #000;
   }
 
   hr {
@@ -162,4 +162,36 @@ html {
 
 .badge {
   margin-left: 5px;
+}
+
+.deliveryAddress {
+  margin-top: 12px;
+}
+
+.orderView {
+  margin: 25px;
+}
+
+.navbar-brand {
+  text-shadow: 2px 2px 8px #000;
+}
+
+.categorySidebar {
+  position: fixed;
+  border-left: 1px solid @navbar-default-bg;
+  padding-left: 25px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+@media (max-width: 970px) {
+  .categorySidebar h1 {
+    font-size: 32px;
+  }
+}
+
+.adminNav {
+  border-bottom: 1px solid @breadcrumb-bg;
 }

@@ -12,7 +12,7 @@
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
-<admin:tableStriped>
+<tb:tableStriped>
     <thead>
     <tr>
 
@@ -33,7 +33,7 @@
     <g:each in="${categoryInstanceList}" status="i" var="categoryInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            <td><g:link action="show"
+            <td><g:link action="edit"
                         id="${categoryInstance.id}">${fieldValue(bean: categoryInstance, field: "name")}</g:link></td>
 
             <td>${fieldValue(bean: categoryInstance, field: "description")}</td>
@@ -45,7 +45,7 @@
         </tr>
     </g:each>
     </tbody>
-</admin:tableStriped>
+</tb:tableStriped>
 
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
@@ -54,7 +54,9 @@
         </g:link>
     </tb:pullLeft>
     <tb:pullRight>
-        <g:paginate total="${productInstanceCount ?: 0}"/>
+        <g:if test="${productInstanceCount > 1}">
+            <g:paginate total="${productInstanceCount ?: 0}"/>
+        </g:if>
     </tb:pullRight>
 </tb:row>
 

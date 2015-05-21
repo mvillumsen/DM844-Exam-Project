@@ -12,7 +12,6 @@
     <tb:liActive><g:message code="default.login.label"/></tb:liActive>
 </tb:breadcrumb>
 
-<h1><g:message code="springSecurity.login.header"/></h1>
 <tb:pLeadText><g:message code="springSecurity.errors.login.fail"/></tb:pLeadText>
 
 <tb:col12 cssClasses="center">

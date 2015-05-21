@@ -199,6 +199,13 @@ class GridLayoutTagLib {
         out << """</table>"""
     }
 
+    def tableStriped = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<table class="table table-striped table-hover ${cssClasses}">"""
+        out << body()
+        out << """</table>"""
+    }
+
     def pullRight = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="pull-right ${cssClasses}">"""

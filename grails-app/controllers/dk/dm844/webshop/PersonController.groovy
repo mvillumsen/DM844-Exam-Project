@@ -11,11 +11,13 @@ class PersonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Person.list(params), model:[personInstanceCount: Person.count()]
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def show(Person personInstance) {
         respond personInstance
     }

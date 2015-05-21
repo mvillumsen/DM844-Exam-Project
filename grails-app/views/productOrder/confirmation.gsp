@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: martin
-  Date: 29/04/15
-  Time: 15:34
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -16,14 +9,14 @@
 <tb:breadcrumb>
     <li><g:link controller="home" action="index"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="ShoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
-    <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout"/></g:link></li>
+    <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout.title"/></g:link></li>
     <li><g:link controller="shoppingCart" action="delivery"><g:message code="delivery.breadcrumbs.label"/></g:link></li>
     <tb:liActive><g:message code="shoppingCart.confirmation"/></tb:liActive>
 </tb:breadcrumb>
 
 <h2>Order Confirmation</h2>
 <tb:progressBar percentCompleted="100"/>
-<tb:pLeadText>Thank you for your order!</tb:pLeadText>
+<tb:pLeadText><g:message code="productOrder.thankYou" /></tb:pLeadText>
 <tb:label><h4>Delivery Address</h4></tb:label>
 <tb:address cssClasses="address">
     <tb:label><g:message code="delivery.name.label"/>:</tb:label> ${order.customer.name}<br>
@@ -36,10 +29,10 @@
 <table class="table">
     <thead>
     <tr>
-        <th><g:message code="cart.product"/></th>
-        <th><g:message code="cart.amount"/></th>
+        <th><g:message code="shoppingCart.product"/></th>
+        <th><g:message code="shoppingCart.amount"/></th>
         <th><g:message code="product.price"/></th>
-        <th><g:message code="cart.total"/></th>
+        <th><g:message code="shoppingCart.total"/></th>
     </tr>
     </thead>
     <tbody>
@@ -66,7 +59,7 @@
     </tbody>
     <tfoot>
     <tr>
-        <td><g:message code="cart.grandtotal"/></td>
+        <td><g:message code="shoppingCart.total"/></td>
         <td/>
         <td/>
         <td>

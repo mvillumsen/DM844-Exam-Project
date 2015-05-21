@@ -17,79 +17,78 @@
 </head>
 
 <body>
-
-<tb:navbarInverse cssClasses="admin">
+<tb:navbarDefault>
     <tb:containerFluid>
         <tb:navbarHeader>
             <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'employee', action: 'index')}">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="Employee" action="assignments"
-                                class="navbar-link">My Tasks <span class="badge"><emp:assignedCount/></span></g:link></li>
+                                class="navbar-link"><g:message code="admin.MyTasks" /><span class="badge"><emp:assignedCount/></span></g:link></li>
                 </tb:navbarLeftContent>
                 <tb:navbarRightContent>
                     <sec:ifLoggedIn>
-                        <li><tb:navbarLink url="${createLink(controller: 'home', action: 'index')}">Webshop</tb:navbarLink>
-                        <li><tb:navbarLink url="/webshop/j_spring_security_logout">Logout</tb:navbarLink></li>
-                        <li><tb:navbarText><strong>Logged in as <sec:username/></strong></tb:navbarText></li>
+                        <li><tb:navbarLink url="${createLink(controller: 'home', action: 'index')}"><g:message code="admin.webshop.label" /></tb:navbarLink>
+                        <li><tb:navbarLink url="/webshop/j_spring_security_logout"><g:message code="default.logout.label"/></tb:navbarLink></li>
+                        <li><tb:navbarText><strong><g:message code="default.loggedIn"/> <sec:username/></strong></tb:navbarText></li>
                     </sec:ifLoggedIn>
                 </tb:navbarRightContent>
             </tb:navbarCollapse>
         </tb:navbarHeader>
     </tb:containerFluid>
-</tb:navbarInverse>
+</tb:navbarDefault>
 
-<div class="container-fluid">
+<tb:containerFluid>
     <tb:row>
-        <tb:col2 cssClasses="sidebar">
+        <tb:col2 cssClasses="navbar-default sidebar">
             <tb:navPills cssClasses="admin">
-                <tb:sidebarHeader cssClasses="header">Users</tb:sidebarHeader>
+                <tb:sidebarHeader cssClasses="header"><g:message code="admin.users.label" /></tb:sidebarHeader>
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
-                    <li><g:link controller="person" class="navbar-link">All Users</g:link></li>
+                    <li><g:link controller="person" class="navbar-link"><g:message code="admin.allUsers" /></g:link></li>
                     <li><g:link controller="person" action="create" class="navbar-link">Create User</g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">
-                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">All Users</g:link></li>
-                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Create User</g:link></li>
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled"><g:message code="admin.allUsers" /></g:link></li>
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled"><g:message code="admin.user.create" /></g:link></li>
                 </sec:ifNotGranted>
             </tb:navPills><br>
             <tb:navPills cssClasses="admin">
-                <tb:sidebarHeader cssClasses="header">Products</tb:sidebarHeader>
-                <li><g:link controller="product" class="navbar-link">All Products</g:link></li>
-                <li><g:link controller="product" action="create">Create Product</g:link></li>
-                <li><g:link controller="category" class="navbar-link">Categories</g:link></li>
-                <li><g:link controller="category" action="create" class="navbar-link">Create Categorys</g:link></li>
+                <tb:sidebarHeader cssClasses="header"><g:message code="admin.products.label" /></tb:sidebarHeader>
+                <li><g:link controller="product" class="navbar-link"><g:message code="admin.products.all" /></g:link></li>
+                <li><g:link controller="product" class="navbar-link" action="create"><g:message code="admin.products.create" /></g:link></li>
+                <li><g:link controller="category" class="navbar-link"><g:message code="admin.categories.label" /></g:link></li>
+                <li><g:link controller="category" class="navbar-link" action="create"><g:message code="admin.categories.create" /></g:link></li>
             </tb:navPills><br>
             <tb:navPills cssClasses="admin">
-                <tb:sidebarHeader cssClasses="header">Orders</tb:sidebarHeader>
+                <tb:sidebarHeader cssClasses="header"><g:message code="admin.orders.label" /></tb:sidebarHeader>
 
-                <li><g:link controller="productOrder" class="navbar-link">All Orders</g:link></li>
+                <li><g:link controller="productOrder" class="navbar-link"><g:message code="admin.orders.all" /></g:link></li>
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.PACKER}">
                     <li><g:link controller="productOrder" action="packaging" class="navbar-link">
-                        Packing <span class="badge"><po:count status="${ProductOrder.Status.NEW}"/></span>
+                        <g:message code="admin.orders.packing" /><span class="badge"><po:count status="${ProductOrder.Status.NEW}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.PACKER}">
-                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Shipment</g:link></li>
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled"><g:message code="admin.orders.shipment" /></g:link></li>
                 </sec:ifNotGranted>
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.DRIVER}">
                     <li><g:link controller="productOrder" action="shipment" class="navbar-link">
-                        Shipment <span class="badge"><po:count status="${ProductOrder.Status.PACKED}"/></span>
+                        <g:message code="admin.orders.shipment" /><span class="badge"><po:count status="${ProductOrder.Status.PACKED}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.DRIVER}">
-                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Shipment</g:link></li>
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled"><g:message code="admin.orders.shipment" /></g:link></li>
                 </sec:ifNotGranted>
 
                 <sec:ifAnyGranted roles="${SecurityRole.Employee.ADMIN}">
                     <li><g:link controller="productOrder" action="completed" class="navbar-link">
-                        Completed orders <span class="badge"><po:count status="${ProductOrder.Status.COMPLETED}"/></span>
+                        <g:message code="admin.orders.completed" /><span class="badge"><po:count status="${ProductOrder.Status.COMPLETED}"/></span>
                     </g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifNotGranted roles="${SecurityRole.Employee.ADMIN}">
-                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled">Completed</g:link></li>
+                    <li class="disabled"><g:link url="#" class="navbar-link adminDisabled"><g:message code="admin.orders.completed" /></g:link></li>
                 </sec:ifNotGranted>
 
             </tb:navPills>
@@ -103,14 +102,13 @@
             </article>
         </tb:contentFrameAdmin>
     </tb:row>
-</div>
+</tb:containerFluid>
 
 <%-- FEEDBACK AREA --%>
 <section id="feedback-area"></section>
 
-<tb:footer cssClasses="admin">
+<tb:footer cssClasses="navbar-default">
     <tb:container>
-        <p class="muted credit">Example footer</p>
     </tb:container>
 </tb:footer>
 

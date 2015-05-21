@@ -47,7 +47,7 @@ class NavBarTagLibSpec extends Specification {
 
         where:
         cssClass        | href                      | bodyClosure               || result
-        ''              | ''                        | { }                       || '<a href="/" class="navbar-link "></a>'
+        ''              | '/'                       | { }                       || '<a href="/" class="navbar-link "></a>'
         ''              | '#'                       | { }                       || '<a href="#" class="navbar-link "></a>'
         ''              | '#'                       | { -> "Empty link" }       || '<a href="#" class="navbar-link ">Empty link</a>'
         'myClass'       | 'http://www.dr.dk'        | { }                       || '<a href="http://www.dr.dk" class="navbar-link myClass"></a>'

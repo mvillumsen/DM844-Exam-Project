@@ -21,7 +21,7 @@
     <tb:radio cssClasses="delivery">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" class="optionRadio" checked>
-            <h4>Delivery Address</h4>
+            <h4><g:message code="address.delivery" /></h4>
         </label>
         <tb:address cssClasses="address">
             <login:printUserInfo cssClasses="deliveryLabel"/>
@@ -30,7 +30,7 @@
     <tb:radio>
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" class="optionRadio">
-            <h4>Alternative Delivery Address</h4>
+            <h4><g:message code="address.alternativeDelivery" /></h4>
         </label>
         <fieldset id="alternativeAddress">
             <login:getUserInfo>

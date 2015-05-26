@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.integration.Integration
+import org.hibernate.SessionFactory
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -8,6 +9,7 @@ import spock.lang.Specification
 class CartServiceIntegrationSpec extends Specification {
 
     CartService cartService
+    SessionFactory sessionFactory
 
     @Shared
     Product p
@@ -17,9 +19,6 @@ class CartServiceIntegrationSpec extends Specification {
 
     def setup() {
         saveProductInDatabase()
-        savePersonInDatabase()
-        p = Product.get(1)
-        p2 = Product.get(2)
     }
 
     void "Test count"() {
@@ -51,6 +50,7 @@ class CartServiceIntegrationSpec extends Specification {
 
         when:
         cartService.addToShoppingCart(p, 10)
+        sessionFactory.getCurrentSession().flush()
 
         then:
         cartService.total() == 10 * p.price
@@ -58,6 +58,7 @@ class CartServiceIntegrationSpec extends Specification {
         when:
         cartService.addToShoppingCart(p, 1)
         cartService.addToShoppingCart(p2, 5)
+        sessionFactory.getCurrentSession().flush()
 
         then:
         cartService .total() == 11 * p.price + 5 * p2.price
@@ -65,7 +66,7 @@ class CartServiceIntegrationSpec extends Specification {
 
     void "Test checkout"() {
         setup:
-        Person person = Person.get(1)
+        Person person = savePersonInDatabase()
         int orderCountBefore = ProductOrder.count()
         int entryCountBefore = OrderEntry.count()
 
@@ -78,6 +79,7 @@ class CartServiceIntegrationSpec extends Specification {
         when:
         cartService.addToShoppingCart(p, 10)
         cartService.addToShoppingCart(p2, 20)
+        sessionFactory.getCurrentSession().flush()
         orderCountBefore = ProductOrder.count()
         entryCountBefore = OrderEntry.count()
 
@@ -89,12 +91,12 @@ class CartServiceIntegrationSpec extends Specification {
 
     private saveProductInDatabase() {
         Category ca = new Category(name: "Food").save(failOnError: true)
-        new Product(name: "Milk", category: ca, price: 10, stock: 1).save(failOnError: true)
-        new Product(name: "Milk", category: ca, price: 14, stock: 1).save(failOnError: true)
+        p = new Product(name: "Milk", category: ca, price: 10, stock: 1).save(failOnError: true)
+        p2 = new Product(name: "Milk", category: ca, price: 14, stock: 1).save(failOnError: true)
     }
 
     private savePersonInDatabase() {
-        new Person(
+        return new Person(
                 name: 'Martin',
                 address: new Address(address1: 'gade', zipCode: '2', city: 'by', country: 'UK').save(failOnError: true, flush: true),
                 username: 'ma',

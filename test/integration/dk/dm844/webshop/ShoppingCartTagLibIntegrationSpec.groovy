@@ -2,6 +2,7 @@ package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
 import grails.test.mixin.integration.Integration
+import org.hibernate.SessionFactory
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import spock.lang.Shared
@@ -12,6 +13,7 @@ import spock.lang.Specification
 class ShoppingCartTagLibIntegrationSpec extends Specification {
 
     CartService cartService
+    SessionFactory sessionFactory
 
     @Shared
     Product p
@@ -22,14 +24,11 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
     def setup() {
         saveProductInDatabase()
         savePersonInDatabase()
-        p = Product.get(1)
-        p2 = Product.get(2)
         tagLib.cartService = cartService
     }
 
     void "Test count"() {
         when:
-        cartService.createShoppingCart()
         String result = applyTemplate("<sc:count>it</sc:count>")
         Document document = Jsoup.parse(result)
 
@@ -62,7 +61,6 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
 
     void "Test total"() {
         when:
-        cartService.createShoppingCart()
         String result = applyTemplate("<sc:total />")
         Document document = Jsoup.parse(result)
 
@@ -71,6 +69,7 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
 
         when:
         cartService.addToShoppingCart(p, 10)
+        sessionFactory.getCurrentSession().flush()
         result = applyTemplate("<sc:total />")
         document = Jsoup.parse(result)
 
@@ -80,6 +79,7 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
         when:
         cartService.addToShoppingCart(p, 1)
         cartService.addToShoppingCart(p2, 5)
+        sessionFactory.getCurrentSession().flush()
         result = applyTemplate("<sc:total />")
         document = Jsoup.parse(result)
 
@@ -90,7 +90,6 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
     void "Test each"() {
 
         when:
-        cartService.createShoppingCart()
         String result = applyTemplate("""<sc:each>it['product']</sc:each>""")
         Document document = Jsoup.parse(result)
 
@@ -99,6 +98,7 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
 
         when:
         cartService.addToShoppingCart(p, 10)
+        sessionFactory.getCurrentSession().flush()
         result = applyTemplate("""
             <sc:each>
                 <article>
@@ -120,6 +120,7 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
         when:
         cartService.addToShoppingCart(p, 1)
         cartService.addToShoppingCart(p2, 5)
+        sessionFactory.getCurrentSession().flush()
         result = applyTemplate("""
             <sc:each>
                 <article>
@@ -142,15 +143,16 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
     }
 
     private saveProductInDatabase() {
-        Category ca = new Category(name: "Food").save(failOnError: true)
-        new Product(name: "Milk", category: ca, price: 10, stock: 1).save(failOnError: true)
-        new Product(name: "Milk", category: ca, price: 14, stock: 1).save(failOnError: true)
+        Category ca = new Category(name: "something extremely unique" + System.currentTimeMillis()).save(flush: true)
+        println "Category: $ca (${ca.id})"
+        p = new Product(name: "Milk", category: ca, price: 10, stock: 1).save(flush: true)
+        p2 = new Product(name: "Milk", category: ca, price: 14, stock: 1).save(flush: true)
     }
 
     private savePersonInDatabase() {
         new Person(
                 name: 'Martin',
-                address: new Address(address1: 'gade', zipCode: '2', city: 'by', country: 'UK').save(failOnError: true, flush: true),
+                address: new Address(address1: 'gade', zipCode: '2', city: 'by', country: 'UK').save(flush: true),
                 username: 'ma',
                 password: 'ma',
                 enabled: true,

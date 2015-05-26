@@ -227,8 +227,6 @@ class ProductOrderControllerSpec extends Specification {
         response.reset()
         ProductOrder order = new ProductOrder(id:1)
         Person person = new Person(id:1)
-        println "test $order.id"
-        println "test $person.id"
         controller.springSecurityService.currentUser >> person
         order.assignedEmployee = person
         controller.finishAssignment(order)

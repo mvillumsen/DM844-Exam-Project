@@ -142,8 +142,6 @@ class ProductOrderController {
         }
 
         Person employee = springSecurityService.currentUser
-        println "controller $productOrderInstance.id"
-        println "controller $employee.id"
         if (productOrderInstance.assignedEmployee == null ||
                 employee.id != productOrderInstance.assignedEmployee.id) {
             response.sendError(UNAUTHORIZED.value())

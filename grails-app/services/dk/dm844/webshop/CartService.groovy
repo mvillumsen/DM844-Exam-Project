@@ -20,6 +20,15 @@ class CartService extends ShoppingCartService {
 
     int total() {
         Set<ShoppingItem> items = getItems()
+
+        items?.each {
+            println Product.findByShoppingItem(it)
+        }
+
+        Shoppable.all.each {
+            println it.shoppingItem
+        }
+
         int total = 0
 
         items?.each {

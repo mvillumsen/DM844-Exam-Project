@@ -225,14 +225,16 @@ class ProductOrderControllerSpec extends Specification {
 
         when:
         response.reset()
-        ProductOrder order = new ProductOrder()
-        Person person = new Person()
+        ProductOrder order = new ProductOrder(id:1)
+        Person person = new Person(id:1)
+        println "test $order.id"
+        println "test $person.id"
         controller.springSecurityService.currentUser >> person
         order.assignedEmployee = person
         controller.finishAssignment(order)
 
         then:
-        response.status == HttpStatus.OK.value()
+        response.status == HttpStatus.MOVED_TEMPORARILY.value()
     }
 
 

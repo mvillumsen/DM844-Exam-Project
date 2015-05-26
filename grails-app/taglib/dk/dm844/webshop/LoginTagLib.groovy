@@ -59,7 +59,8 @@ class LoginTagLib {
     def getUserInfo = { attrs, body ->
         Person currUser = springSecurityService.currentUser
         Address address = currUser.address
-        Map<String> userInfo = [name: currUser.name, address1: address.address1, address2: address.address2, zipCode: address.zipCode, city: address.city, country: address.country]
+        Map<String> userInfo = [name: currUser.name, address1: address.address1, address2: address.address2, zipCode: address.zipCode, city: address.city,
+                                country: address.country]
         out << body(userInfo)
     }
 }

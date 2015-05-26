@@ -4,7 +4,6 @@ import com.metasieve.shoppingcart.Shoppable
 import com.metasieve.shoppingcart.ShoppingCartService
 import com.metasieve.shoppingcart.ShoppingItem
 import grails.transaction.Transactional
-import org.grails.datastore.mapping.core.Session
 
 @Transactional
 class CartService extends ShoppingCartService {

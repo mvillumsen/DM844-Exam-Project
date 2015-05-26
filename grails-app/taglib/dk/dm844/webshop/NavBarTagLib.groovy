@@ -69,7 +69,9 @@ class NavBarTagLib {
 
     def signinDropdown = { attrs, body ->
         out << """<li class="dropdown">"""
-        out << """<a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> ${g.message(code: "default.signIn.label")}<strong class="caret"></strong></a>"""
+        out << """<a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> ${
+            g.message(code: "default.signIn.label")
+        }<strong class="caret"></strong></a>"""
         out << """<div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;">"""
         out << body()
         out << """</div>"""
@@ -86,7 +88,9 @@ class NavBarTagLib {
     def progressBar = { attrs, body ->
         String percentCompleted = attrs.percentCompleted ?: ''
         out << """<div class="progress">"""
-        out << """<div class="progress-bar" role="progressbar" aria-valuenow="${percentCompleted}" aria-valuemin="0" aria-valuemax="100" style="width: ${percentCompleted}%;">"""
+        out << """<div class="progress-bar" role="progressbar" aria-valuenow="${percentCompleted}" aria-valuemin="0" aria-valuemax="100" style="width: ${
+            percentCompleted
+        }%;">"""
         out << """${percentCompleted}%"""
         out << """</div>"""
         out << """</div>"""

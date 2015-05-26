@@ -17,7 +17,7 @@ class ProductOrderController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ProductOrder.list(params), model:[productOrderInstanceCount: ProductOrder.count()]
+        respond ProductOrder.list(params), model: [productOrderInstanceCount: ProductOrder.count()]
     }
 
     def show(ProductOrder productOrderInstance) {
@@ -37,16 +37,16 @@ class ProductOrderController {
         }
 
         if (productOrderInstance.hasErrors()) {
-            respond productOrderInstance.errors, view:'create'
+            respond productOrderInstance.errors, view: 'create'
             return
         }
 
-        productOrderInstance.save flush:true
+        productOrderInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message',
-                                        args: [message(code: 'productOrder.label', default: 'ProductOrder'), productOrderInstance.id])
+                        args: [message(code: 'productOrder.label', default: 'ProductOrder'), productOrderInstance.id])
                 redirect productOrderInstance
             }
             '*' { respond productOrderInstance, [status: CREATED] }
@@ -66,16 +66,16 @@ class ProductOrderController {
         }
 
         if (productOrderInstance.hasErrors()) {
-            respond productOrderInstance.errors, view:'edit'
+            respond productOrderInstance.errors, view: 'edit'
             return
         }
 
-        productOrderInstance.save flush:true
+        productOrderInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message',
-                                        args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
+                        args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
                 redirect productOrderInstance
             }
             '*' { respond productOrderInstance, [status: OK] }
@@ -91,13 +91,13 @@ class ProductOrderController {
             return
         }
 
-        productOrderInstance.delete flush:true
+        productOrderInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message',
-                                        args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
-                redirect action:"index", method:"GET"
+                        args: [message(code: 'ProductOrder.label', default: 'ProductOrder'), productOrderInstance.id])
+                redirect action: "index", method: "GET"
             }
             '*' { render status: NO_CONTENT }
         }
@@ -161,8 +161,8 @@ class ProductOrderController {
     }
 
     @Secured([SecurityRole.CUSTOMER])
-    def confirmation (ProductOrder productOrderInstance) {
-        if(!productOrderInstance) {
+    def confirmation(ProductOrder productOrderInstance) {
+        if (!productOrderInstance) {
             notFound()
             return
         }
@@ -179,7 +179,7 @@ class ProductOrderController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message',
-                                        args: [message(code: 'productOrder.label', default: 'ProductOrder'), params.id])
+                        args: [message(code: 'productOrder.label', default: 'ProductOrder'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }

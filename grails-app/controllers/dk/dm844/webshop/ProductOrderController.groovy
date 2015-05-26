@@ -24,6 +24,7 @@ class ProductOrderController {
         respond productOrderInstance
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def create() {
         respond new ProductOrder(params)
     }
@@ -52,6 +53,7 @@ class ProductOrderController {
         }
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def edit(ProductOrder productOrderInstance) {
         respond productOrderInstance
     }
@@ -80,6 +82,7 @@ class ProductOrderController {
         }
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     @Transactional
     def delete(ProductOrder productOrderInstance) {
 

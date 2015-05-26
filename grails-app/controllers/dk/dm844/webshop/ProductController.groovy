@@ -14,14 +14,15 @@ class ProductController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Product.list(params), model:[productInstanceCount: Product.count()]
+        respond Product.list(params), model: [productInstanceCount: Product.count()]
     }
 
     def show(Product productInstance) {
         respond productInstance
     }
 
-   def create() {
+    @Secured([SecurityRole.Employee.ADMIN])
+    def create() {
         respond new Product(params)
     }
 
@@ -33,11 +34,11 @@ class ProductController {
         }
 
         if (productInstance.hasErrors()) {
-            respond productInstance.errors, view:'create'
+            respond productInstance.errors, view: 'create'
             return
         }
 
-        productInstance.save flush:true
+        productInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -48,6 +49,7 @@ class ProductController {
         }
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def edit(Product productInstance) {
         respond productInstance
     }
@@ -60,11 +62,11 @@ class ProductController {
         }
 
         if (productInstance.hasErrors()) {
-            respond productInstance.errors, view:'edit'
+            respond productInstance.errors, view: 'edit'
             return
         }
 
-        productInstance.save flush:true
+        productInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -75,6 +77,7 @@ class ProductController {
         }
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     @Transactional
     def delete(Product productInstance) {
 
@@ -83,12 +86,12 @@ class ProductController {
             return
         }
 
-        productInstance.delete flush:true
+        productInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
             '*' { render status: NO_CONTENT }
         }
@@ -119,14 +122,14 @@ class ProductController {
         }
 
         cartService.addToShoppingCart(productInstance, amount)
-        productInstance.save (flush: true)
+        productInstance.save(flush: true)
 
         if (request.xhr) {
             render(contentType: 'text/json') {
                 ['count': cartService.count()]
             }
         } else {
-            redirect(uri: request.getHeader('referer') )
+            redirect(uri: request.getHeader('referer'))
         }
     }
 
@@ -147,7 +150,7 @@ class ProductController {
                 ['count': cartService.count()]
             }
         } else {
-            redirect(uri: request.getHeader('referer') )
+            redirect(uri: request.getHeader('referer'))
         }
     }
 }

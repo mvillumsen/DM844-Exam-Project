@@ -31,7 +31,6 @@ class LoginTagLib {
         out << """</button>"""
     }
 
-    // TODO: Test this!
     def printUserInfo = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         Person currUser = springSecurityService.currentUser

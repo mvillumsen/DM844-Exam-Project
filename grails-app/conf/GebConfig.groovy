@@ -6,6 +6,8 @@ import org.openqa.selenium.Dimension
 import org.openqa.selenium.Point
 import java.awt.*
 
+System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome");
+
 def chromeDriver = new File('target/drivers/chrome/chromedriver')
 downloadDriver(chromeDriver, driverLocationDependingOnOperatingSystem())
 System.setProperty('webdriver.chrome.driver', chromeDriver.absolutePath)

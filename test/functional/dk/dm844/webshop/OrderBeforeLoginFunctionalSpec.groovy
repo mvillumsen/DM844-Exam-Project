@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import geb.spock.GebReportingSpec
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.Keys
 import spock.lang.*
 
@@ -58,11 +59,13 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         then:
         title == "Enter delivery address"
 
-//        when: "we click next"
-//        $("input", name: "Next").click()
+        when: "we click next"
+        JavascriptExecutor executor = (JavascriptExecutor) driver
+        executor.executeScript("window.scrollBy(0,500)")
+        $("input", name: "Next").click()
 
-//        then:
-//        title == "Order Confirmation"
+        then:
+        title == "Order Confirmation"
 
     }
 

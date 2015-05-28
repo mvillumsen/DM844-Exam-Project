@@ -14,19 +14,10 @@ class BootStrap {
             development {
                 initProducts()
                 initUsers()
-
-                assert Person.count() == 5
-                assert SecurityRole.count() == 5
-                assert UserAliasSecurityRole.count() == 5
             }
             test {
                 initProducts()
                 initUsers()
-
-                assert Person.count() == 5
-                assert SecurityRole.count() == 5
-                assert UserAliasSecurityRole.count() == 5
-
             }
         }
     }
@@ -105,5 +96,10 @@ class BootStrap {
         UserAliasSecurityRole.create(Person.findByName('Cassie'), packerRole, true)
         UserAliasSecurityRole.create(Person.findByName('Dennis'), driverRole, true)
         UserAliasSecurityRole.create(Person.findByName('Erik'), adminRole, true)
+
+
+        assert Person.count() == 5
+        assert SecurityRole.count() == 5
+        assert UserAliasSecurityRole.count() == 5
     }
 }

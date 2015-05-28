@@ -1,7 +1,10 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.web.GroovyPageUnitTestMixin} for usage instructions
@@ -9,12 +12,17 @@ import spock.lang.Specification
 @TestFor(PersonTagLib)
 class PersonTagLibSpec extends Specification {
 
-    def setup() {
-    }
+    @Unroll
+    void "Test getRole"() {
+        setup:
+        tagLib.personService = Mock(PersonService)
+        tagLib.personService.getSecurityRole(_) >> { SecurityRole.Role.CUSTOMER }
 
-    def cleanup() {
-    }
+        when:
+        String result = applyTemplate('<person:getRole person="${p}">${it.getValue()}</person:getRole>')
+        Document document = Jsoup.parse(result)
 
-    void "test something"() {
+        then:
+        document.text() == 'Customer'
     }
 }

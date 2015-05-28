@@ -10,8 +10,6 @@
 //= require_self
 //= require bootstrap
 
-console.log("My javascript goes here");
-
 if (typeof jQuery !== 'undefined') {
 	(function($) {
 		$('#spinner').ajaxStart(function() {

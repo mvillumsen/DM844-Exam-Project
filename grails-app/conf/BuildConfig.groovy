@@ -60,7 +60,7 @@ grails.project.dependency.resolution = {
         compile  "org.jsoup:jsoup:1.8.2"
         test("org.seleniumhq.selenium:selenium-support:$seleniumVersion") // Required fx to set values in select
         test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
-        test "org.gebish:geb-spock:$gebVersion"
+        test ("org.gebish:geb-spock:$gebVersion")
     }
 
     plugins {

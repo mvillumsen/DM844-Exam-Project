@@ -22,9 +22,6 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         $("input", 3, id: "amount").value(4)
         $("button", 3, class: "btn btn-primary btn-sm").click()
 
-//        then:
-//        $("span", id: "cart-count").text() == "0"
-
         and: "Order some more meat groceries"
         $("input", 8, id: "amount").value(7)
         $("button", 8, class: "btn btn-primary btn-sm").click()

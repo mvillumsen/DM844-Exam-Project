@@ -7,16 +7,15 @@ if (typeof jQuery !== 'undefined') {
         $('.radio input[type="radio"]')
             .click(function(event) {
                 if (this.id === 'optionsRadios1') {
-                    $('#alternativeAddress').hide();
+                    $('#alternativeAddress').finish().hide();
                     $('address.address').fadeIn();
-                    $('input[name="name"]').val($('.name').text());
                     $('input[name="address1"]').val($('.address1').text());
                     $('input[name="address2"]').val($('.address2').text());
                     $('input[name="city"]').val($('.city').text());
                     $('input[name="zipCode"]').val($('.zipCode').text());
                     $('input[name="country"]').val($('.country').text());
                 } else {
-                    $('address.address').hide();
+                    $('address.address').finish().hide();
                     $('#alternativeAddress').fadeIn();
                 }
             });

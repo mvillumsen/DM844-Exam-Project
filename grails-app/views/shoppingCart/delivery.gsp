@@ -35,11 +35,6 @@
         <fieldset id="alternativeAddress">
             <login:getUserInfo>
                 <tb:formGroup>
-                    <tb:col2><tb:label cssClasses="deliveryLabel" for="name"><strong><g:message
-                            code="delivery.name.label"/>:</strong></tb:label></tb:col2>
-                    <tb:col8><tb:preFilledInputForm id="name" name="name" type="text" value="${it.name}"/></tb:col8>
-                </tb:formGroup>
-                <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="address1"><strong><g:message
                             code="delivery.address1.label"/>:</strong></tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="address1" name="address1" type="address"

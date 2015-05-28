@@ -90,5 +90,6 @@
 </tb:footer>
 
 <asset:javascript src="application.js"/>
+<asset:javascript src="delivery.js" />
 </body>
 </html>

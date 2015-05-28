@@ -37,23 +37,23 @@ class LoginTagLib {
         Person currUser = springSecurityService.currentUser
 
         out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.name}</div><br>"""
+        out << """<div class="col-xs-8 name">${currUser.name}</div><br>"""
         out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.address1}</div><br>"""
+        out << """<div class="col-xs-8 address1">${currUser.address.address1}</div><br>"""
 
         if (currUser.address.address2) {
             out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.address.address2}</div><br>"""
+            out << """<div class="col-xs-8 address2">${currUser.address.address2}</div><br>"""
         }
 
         out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.zipCode')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.zipCode}</div><br>"""
+        out << """<div class="col-xs-8 zipCode">${currUser.address.zipCode}</div><br>"""
 
         out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.city')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.city}</div><br>"""
+        out << """<div class="col-xs-8 city">${currUser.address.city}</div><br>"""
 
         out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.country')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
+        out << """<div class="col-xs-8 country">${currUser.address.country}</div><br>"""
     }
 
     def getUserInfo = { attrs, body ->

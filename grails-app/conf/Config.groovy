@@ -121,6 +121,7 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'dk.dm844.webshop.Person'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dk.dm844.webshop.UserAliasSecurityRole'
 grails.plugin.springsecurity.authority.className = 'dk.dm844.webshop.SecurityRole'
+grails.plugin.springsecurity.useSessionFixationPrevention = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/assets/**':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],

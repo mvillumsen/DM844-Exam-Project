@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate"/>
-    <title>Welcome to The Webshop</title>
+    <title><g:message code="default.store.name"/></title>
 
 </head>
 

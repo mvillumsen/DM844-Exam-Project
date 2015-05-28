@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import geb.spock.GebReportingSpec
+import org.openqa.selenium.Keys
 import spock.lang.*
 
 /**
@@ -8,6 +9,7 @@ import spock.lang.*
  */
 @Stepwise
 class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
+
 
     void "Order some meat groceries"() {
         setup:
@@ -17,16 +19,13 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         $("a", text: "Meat").click()
         and:
         $("input", 3, id: "amount").value(4)
-        and:
         $("button", 3, class: "btn btn-primary btn-sm").click()
 
-        then:
-        $("span", id: "cart-count").text() == "4"
+//        then:
+//        $("span", id: "cart-count").text() == "0"
 
-
-        when: "Order some more meat groceries"
+        and: "Order some more meat groceries"
         $("input", 8, id: "amount").value(7)
-        and:
         $("button", 8, class: "btn btn-primary btn-sm").click()
 
         then:
@@ -39,13 +38,32 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         $("button", id: "sign-in").click()
 
         then: "All items are still in shopping cart"
-        $("span", id: "cart-count").text() != "11"
+        $("span", id: "cart-count").text() == "11"
 
-        when: "Click on shopping cart"
-        $("a", text: "Shopping Cart").click()
+        when: "Click on shopping cart and order"
+        $("a", text: startsWith("Shopping Cart")).click()
 
-        then: "We begin checkout"
-        title == "hej"
+        then:
+        title == "Grails"
+
+        when:
+        $("input", name: startsWith("Order")).click()
+
+        then:
+        title == "Checkout"
+
+        when: "we click confirm"
+        $("input", name: "Confirm").click()
+
+        then:
+        title == "Enter delivery address"
+
+//        when: "we click next"
+//        $("input", name: "Next").click()
+
+//        then:
+//        title == "Order Confirmation"
+
     }
 
     String message(String code) {

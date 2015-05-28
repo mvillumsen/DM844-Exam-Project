@@ -10,16 +10,16 @@ import spock.lang.*
 class LoginLogoutFunctionalSpec extends GebReportingSpec{
 
     @Shared
-    String shoptitle = "Welcome to The Grocery Shop"
+    String shoptitle = "The Grocery Shop"
 
     void "enter front page"() {
         when:
         go 'http://localhost:8080/webshop/'
         then:
-        title == "Welcome to The Grocery Shop"
+        title == shoptitle
     }
 
-    void "login"() {
+    void "login as erik"() {
         when:
         $("a", class: "dropdown-toggle").click()
 

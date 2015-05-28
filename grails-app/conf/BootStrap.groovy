@@ -10,7 +10,28 @@ class BootStrap {
     def springSecurityService
 
     def init = { servletContext ->
+        environments {
+            development {
+                initProducts()
+                initUsers()
 
+                assert Person.count() == 5
+                assert SecurityRole.count() == 5
+                assert UserAliasSecurityRole.count() == 5
+            }
+            test {
+                initProducts()
+                initUsers()
+
+                assert Person.count() == 5
+                assert SecurityRole.count() == 5
+                assert UserAliasSecurityRole.count() == 5
+
+            }
+        }
+    }
+
+    void initProducts() {
         /* Initialize products */
         Category dairy = new Category(name: "Dairy").save(failOnError: true, flush: true)
         new Product(name: "Milk, low-fat", price: 8, description: "1 liter of organic low-fat milk.", stock: 10, category: dairy).save(failOnError: true, flush: true)
@@ -50,22 +71,24 @@ class BootStrap {
 
         Category.findAll().each {
             for (i in (1..10)) {
-                new Product(name: "$it.name product $i", price: 10+2*i, description: "Random description for $it.name", stock: 10+i, category: it).save(failOnError: true, flush: true)
+                new Product(name: "$it.name product $i", price: 10 + 2 * i, description: "Random description for $it.name", stock: 10 + i, category: it).save(failOnError: true, flush: true)
             }
         }
+    }
 
-
-        SecurityRole customerRole = new SecurityRole(authority: 'ROLE_CUSTOMER').save(failOnError: true, flush: true)
-        SecurityRole packerRole = new SecurityRole(authority: 'ROLE_EMPLOYEE_PACKER').save(failOnError: true, flush: true)
-        SecurityRole driverRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_DRIVER').save(failOnError: true, flush: true)
-        SecurityRole adminRole =  new SecurityRole(authority: 'ROLE_EMPLOYEE_ADMIN').save(failOnError: true, flush: true)
+    void initUsers() {
+        SecurityRole customerRole = new SecurityRole(authority: SecurityRole.CUSTOMER).save(failOnError: true, flush: true)
+        new SecurityRole(authority: SecurityRole.EMPLOYEE).save(failOnError: true, flush: true)
+        SecurityRole packerRole = new SecurityRole(authority: SecurityRole.Employee.PACKER).save(failOnError: true, flush: true)
+        SecurityRole driverRole = new SecurityRole(authority: SecurityRole.Employee.DRIVER).save(failOnError: true, flush: true)
+        SecurityRole adminRole = new SecurityRole(authority: SecurityRole.Employee.ADMIN).save(failOnError: true, flush: true)
 
         [
-                ['Alice', new Address(address1: 'Al Street 1', address2: 'My Address 2', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'alice', 'al123','alice@email.dk'],
+                ['Alice', new Address(address1: 'Al Street 1', address2: 'My Address 2', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'alice', 'al123', 'alice@email.dk'],
                 ['Bob', new Address(address1: 'Bob Boulevard 2', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'bob', 'bo234', 'bob@email.dk'],
                 ['Cassie', new Address(address1: 'City Town 12', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'cas', 'ca345', 'cas@email.dk'],
                 ['Dennis', new Address(address1: 'Deal Street 1', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'den', 'de456', 'dennis@email.dk'],
-                ['Erik', new Address(address1: 'Elm Street 4', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'erik','er567','erik@email.dk']
+                ['Erik', new Address(address1: 'Elm Street 4', zipCode: '5000', city: 'Odense', country: 'Denmark').save(failOnError: true, flush: true), 'erik', 'er567', 'erik@email.dk']
         ].each {
             new Person(
                     name: it[0],
@@ -77,15 +100,10 @@ class BootStrap {
             ).save(failOnError: true, flush: true)
         }
 
-        UserAliasSecurityRole.create( Person.findByName('Alice'), customerRole, true )
-        UserAliasSecurityRole.create( Person.findByName('Bob'), customerRole, true )
-        UserAliasSecurityRole.create( Person.findByName('Cassie'), packerRole, true )
-        UserAliasSecurityRole.create( Person.findByName('Dennis'), driverRole, true )
-        UserAliasSecurityRole.create( Person.findByName('Erik'), adminRole, true )
-
-
-        assert Person.count() == 5
-        assert SecurityRole.count() == 4
-        assert UserAliasSecurityRole.count() == 5
+        UserAliasSecurityRole.create(Person.findByName('Alice'), customerRole, true)
+        UserAliasSecurityRole.create(Person.findByName('Bob'), customerRole, true)
+        UserAliasSecurityRole.create(Person.findByName('Cassie'), packerRole, true)
+        UserAliasSecurityRole.create(Person.findByName('Dennis'), driverRole, true)
+        UserAliasSecurityRole.create(Person.findByName('Erik'), adminRole, true)
     }
 }

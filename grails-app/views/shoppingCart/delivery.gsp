@@ -8,7 +8,7 @@
 
 <body>
 <tb:breadcrumb>
-    <li><g:link url="/webshop"><g:message code="default.home.label"/></g:link></li>
+    <li><g:link controller="home" action="index"><g:message code="default.home.label"/></g:link></li>
     <li><g:link controller="shoppingCart"><g:message code="shoppingCart.label"/></g:link></li>
     <li><g:link controller="shoppingCart" action="checkout"><g:message code="shoppingCart.checkout.title"/></g:link> </li>
     <tb:liActive><g:message code="delivery.breadcrumbs.label"/></tb:liActive>
@@ -21,7 +21,7 @@
     <tb:radio cssClasses="delivery">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" class="optionRadio" checked>
-            <h4>Delivery Address</h4>
+            <h4><g:message code="address.delivery" /></h4>
         </label>
         <tb:address cssClasses="address">
             <login:printUserInfo cssClasses="deliveryLabel"/>
@@ -30,7 +30,7 @@
     <tb:radio>
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" class="optionRadio">
-            <h4>Alternative Delivery Address</h4>
+            <h4><g:message code="address.alternativeDelivery" /></h4>
         </label>
         <fieldset id="alternativeAddress">
             <login:getUserInfo>
@@ -53,18 +53,18 @@
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="zipCode"><strong><g:message
-                            code="delivery.zipCode"/>:</strong></tb:label></tb:col2>
+                            code="delivery.address.zipCode"/>:</strong></tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="zipCode" name="zipCode" type="text"
                                                     value="${it.zipCode}"/></tb:col8>
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="city"><strong><g:message
-                            code="delivery.city"/></strong>:</tb:label></tb:col2>
+                            code="delivery.address.city"/></strong>:</tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="city" name="city" type="text" value="${it.city}"/></tb:col8>
                 </tb:formGroup>
                 <tb:formGroup>
                     <tb:col2><tb:label cssClasses="deliveryLabel" for="country"><strong><g:message
-                            code="delivery.country"/></strong>:</tb:label></tb:col2>
+                            code="delivery.address.country"/></strong>:</tb:label></tb:col2>
                     <tb:col8>
                         <select name="country" class="form-control">
                             <option value="${it.country}" selected="selected">${it.country}</option>

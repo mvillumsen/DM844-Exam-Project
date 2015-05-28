@@ -5,6 +5,7 @@ class ProductOrderTagLib {
     ProductOrderService productOrderService
 
     static namespace = "po"
+    static defaultEncodeAs = [taglib: 'none']
 
     def ordersAccordion = { attrs, body ->
         out << '<div class="panel-group" id="' << attrs.id << '">'

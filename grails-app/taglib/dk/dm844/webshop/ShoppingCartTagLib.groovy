@@ -4,6 +4,7 @@ import com.metasieve.shoppingcart.Shoppable
 
 class ShoppingCartTagLib {
     static namespace = "sc"
+    static defaultEncodeAs = [taglib: 'none']
 
     CartService cartService
 

@@ -1,4 +1,6 @@
 @import "bootstrap.less";
+@import "custom-variables.less";
+@import "bootswatch.less";
 
 @userBackgroundColor: #f8f8f8;
 @userBorderColor: #e7e7e7;
@@ -54,10 +56,6 @@ body {
   margin: @buttonsMargin;
 }
 
-.breadcrumb {
-  background-color: @userBackgroundColor;
-}
-
 .products {
   height: 330px;
 }
@@ -87,7 +85,7 @@ body {
 }
 
 .deliveryLabel {
-  padding: 0px;
+  padding: 0;
   margin-bottom: 10px;
   font-size: 14px;
   text-align: right;
@@ -118,17 +116,8 @@ html {
   display: none;
 }
 
-.admin {
-  background: @adminBackgroundColor;
-  border-color: @adminBorderColor;
-}
-
 .adminNewButton {
   margin-left: 20px;
-}
-.user {
-  background-color: @userBackgroundColor;
-  border-color: @userBorderColor;
 }
 
 .footer {
@@ -137,16 +126,7 @@ html {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-}
-
-.footer.admin {
-  background-color: @adminBackgroundColor;
-  border-top: 1px solid @adminBorderColor;
-}
-
-.footer.user {
-  background-color: @userBackgroundColor;
-  border-top: 1px solid @userBorderColor;
+  border-top: 1px solid;
 }
 
 .sidebar {
@@ -159,33 +139,27 @@ html {
   bottom: 0;
   z-index: 1000;
   display: block;
-  background-color: @adminBackgroundColor;
-  border-right: 1px solid @adminBorderColor;
-
-  a {
-    color: @adminColor;
-  }
+  border-right: 1px solid;
 
   .header {
-    color: @adminColor;
     font-weight: 500;
     font-size: 18px;
-    margin: 0px;
+    margin: 0;
   }
 
   hr {
-    margin: 0px;
+    margin: 0;
   }
 }
 
 .content {
-  padding: 0px 50px;
-}
-
-.headerAdmin {
-  border-bottom: 1px solid @adminBorderColor;
+  padding: 0 50px;
 }
 
 .optionRadio {
   margin-top: 12px;
+}
+
+.badge {
+  margin-left: 5px;
 }

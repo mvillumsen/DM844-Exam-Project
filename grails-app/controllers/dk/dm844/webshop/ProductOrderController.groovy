@@ -7,7 +7,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured([SecurityRole.Employee.DRIVER, SecurityRole.Employee.PACKER, SecurityRole.Employee.ADMIN])
+@Secured([SecurityRole.EMPLOYEE])
 class ProductOrderController {
 
     ProductOrderService productOrderService
@@ -142,8 +142,9 @@ class ProductOrderController {
         }
 
         Person employee = springSecurityService.currentUser
-        if (employee != productOrderInstance.assignedEmployee) {
-            render { status: UNAUTHORIZED }
+        if (productOrderInstance.assignedEmployee == null ||
+                employee.id != productOrderInstance.assignedEmployee.id) {
+            response.sendError(UNAUTHORIZED.value())
             return
         }
 
@@ -155,6 +156,21 @@ class ProductOrderController {
     def completed() {
         List<ProductOrder> orders = productOrderService.getOrdersByStatus(ProductOrder.Status.COMPLETED)
         [orders: orders]
+    }
+
+    @Secured([SecurityRole.CUSTOMER])
+    def confirmation (ProductOrder productOrderInstance) {
+        if(!productOrderInstance) {
+            notFound()
+            return
+        }
+
+        Person customer = (Person) springSecurityService.currentUser
+        if (productOrderInstance.customer != customer) {
+            response.sendError(UNAUTHORIZED.value())
+            return
+        }
+        [order: productOrderInstance]
     }
 
     protected void notFound() {

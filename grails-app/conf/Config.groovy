@@ -121,10 +121,8 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'dk.dm844.webshop.Person'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dk.dm844.webshop.UserAliasSecurityRole'
 grails.plugin.springsecurity.authority.className = 'dk.dm844.webshop.SecurityRole'
+grails.plugin.springsecurity.useSessionFixationPrevention = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-    '/index':                         ['permitAll'],
-    '/index.gsp':                     ['permitAll'],
 	'/assets/**':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
@@ -134,9 +132,12 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_PACKER
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_DRIVER
+    ROLE_EMPLOYEE_PACKER > ROLE_EMPLOYEE
+    ROLE_EMPLOYEE_DRIVER > ROLE_EMPLOYEE
     ROLE_EMPLOYEE_PACKER > ROLE_CUSTOMER
     ROLE_EMPLOYEE_DRIVER > ROLE_CUSTOMER
 '''
 
-grails.asset.plugin."twitter-bootstrap".excludes=["**/*.less"]
-grails.asset.plugin."twitter-bootstrap".includes=["bootstrap.less"]
+grails.assets.less.compile = "less4j"
+grails.assets.plugin."twitter-bootstrap".excludes=["**/*.less"]
+grails.assets.plugin."twitter-bootstrap".includes=["bootstrap.less"]

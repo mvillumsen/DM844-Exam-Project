@@ -2,18 +2,17 @@
 <html>
 <head>
     <meta name="layout" content="shopTemplate"/>
-    <title>Welcome to The Webshop</title>
+    <title><g:message code="default.store.name"/> </title>
 
 </head>
 
 <body>
-<ol class="breadcrumb">
-    <li class="active">Home</li>
-</ol>
+<tb:breadcrumb>
+    <tb:liActive>Home</tb:liActive>
+</tb:breadcrumb>
 
-<h1>Welcome to our webshop</h1>
-
-<p class="lead">Pick a category in the menu to the left in order to browse our goods.</p>
+<h1><g:message code="default.store.welcome" /></h1>
+<tb:pLeadText><g:message code="default.store.pickCategory" /></tb:pLeadText>
 
 </body>
 </html>

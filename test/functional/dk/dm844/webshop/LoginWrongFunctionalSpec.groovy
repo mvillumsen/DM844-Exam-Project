@@ -8,13 +8,13 @@ import spock.lang.*
  */
 class LoginWrongFunctionalSpec extends GebReportingSpec {
     @Shared
-    String shoptitle = "Welcome to The Grocery Shop"
+    String shoptitle = "The Grocery Shop"
 
     void "enter front page"() {
         when:
         go 'http://localhost:8080/webshop/'
         then:
-        title == "Welcome to The Grocery Shop"
+        title == shoptitle
     }
 
     void "login with incorrect crecentials"() {

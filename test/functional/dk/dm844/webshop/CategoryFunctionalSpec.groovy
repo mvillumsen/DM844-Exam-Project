@@ -16,7 +16,7 @@ class CategoryFunctionalSpec extends GebReportingSpec {
         go 'http://localhost:8080/webshop/'
 
         then: "The title is 'Welcome to The Grocery Shop'"
-        title == "Welcome to The Grocery Shop"
+        title == "The Grocery Shop"
 
         when: "Locate and click on #cat category"
         $("a", text:"$cat").click()

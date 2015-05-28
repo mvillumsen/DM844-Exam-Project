@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
+import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -8,6 +9,12 @@ import spock.lang.Specification
  */
 @TestFor(ShoppingCartController)
 class ShoppingCartControllerSpec extends Specification {
+
+    void setup() {
+        CartService cartService = Mock(CartService)
+        cartService.count() >> 0
+        controller.cartService = cartService
+    }
 
     void "Test the index action"() {
         when: "The index action is executed"
@@ -17,7 +24,20 @@ class ShoppingCartControllerSpec extends Specification {
         response.status == 200
     }
 
-    void "Test checkout action"() {
+    void "Test checkout action on empty shopping cart"() {
+        when: "The checkout action is executed "
+        controller.checkout()
+
+        then: "The status code 400 is returned"
+        response.status == 400
+
+    }
+
+    void "Test checkout action with nonempty cart"() {
+        setup:
+        controller.cartService = Mock(CartService)
+        controller.cartService.count() >> 1
+
         when: "The checkout action is executed"
         controller.checkout()
 

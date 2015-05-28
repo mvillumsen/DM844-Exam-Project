@@ -12,59 +12,64 @@
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </tb:breadcrumb>
 <h2>Shopping Cart</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th><g:message code="shoppingCart.product"/></th>
-        <th><g:message code="shoppingCart.amount"/></th>
-        <th><g:message code="product.price"/></th>
-        <th><g:message code="shoppingCart.total"/></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <sc:each>
+<g:if test="${productCount > 0}">
+    <table class="table">
+        <thead>
         <tr>
+            <th><g:message code="shoppingCart.product"/></th>
+            <th><g:message code="shoppingCart.amount"/></th>
+            <th><g:message code="product.price"/></th>
+            <th><g:message code="shoppingCart.total"/></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <sc:each>
+            <tr>
+                <td>
+                    ${it['product']}
+                </td>
+                <td>
+                    x ${it['qty']}
+                </td>
+                <td>
+                    <sc:price>
+                        ${it['product'].price}
+                    </sc:price>
+                </td>
+                <td>
+                    <sc:price>
+                        ${it['product'].price * it['qty']}
+                    </sc:price>
+                </td>
+                <td>
+                    <g:form controller="product" action="removeAllFromCart" id="${it['product'].id}">
+                        <g:submitButton name="Remove" class="form-control btn btn-danger"/>
+                    </g:form>
+                </td>
+            </tr>
+        </sc:each>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td><g:message code="shoppingCart.grandTotal"/></td>
+            <td></td>
+            <td></td>
             <td>
-                ${it['product']}
+                <sc:price><sc:total/></sc:price>
             </td>
             <td>
-                x ${it['qty']}
-            </td>
-            <td>
-                <sc:price>
-                    ${it['product'].price}
-                </sc:price>
-            </td>
-            <td>
-                <sc:price>
-                    ${it['product'].price * it['qty']}
-                </sc:price>
-            </td>
-            <td>
-                <g:form controller="product" action="removeAllFromCart" id="${it['product'].id}">
-                    <g:submitButton name="Remove" class="form-control btn btn-danger"/>
+                <g:form action="checkout">
+                    <g:submitButton name="Order now!" class="btn btn-primary"/>
                 </g:form>
             </td>
         </tr>
-    </sc:each>
-    </tbody>
-    <tfoot>
-    <tr>
-        <td><g:message code="shoppingCart.grandTotal"/></td>
-        <td></td>
-        <td></td>
-        <td>
-            <sc:price><sc:total/></sc:price>
-        </td>
-        <td>
-            <g:form action="checkout">
-                <g:submitButton name="Order now!" class="btn btn-primary"/>
-            </g:form>
-        </td>
-    </tr>
-    </tfoot>
-</table>
+        </tfoot>
+    </table>
+</g:if>
+<g:else>
+    Your shopping cart is empty.
+</g:else>
 
 </body>
 </html>

@@ -50,6 +50,7 @@ class PersonController {
         }
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def edit(Person personInstance) {
         respond personInstance
     }

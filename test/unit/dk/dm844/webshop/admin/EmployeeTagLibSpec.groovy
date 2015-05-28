@@ -25,6 +25,6 @@ class EmployeeTagLibSpec extends Specification {
         cssClass      | bodyClosure               || result
         ''            | { }                       || "<span class=\"\">1337</span>"
         ''            | { 'My Body Closure' }     || "<span class=\"\">1337</span>"
-        'myClass'            | { }                || "<span class=\"myClass\">1337</span>"
+        'myClass'     | { }                       || "<span class=\"myClass\">1337</span>"
     }
 }

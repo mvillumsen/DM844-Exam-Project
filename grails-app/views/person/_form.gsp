@@ -1,148 +1,135 @@
+<%@ page import="dk.dm844.webshop.SecurityRole" %>
 <%@ page import="dk.dm844.webshop.Person" %>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'name', 'error')} required">
-    <label for="name">
-        <g:message code="person.name.label" default="Name"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:textField name="name" required="" value="${personInstance?.name}"/>
+<%-- First Column --%>
+<tb:col6_12>
 
-</div>
+<%-- Full name --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="name"><strong><g:message code="delivery.name.label"/>:</strong></tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="name" name="name" type="text" placeholder="${g.message(code: "delivery.name.label")}" value="${personInstance?.name}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'address', 'error')} ">
-    <label for="address">
-        <g:message code="person.address.label" default="Address"/>
+<%-- Address1 --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="address1"><strong><g:message code="delivery.address1.label"/>:</strong></tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="address1" name="address1" type="address" placeholder="${g.message(code: "delivery.address1.label")}" value="${personInstance?.address?.address1}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-    </label>
-    <g:select id="address" name="address.id" from="${dk.dm844.webshop.Address.list()}" optionKey="id"
-              value="${personInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+<%-- ZipCode --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="zipCode"><strong><g:message code="delivery.address.zipCode"/>:</strong></tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="zipCode" name="zipCode" type="text" placeholder="${g.message(code: "delivery.address.zipCode")}" value="${personInstance?.address?.zipCode}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-</div>
+<%-- Country --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="country"><strong><g:message code="delivery.address.country"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <g:select class="form-control" name="country" from="${Country.values()}" optionKey="key" valueMessagePrefix="enum.country" value="${personInstance?.address?.country}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'phone', 'error')} ">
-    <label for="phone">
-        <g:message code="person.phone.label" default="Phone"/>
+<%-- Username --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="username"><strong><g:message code="person.username.label"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="username" name="username" type="username" placeholder="${g.message(code: "person.username.label")}" value="${personInstance?.username}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-    </label>
-    <g:textField name="phone" value="${personInstance?.phone}"/>
+<%-- Salary --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="salary"><strong><g:message code="person.salary.label"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="salary" name="salary" type="number" placeholder="${g.message(code: "person.salary.label")}" value="${personInstance?.salary}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-</div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'email', 'error')} required">
-    <label for="email">
-        <g:message code="person.email.label" default="Email"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:field type="email" name="email" required="" value="${personInstance?.email}"/>
 
-</div>
+</tb:col6_12>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'salary', 'error')} ">
-    <label for="salary">
-        <g:message code="person.salary.label" default="Salary"/>
+<%-- Second Column --%>
+<tb:col6_12>
 
-    </label>
-    <g:field name="salary" type="number" value="${personInstance.salary}"/>
+<%-- E-Mail --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="email"><strong><g:message code="person.email.label"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="email" name="email" type="email" placeholder="${g.message(code: "person.email.label")}" value="${personInstance?.email}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-</div>
+<%-- Address2--%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="address2"><strong><g:message code="delivery.address2.label"/>:</strong></tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="address2" name="address2" type="text" placeholder="${g.message(code: "delivery.address2.label")}" value="${personInstance?.address?.address2}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'dateHired', 'error')} ">
-    <label for="dateHired">
-        <g:message code="person.dateHired.label" default="Date Hired"/>
+<%-- City --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="city"><strong><g:message code="delivery.address.city"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="city" name="city" type="text" placeholder="${g.message(code: "delivery.address.city")}" value="${personInstance?.address?.city}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-    </label>
-    <g:datePicker name="dateHired" precision="day" value="${personInstance?.dateHired}" default="none"
-                  noSelection="['': '']"/>
+<%-- Phone --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="phone"><strong><g:message code="person.phone.label"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="phone" name="phone" type="tel" placeholder="${g.message(code: "person.phone.label")}" value="${personInstance?.phone}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-</div>
+<%-- Password --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="password"><strong><g:message code="person.password.label"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <tb:inputForm id="password" name="password" type="password" placeholder="${g.message(code: "person.password.label")}" value="${personInstance?.password}"/>
+        </tb:col8>
+    </tb:formGroup>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'username', 'error')} required">
-    <label for="username">
-        <g:message code="person.username.label" default="Username"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:textField name="username" required="" value="${personInstance?.username}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'password', 'error')} required">
-    <label for="password">
-        <g:message code="person.password.label" default="Password"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:textField name="password" required="" value="${personInstance?.password}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'accountExpired', 'error')} ">
-    <label for="accountExpired">
-        <g:message code="person.accountExpired.label" default="Account Expired"/>
-
-    </label>
-    <g:checkBox name="accountExpired" value="${personInstance?.accountExpired}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'accountLocked', 'error')} ">
-    <label for="accountLocked">
-        <g:message code="person.accountLocked.label" default="Account Locked"/>
-
-    </label>
-    <g:checkBox name="accountLocked" value="${personInstance?.accountLocked}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'assignedOrders', 'error')} ">
-    <label for="assignedOrders">
-        <g:message code="person.assignedOrders.label" default="Assigned Orders"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${personInstance?.assignedOrders ?}" var="a">
-            <li><g:link controller="productOrder" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="productOrder" action="create"
-                    params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'productOrder.label', default: 'ProductOrder')])}</g:link>
-        </li>
-    </ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'enabled', 'error')} ">
-    <label for="enabled">
-        <g:message code="person.enabled.label" default="Enabled"/>
-
-    </label>
-    <g:checkBox name="enabled" value="${personInstance?.enabled}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'orders', 'error')} ">
-    <label for="orders">
-        <g:message code="person.orders.label" default="Orders"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${personInstance?.orders ?}" var="o">
-            <li><g:link controller="productOrder" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="productOrder" action="create"
-                    params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'productOrder.label', default: 'ProductOrder')])}</g:link>
-        </li>
-    </ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'passwordExpired', 'error')} ">
-    <label for="passwordExpired">
-        <g:message code="person.passwordExpired.label" default="Password Expired"/>
-
-    </label>
-    <g:checkBox name="passwordExpired" value="${personInstance?.passwordExpired}"/>
-
-</div>
-
+<%-- Role --%>
+    <tb:formGroup>
+        <tb:col3 cssClasses="deliveryAddress">
+            <tb:label cssClasses="deliveryLabel" for="Role"><strong><g:message code="person.role.label"/></strong>:</tb:label>
+        </tb:col3>
+        <tb:col8>
+            <person:getRole person="${personInstance}">
+                <g:select class="form-control" name="Role" from="${SecurityRole.Role.values()}" optionKey="key" valueMessagePrefix="enum.userRole" value="${it?.getKey()}"/>
+            </person:getRole>
+        </tb:col8>
+    </tb:formGroup>
+</tb:col6_12>

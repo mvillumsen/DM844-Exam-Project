@@ -31,36 +31,35 @@ class LoginTagLib {
         out << """</button>"""
     }
 
-    // TODO: Test this!
     def printUserInfo = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         Person currUser = springSecurityService.currentUser
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.name}</div><br>"""
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.address1}</div><br>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
+        out << """<div class="col-xs-10">${currUser.name}</div></div>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
+        out << """<div class="col-xs-10">${currUser.address.address1}</div></div>"""
 
         if (currUser.address.address2) {
-            out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
-            out << """<div class="col-xs-8">${currUser.address.address2}</div><br>"""
+            out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
+            out << """<div class="col-xs-10">${currUser.address.address2}</div></div>"""
         }
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.zipCode')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.zipCode}</div><br>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.zipCode')}:</strong></label></div>"""
+        out << """<div class="col-xs-10">${currUser.address.zipCode}</div></div>"""
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.city')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.city}</div><br>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.city')}:</strong></label></div>"""
+        out << """<div class="col-xs-10">${currUser.address.city}</div></div>"""
 
-        out << """<div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.country')}:</strong></label></div>"""
-        out << """<div class="col-xs-8">${currUser.address.country}</div><br>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
+        out << """<div class="col-xs-10">${currUser.address.country}</div></div>"""
     }
 
     def getUserInfo = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
         Person currUser = springSecurityService.currentUser
         Address address = currUser.address
-        Map<String> userInfo = [name: currUser.name, address1: address.address1, address2: address.address2, zipCode: address.zipCode, city: address.city, country: address.country]
+        Map<String> userInfo = [name: currUser.name, address1: address.address1, address2: address.address2, zipCode: address.zipCode, city: address.city,
+                                country: address.country]
         out << body(userInfo)
     }
 }

@@ -1,38 +1,24 @@
 <%@ page import="dk.dm844.webshop.Category" %>
 
-<div class="fieldcontain ${hasErrors(bean: categoryInstance, field: 'name', 'error')} required">
-    <label for="name">
-        <g:message code="category.name.label" default="Name"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:textField name="name" required="" value="${categoryInstance?.name}"/>
+<tb:col12>
 
-</div>
+<%-- Name --%>
+    <tb:formGroup>
+        <tb:col2 cssClasses="deliveryAddress">
+            <tb:label><strong><g:message code="category.name.label"/></strong>:</tb:label>
+        </tb:col2>
+        <tb:col8>
+            <tb:inputForm id="name" name="name" type="text" placeholder="${g.message(code: "category.name.label")}" value="${categoryInstance?.name}" required="required"/>
+        </tb:col8>
+    </tb:formGroup>
 
-<div class="fieldcontain ${hasErrors(bean: categoryInstance, field: 'description', 'error')} ">
-    <label for="description">
-        <g:message code="category.description.label" default="Description"/>
-
-    </label>
-    <g:textField name="description" value="${categoryInstance?.description}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: categoryInstance, field: 'products', 'error')} ">
-    <label for="products">
-        <g:message code="category.products.label" default="Products"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${categoryInstance?.products ?}" var="p">
-            <li><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li>
-            <g:link controller="product" action="create"
-                    params="['category.id': categoryInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
-        </li>
-    </ul>
-
-</div>
-
+<%-- Description --%>
+    <tb:formGroup>
+        <tb:col2 cssClasses="deliveryAddress">
+            <tb:label><strong><g:message code="category.description.label"/></strong>:</tb:label>
+        </tb:col2>
+        <tb:col8>
+            <g:textArea class="form-control" name="description" placeholder="${g.message(code: "category.description.label")}" value="${categoryInstance?.description}"/>
+        </tb:col8>
+    </tb:formGroup>
+</tb:col12>

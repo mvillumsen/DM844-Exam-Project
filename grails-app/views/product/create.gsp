@@ -18,15 +18,16 @@
         </g:eachError>
     </ul>
 </g:hasErrors>
-<g:form url="[resource: productInstance, action: 'save']">
-    <fieldset class="form">
-        <g:render template="form"/>
-    </fieldset>
-    <fieldset class="buttons">
-        <g:submitButton name="create" class="btn btn-primary"
-                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-    </fieldset>
-</g:form>
-
+<tb:row>
+    <g:form url="[resource: productInstance, action: 'save']" class="form-horizontal address">
+        <fieldset class="form">
+            <g:render template="form"/>
+        </fieldset>
+        <fieldset class="buttons">
+            <g:submitButton name="create" class="btn btn-primary"
+                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+        </fieldset>
+    </g:form>
+</tb:row>
 </body>
 </html>

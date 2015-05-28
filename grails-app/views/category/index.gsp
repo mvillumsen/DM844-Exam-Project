@@ -12,20 +12,15 @@
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
-<admin:tableStriped>
+<tb:tableStriped>
     <thead>
     <tr>
 
         <g:sortableColumn property="name" title="${message(code: 'category.name.label', default: 'Name')}"/>
 
-        <g:sortableColumn property="description"
-                          title="${message(code: 'category.description.label', default: 'Description')}"/>
+        <th><g:message code="category.description.label"/></th>
 
-        <g:sortableColumn property="dateCreated"
-                          title="${message(code: 'category.dateCreated.label', default: 'Date Created')}"/>
-
-        <g:sortableColumn property="lastUpdated"
-                          title="${message(code: 'category.lastUpdated.label', default: 'Last Updated')}"/>
+        <th><g:message code="category.numberOfProducts.label"/></th>
 
     </tr>
     </thead>
@@ -33,19 +28,17 @@
     <g:each in="${categoryInstanceList}" status="i" var="categoryInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            <td><g:link action="show"
+            <td><g:link action="edit"
                         id="${categoryInstance.id}">${fieldValue(bean: categoryInstance, field: "name")}</g:link></td>
 
             <td>${fieldValue(bean: categoryInstance, field: "description")}</td>
 
-            <td><g:formatDate date="${categoryInstance.dateCreated}"/></td>
-
-            <td><g:formatDate date="${categoryInstance.lastUpdated}"/></td>
+            <td>${categoryInstanceList?.size()}</td>
 
         </tr>
     </g:each>
     </tbody>
-</admin:tableStriped>
+</tb:tableStriped>
 
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
@@ -54,7 +47,9 @@
         </g:link>
     </tb:pullLeft>
     <tb:pullRight>
-        <g:paginate total="${productInstanceCount ?: 0}"/>
+        <g:if test="${productInstanceCount > 1}">
+            <g:paginate total="${productInstanceCount ?: 0}"/>
+        </g:if>
     </tb:pullRight>
 </tb:row>
 

@@ -12,7 +12,7 @@
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
-<admin:tableStriped>
+<tb:tableStriped>
     <thead>
     <tr>
 
@@ -21,15 +21,13 @@
         <g:sortableColumn property="description"
                           title="${message(code: 'product.description.label', default: 'Description')}"/>
 
-        <th><g:message code="product.category.label" default="Category"/></th>
+        <g:sortableColumn property="category"
+                          title="${message(code: 'product.category.label', default: 'Category')}"/>
 
-        <g:sortableColumn property="dateCreated"
-                          title="${message(code: 'product.dateCreated.label', default: 'Date Created')}"/>
+        <th><g:message code="product.stock.label"/></th>
 
-        <g:sortableColumn property="lastUpdated"
-                          title="${message(code: 'product.lastUpdated.label', default: 'Last Updated')}"/>
+        <th><g:message code="product.price.label"/></th>
 
-        <g:sortableColumn property="price" title="${message(code: 'product.price.label', default: 'Price')}"/>
 
     </tr>
     </thead>
@@ -37,23 +35,21 @@
     <g:each in="${productInstanceList}" status="i" var="productInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            <td><g:link action="show"
+            <td><g:link action="edit"
                         id="${productInstance.id}">${fieldValue(bean: productInstance, field: "name")}</g:link></td>
 
             <td>${fieldValue(bean: productInstance, field: "description")}</td>
 
             <td>${fieldValue(bean: productInstance, field: "category")}</td>
 
-            <td><g:formatDate date="${productInstance.dateCreated}"/></td>
-
-            <td><g:formatDate date="${productInstance.lastUpdated}"/></td>
+            <td>${fieldValue(bean: productInstance, field: "stock")}</td>
 
             <td>${fieldValue(bean: productInstance, field: "price")}</td>
 
         </tr>
     </g:each>
     </tbody>
-</admin:tableStriped>
+</tb:tableStriped>
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
         <g:link class="create" action="create">

@@ -19,10 +19,12 @@ class NavBarTagLibSpec extends Specification {
         tag                     | cssClass      | bodyClosure               || result
         'navbarDefault'         | ''            | { }                       || '<nav class="navbar navbar-default navbar-fixed-top "></nav>'
         'navbarDefault'         | ''            | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top ">My Body Closure</nav>'
-        'navbarDefault'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top myClass">My Body Closure</nav>'
+        'navbarDefault'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-default navbar-fixed-top myClass">My Body Closure' +
+                '</nav>'
         'navbarInverse'         | ''            | { }                       || '<nav class="navbar navbar-inverse navbar-fixed-top "></nav>'
         'navbarInverse'         | ''            | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top ">My Body Closure</nav>'
-        'navbarInverse'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top myClass">My Body Closure</nav>'
+        'navbarInverse'         | 'myClass'     | { -> 'My Body Closure' }  || '<nav class="navbar navbar-inverse navbar-fixed-top myClass">My Body Closure' +
+                '</nav>'
         'navbarHeader'          | ''            | { }                       || '<div class="navbar-header"></div>'
         'navbarHeader'          | ''            | { -> 'My Body Closure' }  || '<div class="navbar-header">My Body Closure</div>'
         'navbarLeftContent'     | ''            | { }                       || '<ul class="nav navbar-nav navbar-left"></ul>'
@@ -33,7 +35,8 @@ class NavBarTagLibSpec extends Specification {
         'navbarText'            | ''            | { -> 'My Body Closure' }  || '<p class="navbar-text ">My Body Closure</p>'
         'navbarText'            | 'myClass'     | { -> 'My Body Closure' }  || '<p class="navbar-text myClass">My Body Closure</p>'
         'signinDropdown'        | ''            | { }                       || '<li class="dropdown">' +
-                '<a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret">' +
+                '<a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>' +
+                ' default.signIn.label<strong class="caret">' +
                 '</strong></a><div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;"></div></li>'
         'breadcrumb'            | ''            | { }                       || '<ol class="breadcrumb "></ol>'
         'breadcrumb'            | ''            | { -> 'My Body Closure' }  || '<ol class="breadcrumb ">My Body Closure</ol>'

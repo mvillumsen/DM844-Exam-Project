@@ -7,9 +7,7 @@
 </head>
 
 <body>
-<g:if test="${flash.message}">
-    <div class="message" role="status">${flash.message}</div>
-</g:if>
+
 <g:hasErrors bean="${personInstance}">
     <ul class="errors" role="alert">
         <g:eachError bean="${personInstance}" var="error">
@@ -18,15 +16,16 @@
         </g:eachError>
     </ul>
 </g:hasErrors>
-<g:form url="[resource: personInstance, action: 'save']">
-    <fieldset class="form">
-        <g:render template="form"/>
-    </fieldset>
-    <fieldset class="buttons">
-        <g:submitButton name="create" class="btn btn-primary"
-                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-    </fieldset>
-</g:form>
-
+<tb:row>
+    <g:form url="[resource: personInstance, action: 'save']" class="form-horizontal address">
+        <fieldset class="form">
+            <g:render template="form"/>
+        </fieldset>
+        <fieldset class="buttons">
+            <g:submitButton name="create" class="btn btn-primary"
+                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+        </fieldset>
+    </g:form>
+</tb:row>
 </body>
 </html>

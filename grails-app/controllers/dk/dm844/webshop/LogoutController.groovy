@@ -22,7 +22,11 @@ import javax.servlet.http.HttpServletResponse
 @Secured('permitAll')
 class LogoutController {
 
-	/**
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
+    /**
 	 * Index action. Redirects to the Spring security logout uri.
 	 */
 	def index() {

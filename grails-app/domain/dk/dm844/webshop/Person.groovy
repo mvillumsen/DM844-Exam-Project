@@ -13,7 +13,7 @@ class Person {
     static hasMany = [assignedOrders: ProductOrder,
                       orders        : ProductOrder]
     static mappedBy = [assignedOrders: "assignedEmployee",
-                       orders: "customer"]
+                       orders        : "customer"]
 
     Date dateCreated
     Date lastUpdated

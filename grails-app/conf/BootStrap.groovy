@@ -8,8 +8,11 @@ import dk.dm844.webshop.UserAliasSecurityRole
 class BootStrap {
 
     def springSecurityService
+    def grailsApplication
+
 
     def init = { servletContext ->
+
         environments {
             development {
                 initProducts()
@@ -96,7 +99,6 @@ class BootStrap {
         UserAliasSecurityRole.create(Person.findByName('Cassie'), packerRole, true)
         UserAliasSecurityRole.create(Person.findByName('Dennis'), driverRole, true)
         UserAliasSecurityRole.create(Person.findByName('Erik'), adminRole, true)
-
 
         assert Person.count() == 5
         assert SecurityRole.count() == 5

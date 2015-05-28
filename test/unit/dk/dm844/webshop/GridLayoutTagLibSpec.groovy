@@ -62,8 +62,10 @@ class GridLayoutTagLibSpec extends Specification {
         'col12'                 | ''            | { }                           || '<div class="col-xs-12 "></div>'
         'col12'                 | ''            | { -> 'My Body Closure' }      || '<div class="col-xs-12 ">My Body Closure</div>'
         'col12'                 | 'myClass'     | { -> 'My Body Closure' }      || '<div class="col-xs-12 myClass">My Body Closure</div>'
-        'buyButton'             | ''            | { }                           || '<button type="submit" class="btn btn-primary btn-sm" role="button"></button>'
-        'buyButton'             | ''            | { -> 'My Body Closure' }      || '<button type="submit" class="btn btn-primary btn-sm" role="button">My Body Closure</button>'
+        'buyButton'             | ''            | { }                           || '<button type="submit" class="btn btn-primary btn-sm" role="button">' +
+                '</button>'
+        'buyButton'             | ''            | { -> 'My Body Closure' }      || '<button type="submit" class="btn btn-primary btn-sm" role="button">' +
+                'My Body Closure</button>'
         'pLeadText'             | ''            | { }                           || '<p class="lead "></p>'
         'pLeadText'             | ''            | { -> 'My Body Closure' }      || '<p class="lead ">My Body Closure</p>'
         'pLeadText'             | 'myClass'     | { -> 'My Body Closure' }      || '<p class="lead myClass">My Body Closure</p>'
@@ -95,7 +97,8 @@ class GridLayoutTagLibSpec extends Specification {
         'pullLeft'              | 'myClass'     | { -> 'My Body Closure' }      || '<div class="pull-left myClass">My Body Closure</div>'
         'button'                | ''            | { }                           || '<button type="button" class="btn btn-primary "></button>'
         'button'                | ''            | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary ">My Body Closure</button>'
-        'button'                | 'myClass'     | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary myClass">My Body Closure</button>'
+        'button'                | 'myClass'     | { -> 'My Body Closure' }      || '<button type="button" class="btn btn-primary myClass">My Body Closure' +
+                '</button>'
     }
 
     @Unroll
@@ -115,18 +118,23 @@ class GridLayoutTagLibSpec extends Specification {
     }
 
     @Unroll
-    void "Testing tag: inputForm with cssClass: '#cssClass', type: '#type', id: '#id', name: '#name' and placeholder: '#placeholder'"() {
+    void "Testing tag: inputForm with cssClass: '#cssClass', type: '#type', id: '#id', name: '#name', placeholder: '#placeholder' and value: '#value'"() {
         expect:
-        tagLib.inputForm( cssClasses: cssClass, type: type, id: id, name: name, placeholder: placeholder )  == result
+        tagLib.inputForm( cssClasses: cssClass, type: type, id: id, name: name, placeholder: placeholder, value: value )  == result
 
         where:
-        cssClass    | type      | id        | name      | placeholder       || result
-        ''          | ''        | ''        | ''        | ''                || '<input class="form-control " type="" id="" name="" placeholder="">'
-        'myClass'   | ''        | ''        | ''        | ''                || '<input class="form-control myClass" type="" id="" name="" placeholder="">'
-        'myClass'   | 'myType'  | ''        | ''        | ''                || '<input class="form-control myClass" type="myType" id="" name="" placeholder="">'
-        'myClass'   | 'myType'  | 'id1'     | ''        | ''                || '<input class="form-control myClass" type="myType" id="id1" name="" placeholder="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''                || '<input class="form-control myClass" type="myType" id="id1" name="myName" placeholder="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Placeholder'  || '<input class="form-control myClass" type="myType" id="id1" name="myName" placeholder="My Placeholder">'
+        cssClass    | type      | id        | name      | placeholder       | value     || result
+        ''          | ''        | ''        | ''        | ''                | ''        || '<input class="form-control " type="" id="" name="" placeholder="" value="">'
+        'myClass'   | ''        | ''        | ''        | ''                | ''        || '<input class="form-control myClass" type="" id="" name="" placeholder="" value="">'
+        'myClass'   | 'myType'  | ''        | ''        | ''                | ''        || '<input class="form-control myClass" type="myType" id="" name="" placeholder="" value="">'
+        'myClass'   | 'myType'  | 'id1'     | ''        | ''                | ''        || '<input class="form-control myClass" type="myType" id="id1" name="" ' +
+                'placeholder="" value="">'
+        'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''                | ''        || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+                ' placeholder="" value="">'
+        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Placeholder'  | ''        || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+                ' placeholder="My Placeholder" value="">'
+        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Placeholder'  | 'myValue' || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+                ' placeholder="My Placeholder" value="myValue">'
     }
 
     @Unroll
@@ -141,6 +149,7 @@ class GridLayoutTagLibSpec extends Specification {
         'myClass'   | 'myType'  | ''        | ''        | ''          || '<input class="form-control myClass" type="myType" id="" name="" value="">'
         'myClass'   | 'myType'  | 'id1'     | ''        | ''          || '<input class="form-control myClass" type="myType" id="id1" name="" value="">'
         'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''          || '<input class="form-control myClass" type="myType" id="id1" name="myName" value="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Value'  || '<input class="form-control myClass" type="myType" id="id1" name="myName" value="My Value">'
+        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Value'  || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+                ' value="My Value">'
     }
 }

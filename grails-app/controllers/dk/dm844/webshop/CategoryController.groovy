@@ -1,6 +1,7 @@
 package dk.dm844.webshop
 
 import grails.plugin.springsecurity.annotation.Secured
+import sun.util.calendar.LocalGregorianCalendar
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -8,6 +9,10 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 @Secured([SecurityRole.EMPLOYEE])
 class CategoryController {
+
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 

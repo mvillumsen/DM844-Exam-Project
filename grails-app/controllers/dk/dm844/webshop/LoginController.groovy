@@ -29,6 +29,10 @@ import javax.servlet.http.HttpServletResponse
 @Secured('permitAll')
 class LoginController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
 	/**
 	 * Dependency injection for the authenticationTrustResolver.
 	 */
@@ -39,7 +43,7 @@ class LoginController {
 	 */
 	def springSecurityService
 
-	/**
+    /**
 	 * Default action; redirects to 'defaultTargetUrl' if logged in, /login/auth otherwise.
 	 */
 	def index() {

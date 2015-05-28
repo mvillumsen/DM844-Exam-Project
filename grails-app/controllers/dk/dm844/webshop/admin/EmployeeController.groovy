@@ -10,6 +10,10 @@ import org.springframework.http.HttpStatus
 @Secured([SecurityRole.EMPLOYEE])
 class EmployeeController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
     EmployeeService employeeService
     SpringSecurityService springSecurityService
 

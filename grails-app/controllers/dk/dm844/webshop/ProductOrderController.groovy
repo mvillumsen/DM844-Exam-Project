@@ -10,6 +10,10 @@ import grails.transaction.Transactional
 @Secured([SecurityRole.EMPLOYEE])
 class ProductOrderController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
     ProductOrderService productOrderService
     SpringSecurityService springSecurityService
 

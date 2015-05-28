@@ -8,6 +8,10 @@ import grails.transaction.Transactional
 @Secured([SecurityRole.EMPLOYEE])
 class ProductController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
     def cartService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

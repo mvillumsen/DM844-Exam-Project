@@ -96,13 +96,25 @@ environments {
 }
 
 // log4j configuration
-log4j.main = {
+import org.apache.log4j.DailyRollingFileAppender
+log4j = {
+    appenders {
+        appender new DailyRollingFileAppender(
+                name: 'dailyAppender',
+                datePattern: "'.'yyyy-MM-dd",  // See the API for all patterns.
+                fileName: "target/logs/webshop.log",
+                layout: simple
+        )
+    }
+
+    root {
+        info 'dailyAppender'
+    }
+//}
+//
+//log4j.main = {
     // Example of changing the log pattern for the default console appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts

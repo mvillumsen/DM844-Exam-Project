@@ -10,6 +10,10 @@ import grails.transaction.Transactional
 @Secured([SecurityRole.EMPLOYEE])
 class ProductOrderController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
     ProductOrderService productOrderService
     SpringSecurityService springSecurityService
 
@@ -145,7 +149,8 @@ class ProductOrderController {
         }
 
         Person employee = springSecurityService.currentUser
-        if (employee != productOrderInstance.assignedEmployee) {
+        if (productOrderInstance.assignedEmployee == null ||
+                employee.id != productOrderInstance.assignedEmployee.id) {
             response.sendError(UNAUTHORIZED.value())
             return
         }

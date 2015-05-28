@@ -7,6 +7,10 @@ import org.springframework.security.access.annotation.Secured
 @Secured([SecurityRole.CUSTOMER])
 class ShoppingCartController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
     CartService cartService
     SpringSecurityService springSecurityService
 

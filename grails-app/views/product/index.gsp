@@ -21,15 +21,13 @@
         <g:sortableColumn property="description"
                           title="${message(code: 'product.description.label', default: 'Description')}"/>
 
-        <th><g:message code="product.category.label" default="Category"/></th>
+        <g:sortableColumn property="category"
+                          title="${message(code: 'product.category.label', default: 'Category')}"/>
 
-        <g:sortableColumn property="dateCreated"
-                          title="${message(code: 'product.dateCreated.label', default: 'Date Created')}"/>
+        <th><g:message code="product.stock.label"/></th>
 
-        <g:sortableColumn property="lastUpdated"
-                          title="${message(code: 'product.lastUpdated.label', default: 'Last Updated')}"/>
+        <th><g:message code="product.price.label"/></th>
 
-        <g:sortableColumn property="price" title="${message(code: 'product.price.label', default: 'Price')}"/>
 
     </tr>
     </thead>
@@ -44,9 +42,7 @@
 
             <td>${fieldValue(bean: productInstance, field: "category")}</td>
 
-            <td><g:formatDate date="${productInstance.dateCreated}"/></td>
-
-            <td><g:formatDate date="${productInstance.lastUpdated}"/></td>
+            <td>${fieldValue(bean: productInstance, field: "stock")}</td>
 
             <td>${fieldValue(bean: productInstance, field: "price")}</td>
 

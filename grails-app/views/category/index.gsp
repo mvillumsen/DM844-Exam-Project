@@ -18,14 +18,9 @@
 
         <g:sortableColumn property="name" title="${message(code: 'category.name.label', default: 'Name')}"/>
 
-        <g:sortableColumn property="description"
-                          title="${message(code: 'category.description.label', default: 'Description')}"/>
+        <th><g:message code="category.description.label"/></th>
 
-        <g:sortableColumn property="dateCreated"
-                          title="${message(code: 'category.dateCreated.label', default: 'Date Created')}"/>
-
-        <g:sortableColumn property="lastUpdated"
-                          title="${message(code: 'category.lastUpdated.label', default: 'Last Updated')}"/>
+        <th><g:message code="category.numberOfProducts.label"/></th>
 
     </tr>
     </thead>
@@ -38,9 +33,7 @@
 
             <td>${fieldValue(bean: categoryInstance, field: "description")}</td>
 
-            <td><g:formatDate date="${categoryInstance.dateCreated}"/></td>
-
-            <td><g:formatDate date="${categoryInstance.lastUpdated}"/></td>
+            <td>${categoryInstanceList?.size()}</td>
 
         </tr>
     </g:each>

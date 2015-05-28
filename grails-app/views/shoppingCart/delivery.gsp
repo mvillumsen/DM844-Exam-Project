@@ -66,12 +66,7 @@
                     <tb:col2 cssClasses="deliveryAddress"><tb:label cssClasses="deliveryLabel" for="country"><strong><g:message
                             code="delivery.address.country"/></strong>:</tb:label></tb:col2>
                     <tb:col8>
-                        <select name="country" class="form-control">
-                            <option value="${it.country}" selected="selected">${it.country}</option>
-                            <option value="DK"><g:message code="delivery.country.dk"/></option>
-                            <option value="GB"><g:message code="delivery.country.gb"/></option>
-                            <option value="US"><g:message code="delivery.country.us"/></option>
-                        </select>
+                        <g:select class="form-control" name="country" from="${Country.values()}" optionKey="key" valueMessagePrefix="enum.country"/>
                     </tb:col8>
                 </tb:formGroup>
             </login:getUserInfo>

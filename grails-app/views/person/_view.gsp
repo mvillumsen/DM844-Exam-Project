@@ -46,14 +46,14 @@
         <tb:col8>${person?.email}</tb:col8>
     </tb:row>
     <tb:row>
+        <tb:col2><tb:label cssClasses="deliveryLabel"><strong><g:message code="person.role.label"
+                                                                         default="Salary"/></strong></tb:label></tb:col2>
+        <tb:col8><person:getRole person="${person}">${it}</person:getRole></tb:col8>
+    </tb:row>
+    <tb:row>
         <tb:col2><tb:label cssClasses="deliveryLabel"><strong><g:message code="person.salary.label"
                                                                          default="Salary"/></strong></tb:label></tb:col2>
         <tb:col8>${person?.salary}</tb:col8>
-    </tb:row>
-    <tb:row>
-        <tb:col2><tb:label cssClasses="deliveryLabel"><strong><g:message code="person.dateHired.label"
-                                                                         default="Date Hired"/></strong></tb:label></tb:col2>
-        <tb:col8>${person?.dateHired}</tb:col8>
     </tb:row>
     <tb:row>
         <tb:col2><tb:label cssClasses="deliveryLabel"><strong><g:message code="person.dateCreated.label"

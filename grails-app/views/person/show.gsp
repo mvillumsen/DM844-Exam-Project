@@ -11,7 +11,7 @@
 <body>
 
 <g:render template="view" model="${[person: personInstance]}"/>
-<sec:ifAllGranted roles="${SecurityRole.EMPLOYEE}">
+<sec:ifAnyGranted roles="${SecurityRole.EMPLOYEE}">
     <h2><g:message code="person.assignedOrders.label"/></h2>
     <g:if test="${personInstance.assignedOrders}">
         <g:render template="/productOrder/accordionList" model="${[orders: personInstance?.assignedOrders]}"/>
@@ -19,7 +19,7 @@
     <g:else>
         <tb:pLeadText><g:message code="person.noOrders.label"/></tb:pLeadText>
     </g:else>
-</sec:ifAllGranted>
+</sec:ifAnyGranted>
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
         <g:link action="index">

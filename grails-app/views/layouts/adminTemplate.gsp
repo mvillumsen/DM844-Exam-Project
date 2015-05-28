@@ -20,7 +20,7 @@
 <tb:navbarDefault cssClasses="adminNav">
     <tb:containerFluid>
         <tb:navbarHeader>
-            <tb:navbarCollapse brand="GroceryShop" url="${createLink(controller: 'employee', action: 'index')}">
+            <tb:navbarCollapse brand="Admin" url="${createLink(controller: 'employee', action: 'index')}">
                 <tb:navbarLeftContent>
                     <tb:language/>
                     <li><g:link controller="Employee" action="assignments" class="navbar-link"><glyph:myTasks/> <g:message

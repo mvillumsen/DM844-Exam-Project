@@ -13,7 +13,7 @@
     <div class="message" role="status">${flash.message}</div>
 </g:if>
 
-<g:if test="${productOrderInstanceList.size() > 0}">
+<g:if test="${productOrderInstanceList?.size() > 0}">
     <g:render template="accordionList" model="${[orders: productOrderInstanceList, id: "packingAccordion"]}"/>
 </g:if>
 <g:else>

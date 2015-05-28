@@ -33,12 +33,7 @@
             <td>${fieldValue(bean: personInstance, field: "address")}</td>
             <td>${fieldValue(bean: personInstance, field: "email")}</td>
 
-            <sec:ifAllGranted roles="${SecurityRole.EMPLOYEE}">
-                <td><g:message code="default.employee.label"/></td>
-            </sec:ifAllGranted>
-            <sec:ifAllGranted roles="${SecurityRole.CUSTOMER}">
-                <td><g:message code="default.customer.label"/></td>
-            </sec:ifAllGranted>
+            <td><person:getRole person="${personInstance}">${it.getValue()}</person:getRole></td>
         </tr>
     </g:each>
     </tbody>

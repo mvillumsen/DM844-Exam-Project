@@ -12,8 +12,6 @@ class BootStrap {
 
 
     def init = { servletContext ->
-        //        def beforeInterceptor = { ->
-//        println """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""}
 
         environments {
             development {
@@ -95,19 +93,6 @@ class BootStrap {
                 assert UserAliasSecurityRole.count() == 5
             }
         }
-
-//        grailsApplication.controllerClasses.toList().each{ controllerClass ->
-//            println "writing from bootstrap"
-//            if(controllerClass.clazz.name.contains("dm844")) {
-//                println "      ${controllerClass.clazz.name}"
-//                controllerClass.metaClass.beforeInterceptor = {
-//                    println """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
-//                }
-//                println controllerClass.metaClass.methods*.name.sort()
-//
-//            }
-//        }
-
 
     }
 }

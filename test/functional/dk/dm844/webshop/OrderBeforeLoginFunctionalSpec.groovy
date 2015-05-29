@@ -10,7 +10,7 @@ import spock.lang.*
 @Stepwise
 class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
 
-
+    @Ignore
     void "Order some meat groceries"() {
         setup:
         go 'http://localhost:8088/webshop/'

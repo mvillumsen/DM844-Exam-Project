@@ -102,7 +102,7 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
-    def col6_12 = { attrs, body ->
+    def colMd6Xs12 = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="col-xs-12 col-md-6 ${cssClasses}">"""
         out << body()
@@ -148,13 +148,6 @@ class GridLayoutTagLib {
         out << """<address class="${cssClasses}">"""
         out << body()
         out << """</address>"""
-    }
-
-    def formHorizontal = { attrs, body ->
-        String cssClasses = attrs.cssClasses ?: ''
-        out << """<form class="form-horizontal ${cssClasses}">"""
-        out << body()
-        out << """</form>"""
     }
 
     def formGroup = { attrs, body ->

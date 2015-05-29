@@ -17,10 +17,10 @@ class SecurityRole {
         PACKER("Packer"),
         ADMIN("Admin"),
 
-        final String value
+        final String roleName
 
-        Role(String value) {
-            this.value = value
+        Role(String roleName) {
+            this.roleName = roleName
         }
 
         static Role getRole(String role) {
@@ -39,7 +39,7 @@ class SecurityRole {
 
         @Override
         String toString() {
-            return value
+            return roleName
         }
 
         String getKey() {

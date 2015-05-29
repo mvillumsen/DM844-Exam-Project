@@ -1,11 +1,5 @@
 ruleset {
 
-    description '''
-        A Sample Groovy RuleSet containing all CodeNarc Rules, grouped by category.
-        You can use this as a template for your own custom RuleSet.
-        Just delete the rules that you don't want to include.
-        '''
-
     // rulesets/basic.xml
     AssertWithinFinallyBlock
     AssignmentInConditional
@@ -38,7 +32,6 @@ ruleset {
     EmptySynchronizedStatement
     EmptyTryBlock
     EmptyWhileStatement
-//    EqualsAndHashCode
     EqualsOverloaded
     ExplicitGarbageCollection
     ForLoopShouldBeWhileLoop
@@ -92,7 +85,6 @@ ruleset {
     IfStatementCouldBeTernary
     InvertedIfElse
     LongLiteralWithLowerCaseL
-//    NoDef
     ParameterReassignment
     TernaryCouldBeElvis
     VectorIsObsolete
@@ -101,7 +93,6 @@ ruleset {
     AbstractClassWithPublicConstructor
     AbstractClassWithoutAbstractMethod
     BooleanMethodReturnsNull
-    //BuilderMethodWithSideEffects
     CloneableWithoutClone
     CloseWithoutCloseable
     CompareToWithoutComparable
@@ -109,7 +100,6 @@ ruleset {
     EmptyMethodInAbstractClass
     FinalClassWithProtectedMember
     ImplementationAsType
-//    Instanceof
     LocaleSetDefault
     NestedForLoop
     PrivateFieldCouldBeFinal
@@ -121,10 +111,7 @@ ruleset {
     ToStringReturnsNull
 
     // rulesets/dry.xml
-    //DuplicateListLiteral
-    //DuplicateMapLiteral
     DuplicateNumberLiteral( doNotApplyToClassNames: '*Spec')
-    //DuplicateStringLiteral
 
     // rulesets/enhanced.xml
     CloneWithoutCloneable
@@ -160,7 +147,6 @@ ruleset {
     BracesForIfElse
     BracesForMethod
     BracesForTryCatchFinally
-    //ClassJavadoc
     ClosureStatementOnOpeningLineOfMultipleLineClosure
     ConsecutiveBlankLines
     FileEndsWithoutNewline
@@ -177,7 +163,6 @@ ruleset {
     SpaceAfterSwitch
     SpaceAfterWhile
     SpaceAroundClosureArrow
-    //SpaceAroundMapEntryColon
     SpaceAroundOperator
     SpaceBeforeClosingBrace
     SpaceBeforeOpeningBrace
@@ -195,22 +180,16 @@ ruleset {
     StatelessClass
 
     // rulesets/grails.xml
-//    GrailsDomainHasEquals
-    //GrailsDomainHasToString
     GrailsDomainReservedSqlKeywordName
-//    GrailsDomainWithServiceReference
     GrailsDuplicateConstraint
     GrailsDuplicateMapping
-//    GrailsMassAssignment
     GrailsPublicControllerMethod
     GrailsServletContextReference
-    GrailsSessionReference   // DEPRECATED
     GrailsStatelessService
 
     // rulesets/groovyism.xml
     AssignCollectionSort
     AssignCollectionUnique
-//    ClosureAsLastMethodParameter
     CollectAllIsDeprecated
     ConfusingMultipleReturns
     ExplicitArrayListInstantiation
@@ -245,7 +224,6 @@ ruleset {
     DuplicateImport
     ImportFromSamePackage
     ImportFromSunPackages
-    //MisorderedStaticImports
     UnnecessaryGroovyImport
     UnusedImport
 
@@ -296,7 +274,6 @@ ruleset {
     ClassName
     ClassNameSameAsFilename
     ConfusingMethodName
-    //FactoryMethodName
     FieldName
     InterfaceName
     MethodName( doNotApplyToClassNames: '*Spec')
@@ -322,14 +299,11 @@ ruleset {
     EnumCustomSerializationIgnored
     SerialPersistentFields
     SerialVersionUID
-//    SerializableClassMustDefineSerialVersionUID
 
     // rulesets/size.xml
     AbcComplexity   // DEPRECATED: Use the AbcMetric rule instead. Requires the GMetrics jar
-    //AbcMetric   // Requires the GMetrics jar
     ClassSize
     CrapMetric   // Requires the GMetrics jar and a Cobertura coverage file
-    //CyclomaticComplexity   // Requires the GMetrics jar
     MethodCount
     MethodSize
     NestedBlockDepth
@@ -358,8 +332,6 @@ ruleset {
     UnnecessaryElseStatement
     UnnecessaryFinalOnPrivateMethod
     UnnecessaryFloatInstantiation
-    //UnnecessaryGString
-//    UnnecessaryGetter( doNotApplyToClassNames: '*Controller')
     UnnecessaryIfStatement
     UnnecessaryInstanceOfCheck
     UnnecessaryInstantiationToGetClass
@@ -380,7 +352,6 @@ ruleset {
     UnnecessarySubstring
     UnnecessaryTernaryExpression
     UnnecessaryToString
-//    UnnecessaryTransientModifier
 
     // rulesets/unused.xml
     UnusedArray

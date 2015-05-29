@@ -1,7 +1,7 @@
 <%@ page import="dk.dm844.webshop.Product" %>
 
 <%-- First Column --%>
-<tb:col6_12>
+<tb:colMd6Xs12>
 
 <%-- Name --%>
     <tb:formGroup>
@@ -35,10 +35,10 @@
         </tb:col8>
     </tb:formGroup>
 
-</tb:col6_12>
+</tb:colMd6Xs12>
 
 <%-- Second Column --%>
-<tb:col6_12>
+<tb:colMd6Xs12>
 <%-- Category --%>
     <tb:formGroup>
         <tb:col3 cssClasses="deliveryAddress">
@@ -60,4 +60,4 @@
 
         </tb:col8>
     </tb:formGroup>
-</tb:col6_12>
+</tb:colMd6Xs12>

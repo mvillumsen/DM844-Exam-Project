@@ -2,7 +2,7 @@
 <%@ page import="dk.dm844.webshop.Person" %>
 
 <%-- First Column --%>
-<tb:col6_12>
+<tb:colMd6Xs12>
 
 <%-- Full name --%>
     <tb:formGroup>
@@ -66,10 +66,10 @@
 
 
 
-</tb:col6_12>
+</tb:colMd6Xs12>
 
 <%-- Second Column --%>
-<tb:col6_12>
+<tb:colMd6Xs12>
 
 <%-- E-Mail --%>
     <tb:formGroup>
@@ -132,4 +132,4 @@
             </person:getRole>
         </tb:col8>
     </tb:formGroup>
-</tb:col6_12>
+</tb:colMd6Xs12>

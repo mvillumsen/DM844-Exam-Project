@@ -19,7 +19,7 @@ class PersonTagLibSpec extends Specification {
         tagLib.personService.getSecurityRole(_) >> { SecurityRole.Role.CUSTOMER }
 
         when:
-        String result = applyTemplate('<person:getRole person="${p}">${it.getValue()}</person:getRole>')
+        String result = applyTemplate('<person:getRole person="${p}">${it.toString()}</person:getRole>')
         Document document = Jsoup.parse(result)
 
         then:

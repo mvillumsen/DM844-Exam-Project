@@ -33,7 +33,7 @@
             <td>${fieldValue(bean: personInstance, field: "address")}</td>
             <td>${fieldValue(bean: personInstance, field: "email")}</td>
 
-            <td><person:getRole person="${personInstance}">${it.getValue()}</person:getRole></td>
+            <td><person:getRole person="${personInstance}">${it.toString()}</person:getRole></td>
         </tr>
     </g:each>
     </tbody>

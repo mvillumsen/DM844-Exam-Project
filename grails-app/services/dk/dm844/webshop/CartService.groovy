@@ -33,6 +33,7 @@ class CartService extends ShoppingCartService {
         return total
     }
 
+    @Override
     def addToShoppingCart(Shoppable product, Integer qty = 1, ShoppingCart previousShoppingCart = null) {
         if (!product.shoppingItem) {
             def shoppingItem = new ShoppingItem()

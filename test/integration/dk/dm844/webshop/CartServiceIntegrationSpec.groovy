@@ -29,7 +29,7 @@ class CartServiceIntegrationSpec extends Specification {
         cartService.count() == 0
 
         when:
-        cartService.addToShoppingCart(p, 10)
+        cartService.addToShoppingCart((Shoppable) p, 10)
 
         then:
         cartService.count() == 10

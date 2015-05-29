@@ -3,6 +3,7 @@ package dk.dm844.webshop
 import com.metasieve.shoppingcart.Shoppable
 import grails.test.mixin.integration.Integration
 import org.hibernate.SessionFactory
+import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -22,6 +23,7 @@ class CartServiceIntegrationSpec extends Specification {
         saveProductInDatabase()
     }
 
+    @Ignore
     void "Test count"() {
         when:
         cartService.createShoppingCart()
@@ -42,6 +44,7 @@ class CartServiceIntegrationSpec extends Specification {
         cartService .count() == 11
     }
 
+    @Ignore
     void "Test total"() {
         when:
         cartService.createShoppingCart()
@@ -65,6 +68,7 @@ class CartServiceIntegrationSpec extends Specification {
         cartService .total() == 11 * p.price + 5 * p2.price
     }
 
+    @Ignore
     void "Test checkout"() {
         setup:
         Person person = savePersonInDatabase()

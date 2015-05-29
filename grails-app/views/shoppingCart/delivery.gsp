@@ -3,7 +3,6 @@
 <head>
     <meta name="layout" content="shopTemplate"/>
     <title><g:message code="delivery.title.label"/></title>
-
 </head>
 
 <body>
@@ -23,24 +22,20 @@
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" class="optionRadio" checked>
             <h4><g:message code="address.delivery" /></h4>
         </label>
-        <tb:address cssClasses="address">
-            <login:printUserInfo cssClasses="deliveryLabel"/>
-        </tb:address>
     </tb:radio>
     <tb:radio>
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" class="optionRadio">
             <h4><g:message code="address.alternativeDelivery" /></h4>
         </label>
+    </tb:radio>
+        <tb:address cssClasses="address">
+            <login:printUserInfo cssClasses="deliveryLabel"/>
+        </tb:address>
         <fieldset id="alternativeAddress">
             <login:getUserInfo>
                 <tb:formGroup>
-                    <tb:col2 cssClasses="deliveryAddress"><tb:label cssClasses="deliveryLabel" for="name"><strong><g:message
-                            code="delivery.name.label"/>:</strong></tb:label></tb:col2>
-                    <tb:col8><tb:preFilledInputForm id="name" name="name" type="text" value="${it.name}"/></tb:col8>
-                </tb:formGroup>
-                <tb:formGroup>
-                    <tb:col2 cssClasses="deliveryAddress"><tb:label cssClasses="deliveryLabel" for="address1"><strong><g:message
+                    <tb:col2><tb:label cssClasses="deliveryLabel" for="address1"><strong><g:message
                             code="delivery.address1.label"/>:</strong></tb:label></tb:col2>
                     <tb:col8><tb:preFilledInputForm id="address1" name="address1" type="address"
                                                     value="${it.address1}"/></tb:col8>
@@ -71,7 +66,6 @@
                 </tb:formGroup>
             </login:getUserInfo>
         </fieldset>
-    </tb:radio>
     <tb:col6 cssClasses="backButton">
         <g:link controller="ShoppingCart" action="checkout" name="Back" class="btn btn-primary">Back</g:link>
     </tb:col6>

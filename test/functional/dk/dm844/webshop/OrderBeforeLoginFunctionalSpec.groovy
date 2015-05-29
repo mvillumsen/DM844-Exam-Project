@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 import geb.spock.GebReportingSpec
 import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.Keys
 import spock.lang.*
 
 /**
@@ -14,9 +13,9 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
 
     void "Order some meat groceries"() {
         setup:
-        go 'http://localhost:8080/webshop/'
+        go 'http://localhost:8088/webshop/'
 
-        when:
+        when: "ordering"
         $("a", text: "Meat").click()
         and:
         $("input", 3, id: "amount").value(4)
@@ -26,10 +25,7 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         $("input", 8, id: "amount").value(7)
         $("button", 8, class: "btn btn-primary btn-sm").click()
 
-        then:
-        $("span", id: "cart-count").text() == "11"
-
-        when: "Logging in"
+        and: "Logging in"
         $("a", class: "dropdown-toggle").click()
         $("form").j_username = "alice"
         $("form").j_password = "al123"
@@ -42,7 +38,7 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         $("a", text: startsWith("Shopping Cart")).click()
 
         then:
-        title == "Grails"
+        title == "Shopping Cart"
 
         when:
         $("input", name: startsWith("Order")).click()

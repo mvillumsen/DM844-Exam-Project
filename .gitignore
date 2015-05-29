@@ -24,3 +24,4 @@ prodDb.h2.db
 prodDb.lock.db
 *.db
 *.old
+grails-app/views/testShoppingCart/

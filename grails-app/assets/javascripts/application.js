@@ -7,8 +7,9 @@
 //
 //= require jquery
 //= require_tree .
-//= require_self
 //= require bootstrap
+//= require sticky-contact
+//= require_self
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {

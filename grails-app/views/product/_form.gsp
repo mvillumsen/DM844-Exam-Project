@@ -9,7 +9,8 @@
             <tb:label><strong><g:message code="product.name.label"/></strong>:</tb:label>
         </tb:col3>
         <tb:col8>
-            <tb:inputForm id="name" name="name" type="text" placeholder="${g.message(code: "product.name.label")}" value="${productInstance?.name}" required="required"/>
+            <tb:inputForm id="name" name="name" type="text" placeholder="${g.message(code: "product.name.label")}" value="${productInstance?.name}"
+                          required="required"/>
         </tb:col8>
     </tb:formGroup>
 
@@ -29,7 +30,8 @@
             <tb:label><strong><g:message code="product.description.label"/></strong>:</tb:label>
         </tb:col3>
         <tb:col8>
-            <g:textArea class="form-control" name="description" placeholder="${g.message(code: "product.description.label")}" value="${productInstance?.description}"/>
+            <g:textArea class="form-control" name="description" placeholder="${g.message(code: "product.description.label")}"
+                        value="${productInstance?.description}" maxlength="255"/>
         </tb:col8>
     </tb:formGroup>
 

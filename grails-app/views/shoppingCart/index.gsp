@@ -12,7 +12,6 @@
     <tb:liActive><g:message code="shoppingCart.label"/></tb:liActive>
 </tb:breadcrumb>
 
-<h2>Shopping Cart</h2>
 <g:if test="${productCount > 0}">
     <table class="table">
         <thead>
@@ -69,7 +68,7 @@
     </table>
 </g:if>
 <g:else>
-    Your shopping cart is empty.
+    <tb:pLeadText><g:message code="shoppingCart.empty.label" /></tb:pLeadText>
 </g:else>
 
 </body>

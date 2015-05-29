@@ -12,7 +12,7 @@ class LoginWrongFunctionalSpec extends GebReportingSpec {
 
     void "enter front page"() {
         when:
-        go 'http://localhost:8080/webshop/'
+        go 'http://localhost:8088/webshop/'
         then:
         title == shoptitle
     }

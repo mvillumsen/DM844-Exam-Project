@@ -1,12 +1,14 @@
 /**
  * Created by anders on 5/26/15.
  */
+import grails.util.BuildSettings
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.Dimension
 import org.openqa.selenium.Point
 import java.awt.*
 
 System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome");
+System.setProperty(BuildSettings.FUNCTIONAL_BASE_URL_PROPERTY, 'http://localhost:8088/webshop')
 
 def chromeDriver = new File('target/drivers/chrome/chromedriver')
 downloadDriver(chromeDriver, driverLocationDependingOnOperatingSystem())

@@ -1,5 +1,6 @@
 package dk.dm844.webshop
 
+import com.metasieve.shoppingcart.Shoppable
 import grails.test.mixin.integration.Integration
 import org.hibernate.SessionFactory
 import spock.lang.Shared
@@ -29,13 +30,13 @@ class CartServiceIntegrationSpec extends Specification {
         cartService.count() == 0
 
         when:
-        cartService.addToShoppingCart(p, 10)
+        cartService.addToShoppingCart((Shoppable) p, 10)
 
         then:
         cartService.count() == 10
 
         when:
-        cartService.addToShoppingCart(p, 1)
+        cartService.addToShoppingCart((Shoppable) p, 1)
 
         then:
         cartService .count() == 11

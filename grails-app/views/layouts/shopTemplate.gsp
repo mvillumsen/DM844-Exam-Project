@@ -102,6 +102,8 @@
     </tb:container>
 </tb:footer>
 
+<stickycontact:widget />
+
 <asset:javascript src="application.js"/>
 <asset:javascript src="delivery.js" />
 </body>

@@ -13,7 +13,7 @@ class CategoryFunctionalSpec extends GebReportingSpec {
     def "Check product listing for category '#cat'"() {
 
         when: "Go to front page"
-        go 'http://localhost:8080/webshop/'
+        go 'http://localhost:8088/webshop/'
 
         then: "The title is 'Welcome to The Grocery Shop'"
         title == "The Grocery Shop"

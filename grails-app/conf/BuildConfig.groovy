@@ -5,6 +5,7 @@ grails.project.test.reports.dir = "target/test-reports"
 grails.project.work.dir = "target/work"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
+//grails.plugin.location.'StickyContact' = "../dm844-group-5-plugin/StickyContact"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.fork = [
@@ -78,6 +79,10 @@ grails.project.dependency.resolution = {
         compile ":build-test-data:2.4.0"
         compile ":shopping-cart:0.8.2"
         compile ":postgresql-extensions:4.4.0"
+        compile ":postgresql-extensions:4.4.0"
+
+        //Our plugin
+        compile ":sticky-contact:1.0"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.8.1" // or ':hibernate:3.6.10.19'
@@ -100,6 +105,8 @@ grails.project.dependency.resolution = {
         compile ":remote-control:2.0"
     }
 }
+
+//grails.server.port.http = 8088
 
 codenarc {
 

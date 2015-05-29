@@ -46,7 +46,6 @@ class ProductOrderTagLib {
         }
     }
 
-    // TODO: Test this
     def calcTotalPrice = { attrs, body ->
         Integer total = productOrderService.calcTotalPrice(attrs.order)
         out << """${total}"""

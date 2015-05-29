@@ -32,7 +32,6 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
-    // TODO: Style sidebar for xs (extra small) devices
     def sidebar = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="hidden-xs col-sm-3 ${cssClasses}">"""

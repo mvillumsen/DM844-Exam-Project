@@ -12,48 +12,13 @@
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
-<admin:tableStriped>
-    <thead>
-    <tr>
 
-        <th><g:message code="productOrder.assignedEmployee.label" default="Assigned Employee"/></th>
-
-        <th><g:message code="productOrder.address.label" default="Address"/></th>
-
-        <th><g:message code="productOrder.customer.label" default="Customer"/></th>
-
-        <g:sortableColumn property="dateCreated"
-                          title="${message(code: 'productOrder.dateCreated.label', default: 'Date Created')}"/>
-
-        <g:sortableColumn property="lastUpdated"
-                          title="${message(code: 'productOrder.lastUpdated.label', default: 'Last Updated')}"/>
-
-        <g:sortableColumn property="status"
-                          title="${message(code: 'productOrder.status.label', default: 'Status')}"/>
-
-    </tr>
-    </thead>
-    <tbody>
-    <g:each in="${productOrderInstanceList}" status="i" var="productOrderInstance">
-        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-            <td><g:link action="show"
-                        id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "assignedEmployee")}</g:link></td>
-
-            <td>${fieldValue(bean: productOrderInstance, field: "address")}</td>
-
-            <td>${fieldValue(bean: productOrderInstance, field: "customer")}</td>
-
-            <td><g:formatDate date="${productOrderInstance.dateCreated}"/></td>
-
-            <td><g:formatDate date="${productOrderInstance.lastUpdated}"/></td>
-
-            <td>${fieldValue(bean: productOrderInstance, field: "status")}</td>
-
-        </tr>
-    </g:each>
-    </tbody>
-</admin:tableStriped>
+<g:if test="${productOrderInstanceList?.size() > 0}">
+    <g:render template="accordionList" model="${[orders: productOrderInstanceList, id: "packingAccordion"]}"/>
+</g:if>
+<g:else>
+    <g:message code="productOrder.noOrders" />
+</g:else>
 
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
@@ -64,7 +29,7 @@
     <tb:pullRight>
         <g:paginate total="${productInstanceCount ?: 0}"/>
     </tb:pullRight>
-</tb:row>
+</tb:row><br>
 
 </body>
 </html>

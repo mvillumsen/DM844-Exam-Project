@@ -13,10 +13,10 @@
     <tb:liActive><g:message code="shoppingCart.checkout.title"/></tb:liActive>
 </tb:breadcrumb>
 
-<h2>Checkout</h2>
 <tb:progressBar percentCompleted="33"/>
 
-<table class="table">
+<h2><g:message code="category.products.label"/> </h2><hr>
+<tb:tableStriped>
     <thead>
     <tr>
         <th><g:message code="shoppingCart.product"/></th>
@@ -57,7 +57,7 @@
         </td>
     </tr>
     </tfoot>
-</table>
+</tb:tableStriped>
 <tb:col6 cssClasses="backButton">
     <g:link controller="ShoppingCart" name="Back" class="btn btn-primary">Back</g:link>
 </tb:col6>

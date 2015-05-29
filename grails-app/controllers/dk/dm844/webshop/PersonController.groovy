@@ -9,13 +9,19 @@ import grails.transaction.Transactional
 @Secured(['permitAll'])
 class PersonController {
 
+    def beforeInterceptor = {
+        log.info """<log-entry><time>${new Date()}</time><sessionid>${session.getId()}</sessionid><info>${params}</info></log-entry>"""
+    }
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Person.list(params), model:[personInstanceCount: Person.count()]
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def show(Person personInstance) {
         respond personInstance
     }
@@ -48,6 +54,7 @@ class PersonController {
         }
     }
 
+    @Secured([SecurityRole.Employee.ADMIN])
     def edit(Person personInstance) {
         respond personInstance
     }

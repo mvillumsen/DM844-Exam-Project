@@ -24,6 +24,10 @@ grails.project.fork = [
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
+
+    def gebVersion = "0.10.0"
+    def seleniumVersion = "2.45.0"
+
     // inherit Grails' default dependencies
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
@@ -36,11 +40,13 @@ grails.project.dependency.resolution = {
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
 
+        jcenter()
         grailsPlugins()
         grailsHome()
         mavenLocal()
         grailsCentral()
         mavenCentral()
+        mavenRepo "http://dl.bintray.com/alkemist/maven/"
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
@@ -53,6 +59,9 @@ grails.project.dependency.resolution = {
         runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
         compile  "org.jsoup:jsoup:1.8.2"
+        test("org.seleniumhq.selenium:selenium-support:$seleniumVersion") // Required fx to set values in select
+        test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
+        test ("org.gebish:geb-spock:$gebVersion")
     }
 
     plugins {
@@ -61,7 +70,6 @@ grails.project.dependency.resolution = {
         test(":code-coverage:2.0.3-3") {
             export = false
         }
-
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
@@ -88,12 +96,17 @@ grails.project.dependency.resolution = {
         compile ":twitter-bootstrap:3.3.2.1"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
+
         coverage {
             exclusions = ["*CodeNarcRules*"]
         }
 
+        test ":geb:$gebVersion"
+        compile ":remote-control:2.0"
     }
 }
+
+//grails.server.port.http = 8088
 
 codenarc {
 

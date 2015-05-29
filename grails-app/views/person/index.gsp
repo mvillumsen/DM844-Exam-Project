@@ -1,3 +1,4 @@
+<%@ page import="dk.dm844.webshop.SecurityRole" %>
 <%@ page import="dk.dm844.webshop.Person" %>
 <!DOCTYPE html>
 <html>
@@ -12,22 +13,14 @@
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
-<admin:tableStriped>
+<tb:tableStriped>
     <thead>
     <tr>
 
         <g:sortableColumn property="name" title="${message(code: 'person.name.label', default: 'Name')}"/>
-
         <th><g:message code="person.address.label" default="Address"/></th>
-
-        <g:sortableColumn property="phone" title="${message(code: 'person.phone.label', default: 'Phone')}"/>
-
         <g:sortableColumn property="email" title="${message(code: 'person.email.label', default: 'Email')}"/>
-
-        <g:sortableColumn property="salary" title="${message(code: 'person.salary.label', default: 'Salary')}"/>
-
-        <g:sortableColumn property="dateHired"
-                          title="${message(code: 'person.dateHired.label', default: 'Date Hired')}"/>
+        <th><g:message code="person.type.label"/></th>
 
     </tr>
     </thead>
@@ -37,21 +30,14 @@
 
             <td><g:link action="show"
                         id="${personInstance.id}">${fieldValue(bean: personInstance, field: "name")}</g:link></td>
-
             <td>${fieldValue(bean: personInstance, field: "address")}</td>
-
-            <td>${fieldValue(bean: personInstance, field: "phone")}</td>
-
             <td>${fieldValue(bean: personInstance, field: "email")}</td>
 
-            <td>${fieldValue(bean: personInstance, field: "salary")}</td>
-
-            <td><g:formatDate date="${personInstance.dateHired}"/></td>
-
+            <td><person:getRole person="${personInstance}">${it.getValue()}</person:getRole></td>
         </tr>
     </g:each>
     </tbody>
-</admin:tableStriped>
+</tb:tableStriped>
 
 <tb:row>
     <tb:pullLeft cssClasses="adminNewButton">
@@ -60,7 +46,9 @@
         </g:link>
     </tb:pullLeft>
     <tb:pullRight>
-        <g:paginate total="${productInstanceCount ?: 0}"/>
+        <g:if test="${productInstanceCount > 1}">
+            <g:paginate total="${productInstanceCount ?: 0}"/>
+        </g:if>
     </tb:pullRight>
 </tb:row>
 

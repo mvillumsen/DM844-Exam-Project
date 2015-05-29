@@ -14,59 +14,10 @@
     <tb:liActive><g:message code="shoppingCart.confirmation"/></tb:liActive>
 </tb:breadcrumb>
 
-<h2>Order Confirmation</h2>
+<h2><g:message code="productOrder.comfirmation.title.label"/> </h2>
 <tb:progressBar percentCompleted="100"/>
 <tb:pLeadText><g:message code="productOrder.thankYou" /></tb:pLeadText>
-<tb:label><h4>Delivery Address</h4></tb:label>
-<tb:address cssClasses="address">
-    <tb:label><g:message code="delivery.name.label"/>:</tb:label> ${order.customer.name}<br>
-    <tb:label><g:message code="delivery.address1.label"/>:</tb:label> ${order.address.address1}<br>
-    <tb:label><g:message code="delivery.address2.label"/>:</tb:label> ${order.address.address2}<br>
-    <tb:label><g:message code="delivery.address.postalCode"/>:</tb:label> ${order.address.zipCode}<br>
-    <tb:label><g:message code="delivery.address.city"/>:</tb:label>${order.address.city}<br>
-    <tb:label><g:message code="delivery.address.country"/>:</tb:label>${order.address.country}<br>
-</tb:address>
-<table class="table">
-    <thead>
-    <tr>
-        <th><g:message code="shoppingCart.product"/></th>
-        <th><g:message code="shoppingCart.amount"/></th>
-        <th><g:message code="product.price"/></th>
-        <th><g:message code="shoppingCart.total"/></th>
-    </tr>
-    </thead>
-    <tbody>
-    <g:each in="${order.orderEntries}" var="entry">
-        <tr>
-            <td>
-                ${entry.product}
-            </td>
-            <td>
-                x ${entry.amount}
-            </td>
-            <td>
-                <sc:price>
-                    ${entry.product.price}
-                </sc:price>
-            </td>
-            <td>
-                <sc:price>
-                    ${entry.product.price * entry.amount}
-                </sc:price>
-            </td>
-        </tr>
-    </g:each>
-    </tbody>
-    <tfoot>
-    <tr>
-        <td><g:message code="shoppingCart.total"/></td>
-        <td/>
-        <td/>
-        <td>
-            <sc:price><po:calcTotalPrice order="${order}"/></sc:price>
-        </td>
-    </tr>
-    </tfoot>
-</table>
+
+<g:render template="view" model="${[order: order]}"/>
 </body>
 </html>

@@ -2,7 +2,7 @@ package dk.dm844.webshop
 
 class GridLayoutTagLib {
     static namespace = "tb"
-    static defaultEncodeAs = [taglib:'none']
+    static defaultEncodeAs = [taglib: 'none']
 
     def container = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
@@ -32,7 +32,6 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
-    // TODO: Style sidebar for xs (extra small) devices
     def sidebar = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="hidden-xs col-sm-3 ${cssClasses}">"""
@@ -89,9 +88,23 @@ class GridLayoutTagLib {
         out << """</div>"""
     }
 
+    def col3 = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-3 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
     def col6 = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<div class="col-xs-6 ${cssClasses}">"""
+        out << body()
+        out << """</div>"""
+    }
+
+    def col6_12 = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<div class="col-xs-12 col-md-6 ${cssClasses}">"""
         out << body()
         out << """</div>"""
     }
@@ -164,8 +177,9 @@ class GridLayoutTagLib {
         String id = attrs.id ?: ''
         String name = attrs.name ?: ''
         String placeholder = attrs.placeholder ?: ''
+        String value = attrs.value ?: ''
 
-        out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}">"""
+        out << """<input class="form-control ${cssClasses}" type="${type}" id="${id}" name="${name}" placeholder="${placeholder}" value="${value}">"""
     }
 
     def preFilledInputForm = { attrs ->
@@ -195,6 +209,13 @@ class GridLayoutTagLib {
     def table = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''
         out << """<table class="table ${cssClasses}">"""
+        out << body()
+        out << """</table>"""
+    }
+
+    def tableStriped = { attrs, body ->
+        String cssClasses = attrs.cssClasses ?: ''
+        out << """<table class="table table-striped table-hover ${cssClasses}">"""
         out << body()
         out << """</table>"""
     }

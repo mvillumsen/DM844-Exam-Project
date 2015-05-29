@@ -11,6 +11,6 @@
 </td>
 
 <td>
-    <g:link action="show"
-            id="${productOrderInstance.id}">${fieldValue(bean: productOrderInstance, field: "customer")}</g:link>
+    <g:link controller="person" action="show"
+            id="${productOrderInstance.customer.id}">${fieldValue(bean: productOrderInstance, field: "customer")}</g:link>
 </td>

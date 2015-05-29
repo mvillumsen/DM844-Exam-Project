@@ -99,20 +99,33 @@ environments {
     development {
         grails.logging.jul.usebridge = true
     }
+    test {
+        grails.serverURL = "http://localhost:8088/webshop"
+    }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "https://dm844group5.me"
     }
 }
 
 // log4j configuration
-log4j.main = {
+import org.apache.log4j.DailyRollingFileAppender
+log4j = {
+    appenders {
+        appender new DailyRollingFileAppender(
+                name: 'dailyAppender',
+                datePattern: "'.'yyyy-MM-dd",  // See the API for all patterns.
+                fileName: "target/logs/webshop.log",
+                layout: simple
+        )
+    }
+
+    root {
+        info 'dailyAppender'
+    }
+    
     // Example of changing the log pattern for the default console appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -151,3 +164,4 @@ grails.plugin.springsecurity.roleHierarchy = '''
 grails.assets.less.compile = "less4j"
 grails.assets.plugin."twitter-bootstrap".excludes=["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".includes=["bootstrap.less"]
+grails.plugins.twitterbootstrap.fixtaglib = true

@@ -17,15 +17,6 @@ class Address {
     }
 
     @Override
-    boolean equals(Object o) {
-        return address1 == o.address1 &&
-                address2 == o.address2 &&
-                zipCode == o.zipCode &&
-                city == o.city &&
-                country == o.country
-    }
-
-    @Override
     String toString() {
         String out = ""
         out += "$address1\n"

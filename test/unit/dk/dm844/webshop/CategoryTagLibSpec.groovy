@@ -2,6 +2,7 @@ package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import spock.lang.Specification
 
 /**
@@ -26,5 +27,20 @@ class CategoryTagLibSpec extends Specification {
         }
         document.select('li')[0].select('a').text() == "Cat 1"
         document.select('li')[1].select('a').text() == "Cat 2"
+    }
+
+    void "test listProducts"() {
+        setup:
+        tagLib.categoryService = Mock(CategoryService)
+        tagLib.categoryService.getProducts(_) >> [new Product(name: 'TestProduct1'), new Product(name: 'TestProduct2')]
+
+        when:
+        String result = applyTemplate('<cat:listProducts category="${c}"><h5 class="text-center">${it.name}</h5></cat:listProducts>')
+        Document document = Jsoup.parse(result)
+
+        then:
+        document.select("h5").hasClass("text-center")
+        document.select("h5").text().trim() == "TestProduct1 TestProduct2"
+
     }
 }

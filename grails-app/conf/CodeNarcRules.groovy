@@ -101,7 +101,7 @@ ruleset {
     AbstractClassWithPublicConstructor
     AbstractClassWithoutAbstractMethod
     BooleanMethodReturnsNull
-    BuilderMethodWithSideEffects
+    //BuilderMethodWithSideEffects
     CloneableWithoutClone
     CloseWithoutCloseable
     CompareToWithoutComparable
@@ -196,7 +196,7 @@ ruleset {
 
     // rulesets/grails.xml
 //    GrailsDomainHasEquals
-    GrailsDomainHasToString
+    //GrailsDomainHasToString
     GrailsDomainReservedSqlKeywordName
 //    GrailsDomainWithServiceReference
     GrailsDuplicateConstraint
@@ -326,10 +326,10 @@ ruleset {
 
     // rulesets/size.xml
     AbcComplexity   // DEPRECATED: Use the AbcMetric rule instead. Requires the GMetrics jar
-    AbcMetric   // Requires the GMetrics jar
+    //AbcMetric   // Requires the GMetrics jar
     ClassSize
     CrapMetric   // Requires the GMetrics jar and a Cobertura coverage file
-    CyclomaticComplexity   // Requires the GMetrics jar
+    //CyclomaticComplexity   // Requires the GMetrics jar
     MethodCount
     MethodSize
     NestedBlockDepth

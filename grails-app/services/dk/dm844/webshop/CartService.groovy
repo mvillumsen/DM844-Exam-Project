@@ -4,7 +4,6 @@ import com.metasieve.shoppingcart.Shoppable
 import com.metasieve.shoppingcart.ShoppingCartService
 import com.metasieve.shoppingcart.ShoppingItem
 import grails.transaction.Transactional
-import org.grails.datastore.mapping.core.Session
 
 @Transactional
 class CartService extends ShoppingCartService {
@@ -21,14 +20,6 @@ class CartService extends ShoppingCartService {
 
     int total() {
         Set<ShoppingItem> items = getItems()
-
-        items?.each {
-            println Product.findByShoppingItem(it)
-        }
-
-        Shoppable.all.each {
-            println it.shoppingItem
-        }
 
         int total = 0
 

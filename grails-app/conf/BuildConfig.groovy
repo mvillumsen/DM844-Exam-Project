@@ -79,10 +79,9 @@ grails.project.dependency.resolution = {
         compile ":build-test-data:2.4.0"
         compile ":shopping-cart:0.8.2"
         compile ":postgresql-extensions:4.4.0"
-        compile ":postgresql-extensions:4.4.0"
 
         //Our plugin
-        compile ":sticky-contact:1.0"
+        compile ":sticky-contact:1.0.1"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.8.1" // or ':hibernate:3.6.10.19'

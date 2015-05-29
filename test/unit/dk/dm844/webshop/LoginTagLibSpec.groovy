@@ -15,9 +15,9 @@ class LoginTagLibSpec extends Specification {
 
         where:
         resource   | bodyClosure              || result
-        ''         | {}                       || '<form action="" method="POST" accept-charset="UTF-8"></form>'
+        ''         | { }                      || '<form action="" method="POST" accept-charset="UTF-8"></form>'
         ''         | { -> 'My Body Closure' } || '<form action="" method="POST" accept-charset="UTF-8">My Body Closure</form>'
-        'myAction' | {}                       || '<form action="myAction" method="POST" accept-charset="UTF-8"></form>'
+        'myAction' | { }                      || '<form action="myAction" method="POST" accept-charset="UTF-8"></form>'
         'myAction' | { -> 'My Body Closure' } || '<form action="myAction" method="POST" accept-charset="UTF-8">My Body Closure</form>'
     }
 
@@ -27,9 +27,9 @@ class LoginTagLibSpec extends Specification {
 
         where:
         cssClass  | bodyClosure              || result
-        ''        | {}                       || '<div class="checkbox "><label><input type="checkbox"></label></div>'
+        ''        | { }                      || '<div class="checkbox "><label><input type="checkbox"></label></div>'
         ''        | { -> 'My Body Closure' } || '<div class="checkbox "><label><input type="checkbox">My Body Closure</label></div>'
-        'myClass' | {}                       || '<div class="checkbox myClass"><label><input type="checkbox"></label></div>'
+        'myClass' | { }                      || '<div class="checkbox myClass"><label><input type="checkbox"></label></div>'
         'myClass' | { -> 'My Body Closure' } || '<div class="checkbox myClass"><label><input type="checkbox">My Body Closure</label></div>'
     }
 

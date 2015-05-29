@@ -1,7 +1,6 @@
 package dk.dm844.webshop
 
 import grails.test.mixin.TestFor
-import spock.lang.Shared
 import spock.lang.Specification
 
 /**

@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.SpringSecurityService
 
 class LoginTagLib {
     static namespace = "login"
-    static defaultEncodeAs = [taglib:'none']
+    static defaultEncodeAs = [taglib: 'none']
 
     SpringSecurityService springSecurityService
 
@@ -37,21 +37,31 @@ class LoginTagLib {
 
         out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.name.label')}:</strong></label></div>"""
         out << """<div class="col-xs-10">${currUser.name}</div></div>"""
-        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address1.label')}:</strong></label></div>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${
+            message(code: 'delivery.address1.label')
+        }:</strong></label></div>"""
         out << """<div class="col-xs-10">${currUser.address.address1}</div></div>"""
 
         if (currUser.address.address2) {
-            out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address2.label')}:</strong></label></div>"""
+            out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${
+                message(code: 'delivery.address2.label')
+            }:</strong></label></div>"""
             out << """<div class="col-xs-10">${currUser.address.address2}</div></div>"""
         }
 
-        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.zipCode')}:</strong></label></div>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${
+            message(code: 'delivery.address.zipCode')
+        }:</strong></label></div>"""
         out << """<div class="col-xs-10">${currUser.address.zipCode}</div></div>"""
 
-        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.city')}:</strong></label></div>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${
+            message(code: 'delivery.address.city')
+        }:</strong></label></div>"""
         out << """<div class="col-xs-10">${currUser.address.city}</div></div>"""
 
-        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${message(code: 'delivery.address.country')}:</strong></label></div>"""
+        out << """<div class="row"><div class="col-xs-2"><label class="${cssClasses}"><strong>${
+            message(code: 'delivery.address.country')
+        }:</strong></label></div>"""
         out << """<div class="col-xs-10">${currUser.address.country}</div></div>"""
     }
 

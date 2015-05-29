@@ -144,7 +144,6 @@ class ShoppingCartTagLibIntegrationSpec extends Specification {
 
     private saveProductInDatabase() {
         Category ca = new Category(name: "something extremely unique" + System.currentTimeMillis()).save(flush: true)
-        println "Category: $ca (${ca.id})"
         p = new Product(name: "Milk", category: ca, price: 10, stock: 1).save(flush: true)
         p2 = new Product(name: "Milk", category: ca, price: 14, stock: 1).save(flush: true)
     }

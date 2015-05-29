@@ -13,7 +13,7 @@ class ProductOrderControllerSpec extends Specification {
         controller.productOrderService = Mock(ProductOrderService)
         controller.springSecurityService = Mock(SpringSecurityService)
         controller.springSecurityService.currentUser >> new Person()
-        controller.productOrderService.getOrdersByStatus(_) >> { new ArrayList<ProductOrder>() }
+        controller.productOrderService.getOrdersByStatus(_) >> { [] }
     }
 
     def populateValidParams(params) {

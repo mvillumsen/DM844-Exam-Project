@@ -1,7 +1,3 @@
-/**
- * Created by martin on 26/05/15.
- */
-
 if (typeof jQuery !== 'undefined') {
     $(function() {
         $('.radio input[type="radio"]')

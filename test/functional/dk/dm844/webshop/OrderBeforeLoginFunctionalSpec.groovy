@@ -2,7 +2,6 @@ package dk.dm844.webshop
 
 import geb.spock.GebReportingSpec
 import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.Keys
 import spock.lang.*
 
 /**
@@ -42,7 +41,7 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
         $("a", text: startsWith("Shopping Cart")).click()
 
         then:
-        title == "Grails"
+        title == "Shopping Cart"
 
         when:
         $("input", name: startsWith("Order")).click()

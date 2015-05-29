@@ -160,8 +160,9 @@ grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_EMPLOYEE_PACKER > ROLE_CUSTOMER
     ROLE_EMPLOYEE_DRIVER > ROLE_CUSTOMER
 '''
-
+grails.assets.excludes = ["**/*.less"]
 grails.assets.less.compile = "less4j"
 grails.assets.plugin."twitter-bootstrap".excludes=["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".includes=["bootstrap.less"]
 grails.plugins.twitterbootstrap.fixtaglib = true
+

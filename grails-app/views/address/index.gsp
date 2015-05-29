@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="layout" content="adminTemplate"/>
-    <g:set var="entityName" value="${message(code: 'address.label', default: 'Address')}"/>
+    <g:set var="entityName" value="${g.message(code: 'address.label', default: 'Address')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
 
@@ -14,7 +14,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><g:link controller="home" action="index" class="home"><g:message code="default.home.label" default="Home"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
+        <li><g:link class="create" action="create"><g:message code="default.new.label"/></g:link></li>
     </ul>
 </div>
 

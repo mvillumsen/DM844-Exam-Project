@@ -47,7 +47,7 @@ class ProductController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), productInstance.id])
-                redirect productInstance
+                redirect action: 'index'
             }
             '*' { respond productInstance, [status: CREATED] }
         }

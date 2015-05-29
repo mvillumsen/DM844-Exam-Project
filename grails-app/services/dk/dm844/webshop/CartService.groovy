@@ -47,6 +47,7 @@ class CartService extends ShoppingCartService {
         if (quantity) {
             quantity.value += qty
         } else {
+            println shoppingCart
             shoppingCart.addToItems(product.shoppingItem)
             quantity = new Quantity(shoppingCart:shoppingCart, shoppingItem:product.shoppingItem, value:qty)
         }

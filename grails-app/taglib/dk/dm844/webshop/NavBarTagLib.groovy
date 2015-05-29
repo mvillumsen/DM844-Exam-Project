@@ -96,7 +96,6 @@ class NavBarTagLib {
         out << """</div>"""
     }
 
-    // TODO: Test this!
     def language = { attrs, body ->
         Locale currLang = RequestContextUtils.getLocale(request)
 

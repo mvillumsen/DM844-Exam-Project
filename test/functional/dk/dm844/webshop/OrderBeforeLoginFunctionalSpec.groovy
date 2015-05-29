@@ -13,7 +13,7 @@ class OrderBeforeLoginFunctionalSpec extends GebReportingSpec {
 
     void "Order some meat groceries"() {
         setup:
-        go 'http://localhost:8080/webshop/'
+        go 'http://localhost:8088/webshop/'
 
         when:
         $("a", text: "Meat").click()

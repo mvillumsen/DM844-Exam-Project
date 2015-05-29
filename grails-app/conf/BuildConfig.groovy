@@ -101,6 +101,8 @@ grails.project.dependency.resolution = {
     }
 }
 
+//grails.server.port.http = 8088
+
 codenarc {
 
     ruleSetFiles = "file:grails-app/conf/CodeNarcRules.groovy"

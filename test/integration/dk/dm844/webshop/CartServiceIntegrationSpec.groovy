@@ -1,5 +1,6 @@
 package dk.dm844.webshop
 
+import com.metasieve.shoppingcart.Shoppable
 import grails.test.mixin.integration.Integration
 import org.hibernate.SessionFactory
 import spock.lang.Shared

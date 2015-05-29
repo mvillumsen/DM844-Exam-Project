@@ -57,6 +57,16 @@ grails {
         // escapes all not-encoded output at final stage of outputting
         // filteringCodecForContentType.'text/html' = 'html'
     }
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "dm844group05@gmail.com"
+        password = "dm844dm844"
+        props = ["mail.smtp.auth":"true",
+                 "mail.smtp.socketFactory.port":"465",
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback":"false"]
+    }
 }
 
 
@@ -116,7 +126,6 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'dk.dm844.webshop.Person'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dk.dm844.webshop.UserAliasSecurityRole'
@@ -127,7 +136,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+	'/**/favicon.ico':                ['permitAll'],
+    '/contact/send':                  ['permitAll']
 ]
 grails.plugin.springsecurity.roleHierarchy = '''
     ROLE_EMPLOYEE_ADMIN > ROLE_EMPLOYEE_PACKER

@@ -120,36 +120,38 @@ class GridLayoutTagLibSpec extends Specification {
     @Unroll
     void "Testing tag: inputForm with cssClass: '#cssClass', type: '#type', id: '#id', name: '#name', placeholder: '#placeholder' and value: '#value'"() {
         expect:
-        tagLib.inputForm( cssClasses: cssClass, type: type, id: id, name: name, placeholder: placeholder, value: value )  == result
+        tagLib.inputForm(cssClasses: cssClass, type: type, id: id, name: name, placeholder: placeholder, value: value) == result
 
         where:
-        cssClass    | type      | id        | name      | placeholder       | value     || result
-        ''          | ''        | ''        | ''        | ''                | ''        || '<input class="form-control " type="" id="" name="" placeholder="" value="">'
-        'myClass'   | ''        | ''        | ''        | ''                | ''        || '<input class="form-control myClass" type="" id="" name="" placeholder="" value="">'
-        'myClass'   | 'myType'  | ''        | ''        | ''                | ''        || '<input class="form-control myClass" type="myType" id="" name="" placeholder="" value="">'
-        'myClass'   | 'myType'  | 'id1'     | ''        | ''                | ''        || '<input class="form-control myClass" type="myType" id="id1" name="" ' +
+        cssClass  | type     | id    | name     | placeholder      | value     || result
+        ''        | ''       | ''    | ''       | ''               | ''        || '<input class="form-control " type="" id="" name="" placeholder="" value="">'
+        'myClass' | ''       | ''    | ''       | ''               | ''        || '<input class="form-control myClass" type="" id="" name="" placeholder="" ' +
+                'value="">'
+        'myClass' | 'myType' | ''    | ''       | ''               | ''        || '<input class="form-control myClass" type="myType" id="" name="" ' +
                 'placeholder="" value="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''                | ''        || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+        'myClass' | 'myType' | 'id1' | ''       | ''               | ''        || '<input class="form-control myClass" type="myType" id="id1" name="" ' +
+                'placeholder="" value="">'
+        'myClass' | 'myType' | 'id1' | 'myName' | ''               | ''        || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
                 ' placeholder="" value="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Placeholder'  | ''        || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+        'myClass' | 'myType' | 'id1' | 'myName' | 'My Placeholder' | ''        || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
                 ' placeholder="My Placeholder" value="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Placeholder'  | 'myValue' || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+        'myClass' | 'myType' | 'id1' | 'myName' | 'My Placeholder' | 'myValue' || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
                 ' placeholder="My Placeholder" value="myValue">'
     }
 
     @Unroll
     void "Testing tag: preFilledInputForm with cssClass: '#cssClass', type: '#type', id: '#id', name: '#name' and value: '#value'"() {
         expect:
-        tagLib.preFilledInputForm( cssClasses: cssClass, type: type, id: id, name: name, value: value )  == result
+        tagLib.preFilledInputForm(cssClasses: cssClass, type: type, id: id, name: name, value: value) == result
 
         where:
-        cssClass    | type      | id        | name      | value       || result
-        ''          | ''        | ''        | ''        | ''          || '<input class="form-control " type="" id="" name="" value="">'
-        'myClass'   | ''        | ''        | ''        | ''          || '<input class="form-control myClass" type="" id="" name="" value="">'
-        'myClass'   | 'myType'  | ''        | ''        | ''          || '<input class="form-control myClass" type="myType" id="" name="" value="">'
-        'myClass'   | 'myType'  | 'id1'     | ''        | ''          || '<input class="form-control myClass" type="myType" id="id1" name="" value="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | ''          || '<input class="form-control myClass" type="myType" id="id1" name="myName" value="">'
-        'myClass'   | 'myType'  | 'id1'     | 'myName'  | 'My Value'  || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
+        cssClass  | type     | id    | name     | value      || result
+        ''        | ''       | ''    | ''       | ''         || '<input class="form-control " type="" id="" name="" value="">'
+        'myClass' | ''       | ''    | ''       | ''         || '<input class="form-control myClass" type="" id="" name="" value="">'
+        'myClass' | 'myType' | ''    | ''       | ''         || '<input class="form-control myClass" type="myType" id="" name="" value="">'
+        'myClass' | 'myType' | 'id1' | ''       | ''         || '<input class="form-control myClass" type="myType" id="id1" name="" value="">'
+        'myClass' | 'myType' | 'id1' | 'myName' | ''         || '<input class="form-control myClass" type="myType" id="id1" name="myName" value="">'
+        'myClass' | 'myType' | 'id1' | 'myName' | 'My Value' || '<input class="form-control myClass" type="myType" id="id1" name="myName"' +
                 ' value="My Value">'
     }
 }

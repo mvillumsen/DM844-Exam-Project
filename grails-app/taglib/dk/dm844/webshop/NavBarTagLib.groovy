@@ -105,11 +105,6 @@ class NavBarTagLib {
     }
 
     String isActive(Locale locale, String lang) {
-
-        if (locale.toString().startsWith(lang)) {
-            return 'active'
-        }
-
-        return ''
+        return locale.toString().startsWith(lang) ? 'active' : ''
     }
 }

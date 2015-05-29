@@ -89,6 +89,8 @@
     </tb:container>
 </tb:footer>
 
+<stickycontact:widget />
+
 <asset:javascript src="application.js"/>
 </body>
 </html>

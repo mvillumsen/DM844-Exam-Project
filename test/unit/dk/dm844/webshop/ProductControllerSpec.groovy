@@ -63,7 +63,7 @@ class ProductControllerSpec extends Specification {
             controller.save(product)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/product/show/1'
+            response.redirectedUrl == '/index'
             controller.flash.message != null
             Product.count() == 1
     }

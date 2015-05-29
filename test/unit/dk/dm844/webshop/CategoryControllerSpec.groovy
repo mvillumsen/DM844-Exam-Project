@@ -50,7 +50,7 @@ class CategoryControllerSpec extends Specification {
             controller.save(category)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/category/show/1'
+            response.redirectedUrl == '/index'
             controller.flash.message != null
             Category.count() == 1
     }

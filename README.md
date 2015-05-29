@@ -36,9 +36,24 @@ The front-end must allow users to select products and make orders.
 * Check the commit for a few comments placed in the code
 
 ## Info
-* Test-reports: 188.226.206.170/test-reports/standard
+### (Test reports currently not available due to config error in Virtual Host)
+* Test-reports: http://188.226.206.170/test-reports/standard
 * Test-reports (Code Coverage): http://188.226.206.170/test-reports/cobertura/
 * Test-reports (CodeNarc): http://188.226.206.170/test-reports/codenarc
-* Jenkins: 188.226.206.170:8090/jenkins/
-* Tomcat: 188.226.206.170:8080
+* Jenkins: http://188.226.206.170/jenkins/
 
+## Deployed Web App
+* Available at: http://188.226.206.170
+### User Information:
+* Admin
+    * Username: erik
+    * Password: er456
+* Driver
+    * Username: den
+    * Password: de456
+* Packer
+    * Username: cas
+    * Password: ca345
+* Customer
+    * Username: alice
+    * Password: al123

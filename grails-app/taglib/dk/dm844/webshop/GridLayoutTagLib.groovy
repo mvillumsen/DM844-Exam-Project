@@ -2,7 +2,7 @@ package dk.dm844.webshop
 
 class GridLayoutTagLib {
     static namespace = "tb"
-    static defaultEncodeAs = [taglib:'none']
+    static defaultEncodeAs = [taglib: 'none']
 
     def container = { attrs, body ->
         String cssClasses = attrs.cssClasses ?: ''

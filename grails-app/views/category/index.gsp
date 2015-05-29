@@ -20,8 +20,6 @@
 
         <th><g:message code="category.description.label"/></th>
 
-        <th><g:message code="category.numberOfProducts.label"/></th>
-
     </tr>
     </thead>
     <tbody>
@@ -32,8 +30,6 @@
                         id="${categoryInstance.id}">${fieldValue(bean: categoryInstance, field: "name")}</g:link></td>
 
             <td>${fieldValue(bean: categoryInstance, field: "description")}</td>
-
-            <td>${categoryInstanceList?.size()}</td>
 
         </tr>
     </g:each>

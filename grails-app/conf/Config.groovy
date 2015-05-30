@@ -178,10 +178,10 @@ environments {
 
             // Example of changing the log pattern for the default console appender:
             //
-            info   'grails.app'
-                   'grails.app.controllers'
-            error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-                    'org.codehaus.groovy.grails.web.pages',          // GSP
+            info   'grails.app',
+                   'grails.app.controllers',
+                    'org.codehaus.groovy.grails.web.servlet'        // controllers
+             error  'org.codehaus.groovy.grails.web.pages',          // GSP
                     'org.codehaus.groovy.grails.web.sitemesh',       // layouts
                     'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
                     'org.codehaus.groovy.grails.web.mapping',        // URL mapping

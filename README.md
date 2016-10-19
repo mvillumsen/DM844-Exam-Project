@@ -1,5 +1,7 @@
 # README #
 
+This is an exam project made for the course DM844 Web Development with Groovy and Grails at IMADA, University of Southern Denmark. The project is made in colaboration with 2 co-students.
+
 ### Business idea: ###
 
 The goal of this project is to build a simple webshop consisting of a backend

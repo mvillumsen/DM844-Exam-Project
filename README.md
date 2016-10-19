@@ -20,5 +20,5 @@ The frontend must allow users to select products and place orders.
 ## Build
 In order to build and run this project you need to have Groovy and Grails installed.
 
-In order to run this application locally, navigate to the root of this project and run `grails run-app`.
+In order to run this application locally, navigate to the root of this project and run `grails run-app`
 

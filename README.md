@@ -7,7 +7,7 @@ This is an exam project made for the course DM844 Web Development with Groovy an
 * Apply and demonstrate the use of tools for static code analysis (using [CodeNarc](http://codenarc.sourceforge.net))
 * Apply and demonstrate the use of tools for test coverage (using [Cobertura](http://cobertura.github.io/cobertura/))
 * Configure a cloud based hosting server for a web application (using [DigitalOcean](https://www.digitalocean.com))
-* Use continous integration and automate the process of testing and deploying the application (using [Jenking](https://jenkins.io))
+* Use continous integration and automate the process of testing and deploying the application (using [Jenkins](https://jenkins.io))
 
 ## Project Idea
 
